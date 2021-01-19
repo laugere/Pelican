@@ -1,0 +1,5 @@
+body {
+    background: linear-gradient(#4D067D, #470452);
+}
+
+@import "~bootstrap";
