@@ -1,9 +1,9 @@
 body {
-  background-color: #15083b;
+  background-color: #1a1045;
 }
 
 #mainFrame {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: #ffffff18 !important;
   border-radius: 25px;
 
   position: fixed;
@@ -11,6 +11,38 @@ body {
   bottom: 5vh;
   left: 5vw;
   right: 5vw;
+}
+
+#mainNavBar {
+  background-color: #0000001f !important;
+  border-radius: 25px;
+
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+
+  width: 5rem;
+}
+
+.mainNavBar-brand {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+}
+
+.mainNavBar-brand img {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  /*filter: invert(100%);
+  -webkit-filter: invert(100%);*/
+}
+
+.card.frame {
+  background-color: #251163ca !important;
+  border-radius: 25px;
+  box-shadow: 0 10px 20px #00000021, 0 6px 6px#00000021;
 }
 
 @import '~bootstrap';
