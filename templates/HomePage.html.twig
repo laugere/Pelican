@@ -27,10 +27,10 @@
 				<div
 					class="card-body">
 					<!-- NavBar -->
-					{% include 'vues/NavBar.twig' %}
+					{% include 'vues/NavBar.html.twig' %}
 
 					<!-- Body Content -->
-					{% if page == 0 %}{% endif %}
+					{% block body %} {% endblock %}
 				</div>
 			</div>
 		</div>
