@@ -1,0 +1,43 @@
+body {
+  background-color: #1a1045;
+}
+/* Main frame */
+#mainFrame {
+  background-color: #ffffff18 !important;
+  border-radius: 25px;
+  border: none;
+
+  position: fixed;
+  top: 2.5vh;
+  bottom: 2.5vh;
+  left: 2.5vw;
+  right: 2.5vw;
+}
+
+/* Main navbar */
+
+#mainNavbar {
+  background-color: #0000001f !important;
+  border-radius: 25px;
+  border: none;
+  padding: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Common frame */
+
+.frame {
+  background-color: #0000001f !important;
+  border-radius: 25px;
+  border: none;
+  box-shadow: 0 10px 20px #00000021, 0 6px 6px#00000021;
+}
+
+/* Common */
+
+.red-glow {
+  color: rgba(255, 0, 0, 0.719);
+}
+
+@import '~bootstrap';
