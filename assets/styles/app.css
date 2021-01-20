@@ -20,10 +20,9 @@ body {
   border-radius: 25px;
 
   position: absolute;
-  top: 1.25rem;
-  bottom: 1.25rem;
 
   width: 5rem;
+  height: calc(90vh - 2.5rem);
 }
 
 .mainNavbar-brand {
@@ -85,11 +84,18 @@ ul.mainNavbar-menu {
   right: 1.25rem;
 }
 
+/* Action Frame */
+
+#actionFrame {
+  color: white;
+}
+
 /* Common frame */
 
 .frame {
-  background-color: #251163ca !important;
+  background-color: #0000001f !important;
   border-radius: 25px;
+  border: none;
   box-shadow: 0 10px 20px #00000021, 0 6px 6px#00000021;
 }
 

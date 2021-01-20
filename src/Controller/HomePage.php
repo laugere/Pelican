@@ -9,8 +9,6 @@ class HomePage extends AbstractController
 {
     public function index(): Response
     {
-        $number = random_int(0, 100);
-
-        return $this->render('homePage.twig', []);
+        return $this->render('homePage.twig', ['page' => 0]);
     }
 }
