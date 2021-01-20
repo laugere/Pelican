@@ -1,7 +1,7 @@
 body {
   background-color: #1a1045;
 }
-
+/* Main frame */
 #mainFrame {
   background-color: #ffffff18 !important;
   border-radius: 25px;
@@ -12,6 +12,8 @@ body {
   left: 5vw;
   right: 5vw;
 }
+
+/* Main navbar */
 
 #mainNavBar {
   background-color: #0000001f !important;
@@ -39,7 +41,44 @@ body {
   -webkit-filter: invert(100%);*/
 }
 
-.card.frame {
+ul.mainNavbar-menu {
+  padding: 0;
+  list-style-type: none;
+
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  left: 1.25rem;
+  right: 1.25rem;
+}
+
+.mainNavbar-item {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 10px;
+
+  text-align: center;
+  color: white;
+  background-color: #ffffff00 !important;
+
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.mainNavbar-item:hover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  cursor:pointer;
+}
+
+.mainNavbar-item.selected {
+  color: black;
+  background-color: #ffffff !important;
+}
+
+
+/* Common frame */
+
+.frame {
   background-color: #251163ca !important;
   border-radius: 25px;
   box-shadow: 0 10px 20px #00000021, 0 6px 6px#00000021;

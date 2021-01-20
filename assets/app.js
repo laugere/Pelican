@@ -11,3 +11,6 @@ import './styles/app.css';
 // start the Stimulus application
 const $ = require('jquery');
 import './bootstrap';
+
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
