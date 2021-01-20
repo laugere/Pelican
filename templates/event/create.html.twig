@@ -1,26 +1,12 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
-
-	<div class="example-wrapper">
+	<div>
 		<h1>{{ controller_name }}</h1>
-
-		{{ form_start(form) }}
-		{{ form_row(form.name) }}
-		{{ form_end(form) }}
-		<button class="btn btn-outline-success" type="submit">fuck duch</button>
-
+		<div style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
+			{{ form_start(form) }}
+			{{ form_end(form) }}
+			<button class="btn btn-outline-success" type="submit">Enregistrer</button>
+		</div>
 	</div>
 {% endblock %}

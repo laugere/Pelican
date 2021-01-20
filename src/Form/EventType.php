@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Event;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,12 +14,21 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('location')
-            ->add('date', DateType::class)
-            ->add('nbParticipant')
-        ;
+            ->add('name', null, ['label' => 'Nom', 'attr' => array(
+                'placeholder' => 'Nom de l\'événement'
+            )])
+            ->add('description', null, ['label' => 'Description', 'attr' => array(
+                'placeholder' => 'Description'
+            )])
+            ->add('location', null, ['label' => 'Localisation', 'attr' => array(
+                'placeholder' => 'Localisation de l\'événement'
+            )])
+            ->add('date', DateType::class, ['label' => 'Date', 'widget' => 'single_text', 'attr' => array(
+                'placeholder' => 'Date de l\'événement'
+            )])
+            ->add('nbParticipant', null, ['label' => 'Nombre de participants', 'attr' => array(
+                'placeholder' => 'Nombre de participants'
+            )]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
