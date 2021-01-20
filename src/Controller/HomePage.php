@@ -9,6 +9,6 @@ class HomePage extends AbstractController
 {
     public function index(): Response
     {
-        return $this->render('homePage.twig', ['page' => 0]);
+        return $this->render('homePage.html.twig');
     }
 }

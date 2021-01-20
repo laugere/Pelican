@@ -1,5 +1,6 @@
 body {
   background-color: #1a1045;
+  color: white;
 }
 /* Main frame */
 #mainFrame {
@@ -17,12 +18,28 @@ body {
 /* Main navbar */
 
 #mainNavbar {
+  backdrop-filter: blur(20px);
+  z-index: 1;
   background-color: #0000001f !important;
   border-radius: 25px;
   border: none;
   padding: 1.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+/* boydFrame */
+#bodyFrame {
+  z-index: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+
+  position: absolute;
+  top: 7.5rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
 }
 
 /* Common frame */

@@ -1,17 +1,20 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    {% for event in events  %}
-        <h1>{{ event.name }}</h1>
-    {% endfor %}
-
-</div>
+	<div>
+		<h1>{{ controller_name }}</h1>
+		<button type="button" class="btn btn-outline-warning" onclick="window.location.href='/event/create'">Organiser</button>
+		<div style="margin-top: 1.25rem;">
+			{% for event in events  %}
+				<div style="margin-bottom: 1.25rem;" class="card frame">
+					<div class="card-body">
+						<h3 class="card-title">{{ event.name }}</h3>
+						<p>{{ event.location }}</p>
+						<p>{{ event.nbParticipant }}
+							participants</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

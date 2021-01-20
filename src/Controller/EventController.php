@@ -21,7 +21,7 @@ class EventController extends AbstractController
         $events = $event->findAll();
 
         return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
+            'controller_name' => 'Événements',
             'events' => $events
         ]);
     }
@@ -34,7 +34,7 @@ class EventController extends AbstractController
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $event->setDateCreation(new \DateTime());
             $event->setDateModification(new \DateTime());
 
@@ -43,7 +43,7 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/create.html.twig', [
-            'controller_name' => 'EventController',
+            'controller_name' => 'Organiser un événement',
             'form' => $form->createView()
         ]);
     }
