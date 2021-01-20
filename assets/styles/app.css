@@ -5,6 +5,7 @@ body {
 #mainFrame {
   background-color: #ffffff18 !important;
   border-radius: 25px;
+  border: none;
 
   position: fixed;
   top: 5vh;
@@ -18,23 +19,15 @@ body {
 #mainNavbar {
   background-color: #0000001f !important;
   border-radius: 25px;
-
-  position: absolute;
-
-  width: 5rem;
-  height: calc(90vh - 2.5rem);
-}
-
-.mainNavbar-brand {
-  position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  right: 1.25rem;
+  border: none;
+  padding: 1vw;
 }
 
 .mainNavbar-brand img {
-  width: 2.5rem;
-  height: 2.5rem;
+  display: block;
+  margin: auto;
+  width: 2.5vw;
+  min-width: 1vw;
 
   /*filter: invert(100%);
   -webkit-filter: invert(100%);*/
@@ -42,23 +35,20 @@ body {
 
 ul.mainNavbar-menu {
   padding: 0;
+  display: block;
+  height: 100%;
   list-style-type: none;
-
-  position: absolute;
-  top: 20%;
-  bottom: 20%;
-  left: 1.25rem;
-  right: 1.25rem;
 }
 
 .mainNavbar-item {
-  margin-top: 1rem;
+  margin-top: 2vh;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border-radius: 10px;
 
   text-align: center;
   color: white;
+  font-size: 1vw;
   background-color: #ffffff00 !important;
 
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -75,13 +65,9 @@ ul.mainNavbar-menu {
 }
 
 .mainNavbar-footer {
+  margin-block-end: 0;
   padding: 0;
   list-style-type: none;
-
-  position: absolute;
-  bottom: 0;
-  left: 1.25rem;
-  right: 1.25rem;
 }
 
 /* Action Frame */
@@ -103,6 +89,12 @@ ul.mainNavbar-menu {
 
 .red-glow {
   color: rgba(255, 0, 0, 0.719);
+}
+
+.avatarImg {
+  height: 5vw;
+  width: 5vw;
+  border-radius: 100%;
 }
 
 @import '~bootstrap';
