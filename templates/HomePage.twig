@@ -4,7 +4,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="icon" type="image/png" href="{{ asset('build/icon/color/32.png') }}"/>
-
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<title>
 			Pelican
 		</title>
@@ -23,14 +25,7 @@
 				<div
 					class="card-body">
 					<!-- NavBar -->
-					<div class="row">
-						<div class="col-sm-1">
-							{% include 'vues/NavBar.twig' %}
-						</div>
-						<div class="col-sm-11">
-							{% include 'vues/ActionFrame.twig' with {'userName':"Martin", 'avatarSrc' : "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/98381915/original/88c2f61d8b8c88d91030e19d12ca832c72b1b99d/design-minimalist-flat-line-vector-avatar-of-you.jpg"} %}
-						</div>
-					</div>
+					{% include 'vues/NavBar.twig' %}
 
 					<!-- Body Content -->
 					{% if page == 0 %}{% endif %}

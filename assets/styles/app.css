@@ -8,10 +8,10 @@ body {
   border: none;
 
   position: fixed;
-  top: 5vh;
-  bottom: 5vh;
-  left: 5vw;
-  right: 5vw;
+  top: 2.5vh;
+  bottom: 2.5vh;
+  left: 2.5vw;
+  right: 2.5vw;
 }
 
 /* Main navbar */
@@ -20,60 +20,9 @@ body {
   background-color: #0000001f !important;
   border-radius: 25px;
   border: none;
-  padding: 1vw;
-}
-
-.mainNavbar-brand img {
-  display: block;
-  margin: auto;
-  width: 2.5vw;
-  min-width: 1vw;
-
-  /*filter: invert(100%);
-  -webkit-filter: invert(100%);*/
-}
-
-ul.mainNavbar-menu {
-  padding: 0;
-  display: block;
-  height: 100%;
-  list-style-type: none;
-}
-
-.mainNavbar-item {
-  margin-top: 2vh;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-radius: 10px;
-
-  text-align: center;
-  color: white;
-  font-size: 1vw;
-  background-color: #ffffff00 !important;
-
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.mainNavbar-item:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  cursor: pointer;
-}
-
-.mainNavbar-item.selected {
-  color: black;
-  background-color: #ffffff !important;
-}
-
-.mainNavbar-footer {
-  margin-block-end: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-/* Action Frame */
-
-#actionFrame {
-  color: white;
+  padding: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 /* Common frame */
@@ -89,12 +38,6 @@ ul.mainNavbar-menu {
 
 .red-glow {
   color: rgba(255, 0, 0, 0.719);
-}
-
-.avatarImg {
-  height: 5vw;
-  width: 5vw;
-  border-radius: 100%;
 }
 
 @import '~bootstrap';
