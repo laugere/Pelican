@@ -6,6 +6,7 @@ use App\Entity\Event;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -28,7 +29,8 @@ class EventType extends AbstractType
             )])
             ->add('nbParticipant', null, ['label' => 'Nombre de participants', 'attr' => array(
                 'placeholder' => 'Nombre de participants'
-            )]);
+            )])
+            ->add('Enregistrer', SubmitType::class, ['attr' => ['class' => 'btn btn-outline-success']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
