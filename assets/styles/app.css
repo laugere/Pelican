@@ -7,39 +7,94 @@ body {
   background-color: #ffffff18 !important;
   border-radius: 25px;
   border: none;
-
-  position: fixed;
-  top: 2.5vh;
-  bottom: 2.5vh;
-  left: 2.5vw;
-  right: 2.5vw;
+  width: 96vw;
+  height: 92vh;
+  margin: 4vh 2vw;
 }
 
-/* Main navbar */
+.main-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+}
 
-#mainNavbar {
-  backdrop-filter: blur(20px);
-  z-index: 1;
+.sub-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 2%;
+}
+
+.nav-container{
   background-color: #0000001f !important;
   border-radius: 25px;
   border: none;
-  padding: 1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 
-/* boydFrame */
-#bodyFrame {
-  z-index: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: flex;
+/* Main navbar */
+#mainNavbar {
+  width: 6%;
+  height: 100%;
+}
 
-  position: absolute;
-  top: 7.5rem;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  right: 1.25rem;
+.nav-item{
+  text-align: center;
+}
+
+.navbar-brand{
+  margin-right: unset;
+}
+
+.nav-link{
+  margin: 0.5rem 0;
+  padding: 12px !important;
+  border-radius: 5px;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.nav-link:hover{
+  background-color: white;
+  color: #2A214C !important;
+}
+
+.top-icon{
+  margin-top: 15px;
+}
+
+.bottom-icon{
+  margin-bottom: 15px;
+  color: #e55039 !important;
+}
+
+/* User Bar container */
+#userNavBar{
+  width: 100%;
+  height: 10%;
+}
+
+.user-container{
+  margin-left: 2%;
+  display: flex;
+  align-items: center;
+}
+
+.user-text{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.user-text h5, h6{
+  margin: 0;
+}
+
+.container-fluid form{
+  margin-bottom: 0;
+}
+
+.container-fluid form button{
+  margin-left: 10px;
 }
 
 /* Common frame */
