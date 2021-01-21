@@ -57,6 +57,7 @@ input {
   background-color: #ffffff1f !important;
   border-radius: 10px;
   border: none !important;
+  color: white !important;
 }
 
 @import '~bootstrap';
