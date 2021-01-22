@@ -42,8 +42,13 @@
 			<div class="form-group">
 				{{ form_widget(registrationForm.agreeTerms) }}
 			</div>
-			<button type="submit" class="btn btn-outline-success">S'inscrire</button>
-			<button type="button" class="btn btn-outline-warning" onclick="location.href='/login';">Se connecter</button>
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline-success">S'inscrire</button>
+			</div>
+			<div class="form-group">
+				<small class="form-text text-muted">Vous avez déjà un compte ?</small>
+				<button type="button" class="btn btn-outline-warning" onclick="location.href='/login';">Se connecter</button>
+			</div>
 			{{ form_end(registrationForm) }}
 		</div>
 	</body>
