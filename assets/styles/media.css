@@ -19,7 +19,8 @@
     background-color: #32275f;
     border-radius: 25px;
     border: none;
-    margin: 0.5vh 2vw;
+    height: 100%;
+    margin: 0 2vw;
   }
 
   #events-container {
