@@ -1,3 +1,7 @@
+.scrollable {
+    padding-right: 1.25rem !important;
+}
+
 #popover_content_wrapper{
     display: none;
 }
@@ -49,8 +53,6 @@
 }
 
 .events-subcontainer{
-    margin-top: 20px;
-    margin-bottom: 10px;
     overflow-y: auto;
 }
 

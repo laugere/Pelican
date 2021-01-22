@@ -30,4 +30,8 @@
     flex: 0 0 100% !important;
     max-width: 100% !important;
   }
+
+  .box-container{
+    margin-top: 1.25rem;
+  }
 }
