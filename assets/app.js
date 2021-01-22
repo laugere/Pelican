@@ -10,6 +10,7 @@ import './styles/app.css';
 import './styles/navbar.css';
 import './styles/userNavbar.css';
 import './styles/events.css';
+import './styles/media.css';
 
 // start the Stimulus application
 const $ = require('jquery');

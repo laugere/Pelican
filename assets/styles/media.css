@@ -1,0 +1,33 @@
+@media (max-width: 767.98px) {
+  .right-col {
+    display: none;
+  }
+
+  .search-container {
+    display: none;
+  }
+
+  .main-container {
+    padding: 1rem;
+  }
+
+  .sub-container {
+    margin-left: 0.25rem;
+  }
+
+  #mainNavbar {
+    display: none;
+  }
+
+  #mainFrame {
+    background-color: #32275f;
+    border-radius: 25px;
+    border: none;
+    margin: 0.5vh 2vw;
+  }
+
+  #events-container {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
