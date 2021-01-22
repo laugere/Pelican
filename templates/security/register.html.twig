@@ -5,7 +5,9 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <h1>Inscription</h1>
 
-    {{ form_widget(registrationForm) }}
+
+    {{ form(registrationForm) }}
+    <button type="submit" class="btn btn-outline-success">S'inscrire</button>
 {% endblock %}
