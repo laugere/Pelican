@@ -103,4 +103,11 @@ input {
   display: none !important;
 }
 
+.crop {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 50vw;
+}
+
 @import '~bootstrap';
