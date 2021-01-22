@@ -27,17 +27,11 @@
 				{% include 'vues/NavBar.html.twig' %}
 				<div class="sub-container">
 					{% include 'vues/UserNavBar.html.twig' %}
+					<div class="box-container">
+						{% block body %}
+						{% endblock %}
+					</div>
 				</div>
-			</div>
-				<!-- NavBar -->
-
-{#				<!-- Body Content -->#}
-{#				<div id="bodyFrame" class="card frame">#}
-{#					<div class="card-body">#}
-{#						{% block body %}#}
-{#						{% endblock %}#}
-{#					</div>#}
-{#				</div>#}
 			</div>
 		</div>
 	</body>

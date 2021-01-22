@@ -1,0 +1,44 @@
+#userNavBar{
+    width: 100%;
+    height: 10%;
+}
+
+.user-container{
+    margin-left: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.user-container img{
+    border-radius: 50px;
+    border : 2px solid #463B8C;
+    object-fit: cover;
+}
+
+.user-text{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.user-text h5, h6{
+    margin: 0;
+}
+
+.user-text h5{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+}
+
+.user-text h6{
+    font-size: 0.9rem;
+    color: #463B8C;
+}
+
+.container-fluid form{
+    margin-bottom: 0;
+}
+
+.container-fluid form button{
+    margin-left: 10px;
+}

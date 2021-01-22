@@ -1,10 +1,11 @@
 body {
-  background-color: #1a1045;
+  background-color: #1A1042;
   color: white;
 }
+
 /* Main frame */
 #mainFrame {
-  background-color: #ffffff18 !important;
+  background-color: #32275F;
   border-radius: 25px;
   border: none;
   width: 96vw;
@@ -16,103 +17,56 @@ body {
   display: flex;
   width: 100%;
   height: 100%;
-  padding: 2%;
+  padding: 30px;
 }
 
 .sub-container{
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-left: 2%;
+  margin-left: 40px;
 }
 
-.nav-container{
-  background-color: #0000001f !important;
+.back-container{
+  background-color: rgba(42,32,83,1) !important;
   border-radius: 25px;
   border: none;
 }
 
-/* Main navbar */
-#mainNavbar {
-  width: 6%;
-  height: 100%;
+.gradient-container{
+  background: linear-gradient(90deg, rgba(42,32,83,1) 50%, rgba(35,24,80,1) 100%);
+  border-radius: 25px;
+  border: none;
 }
 
-.nav-item{
-  text-align: center;
+.blur-container{
+  -webkit-box-shadow: 0px 15px 36px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 15px 36px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 15px 36px 0px rgba(0,0,0,0.3);
 }
 
-.navbar-brand{
-  margin-right: unset;
-}
-
-.nav-link{
-  margin: 0.5rem 0;
-  padding: 12px !important;
-  border-radius: 5px;
-  transition: background-color 0.5s, color 0.5s;
-}
-
-.nav-link:hover{
-  background-color: white;
-  color: #2A214C !important;
-}
-
-.top-icon{
-  margin-top: 15px;
-}
-
-.bottom-icon{
-  margin-bottom: 15px;
-  color: #e55039 !important;
-}
-
-/* User Bar container */
-#userNavBar{
+.box-container{
   width: 100%;
-  height: 10%;
+  height: 100%;
+  margin-top: 40px;
 }
 
-.user-container{
-  margin-left: 2%;
-  display: flex;
-  align-items: center;
-}
-
-.user-text{
-  display: flex;
-  flex-direction: column;
-  margin-left: 15px;
-}
-
-.user-text h5, h6{
-  margin: 0;
-}
-
-.container-fluid form{
-  margin-bottom: 0;
-}
-
-.container-fluid form button{
-  margin-left: 10px;
-}
-
-/* Common frame */
-
-.frame {
-  background-color: #0000001f !important;
-  border-radius: 25px;
-  border: none;
-  box-shadow: 0 10px 20px #00000021, 0 6px 6px#00000021;
+.marge-box{
+  padding: 15px 20px;
 }
 
 /* Common */
-
 input {
   background-color: #ffffff1f !important;
   border-radius: 10px;
   border: none !important;
   color: white !important;
+}
+
+.container{
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 @import '~bootstrap';

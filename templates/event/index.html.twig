@@ -1,20 +1,28 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div>
-		<h1>{{ controller_name }}</h1>
-		<button type="button" class="btn btn-outline-warning" onclick="window.location.href='/event/create'">Organiser</button>
-		<div style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
-			{% for event in events  %}
-				<div id="event-{{ loop.index }}" style="margin-bottom: 1.25rem;" class="card frame">
-					<div class="card-body">
-						<h3 class="card-title">{{ event.name }}</h3>
-						<p>{{ event.location }}</p>
-						<p>{{ event.nbParticipant }}
-							participants</p>
+	<div class="row">
+		<div id="events-container" class="col-9 gradient-container blur-container marge-box">
+			<h5><i class="fas fa-calendar-alt fa-sm colored-icon"></i><span>Évènements</span><span class="subtitle">|</span><span class="subtitle"><a href="#">Organiser un évènement</a></span></h5>
+			<div class="events-subcontainer">
+				{% for event in events  %}
+					<div class="event-card">
+						<img src="{{ asset('build/wejdene.jpg') }}" width="70px" height="70px">
+						<div>
+							<h4 class="card-title">{{ event.name }}</h4>
+							<p>{{ event.location }} - {{ event.nbParticipant }} participants</p>
+						</div>
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col right-col">
+			<div class="gradient-container blur-container marge-box">
+				<h5>Suggestions</h5>
+			</div>
+			<div class="gradient-container blur-container bottom-row marge-box">
+				<h5>Autour de vous</h5>
+			</div>
 		</div>
 	</div>
 {% endblock %}

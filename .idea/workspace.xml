@@ -20,12 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8507366-f972-4bb4-b539-8f9861b99e48" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Pelican.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pelican.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/HomePage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/HomePage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/vues/NavBar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vues/NavBar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/vues/UserNavBar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vues/UserNavBar.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +36,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,7 +137,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\duboi\xampp\htdocs\Pelican\assets\images" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -140,7 +154,10 @@
       <option name="presentableId" value="Default" />
       <updated>1611161583923</updated>
       <workItem from="1611161585017" duration="3779000" />
-      <workItem from="1611235179903" duration="5041000" />
+      <workItem from="1611235179903" duration="5232000" />
+      <workItem from="1611255403639" duration="1484000" />
+      <workItem from="1611262923752" duration="5858000" />
+      <workItem from="1611315931624" duration="4033000" />
     </task>
     <servers />
   </component>
@@ -164,5 +181,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1611164759019" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611240377648">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611240377648" />
   </component>
 </project>
