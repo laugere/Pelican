@@ -51,6 +51,10 @@ body {
   margin-top: 40px;
 }
 
+.box-container .row {
+  height: auto !important;
+}
+
 .marge-box{
   padding: 15px 20px;
 }
