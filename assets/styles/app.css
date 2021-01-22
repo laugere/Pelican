@@ -99,4 +99,8 @@ input {
   margin-right: 0px;
 }
 
+#userNavBar .collapse:not(.show) .nav-link {
+  display: none !important;
+}
+
 @import '~bootstrap';

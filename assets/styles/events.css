@@ -94,7 +94,7 @@
     padding-right: 30px;
 }
 
-.filter-button{
+/*.filter-button{
     border: unset;
     color: rgba(255, 255, 255, 0.5);
 }
@@ -105,4 +105,4 @@
 
 .filter-button:focus{
     outline: none !important;
-}
+}*/
