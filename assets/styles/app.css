@@ -57,7 +57,7 @@ body {
 
 .box-container{
   width: 100%;
-  height: calc(100% - 4.5rem);
+  height: calc(100% - 5rem);
   padding-top: 1.25rem;
 }
 
