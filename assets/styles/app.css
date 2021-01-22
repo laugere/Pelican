@@ -110,4 +110,8 @@ input {
   width: 42.5vw;
 }
 
+.nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 @import '~bootstrap';
