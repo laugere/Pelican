@@ -107,7 +107,7 @@ input {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 50vw;
+  width: 42.5vw;
 }
 
 @import '~bootstrap';
