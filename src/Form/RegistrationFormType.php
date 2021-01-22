@@ -19,13 +19,16 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', null, ['label' => false, 'attr' => array(
+                'id' => 'inputEmail',
                 'placeholder' => 'Email'
             )])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'label' => false,
-                'attr' => array('placeholder' => 'Mot de passe'),
+                'attr' => array(
+                'id' => 'inputPassword',
+                'placeholder' => 'Mot de passe'),
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
@@ -40,15 +43,17 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => false,
+                'label' => 'Accepter les conditions',
+                'attr' => array(
+                    'id' => 'inputAgreeTerms'
+                ),
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
-            ])
-            ->add('Inscription', SubmitType::class, ['attr' => ['class' => 'btn btn-outline-success']]);
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
