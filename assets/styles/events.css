@@ -1,3 +1,7 @@
+#popover_content_wrapper{
+    display: none;
+}
+
 .box-container .row{
     margin: 0;
     height: 100%;
@@ -22,6 +26,8 @@
 
 #events-container{
     height: 100%;
+    display: flex;
+    flex-direction: column;
  }
 
 #events-container h5{
@@ -45,8 +51,7 @@
 .events-subcontainer{
     margin-top: 20px;
     margin-bottom: 10px;
-    overflow-y: scroll;
-    height: 100%;
+    overflow-y: auto;
 }
 
 .event-card{
@@ -79,4 +84,23 @@
 
 .event-card p{
     font-size: 15px;
+}
+
+.event-header{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30px;
+}
+
+.filter-button{
+    border: unset;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.filter-button:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.filter-button:focus{
+    outline: none !important;
 }

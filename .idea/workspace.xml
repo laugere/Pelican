@@ -19,14 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8507366-f972-4bb4-b539-8f9861b99e48" name="Default Changelist" comment="">
+    <list default="true" id="e8507366-f972-4bb4-b539-8f9861b99e48" name="Default Changelist" comment="event page design">
+      <change beforePath="$PROJECT_DIR$/.idea/Pelican.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pelican.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/events.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/events.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/userNavbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/userNavbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EventRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/HomePage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/HomePage.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/event/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/vues/NavBar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vues/NavBar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/vues/UserNavBar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vues/UserNavBar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +132,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
     </include_path>
   </component>
   <component name="ProjectId" id="1nLFhb977OZu96pTer4rb9FRrpC" />
@@ -157,8 +164,16 @@
       <workItem from="1611235179903" duration="5232000" />
       <workItem from="1611255403639" duration="1484000" />
       <workItem from="1611262923752" duration="5858000" />
-      <workItem from="1611315931624" duration="4033000" />
+      <workItem from="1611315931624" duration="11222000" />
     </task>
+    <task id="LOCAL-00001" summary="event page design">
+      <created>1611320205058</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611320205058</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,14 +191,22 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="event page design" />
+    <option name="LAST_COMMIT_MESSAGE" value="event page design" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1611164759019">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1611164759019" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611240377648">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611320208512">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611240377648" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611320208512" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1611324712024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611324712024" />
   </component>
 </project>
