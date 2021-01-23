@@ -1,10 +1,17 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div>
+	<div id="community-container" class="gradient-container blur-container marge-box scrollable">
 		<h1>{{ controller_name }}</h1>
 		<div style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
 			{{ form_start(form) }}
+			<div class="form-group">
+				<label for="community_name">Nom de la communauté</label>
+				{{ form_widget(form.name) }}
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline-success">Créer</button>
+			</div>
 			{{ form_end(form) }}
 		</div>
 	</div>

@@ -2,7 +2,7 @@
 
 {% block body %}
 	<div id="community-container" class="gradient-container blur-container marge-box scrollable">
-		<nav class="navbar navbar-expand-lg gradient-container blur-container" style="border-radius: 10px;">
+		<nav class="navbar navbar-expand-lg gradient-container" style="border-radius: 10px;">
 			<div class="navbar-brand">
 				<i class="fas fa-user-friends fa-sm colored-icon"></i>
 				{{ controller_name }}
@@ -21,9 +21,9 @@
 				</ul>
 			</div>
 		</nav>
-		<div class="scrollbar">
+		<div class="subcontainer scrollbar">
 			{% for community in communitys  %}
-				<div class="event-card">
+				<div class="card">
 					<img src="{{ asset('build/wejdene.jpg') }}" width="70px" height="70px">
 					<div>
 						<h4 class="card-title">{{ community.name }}</h4>

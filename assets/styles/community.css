@@ -1,5 +1,41 @@
-#community-container{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
- }
+#community-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.subcontainer {
+  overflow-y: auto;
+}
+
+.card {
+  background-color: #241a4e;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.card h4, p{
+    margin-bottom: 0;
+}
+
+.card div{
+    margin-left: 20px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.card img{
+    object-fit: cover;
+    border-radius: 5px;
+    border : 2px solid #463B8C;
+}
+
+.card h4{
+    font-size: 22px;
+}
+
+.card p{
+    font-size: 15px;
+}
