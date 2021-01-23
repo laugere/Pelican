@@ -1,6 +1,7 @@
 body {
   background-color: #1A1042;
   color: white;
+  padding: 4vh 2vw;
 }
 
 /* Login Frame */
@@ -18,9 +19,6 @@ body {
   background-color: #32275F;
   border-radius: 25px;
   border: none;
-  width: 96vw;
-  height: 92vh;
-  margin: 4vh 2vw;
 }
 
 .main-container{
@@ -74,11 +72,11 @@ body {
   height: 10px;
 }
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #BBB7C9;
+  background: #bbb7c92c;
   border-radius: 10px;
 }
 .scrollbar::-webkit-scrollbar-thumb:hover{
-  background: #bbb7c9;
+  background: #bbb7c92c;
 }
 .scrollbar::-webkit-scrollbar-track{
   background: transparent;

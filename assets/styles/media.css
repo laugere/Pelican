@@ -1,4 +1,10 @@
 @media (max-width: 1199.98px) {
+  body {
+    background-color: #1A1042;
+    color: white;
+    padding: 0.5vh 2vw;
+  }
+
   .right-col {
     display: none;
   }
@@ -20,7 +26,6 @@
     border-radius: 25px;
     border: none;
     height: 100%;
-    margin: 0 2vw;
   }
 
   #events-container {
