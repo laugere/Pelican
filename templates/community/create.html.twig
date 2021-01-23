@@ -1,9 +1,9 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div id="community-container" class="gradient-container blur-container marge-box scrollable">
+	<div id="community-container" class="subcontainer gradient-container blur-container marge-box scrollable">
 		<h1>{{ controller_name }}</h1>
-		<div style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
+		<div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
 			{{ form_start(form) }}
 			<div class="form-group">
 				<label for="community_name">Nom de la communauté</label>

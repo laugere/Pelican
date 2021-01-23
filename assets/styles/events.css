@@ -48,10 +48,6 @@
     color: #585079;
 }
 
-.events-subcontainer{
-    overflow-y: auto;
-}
-
 .event-card{
     background-color: #241A4E;
     border-radius: 20px;

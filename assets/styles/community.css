@@ -4,10 +4,6 @@
   flex-direction: column;
 }
 
-.subcontainer {
-  overflow-y: auto;
-}
-
 .community-card {
   background-color: #241a4e;
   border-radius: 20px;
