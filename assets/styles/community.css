@@ -8,34 +8,35 @@
   overflow-y: auto;
 }
 
-.card {
+.community-card {
   background-color: #241a4e;
   border-radius: 20px;
   padding: 25px;
   display: flex;
   align-items: center;
   margin-top: 10px;
+  border: none;
 }
 
-.card h4, p{
+.community-card h4, p{
     margin-bottom: 0;
 }
 
-.card div{
+.community-card div{
     margin-left: 20px;
     color: rgba(255, 255, 255, 0.5);
 }
 
-.card img{
+.community-card img{
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 100%;
     border : 2px solid #463B8C;
 }
 
-.card h4{
+.community-card h4{
     font-size: 22px;
 }
 
-.card p{
+.community-card p{
     font-size: 15px;
 }
