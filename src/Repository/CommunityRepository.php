@@ -19,6 +19,15 @@ class CommunityRepository extends ServiceEntityRepository
         parent::__construct($registry, Community::class);
     }
 
+    public function findRecent()
+    {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.date_creation', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Community[] Returns an array of Community objects
     //  */
