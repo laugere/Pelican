@@ -1,35 +1,54 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div id="community-container" class="gradient-container blur-container marge-box scrollable">
-		<nav class="navbar navbar-expand-lg gradient-container" style="border-radius: 10px;">
-			<div class="navbar-brand">
-				<i class="fas fa-user-friends fa-sm colored-icon"></i>
-				{{ controller_name }}
-			</div>
-			<button style="border:none; color: white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#eventPanel" aria-controls="eventPanel" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fas fa-chevron-down"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="eventPanel">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<button type="button" class="btn btn-outline-info" onclick="location.href='/community/create';">
-							<i class="fas fa-plus-circle"></i>
-							Créer
-						</button>
-					</li>
-				</ul>
-			</div>
-		</nav>
-		<div class="subcontainer scrollbar">
-			{% for community in communitys  %}
-				<div class="community-card">
-					<img src="{{ asset('build/wejdene.jpg') }}" width="70px" height="70px">
-					<div>
-						<h4 class="card-title">{{ community.name }}</h4>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+  <div id="community-container"
+    class="gradient-container blur-container marge-box scrollable">
+    <nav class="navbar navbar-expand-lg gradient-container"
+      style="border-radius: 10px;">
+      <div class="navbar-brand">
+        <i class="fas fa-user-friends fa-sm colored-icon"></i>
+        {{ controller_name }}
+      </div>
+      <button style="border:none; color: white;"
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#eventPanel"
+        aria-controls="eventPanel"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="eventPanel">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <button type="button"
+              class="btn btn-outline-info"
+              onclick="location.href='/community/create';">
+              <i class="fas fa-plus-circle"></i>
+              Créer
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="subcontainer scrollbar">
+      <div class="row">
+        {% for community in communitys %}
+          <div class="col-sm-3">
+            <div class="community-card">
+              <img src="{{ asset('build/wejdene.jpg') }}"
+                width="70px"
+                height="70px" />
+              <div>
+                <h4 class="card-title">
+                  {{ community.name }}
+                </h4>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endblock %}
