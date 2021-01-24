@@ -22,7 +22,7 @@ class CommunityRepository extends ServiceEntityRepository
     public function findRecent()
     {
         return $this->createQueryBuilder('e')
-            ->orderBy('e.date_creation', 'DESC')
+            ->orderBy('e.date_creation', 'ASC')
             ->setMaxResults(20)
             ->getQuery()
             ->getResult();

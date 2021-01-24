@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\IsInRepository;
+
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
@@ -16,13 +18,16 @@ class EventController extends AbstractController
     /**
      * @Route("/event", name="event")
      */
-    public function index(EventRepository $event): Response
+    public function index(EventRepository $event, IsInRepository $isIn): Response
     {
+        $user = $this->getUser();
+        $communitys = $isIn->findRecent($user->getId());
         $events = $event->findRecent();
 
         return $this->render('event/index.html.twig', [
             'controller_name' => 'Événements',
-            'events' => $events
+            'events' => $events,
+            'communitys' => $communitys
         ]);
     }
 

@@ -22,7 +22,7 @@ class EventRepository extends ServiceEntityRepository
     public function findRecent()
     {
         return $this->createQueryBuilder('e')
-            ->orderBy('e.date_creation', 'DESC')
+            ->orderBy('e.date', 'ASC')
             ->setMaxResults(20)
             ->getQuery()
             ->getResult();
@@ -36,7 +36,6 @@ class EventRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
 
     /*
     public function findOneBySomeField($value): ?Event

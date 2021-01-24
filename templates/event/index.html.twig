@@ -1,89 +1,142 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div class="row">
-		<div id="events-container" class="col-9 gradient-container blur-container marge-box scrollable">
-			<nav class="navbar navbar-expand-lg gradient-container" style="border-radius: 10px;">
-				<div class="navbar-brand">
-					<i class="fas fa-calendar-alt fa-sm colored-icon"></i>
-					Évènements
-				</div>
-				<button style="border:none; color: white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#eventPanel" aria-controls="eventPanel" aria-expanded="false" aria-label="Toggle navigation">
-					<i class="fas fa-chevron-down"></i>
-				</button>
-				<div class="collapse navbar-collapse" id="eventPanel">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<div class="filter-container">
-								<button id="filter-event-popover" type="button" class="btn btn-outline-light filter-button" data-container="body" data-toggle="popover" data-placement="bottom">
-									<i class="fas fa-sliders-h"></i>
-									Filtres
-								</button>
-							</div>
-						</li>
-						<li class="nav-item">
-							<button type="button" class="btn btn-outline-info" onclick="location.href='/event/create';">
-								<i class="fas fa-plus-circle"></i>
-								Organiser
-							</button>
-						</li>
-					</ul>
-				</div>
-			</nav>
-			<div class="subcontainer scrollbar">
-				{% for event in events  %}
-					<div class="event-card">
-						<img src="{{ asset('build/wejdene.jpg') }}" width="70px" height="70px">
-						<div>
-							<h4 class="card-title">{{ event.name }}</h4>
-							<p>{{ event.location }}</p>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-		<div class="col right-col">
-			<div class="gradient-container blur-container marge-box">
-				<h5>Suggestions</h5>
-			</div>
-			<div class="gradient-container blur-container bottom-row marge-box">
-				<h5>Autour de vous</h5>
-			</div>
-		</div>
-	</div>
-	<script>
-		$('#filter-event-popover').popover({
-html: true,
-content: function () {
-return $('#popover_content_wrapper').html();
-}
-});
-	</script>
-	<div id="popover_content_wrapper">
-		<div>
-			<h6>CATÉGORIE</h6>
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-				<label class="form-check-label" for="flexCheckDefault">Aucune</label>
-			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-				<label class="form-check-label" for="flexCheckDefault">Sport</label>
-			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-				<label class="form-check-label" for="flexCheckChecked">Culture</label>
-			</div>
-			<hr>
-			<h6>CLASSER PAR</h6>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-				<label class="form-check-label" for="flexRadioDefault1">Populaire</label>
-			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-				<label class="form-check-label" for="flexRadioDefault2">Récent</label>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div id="events-container"
+      class="col-9 gradient-container blur-container marge-box scrollable">
+      <nav class="navbar navbar-expand-lg gradient-container blur-container"
+        style="border-radius: 10px;">
+        <div class="navbar-brand">
+          <i class="fas fa-calendar-alt fa-sm colored-icon"></i>
+          Évènements
+        </div>
+        <button style="border:none; color: white;"
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#eventPanel"
+          aria-controls="eventPanel"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="eventPanel">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <div class="filter-container">
+                <button id="filter-event-popover"
+                  type="button"
+                  class="btn btn-outline-light filter-button"
+                  data-container="body"
+                  data-toggle="popover"
+                  data-placement="bottom">
+                  <i class="fas fa-sliders-h"></i>
+                  Filtres
+                </button>
+              </div>
+            </li>
+            <li class="nav-item">
+              <button type="button"
+                class="btn btn-outline-info"
+                onclick="location.href='/event/create';">
+                <i class="fas fa-plus-circle"></i>
+                Organiser
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="subcontainer scrollbar">
+        {% for event in events %}
+          <div class="event-card">
+            <img src="{{ asset('build/wejdene.jpg') }}"
+              width="70px"
+              height="70px" />
+            <div>
+              <h4 class="card-title">
+                {{ event.name }}
+              </h4>
+              <p>
+                {{ event.location }}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col right-col">
+      <div class="gradient-container blur-container marge-box scrollable">
+        <h5>
+          Suggestions
+        </h5>
+        <div class="subcontainer scrollbar">
+          {% for community in communitys %}
+            <div class="community-card">
+              <h4 class="card-title">
+                {{ community.name }}
+              </h4>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="gradient-container blur-container bottom-row marge-box scrollable">
+        <h5>
+          Autour de vous
+        </h5>
+      </div>
+    </div>
+  </div>
+  <script>
+    $('#filter-event-popover').popover({ html: true, content: function () {
+    return $('#popover_content_wrapper').html(); } });
+  </script>
+  <div id="popover_content_wrapper">
+    <div>
+      <h6>
+        CATÉGORIE
+      </h6>
+      <div class="form-check">
+        <input class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault" />
+        <label class="form-check-label" for="flexCheckDefault">Aucune</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault" />
+        <label class="form-check-label" for="flexCheckDefault">Sport</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked" />
+        <label class="form-check-label" for="flexCheckChecked">Culture</label>
+      </div>
+      <hr />
+      <h6>
+        CLASSER PAR
+      </h6>
+      <div class="form-check">
+        <input class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="flexRadioDefault1" />
+        <label class="form-check-label" for="flexRadioDefault1">
+          Populaire
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="flexRadioDefault2"
+          checked />
+        <label class="form-check-label" for="flexRadioDefault2">Récent</label>
+      </div>
+    </div>
+  </div>
 {% endblock %}
