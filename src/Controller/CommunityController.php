@@ -40,6 +40,8 @@ class CommunityController extends AbstractController
 
             $objectManager->persist($community);
             $objectManager->flush();
+
+            return $this->redirectToRoute('community', [], 301);
         }
 
         return $this->render('community/create.html.twig', [

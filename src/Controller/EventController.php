@@ -40,6 +40,8 @@ class EventController extends AbstractController
 
             $objectManager->persist($event);
             $objectManager->flush();
+
+            return $this->redirectToRoute('event', [], 301);
         }
 
         return $this->render('event/create.html.twig', [
