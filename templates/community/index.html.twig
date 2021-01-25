@@ -1,6 +1,10 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
+  <script language="javascript">
+
+  </script>
+
   <div id="community-container"
     class="gradient-container blur-container marge-box scrollable">
     <nav class="navbar navbar-expand-lg gradient-container blur-container"
@@ -44,6 +48,18 @@
                 <h4 class="card-title">
                   {{ community.name }}
                 </h4>
+                {% set communityid = {
+                  id: community.id
+                } %}
+                {% if communityid in isInCommunitys %}
+                  <button class="btn btn-outline-danger btn-round">
+                    <i class="fas fa-times"></i>
+                  </button>
+                {% else %}
+                  <button class="btn btn-outline-warning btn-round">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                {% endif %}
               </div>
             </div>
           </div>

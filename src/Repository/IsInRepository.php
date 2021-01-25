@@ -24,7 +24,24 @@ class IsInRepository extends ServiceEntityRepository
     public function findRecent($userId)
     {
         return $this->createQueryBuilder('i')
-            ->select('c.name')
+            ->select('c.name', 'c.id')
+            ->innerJoin(
+                Community::class,    // Entity
+                'c',               // Alias
+                Join::WITH,        // Join type
+                'i.idCommunity = c.id' // Join columns
+            )
+            ->where('i.idUser = :id')
+            ->setParameter('id', $userId)
+            ->orderBy('c.date_creation', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findRecentId($userId)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('c.id')
             ->innerJoin(
                 Community::class,    // Entity
                 'c',               // Alias

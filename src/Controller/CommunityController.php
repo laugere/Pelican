@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\IsInRepository;
+use App\Entity\IsIn;
+
 use App\Entity\Community;
 use App\Form\CommunityType;
 use App\Repository\CommunityRepository;
@@ -16,13 +19,17 @@ class CommunityController extends AbstractController
     /**
      * @Route("/community", name="community")
      */
-    public function index(CommunityRepository $community): Response
+    public function index(CommunityRepository $community, IsInRepository $isIn): Response
     {
+        $user = $this->getUser();
+        $isInCommunitys = $isIn->findRecentId($user->getId());
+
         $communitys = $community->findRecent();
 
         return $this->render('community/index.html.twig', [
             'controller_name' => 'Communautés',
-            'communitys' => $communitys
+            'communitys' => $communitys,
+            'isInCommunitys' => $isInCommunitys
         ]);
     }
 
@@ -48,5 +55,21 @@ class CommunityController extends AbstractController
             'controller_name' => 'Créer une communauté',
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/community/{id}/goto", name="community_goto")
+     */
+    public function goToCommunity(Community $community, ObjectManager $objectManager, IsInRepository $isInRepo): Response
+    {
+        $user = $this->getuser();
+
+        if(!$user) return $this->json([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ], 403);
+
+        
+        return $this->json(['code' => 200, 'message' => 'test'], 200);
     }
 }
