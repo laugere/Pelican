@@ -11,6 +11,7 @@ import './styles/navbar.css'
 import './styles/userNavbar.css'
 import './styles/events.css'
 import './styles/community.css'
+import './styles/home.css'
 import './styles/media.css'
 
 // start the Stimulus application

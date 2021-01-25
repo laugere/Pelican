@@ -7,7 +7,7 @@
       <nav class="navbar navbar-expand-lg gradient-container blur-container"
         style="border-radius: 10px;">
         <div class="navbar-brand">
-          <i class="fas fa-calendar-alt fa-sm colored-icon"></i>
+          <i class="fas fa-home fa-sm colored-icon"></i>
           {{ controller_name }}
         </div>
         <button style="border:none; color: white;"
@@ -35,47 +35,25 @@
                 </button>
               </div>
             </li>
-            <li class="nav-item">
-              <button type="button"
-                class="btn btn-outline-info"
-                onclick="location.href='/event/create';">
-                <i class="fas fa-plus-circle"></i>
-                Organiser
-              </button>
-            </li>
           </ul>
         </div>
       </nav>
-      <div class="subcontainer scrollbar">
-        {% for event in events %}
-          <div class="event-card">
-            <img src="{{ asset('build/wejdene.jpg') }}"
-              width="70px"
-              height="70px" />
-            <div>
-              <h4 class="card-title">
-                {{ event.name }}
-              </h4>
-              <p>
-                {{ event.location }}
-              </p>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+      <div class="subcontainer scrollbar"></div>
     </div>
-    <div class="col right-col right-col-mid">
+    <div class="col right-col right-col-full">
       <div class="gradient-container blur-container marge-box scrollable">
         <h5>
-          Suggestions
+          Communautés suivies
         </h5>
         <div class="subcontainer scrollbar">
+          {% for community in communitys %}
+            <div class="community-card">
+              <h4 class="card-title">
+                {{ community.name }}
+              </h4>
+            </div>
+          {% endfor %}
         </div>
-      </div>
-      <div class="gradient-container blur-container bottom-row marge-box scrollable">
-        <h5>
-          Autour de vous
-        </h5>
       </div>
     </div>
   </div>
