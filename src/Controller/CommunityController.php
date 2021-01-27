@@ -3,11 +3,12 @@
 namespace App\Controller;
 
 use App\Repository\IsInRepository;
-use App\Entity\IsIn;
 
 use App\Entity\Community;
 use App\Form\CommunityType;
 use App\Repository\CommunityRepository;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,7 +59,7 @@ class CommunityController extends AbstractController
     }
 
     /**
-     * @Route("/community/{id}/goto", name="community_goto")
+     * @Route("/community/{Id}/goto", name="community_goto")
      */
     public function goToCommunity(Community $community, ObjectManager $objectManager, IsInRepository $isInRepo): Response
     {
