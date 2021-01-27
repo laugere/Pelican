@@ -26,7 +26,7 @@ class IsInRepository extends ServiceEntityRepository
     public function findCommunityGoTo($userId)
     {
         return $this->createQueryBuilder('i')
-            ->select('c.id')
+            ->select('c.id', 'c.name')
             ->innerJoin(
                 Community::class,    // Entity
                 'c',               // Alias

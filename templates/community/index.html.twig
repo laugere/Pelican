@@ -38,26 +38,29 @@
       <div class="row">
         {% for community in communitys %}
           <div class="col-sm-3">
-            <div class="community-card">
-              <img src="{{ asset('build/wejdene.jpg') }}"
-                width="70px"
-                height="70px" />
-              <div>
-                <h4 class="card-title">
-                  {{ community.name }}
-                </h4>
-                {% set communityid = {
-                  id: community.id
-                } %}
-                {% if communityid in isInCommunitys %}
-                  <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}')" id="{{ community.id }}" class="btn btn-outline-danger btn-round js-goTo">
-                    <i class="fas fa-times"></i>
-                  </button>
-                {% else %}
-                  <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}')" id="{{ community.id }}" class="btn btn-outline-warning btn-round js-goTo">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                {% endif %}
+            <div id="community-{{ community.id }}">
+              <div class="community-card">
+                <img src="{{ asset('build/wejdene.jpg') }}"
+                  width="70px"
+                  height="70px" />
+                <div>
+                  <h4 class="card-title">
+                    {{ community.name }}
+                  </h4>
+                  {% set communityid = {
+                    id: community.id,
+                    name: community.name
+                  } %}
+                  {% if communityid in isInCommunitys %}
+                    <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}', 'community-{{ community.id }}')" class="btn btn-outline-danger btn-round js-goTo">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  {% else %}
+                    <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}', 'community-{{ community.id }}')" class="btn btn-outline-warning btn-round js-goTo">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>
@@ -70,12 +73,12 @@
 {% block javascripts %}
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script>
-    function onClickBtnGoTo(communityGoToPath) {
+    function onClickBtnGoTo(communityGoToPath, communityId) {
       $.ajax({ 
         url: communityGoToPath,
         cache: false
       }).done(function(response) { 
-        $("#community-subcontainer").load("/community #community-subcontainer");
+        $("#"+communityId).load("/community #"+communityId);
       }); 
     }
   </script>

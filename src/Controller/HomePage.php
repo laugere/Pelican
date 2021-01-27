@@ -12,7 +12,7 @@ class HomePage extends AbstractController
     public function index(IsInRepository $isIn): Response
     {
         $user = $this->getUser();
-        $communitys = $isIn->findRecent($user->getId());
+        $communitys = $isIn->findCommunityGoTo($user->getId());
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'Accueil',
