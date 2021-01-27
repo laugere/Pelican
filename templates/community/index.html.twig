@@ -34,7 +34,7 @@
         </ul>
       </div>
     </nav>
-    <div class="subcontainer scrollbar">
+    <div id="community-subcontainer" class="subcontainer scrollbar">
       <div class="row">
         {% for community in communitys %}
           <div class="col-sm-3">
@@ -50,11 +50,11 @@
                   id: community.id
                 } %}
                 {% if communityid in isInCommunitys %}
-                  <button class="btn btn-outline-danger btn-round">
+                  <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}')" id="{{ community.id }}" class="btn btn-outline-danger btn-round js-goTo">
                     <i class="fas fa-times"></i>
                   </button>
                 {% else %}
-                  <button class="btn btn-outline-warning btn-round">
+                  <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}')" id="{{ community.id }}" class="btn btn-outline-warning btn-round js-goTo">
                     <i class="fas fa-plus"></i>
                   </button>
                 {% endif %}
@@ -65,4 +65,18 @@
       </div>
     </div>
   </div>
+{% endblock %}
+
+{% block javascripts %}
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script>
+    function onClickBtnGoTo(communityGoToPath) {
+      $.ajax({ 
+        url: communityGoToPath,
+        cache: false
+      }).done(function(response) { 
+        $("#community-subcontainer").load("/community #community-subcontainer");
+      }); 
+    }
+  </script>
 {% endblock %}

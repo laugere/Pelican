@@ -27,6 +27,14 @@ class CommunityRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findById($communityId): ?Community
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.id = :id')
+            ->setParameter('id', $communityId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
     // /**
     //  * @return Community[] Returns an array of Community objects

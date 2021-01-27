@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Community;
 use App\Entity\IsIn;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query\Expr\Join;
 
@@ -21,24 +23,7 @@ class IsInRepository extends ServiceEntityRepository
         parent::__construct($registry, IsIn::class);
     }
 
-    public function findRecent($userId)
-    {
-        return $this->createQueryBuilder('i')
-            ->select('c.name', 'c.id')
-            ->innerJoin(
-                Community::class,    // Entity
-                'c',               // Alias
-                Join::WITH,        // Join type
-                'i.idCommunity = c.id' // Join columns
-            )
-            ->where('i.idUser = :id')
-            ->setParameter('id', $userId)
-            ->orderBy('c.date_creation', 'ASC')
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findRecentId($userId)
+    public function findCommunityGoTo($userId)
     {
         return $this->createQueryBuilder('i')
             ->select('c.id')
@@ -53,6 +38,34 @@ class IsInRepository extends ServiceEntityRepository
             ->orderBy('c.date_creation', 'ASC')
             ->getQuery()
             ->getResult();
+    }
+
+    public function userIsIn($userId, $communityId): bool {
+        $qb = $this->createQueryBuilder('i')
+                ->andWhere('i.idUser = :userId')
+                ->setParameter('userId', $userId)
+                ->andWhere('i.idCommunity = :communityId')
+                ->setParameter('communityId', $communityId)
+                ->getQuery()
+                ->getOneOrNullResult();
+
+        if ($qb != null) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function deleteIsIn($userId, $communityId) {
+        $qb =  $this->createQueryBuilder('i')
+                ->delete(IsIn::class, 'i')
+                ->andWhere('i.idUser = :userId')
+                ->setParameter('userId', $userId)
+                ->andWhere('i.idCommunity = :communityId')
+                ->setParameter('communityId', $communityId)
+                ->getQuery()
+                ->execute();
     }
 
     // /**

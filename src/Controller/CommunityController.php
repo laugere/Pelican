@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\IsInRepository;
 
 use App\Entity\Community;
+use App\Entity\IsIn;
 use App\Form\CommunityType;
 use App\Repository\CommunityRepository;
 use Doctrine\ORM\Mapping\Entity;
@@ -23,7 +24,7 @@ class CommunityController extends AbstractController
     public function index(CommunityRepository $community, IsInRepository $isIn): Response
     {
         $user = $this->getUser();
-        $isInCommunitys = $isIn->findRecentId($user->getId());
+        $isInCommunitys = $isIn->findCommunityGoTo($user->getId());
 
         $communitys = $community->findRecent();
 
@@ -59,18 +60,27 @@ class CommunityController extends AbstractController
     }
 
     /**
-     * @Route("/community/{Id}/goto", name="community_goto")
+     * @Route("/community/{communityId}/goto", name="community_goto")
      */
-    public function goToCommunity(Community $community, ObjectManager $objectManager, IsInRepository $isInRepo): Response
+    public function goToCommunity($communityId, ObjectManager $objectManager, IsInRepository $isInRepo): Response
     {
         $user = $this->getuser();
 
         if(!$user) return $this->json([
             'code' => 403,
-            'message' => "Unauthorized"
         ], 403);
 
+        if(!$isInRepo->userIsIn($user->getId(), $communityId)) {
+            $isIn = new IsIn();
+            $isIn->setIdCommunity($communityId);
+            $isIn->setIdUser($user->getId());
+            $objectManager->persist($isIn);
+            $objectManager->flush();
+        }
+        else {
+            $isInRepo->deleteIsIn($user->getId(), $communityId);
+        }
         
-        return $this->json(['code' => 200, 'message' => 'test'], 200);
+        return $this->json(['code' => 200], 200);
     }
 }
