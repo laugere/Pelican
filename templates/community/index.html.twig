@@ -52,11 +52,27 @@
                     name: community.name
                   } %}
                   {% if communityid in isInCommunitys %}
-                    <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}', 'community-{{ community.id }}')" class="btn btn-outline-danger btn-round js-goTo">
+                    <button onclick="onClickBtnGoTo('{{
+                      path(
+                        'community_goto',
+                        {
+                          communityId: community.id
+                        }
+                      )
+                      }}', 'community-{{ community.id }}')"
+                      class="btn btn-outline-danger btn-round js-goTo">
                       <i class="fas fa-times"></i>
                     </button>
                   {% else %}
-                    <button onclick="onClickBtnGoTo('{{ path('community_goto', {communityId: community.id}) }}', 'community-{{ community.id }}')" class="btn btn-outline-warning btn-round js-goTo">
+                    <button onclick="onClickBtnGoTo('{{
+                      path(
+                        'community_goto',
+                        {
+                          communityId: community.id
+                        }
+                      )
+                      }}', 'community-{{ community.id }}')"
+                      class="btn btn-outline-warning btn-round js-goTo">
                       <i class="fas fa-plus"></i>
                     </button>
                   {% endif %}
@@ -71,15 +87,12 @@
 {% endblock %}
 
 {% block javascripts %}
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script>
     function onClickBtnGoTo(communityGoToPath, communityId) {
-      $.ajax({ 
-        url: communityGoToPath,
-        cache: false
-      }).done(function(response) { 
-        $("#"+communityId).load("/community #"+communityId);
-      }); 
-    }
+    $("#loadingModal").modal('show');
+
+    $.ajax({ url: communityGoToPath, cache: false }).done(function(response) {
+    $("#"+communityId).load("/community #"+communityId);
+    setTimeout(() => { $('#loadingModal').modal('hide'); }, 500); }); }
   </script>
 {% endblock %}
