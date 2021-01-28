@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Community;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Community|null find($id, $lockMode = null, $lockVersion = null)
@@ -27,6 +28,7 @@ class CommunityRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
     public function findById($communityId): ?Community
     {
         return $this->createQueryBuilder('c')
@@ -34,6 +36,22 @@ class CommunityRepository extends ServiceEntityRepository
             ->setParameter('id', $communityId)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function countIsInCommunity($communityId): int
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id', 'c.name')
+            ->innerJoin(
+                Community::class,    // Entity
+                'c',               // Alias
+                Join::WITH,        // Join type
+                'i.idCommunity = c.id' // Join columns
+            )
+            ->where('i.idCommunity = :id')
+            ->setParameter('id', $communityId)
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     // /**

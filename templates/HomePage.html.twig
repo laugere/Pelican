@@ -7,10 +7,6 @@
       type="image/png"
       href="{{ asset('build/icon/color/32.png') }}" />
 
-    <script>
-      //$(function () { $('[data-toggle="popover"]').popover() })
-    </script>
-
     <title>
       Pelican
     </title>
@@ -26,9 +22,11 @@
         <div class="sub-container">
           {% include 'vues/UserNavBar.html.twig' %}
           <div class="box-container">
-            {% block body %}
+            <div id="bodyFrame">
+              {% block body %}
 
-            {% endblock %}
+              {% endblock %}
+            </div>
           </div>
         </div>
       </div>
@@ -45,6 +43,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
+
+    <script>
+      function onClickGoTo(event) { event.preventDefault();
+
+      $("#loadingModal").modal('show');
+
+      const url = this.href;
+
+      $.ajax({ url: url, type: 'POST', async: true }).done(function(response) {
+      $("#bodyFrame").load(url + " #bodyFrame"); setTimeout(() => {
+      $('#loadingModal').modal('hide'); }, 500); }); }
+
+      document.querySelectorAll('a.nav-link').forEach(function(link) {
+      link.addEventListener('click', onClickGoTo) })
+    </script>
+
     {% block javascripts %}
       {{ encore_entry_script_tags('app') }}
     {% endblock %}
