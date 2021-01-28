@@ -52,8 +52,10 @@
       const url = this.href;
 
       $.ajax({ url: url, type: 'POST', async: true }).done(function(response) {
-      $("#bodyFrame").load(url + " #bodyFrame"); setTimeout(() => {
-      $('#loadingModal').modal('hide'); }, 500); }); }
+      $("#bodyFrame").load(url + " #bodyFrame");
+      $("#navbarNav").collapse('hide');
+      $("#userNavBarPanel").collapse('hide');
+      setTimeout(() => { $("#loadingModal").modal('hide'); }, 500); }); }
 
       document.querySelectorAll('a.nav-link').forEach(function(link) {
       link.addEventListener('click', onClickGoTo) })
