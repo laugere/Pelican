@@ -52,7 +52,8 @@
                     name: community.name
                   } %}
                   {% if communityid in isInCommunitys %}
-                    <button onclick="onClickBtnGoTo('{{
+                    <button type="button"
+                      onclick="onClickBtnGoTo('{{
                       path(
                         'community_goto',
                         {
@@ -64,7 +65,8 @@
                       <i class="fas fa-times"></i>
                     </button>
                   {% else %}
-                    <button onclick="onClickBtnGoTo('{{
+                    <button type="button"
+                      onclick="onClickBtnGoTo('{{
                       path(
                         'community_goto',
                         {
@@ -84,15 +86,4 @@
       </div>
     </div>
   </div>
-{% endblock %}
-
-{% block javascripts %}
-  <script>
-    function onClickBtnGoTo(communityGoToPath, communityId) {
-    $("#loadingModal").modal('show');
-
-    $.ajax({ url: communityGoToPath, cache: false }).done(function(response) {
-    $("#"+communityId).load("/community #"+communityId);
-    setTimeout(() => { $('#loadingModal').modal('hide'); }, 500); }); }
-  </script>
 {% endblock %}
