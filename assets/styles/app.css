@@ -131,4 +131,12 @@ input {
   height: 40px;
 }
 
+a:hover {
+  color: #585079;
+}
+
+.nav-link.disabled {
+  color: #58507949;
+}
+
 @import '~bootstrap';
