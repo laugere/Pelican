@@ -10,14 +10,16 @@
 .right-col {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
-  margin-left: 40px;
   padding-right: 0;
 }
 
-.right-col-mid div {
+.right-col-mid .gradient-container {
   height: 47%;
+}
+
+.right-col-full .subcontainer {
+  height: calc(47% - 2.5rem);
 }
 
 .bottom-row {
