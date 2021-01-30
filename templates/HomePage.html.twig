@@ -45,30 +45,16 @@
       crossorigin="anonymous"></script>
 
     <script>
-      function onClickGoTo(event = null, urlValue = null) {
-      $("#loadingModal").modal('show');
-
-      var url;
-
-      if (event != null) { event.preventDefault(); url = this.href; } else { url
-      = urlValue; }
-
-      const URL = url;
-
-      $.ajax({ url: URL, type: 'POST', async: true }).done(function(response) {
-      $("#bodyFrame").load(URL + " #bodyFrame");
-      $("#navbarNav").collapse('hide'); $("#userNavBarPanel").collapse('hide');
-      setTimeout(() => { $("#loadingModal").modal('hide'); }, 500); }); }
-
-      document.querySelectorAll('a.nav-link:not(.bottom-icon)').forEach(function(link)
-      { link.addEventListener('click', onClickGoTo) })
-
       function onClickBtnGoTo(communityGoToPath, communityId) {
-      $("#loadingModal").modal('show');
+        $('#loadingModal').modal('show')
 
-      $.ajax({ url: communityGoToPath, cache: false }).done(function(response) {
-      $("#"+communityId).load("/community #"+communityId); setTimeout(() => {
-      $('#loadingModal').modal('hide'); }, 500); }); }
+        $.ajax({ url: communityGoToPath, cache: false }).done(function (response) {
+          $('#' + communityId).load('/community #' + communityId)
+          setTimeout(() => {
+            $('#loadingModal').modal('hide')
+          }, 500)
+        })
+      }
     </script>
 
     {% block javascripts %}
