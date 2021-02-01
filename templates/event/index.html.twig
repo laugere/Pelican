@@ -37,9 +37,8 @@
             </li>
             <li class="nav-item">
               <button type="button"
-                value="/event/create"
                 class="btn btn-outline-info"
-                onclick="onClickGoTo(null, this.value);">
+                onclick="window.open('/event/create');">
                 <i class="fas fa-plus-circle"></i>
                 Organiser
               </button>
@@ -59,6 +58,9 @@
               </h4>
               <p>
                 {{ event.location }}
+              </p>
+              <p>
+                {{ event.date|date("d/m/Y") }}
               </p>
             </div>
           </div>
