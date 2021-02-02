@@ -33,7 +33,7 @@ class GoToEventRepository extends ServiceEntityRepository
             )
             ->where('g.idUser = :id')
             ->setParameter('id', $userId)
-            ->orderBy('e.date_creation', 'ASC')
+            ->orderBy('e.date', 'ASC')
             ->getQuery()
             ->getResult();
     }
