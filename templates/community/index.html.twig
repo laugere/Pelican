@@ -1,8 +1,6 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-  <script language="javascript"></script>
-
   <div id="events-container"
     class="col-9 gradient-container blur-container marge-box scrollable">
     <nav class="navbar navbar-expand-lg gradient-container blur-container"
@@ -26,7 +24,7 @@
           <li class="nav-item">
             <button type="button"
               class="btn btn-outline-info"
-              onclick="window.open('/community/create');">
+              onclick="window.location = '/community/create';">
               <i class="fas fa-plus-circle"></i>
               Créer
             </button>

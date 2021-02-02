@@ -37,6 +37,16 @@ class EventRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findOneById($id): ?Event
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Event
     {

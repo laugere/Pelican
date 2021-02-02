@@ -49,4 +49,15 @@ class EventController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/event/{id}/view", name="event_view")
+     */
+    public function view($id, EventRepository $eventRepo): Response
+    {
+        $event = $eventRepo->findOneById($id);
+        return $this->render('event/view.html.twig', [
+            'event' => $event
+        ]);
+    }
 }

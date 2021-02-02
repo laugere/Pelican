@@ -51,6 +51,7 @@
 }
 
 .event-card {
+  transition: all 0.5s;
   background-color: #241a4e;
   border-radius: 20px;
   padding: 25px;
@@ -81,6 +82,11 @@ p {
 
 .event-card p {
   font-size: 15px;
+}
+
+.event-card:hover {
+  cursor: pointer;
+  background-color: #241a4e63;
 }
 
 .event-header {

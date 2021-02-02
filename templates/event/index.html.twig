@@ -38,7 +38,7 @@
             <li class="nav-item">
               <button type="button"
                 class="btn btn-outline-info"
-                onclick="window.open('/event/create');">
+                onclick="window.location = '/event/create';">
                 <i class="fas fa-plus-circle"></i>
                 Organiser
               </button>
@@ -48,7 +48,7 @@
       </nav>
       <div class="subcontainer scrollbar">
         {% for event in events %}
-          <div class="event-card">
+          <div class="event-card" onclick="window.location = '/event/{{ event.id }}/view';">
             <img src="{{ asset('build/wejdene.jpg') }}"
               width="70px"
               height="70px" />
