@@ -38,6 +38,32 @@
           </ul>
         </div>
       </nav>
+      <div class="subcontainer scrollbar">
+        <h5>
+          Prochains évenements
+        </h5>
+        <div class="subcontainer scrollbar">
+          {% for event in events %}
+            <div class="event-card"
+              onclick="window.location = '/event/{{ event.id }}/view';">
+              <img src="{{ asset('build/wejdene.jpg') }}"
+                width="70px"
+                height="70px" />
+              <div>
+                <h4 class="card-title">
+                  {{ event.name }}
+                </h4>
+                <p>
+                  {{ event.location }}
+                </p>
+                <p>
+                  {{ event.date|date('d/m/Y') }}
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
     <div class="col right-col right-col-full">
       <div class="gradient-container blur-container marge-box scrollable">

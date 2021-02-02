@@ -3,13 +3,50 @@
 {% block body %}
   <div id="events-container"
     class="gradient-container blur-container marge-box scrollable">
-    <h1>{{ event.name }}</h1>
-    <h5>Le {{ event.date|format_datetime('full', 'none', locale='fr') }}</h5>
-    <br />
-    <p>{{ event.description }}</p>
+    <div class="subcontainer scrollbar">
+      <div id="event-{{ event.id }}">
+        <h1>
+          {{ event.name }}
+        </h1>
+        <h5>
+          Le {{ event.date|format_datetime('full', 'none', locale = 'fr') }}
+        </h5>
+        <hr />
+        <p>
+          {{ event.description }}
+        </p>
+        {% if isIn %}
+          <button type="button"
+            onclick="onClickBtnGoToEvent('{{
+            path(
+              'event_goto',
+              {
+                eventId: event.id
+              }
+            )
+            }}', 'event-{{ event.id }}')"
+            class="btn btn-outline-danger btn-round">
+            <i class="fas fa-times"></i>
+          </button>
+        {% else %}
+          <button type="button"
+            onclick="onClickBtnGoToEvent('{{
+            path(
+              'event_goto',
+              {
+                eventId: event.id
+              }
+            )
+            }}', 'event-{{ event.id }}')"
+            class="btn btn-outline-warning btn-round">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        {% endif %}
+      </div>
     </div>
+  </div>
 {% endblock %}
 
 {% block javascripts %}
-    
+
 {% endblock %}

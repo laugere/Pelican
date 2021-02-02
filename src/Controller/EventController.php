@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\GoToEvent;
 use App\Form\EventType;
 use App\Repository\EventRepository;
+use App\Repository\GoToEventRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,13 +53,41 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{id}/view", name="event_view")
+     * @Route("/event/{eventId}/view", name="event_view")
      */
-    public function view($id, EventRepository $eventRepo): Response
+    public function view($eventId, EventRepository $eventRepo, GoToEventRepository $goToEventRepo): Response
     {
-        $event = $eventRepo->findOneById($id);
+        $event = $eventRepo->findOneById($eventId);
+        $user = $this->getuser();
+        $isIn = $goToEventRepo->userGoToEvent($user->getId(), $eventId);
         return $this->render('event/view.html.twig', [
-            'event' => $event
+            'event' => $event,
+            'isIn' => $isIn
         ]);
+    }
+
+    /**
+     * @Route("/event/{eventId}/goto", name="event_goto")
+     */
+    public function goToEvent($eventId, ObjectManager $objectManager, GoToEventRepository $goToEventRepo): Response
+    {
+        $user = $this->getuser();
+
+        if(!$user) return $this->json([
+            'code' => 403,
+        ], 403);
+
+        if(!$goToEventRepo->userGoToEvent($user->getId(), $eventId)) {
+            $GoToEvent = new GoToEvent();
+            $GoToEvent->setIdEvent($eventId);
+            $GoToEvent->setIdUser($user->getId());
+            $objectManager->persist($GoToEvent);
+            $objectManager->flush();
+        }
+        else {
+            $goToEventRepo->deleteGoToEvent($user->getId(), $eventId);
+        }
+        
+        return $this->json(['code' => 200], 200);
     }
 }

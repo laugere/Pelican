@@ -45,11 +45,22 @@
       crossorigin="anonymous"></script>
 
     <script>
-      function onClickBtnGoTo(communityGoToPath, communityId) {
+      function onClickBtnGoToCommunity(communityGoToPath, communityId) {
         $('#loadingModal').modal('show')
 
         $.ajax({ url: communityGoToPath, cache: false }).done(function (response) {
           $('#' + communityId).load('/community #' + communityId)
+          setTimeout(() => {
+            $('#loadingModal').modal('hide')
+          }, 500)
+        })
+      }
+
+      function onClickBtnGoToEvent(eventGoToPath, eventId) {
+        $('#loadingModal').modal('show')
+        console.log(eventId)
+        $.ajax({ url: eventGoToPath, cache: false }).done(function (response) {
+          $('#' + eventId).load('/event #' + eventId)
           setTimeout(() => {
             $('#loadingModal').modal('hide')
           }, 500)

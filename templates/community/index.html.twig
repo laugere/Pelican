@@ -51,7 +51,7 @@
                   } %}
                   {% if communityid in isInCommunitys %}
                     <button type="button"
-                      onclick="onClickBtnGoTo('{{
+                      onclick="onClickBtnGoToCommunity('{{
                       path(
                         'community_goto',
                         {
@@ -64,7 +64,7 @@
                     </button>
                   {% else %}
                     <button type="button"
-                      onclick="onClickBtnGoTo('{{
+                      onclick="onClickBtnGoToCommunity('{{
                       path(
                         'community_goto',
                         {
@@ -72,7 +72,7 @@
                         }
                       )
                       }}', 'community-{{ community.id }}')"
-                      class="btn btn-outline-warning btn-round js-goTo">
+                      class="btn btn-outline-warning btn-round">
                       <i class="fas fa-plus"></i>
                     </button>
                   {% endif %}

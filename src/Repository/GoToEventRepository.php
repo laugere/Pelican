@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Event;
 use App\Entity\GoToEvent;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method GoToEvent|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,52 @@ class GoToEventRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, GoToEvent::class);
+    }
+
+    public function findCommunityGoTo($userId)
+    {
+        return $this->createQueryBuilder('g')
+            ->select('e')
+            ->innerJoin(
+                Event::class,    // Entity
+                'e',               // Alias
+                Join::WITH,        // Join type
+                'g.idEvent = e.id' // Join columns
+            )
+            ->where('g.idUser = :id')
+            ->setParameter('id', $userId)
+            ->orderBy('e.date_creation', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function userGoToEvent($userId, $eventId): bool
+    {
+        $qb = $this->createQueryBuilder('g')
+            ->andWhere('g.idUser = :userId')
+            ->setParameter('userId', $userId)
+            ->andWhere('g.idEvent = :idEvent')
+            ->setParameter('idEvent', $eventId)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        if ($qb != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteGoToEvent($userId, $eventId)
+    {
+        $qb =  $this->createQueryBuilder('g')
+            ->delete(GoToEvent::class, 'g')
+            ->andWhere('g.idUser = :userId')
+            ->setParameter('userId', $userId)
+            ->andWhere('g.idEvent = :idEvent')
+            ->setParameter('idEvent', $eventId)
+            ->getQuery()
+            ->execute();
     }
 
     // /**
