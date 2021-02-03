@@ -3,8 +3,8 @@
 {% block body %}
   <div id="events-container"
     class="gradient-container blur-container marge-box scrollable">
-    <div class="subcontainer scrollbar">
-      <div id="event-{{ event.id }}">
+    <div id="event-{{ event.id }}">
+      <div class="subcontainer scrollbar">
         <h1>
           {{ event.name }}
         </h1>
@@ -37,7 +37,7 @@
                 eventId: event.id
               }
             )
-            }}', 'event-{{ event.id }}')"
+            }}', '{{ event.id }}')"
             class="btn btn-outline-warning btn-round">
             <i class="fas fa-arrow-right"></i>
           </button>
