@@ -1,0 +1,42 @@
+{% extends 'HomePage.html.twig' %}
+
+{% block body %}
+  <div id="community-container"
+    class="gradient-container blur-container marge-box scrollable">
+    <h1>
+      {{ controller_name }}
+    </h1>
+    <div class="subcontainer scrollbar"
+      style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
+      {{ form_start(form) }}
+      <div class="form-group">
+        <label for="event_name">Nom de l'évènement</label>
+        {{ form_widget(form.name) }}
+      </div>
+      <div class="form-group">
+        <label for="event_description">Description de l'évènement</label>
+        {{ form_widget(form.description) }}
+      </div>
+      <div class="form-group">
+        <label for="event_location">Location de l'évènement</label>
+        {{ form_widget(form.location) }}
+      </div>
+      <div class="form-group">
+        <label for="event_date">Date de l'évènement</label>
+        {{ form_widget(form.date) }}
+      </div>
+      <div class="form-group">
+        <label for="nbParticipant">Nombre de participants</label>
+        {{ form_widget(form.nbParticipant) }}
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-warning">Modifier</button>
+      </div>
+      {{ form_end(form) }}
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

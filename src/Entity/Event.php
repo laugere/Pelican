@@ -57,6 +57,11 @@ class Event
      */
     private $nbParticipant;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $idCreator;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,4 +175,14 @@ class Event
         $this->date_suppression = $date_suppression;
     }
 
+
+    public function getIdCreator()
+    {
+        return $this->idCreator;
+    }
+
+    public function setIdCreator($idCreator): void
+    {
+        $this->idCreator = $idCreator;
+    }
 }

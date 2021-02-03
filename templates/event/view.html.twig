@@ -11,10 +11,14 @@
         <h5>
           Le {{ event.date|format_datetime('full', 'none', locale = 'fr') }}
         </h5>
+        <p>
+          {{ event.nbParticipant }} Personnes
+        </p>
         <hr />
         <p>
           {{ event.description }}
         </p>
+        <br /><br />
         {% if isIn %}
           <button type="button"
             onclick="onClickBtnGoToEvent('{{
@@ -40,6 +44,13 @@
             }}', '{{ event.id }}')"
             class="btn btn-outline-warning btn-round">
             <i class="fas fa-arrow-right"></i>
+          </button>
+        {% endif %}
+        {% if event.idCreator == app.user.id %}
+          <button type="button"
+            onclick="window.location = '/event/{{ event.id }}/modify';"
+            class="btn btn-outline-info btn-round">
+            <i class="fas fa-pen"></i>
           </button>
         {% endif %}
       </div>

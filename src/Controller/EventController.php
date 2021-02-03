@@ -33,12 +33,14 @@ class EventController extends AbstractController
      */
     public function create(Event $event = null, Request $request, ObjectManager $objectManager): Response
     {
+        $user = $this->getuser();
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $event->setDateCreation(new \DateTime());
             $event->setDateModification(new \DateTime());
+            $event->setIdCreator($user->getId());
 
             $objectManager->persist($event);
             $objectManager->flush();
@@ -67,27 +69,53 @@ class EventController extends AbstractController
     }
 
     /**
+     * @Route("/event/{eventId}/modify", name="event_modify")
+     */
+    public function modify($eventId, Request $request, EventRepository $eventRepo, ObjectManager $objectManager): Response
+    {
+        $event = $eventRepo->findOneById($eventId);
+        $user = $this->getuser();
+
+        if ($event->getIdCreator() == $user->getId()) {
+            $form = $this->createForm(EventType::class, $event);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $event->setDateModification(new \DateTime());
+                $event->setIdCreator($user->getId());
+    
+                $objectManager->persist($event);
+                $objectManager->flush();
+            }
+        }
+
+        return $this->render('event/modify.html.twig', [
+            'controller_name' => 'Modifier un événement',
+            'event' => $event,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
      * @Route("/event/{eventId}/goto", name="event_goto")
      */
     public function goToEvent($eventId, ObjectManager $objectManager, GoToEventRepository $goToEventRepo): Response
     {
         $user = $this->getuser();
 
-        if(!$user) return $this->json([
+        if (!$user) return $this->json([
             'code' => 403,
         ], 403);
 
-        if(!$goToEventRepo->userGoToEvent($user->getId(), $eventId)) {
+        if (!$goToEventRepo->userGoToEvent($user->getId(), $eventId)) {
             $GoToEvent = new GoToEvent();
             $GoToEvent->setIdEvent($eventId);
             $GoToEvent->setIdUser($user->getId());
             $objectManager->persist($GoToEvent);
             $objectManager->flush();
-        }
-        else {
+        } else {
             $goToEventRepo->deleteGoToEvent($user->getId(), $eventId);
         }
-        
+
         return $this->json(['code' => 200], 200);
     }
 }
