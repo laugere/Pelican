@@ -1,57 +1,76 @@
-<nav id="userNavBar" class="navbar navbar-expand-lg gradient-container blur-container">
-	<div class="navbar-brand">
-		<div class="user-container">
-			<img src="{{ asset('build/wejdene.jpg') }}" height="55px" width="55px">
-			<div class="user-text crop">
-				<h5>{{ app.user.username }}</h5>
-			</div>
-		</div>
-	</div>
-	<button style="border:none; color: white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#userNavBarPanel" aria-controls="userNavBarPanel" aria-expanded="false" aria-label="Toggle navigation">
-		<i class="fas fa-bars"></i>
-	</button>
-	<div class="collapse navbar-collapse" id="userNavBarPanel">
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="/">
-					<i class="fas fa-home fa-lg"></i>
-					Accueil
-				</a>
-			</li>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/event">
-				<i class="fas fa-calendar-alt fa-lg"></i>
-				Évènements
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/community">
-				<i class="fas fa-user-friends fa-lg"></i>
-				Communautés
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link disabled" href="#">
-				<i class="fas fa-cog fa-lg"></i>
-				Réglages
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link bottom-icon" href="/logout">
-				<i class="fas fa-sign-out-alt fa-lg"></i>
-				Déconnexion
-			</a>
-		</li>
-		<li class="nav-item">
-			<div class="search-container">
-				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-info" type="submit">
-						<i class="fas fa-search"></i>
-					</button>
-				</form>
-			</div>
-		</li>
-	</ul>
-</div></nav>
+<nav id="userNavBar"
+  class="navbar navbar-expand-lg gradient-container blur-container">
+  <div class="navbar-brand">
+    <div class="user-container">
+      <img src="{{ asset('build/wejdene.jpg') }}" height="55px" width="55px" />
+      <div class="user-text crop">
+        <h5>
+          {{ app.user.username }}
+        </h5>
+      </div>
+    </div>
+  </div>
+  <button style="border:none; color: white;"
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#userNavBarPanel"
+    aria-controls="userNavBarPanel"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="userNavBarPanel">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/user">
+          <i class="fas fa-user fa-lg"></i>
+          Mon profil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <i class="fas fa-home fa-lg"></i>
+          Accueil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/event">
+          <i class="fas fa-calendar-alt fa-lg"></i>
+          Évènements
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/community">
+          <i class="fas fa-user-friends fa-lg"></i>
+          Communautés
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">
+          <i class="fas fa-cog fa-lg"></i>
+          Réglages
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bottom-icon" href="/logout">
+          <i class="fas fa-sign-out-alt fa-lg"></i>
+          Déconnexion
+        </a>
+      </li>
+      <li class="nav-item">
+        <div class="search-container">
+          <form class="d-flex">
+            <input class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search" />
+            <button class="btn btn-outline-info" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
