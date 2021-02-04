@@ -29,8 +29,9 @@
               }
             )
             }}', 'event-{{ event.id }}')"
-            class="btn btn-outline-danger btn-round">
+            class="btn btn-outline-danger">
             <i class="fas fa-times"></i>
+            Ne plus participer
           </button>
         {% else %}
           <button type="button"
@@ -42,8 +43,9 @@
               }
             )
             }}', '{{ event.id }}')"
-            class="btn btn-outline-warning btn-round">
+            class="btn btn-outline-warning">
             <i class="fas fa-arrow-right"></i>
+            Participer
           </button>
         {% endif %}
         {% if event.idCreator == app.user.id %}
