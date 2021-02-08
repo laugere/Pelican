@@ -28,7 +28,7 @@
     height: 100%;
   }
 
-  #events-container {
+  #content-container {
     flex: 0 0 100% !important;
     max-width: 100% !important;
   }

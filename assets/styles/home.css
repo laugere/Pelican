@@ -1,7 +1,0 @@
-.right-col-full .gradient-container {
-  height: 100%;
-}
-
-.right-col-full .subcontainer {
-  height: calc(100% - 2.5rem);
-}

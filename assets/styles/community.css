@@ -1,8 +1,4 @@
-#community-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+/* Community Card */
 
 .community-card {
   background-color: #241a4e;

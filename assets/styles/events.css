@@ -1,43 +1,6 @@
-#popover_content_wrapper {
-  display: none;
-}
-
 .box-container .row {
   margin: 0;
   height: 100%;
-}
-
-.right-col {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding-right: 0;
-}
-
-.right-col-mid .gradient-container {
-  height: 47%;
-}
-
-.right-col-full .subcontainer {
-  height: calc(47% - 2.5rem);
-}
-
-.bottom-row {
-  margin-top: 40px !important;
-}
-
-#events-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-#events-container h5 {
-  margin-top: 10px;
-}
-
-#events-container h5 span {
-  margin-left: 15px;
 }
 
 .subtitle {
