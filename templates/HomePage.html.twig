@@ -58,10 +58,9 @@
 
       function onClickBtnGoToEvent(eventGoToPath, eventId) {
         $('#loadingModal').modal('show')
+        
         $.ajax({ url: eventGoToPath, cache: false }).done(function (response) {
-          setTimeout(() => {
-            $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
-          }, 200)
+          $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
           setTimeout(() => {
             $('#loadingModal').modal('hide')
           }, 500)
