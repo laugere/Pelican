@@ -3,6 +3,7 @@ controllerName:
   community: Communautés
   event: Événements
   home: Accueil
+  settings: Réglages
 
 message:
   loading: Chargement

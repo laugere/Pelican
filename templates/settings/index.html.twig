@@ -1,0 +1,20 @@
+{% extends 'HomePage.html.twig' %}
+
+{% block body %}
+<div id="content-container" class="col-9 gradient-container blur-container marge-box scrollable">
+    <nav class="navbar gradient-container blur-container" style="border-radius: 10px;">
+        <div class="navbar-brand">
+            <i class="fas fa-cog fa-sm colored-icon"></i>
+            {% trans %}controllerName.settings{% endtrans %}
+        </div>
+    </nav>
+    <div id="community-subcontainer" class="subcontainer scrollbar">
+        <div class="row">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

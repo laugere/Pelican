@@ -3,6 +3,7 @@ controllerName:
   community: Community
   event: Event
   home: Home
+  settings: Settings
 
 message:
   loading: Loading
