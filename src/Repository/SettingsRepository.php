@@ -19,6 +19,16 @@ class SettingsRepository extends ServiceEntityRepository
         parent::__construct($registry, Settings::class);
     }
 
+    public function getSettings($userId): ?Settings
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.idUser = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     // /**
     //  * @return Settings[] Returns an array of Settings objects
     //  */

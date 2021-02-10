@@ -11,6 +11,7 @@ message:
 button:
   filter: Filter
   create: Create
+  save: Save
 
 form:
   search: Search
