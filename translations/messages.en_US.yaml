@@ -4,12 +4,23 @@ controllerName:
   event: Event
   home: Home
 
+message:
+  loading: Loading
+
 button:
   filter: Filter
   create: Create
 
 form:
   search: Search
+
+menu:
+  user: My Profile
+  home: Home
+  event: Event
+  community: Community
+  settings: Settings
+  logout: Log out
 
 home:
   nextEvent: Next event

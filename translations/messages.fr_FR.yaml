@@ -4,12 +4,23 @@ controllerName:
   event: Événements
   home: Accueil
 
+message:
+  loading: Chargement
+
 button:
   filter: Filtres
   create: Créer
 
 form:
   search: Rechercher
+
+menu:
+  user: Mon profil
+  home: Accueil
+  event: Événements
+  community: Communautés
+  settings: Réglages
+  logout: Déconnexion
 
 home:
   nextEvent: Prochains évenements
