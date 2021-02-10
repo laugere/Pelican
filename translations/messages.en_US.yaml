@@ -1,0 +1,20 @@
+controllerName:
+  user: User informations
+  community: Community
+  event: Event
+  home: Home
+
+button:
+  filter: Filter
+  create: Create
+
+form:
+  search: Search
+
+home:
+  nextEvent: Next event
+  followCommunity: Followed communities
+
+event:
+  suggestion: Suggestion
+  around: Around you

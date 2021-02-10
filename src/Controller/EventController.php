@@ -23,7 +23,6 @@ class EventController extends AbstractController
         $events = $event->findRecent();
 
         return $this->render('event/index.html.twig', [
-            'controller_name' => 'Événements',
             'events' => $events
         ]);
     }

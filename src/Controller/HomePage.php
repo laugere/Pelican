@@ -17,7 +17,6 @@ class HomePage extends AbstractController
         $events = $goToEventRepo->findCommunityGoTo($user->getId());
 
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'Accueil',
             'communitys' => $communitys,
             'events' => $events
         ]);

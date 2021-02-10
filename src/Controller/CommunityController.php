@@ -29,7 +29,6 @@ class CommunityController extends AbstractController
         $communitys = $community->findRecent();
 
         return $this->render('community/index.html.twig', [
-            'controller_name' => 'Communautés',
             'communitys' => $communitys,
             'isInCommunitys' => $isInCommunitys
         ]);

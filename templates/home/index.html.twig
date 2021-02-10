@@ -8,7 +8,7 @@
         style="border-radius: 10px;">
         <div class="navbar-brand">
           <i class="fas fa-home fa-sm colored-icon"></i>
-          {{ controller_name }}
+          {% trans %}controllerName.home{% endtrans %}
         </div>
         <button style="border:none; color: white;"
           class="navbar-toggler"
@@ -31,7 +31,7 @@
                   data-toggle="popover"
                   data-placement="bottom">
                   <i class="fas fa-sliders-h"></i>
-                  Filtres
+                  {% trans %}button.filter{% endtrans %}
                 </button>
               </div>
             </li>
@@ -40,7 +40,7 @@
       </nav>
       <div class="subcontainer scrollbar">
         <h5>
-          Prochains évenements
+        {% trans %}home.nextEvent{% endtrans %}
         </h5>
         <div class="subcontainer scrollbar">
           {% for event in events %}
@@ -68,7 +68,7 @@
     <div class="col right-col right-col-full">
       <div class="gradient-container blur-container marge-box scrollable">
         <h5>
-          Communautés suivies
+        {% trans %}home.followCommunity{% endtrans %}
         </h5>
         <div class="subcontainer scrollbar">
           {% for community in communitys %}

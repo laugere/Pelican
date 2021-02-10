@@ -8,7 +8,7 @@
         style="border-radius: 10px;">
         <div class="navbar-brand">
           <i class="fas fa-calendar-alt fa-sm colored-icon"></i>
-          {{ controller_name }}
+          {% trans %}controllerName.event{% endtrans %}
         </div>
         <button style="border:none; color: white;"
           class="navbar-toggler"
@@ -31,7 +31,7 @@
                   data-toggle="popover"
                   data-placement="bottom">
                   <i class="fas fa-sliders-h"></i>
-                  Filtres
+                  {% trans %}button.filter{% endtrans %}
                 </button>
               </div>
             </li>
@@ -40,7 +40,7 @@
                 class="btn btn-outline-info"
                 onclick="window.location = '/event/create';">
                 <i class="fas fa-plus-circle"></i>
-                Organiser
+                {% trans %}button.create{% endtrans %}
               </button>
             </li>
           </ul>
@@ -70,14 +70,14 @@
     <div class="col right-col right-col-mid">
       <div class="gradient-container blur-container marge-box scrollable">
         <h5>
-          Suggestions
+        {% trans %}event.suggestion{% endtrans %}
         </h5>
         <div class="subcontainer scrollbar">
         </div>
       </div>
       <div class="gradient-container blur-container bottom-row marge-box scrollable">
         <h5>
-          Autour de vous
+        {% trans %}event.around{% endtrans %}
         </h5>
       </div>
     </div>
