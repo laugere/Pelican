@@ -117,10 +117,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
                 return;
             }
 
+            // Settings 
             $settings = $this->settingsRepo->getSettings($user->getId());
-            $locale = $settings->getLanguage();
 
-            // $targetPath
+            // Language settings
+            $locale = $settings->getLanguage();
             $request->getSession()->set('_locale', $locale);
             
             $response = new RedirectResponse($targetPath);

@@ -31,3 +31,6 @@ home:
 event:
   suggestion: Suggestions
   around: Autour de vous
+
+settings:
+  language: Langage de l'application

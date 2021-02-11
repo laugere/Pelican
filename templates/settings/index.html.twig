@@ -11,7 +11,7 @@
     <div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
         {{ form_start(form) }}
         <div class="form-group">
-            <label for="event_name">Langage de l'application</label>
+            <label for="event_name">{% trans %}settings.language{% endtrans %}</label>
             {{ form_widget(form.language) }}
         </div>
         <div class="form-group">
