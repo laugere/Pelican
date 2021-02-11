@@ -2,8 +2,12 @@
 
 namespace App\Security;
 
+use App\Repository\SettingsRepository;
+use Symfony\Component\Routing\RouterInterface;
+
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -31,12 +35,24 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $csrfTokenManager;
     private $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    private $settingsRepo;
+    /** @var RouterInterface */
+    private $router;
+
+    /**
+     * AfterLoginRedirection constructor.
+     *
+     * @param RouterInterface $router
+     */
+    public function __construct(RouterInterface $router, SettingsRepository $settingsRepo, EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
+
+        $this->settingsRepo = $settingsRepo;
+        $this->router = $router;
     }
 
     public function supports(Request $request)
@@ -93,11 +109,27 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
+            if (!$token->isAuthenticated()) {
+                return;
+            }
+
+            if (!$user = $token->getUser()) {
+                return;
+            }
+
+            $settings = $this->settingsRepo->getSettings($user->getId());
+            $locale = $settings->getLanguage();
+
+            // $targetPath
+            $request->getSession()->set('_locale', $locale);
+            
+            $response = new RedirectResponse($targetPath);
+
+            return $response;
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 
     protected function getLoginUrl()
