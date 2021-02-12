@@ -23,6 +23,8 @@ menu:
   community: Community
   settings: Settings
   logout: Log out
+  connect: Login
+  signup: Sign up
 
 home:
   nextEvent: Next event
@@ -34,3 +36,14 @@ event:
 
 settings:
   language: Application's language
+
+security:
+  register:
+    title: Registration
+    email: Email
+    emailspan: We will never share your email with anyone else.
+    city: City
+    password: Password
+    agree: Agree terms
+    alreadyaccount: Already have an account ?
+  login:

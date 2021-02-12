@@ -31,6 +31,11 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $city;
+
+    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -49,6 +54,18 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

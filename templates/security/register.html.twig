@@ -38,19 +38,23 @@
       {% endfor %}
 
       <h1>
-        Inscription
+        {% trans %}security.register.title{% endtrans %}
       </h1>
 
       {{ form_start(registrationForm) }}
       <div class="form-group">
-        <label for="inputEmail">Email</label>
+        <label for="inputEmail">{% trans %}security.register.email{% endtrans %}</label>
         {{ form_widget(registrationForm.email) }}
         <small id="emailHelp" class="form-text text-muted">
-          Nous ne partagerons jamais votre courriel avec quelqu'un d'autre.
+          {% trans %}security.register.emailspan{% endtrans %}
         </small>
       </div>
       <div class="form-group">
-        <label for="inputPassword">Mot de passe</label>
+        <label for="inputEmail">{% trans %}security.register.city{% endtrans %}</label>
+        {{ form_widget(registrationForm.city) }}
+      </div>
+      <div class="form-group">
+        <label for="inputPassword">{% trans %}security.register.password{% endtrans %}</label>
         {{ form_widget(registrationForm.plainPassword) }}
       </div>
       <div class="form-group">
@@ -58,12 +62,12 @@
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-outline-success">
-          S'inscrire
+          {% trans %}button.signup{% endtrans %}
         </button>
       </div>
       <div class="form-group">
-        <small class="form-text text-muted">Vous avez déjà un compte ?</small>
-        <a class="badge badge-warning" href="/login">Se connecter</a>
+        <small class="form-text text-muted">{% trans %}security.register.alreadyaccount{% endtrans %}</small>
+        <a class="badge badge-warning" href="/login">{% trans %}button.connect{% endtrans %}</a>
       </div>
       {{ form_end(registrationForm) }}
     </div>
