@@ -115,6 +115,10 @@ body {
   padding-right: 0 !important;
 }
 
+.scrollbar {
+  padding: 0.25rem;
+}
+
 .scrollbar::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -145,6 +149,17 @@ textarea {
   border-radius: 10px;
   border: none !important;
   color: white !important;
+}
+
+select {
+  background-color: #ffffff1f !important;
+  border-radius: 10px;
+  border: none !important;
+  color: white !important;
+}
+
+select option {
+  color: black;
 }
 
 .container {
