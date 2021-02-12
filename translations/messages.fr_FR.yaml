@@ -47,3 +47,10 @@ security:
     agree: Accepter les conditions
     alreadyaccount: Vous avez déjà un compte ?
   login:
+    title: Connectez vous
+    alreadyconnected: Vous êtes connecté en tant que
+    logout: Déconnexion
+    email: Email
+    password: Mot de passe
+    rememberme: Se souvenir de moi
+    donotaccount: Vous n'avez pas de compte ?

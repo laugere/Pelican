@@ -24,7 +24,9 @@
 	<body>
 		<div id="loginFrame">
 			<form method="post">
-				<h1>Connectez vous</h1>
+				<h1>
+					{% trans %}security.login.title{% endtrans %}
+				</h1>
 				
 				{% if error %}
 					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -32,34 +34,34 @@
 
 				{% if app.user %}
 					<div class="mb-3">
-						You are logged in as
+						{% trans %}security.login.alreadyconnected{% endtrans %}
 						{{ app.user.username }},
-						<a href="{{ path('app_logout') }}">Logout</a>
+						<a href="{{ path('app_logout') }}">{% trans %}security.login.logout{% endtrans %}</a>
 					</div>
 				{% endif %}
 
 				<div class="form-group">
-					<label for="inputEmail">Email</label>
+					<label for="inputEmail">{% trans %}security.login.email{% endtrans %}</label>
 					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
 				</div>
 				<div class="form-group">
-					<label for="inputPassword">Password</label>
+					<label for="inputPassword">{% trans %}security.login.password{% endtrans %}</label>
 					<input type="password" name="password" id="inputPassword" class="form-control" required>
 				</div>
 				<div class="form-group">
 					<input type="checkbox" id="remember_me" name="_remember_me" checked/>
-					<label for="remember_me">Remember me</label>
+					<label for="remember_me">{% trans %}security.login.rememberme{% endtrans %}</label>
 				</div>
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 				<div class="form-group">
 					<button class="btn btn-outline-success" type="submit">
-						Se connecter
+						{% trans %}button.connect{% endtrans %}
 					</button>
 				</div>
 				<div class="form-group">
-					<small class="form-text text-muted">Vous n'avez pas de compte ?</small>
+					<small class="form-text text-muted">{% trans %}security.login.donotaccount{% endtrans %}</small>
 					<a class="badge badge-primary" href="/register">
-						S'inscrire
+						{% trans %}button.signup{% endtrans %}
 					</a>
 				</div>
 			</form>
