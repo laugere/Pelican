@@ -21,7 +21,12 @@ class EventRepository extends ServiceEntityRepository
 
     public function findRecent()
     {
+        $datetime = new \DateTime("now");
+
         return $this->createQueryBuilder('e')
+            ->andWhere('e.date_suppression >= :date')
+            ->orWhere('e.date_suppression is NULL')
+            ->setParameter('date', $datetime)
             ->orderBy('e.date', 'ASC')
             ->setMaxResults(20)
             ->getQuery()
@@ -43,8 +48,7 @@ class EventRepository extends ServiceEntityRepository
             ->andWhere('e.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 
     /*
