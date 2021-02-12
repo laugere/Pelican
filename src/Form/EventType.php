@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,7 +19,7 @@ class EventType extends AbstractType
             ->add('name', null, ['label' => 'Nom', 'attr' => array(
                 'placeholder' => 'Nom de l\'événement'
             )])
-            ->add('description', null, ['label' => 'Description', 'attr' => array(
+            ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => array(
                 'placeholder' => 'Description'
             )])
             ->add('location', null, ['label' => 'Localisation', 'attr' => array(

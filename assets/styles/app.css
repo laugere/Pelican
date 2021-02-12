@@ -140,6 +140,13 @@ input {
   color: white !important;
 }
 
+textarea {
+  background-color: #ffffff1f !important;
+  border-radius: 10px;
+  border: none !important;
+  color: white !important;
+}
+
 .container {
   width: 100%;
   margin-left: 0px;
