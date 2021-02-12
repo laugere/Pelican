@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="row">
-  <div id="content-container" class="gradient-container blur-container marge-box scrollable">
+  <div id="content-container" class="col-12 gradient-container blur-container marge-box scrollable">
     <div class="subcontainer scrollbar">
       <h1>
         {{ event.name }}
@@ -19,7 +19,7 @@
       </p>
       <br /><br />
     </div>
-    <div id="event-{{ event.id }}" class="form-group">
+    <div id="event-{{ event.id }}" class="form-group" style="margin-bottom: 0 !important;">
       {% if isIn %}
       <button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-outline-danger">
         <i class="fas fa-times"></i>
