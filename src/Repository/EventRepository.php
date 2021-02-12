@@ -24,7 +24,7 @@ class EventRepository extends ServiceEntityRepository
         $datetime = new \DateTime("now");
 
         return $this->createQueryBuilder('e')
-            ->andWhere('e.date_suppression >= :date')
+            ->andWhere('e.date_suppression > :date')
             ->orWhere('e.date_suppression is NULL')
             ->setParameter('date', $datetime)
             ->orderBy('e.date', 'ASC')

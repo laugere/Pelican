@@ -81,7 +81,7 @@ class EventController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $event->setDateModification(new \DateTime());
                 $event->setIdCreator($user->getId());
-    
+
                 $objectManager->persist($event);
                 $objectManager->flush();
             }
@@ -92,6 +92,25 @@ class EventController extends AbstractController
             'event' => $event,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/event/{eventId}/delete", name="event_delete")
+     */
+    public function deleteEvent($eventId, EventRepository $eventRepo, ObjectManager $objectManager): Response
+    {
+        $datetime = new \DateTime("now");
+        $event = $eventRepo->findOneByid($eventId);
+        $user = $this->getUser();
+
+        if ($event->getIdCreator() == $user->getId()) {
+            $event->setDateSuppression($datetime);
+
+            $objectManager->persist($event);
+            $objectManager->flush();
+        }
+
+        return $this->index($eventRepo);
     }
 
     /**
