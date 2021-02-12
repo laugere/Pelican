@@ -3,7 +3,7 @@
 {% block body %}
 <div class="row">
   <div id="content-container" class="gradient-container blur-container marge-box scrollable">
-    <div id="event-{{ event.id }}" class="subcontainer scrollbar">
+    <div class="subcontainer scrollbar">
       <h1>
         {{ event.name }}
       </h1>
@@ -19,28 +19,14 @@
       </p>
       <br /><br />
     </div>
-    <div class="form-group">
+    <div id="event-{{ event.id }}" class="form-group">
       {% if isIn %}
-      <button type="button" onclick="onClickBtnGoToEvent('{{
-            path(
-              'event_goto',
-              {
-                eventId: event.id
-              }
-            )
-            }}', 'event-{{ event.id }}')" class="btn btn-outline-danger">
+      <button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-outline-danger">
         <i class="fas fa-times"></i>
         Ne plus participer
       </button>
       {% else %}
-      <button type="button" onclick="onClickBtnGoToEvent('{{
-            path(
-              'event_goto',
-              {
-                eventId: event.id
-              }
-            )
-            }}', '{{ event.id }}')" class="btn btn-outline-warning">
+      <button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-outline-warning">
         <i class="fas fa-arrow-right"></i>
         Participer
       </button>

@@ -40,32 +40,33 @@ class IsInRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function userIsIn($userId, $communityId): bool {
+    public function userIsIn($userId, $communityId): bool
+    {
         $qb = $this->createQueryBuilder('i')
-                ->andWhere('i.idUser = :userId')
-                ->setParameter('userId', $userId)
-                ->andWhere('i.idCommunity = :communityId')
-                ->setParameter('communityId', $communityId)
-                ->getQuery()
-                ->getOneOrNullResult();
+            ->andWhere('i.idUser = :userId')
+            ->setParameter('userId', $userId)
+            ->andWhere('i.idCommunity = :communityId')
+            ->setParameter('communityId', $communityId)
+            ->getQuery()
+            ->getOneOrNullResult();
 
         if ($qb != null) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
-    public function deleteIsIn($userId, $communityId) {
+    public function deleteIsIn($userId, $communityId)
+    {
         $qb =  $this->createQueryBuilder('i')
-                ->delete(IsIn::class, 'i')
-                ->andWhere('i.idUser = :userId')
-                ->setParameter('userId', $userId)
-                ->andWhere('i.idCommunity = :communityId')
-                ->setParameter('communityId', $communityId)
-                ->getQuery()
-                ->execute();
+            ->delete(IsIn::class, 'i')
+            ->andWhere('i.idUser = :userId')
+            ->setParameter('userId', $userId)
+            ->andWhere('i.idCommunity = :communityId')
+            ->setParameter('communityId', $communityId)
+            ->getQuery()
+            ->execute();
     }
 
     // /**
