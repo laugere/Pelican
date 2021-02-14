@@ -232,12 +232,12 @@ a:hover {
   position: absolute;
   bottom: 1.5rem;
   left: 1.5rem;
-  right: 1.5rem;
+  right: 2rem;
 
   padding: 1.25rem;
   border-radius: 20px;
-  background-color: #e0e0e009;
-  backdrop-filter: blur(5px);
+  background-color: #44444478;
+  backdrop-filter: blur(10px);
 }
 
 @import '~bootstrap';
