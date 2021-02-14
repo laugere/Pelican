@@ -1,25 +1,28 @@
 @media (max-width: 1199.98px) {
-  #right-col {
-    display: none;
-  }
-
-  #mainNavbar {
-    display: none;
-  }
-
-  .scrollable {
-    padding-right: 0 !important;
-  }
-
-  .event-card {
-    width: 100%;
-  }
-
-  .sub-container {
-    margin-left: 0;
-  }
-  
-  .box-container {
-    padding: 1.25rem;
-  }
+    #right-col {
+        display: none;
+    }
+    #mainNavbar {
+        display: none;
+    }
+    .scrollable {
+        padding-right: 0 !important;
+    }
+    .event-card {
+        width: 100%;
+    }
+    .sub-container {
+        margin-left: 0;
+    }
+    .box-container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    .event-card-info-container {
+        padding-right: 0;
+    }
+    .btn-create {
+        bottom: 1rem;
+        right: 1rem;
+    }
 }

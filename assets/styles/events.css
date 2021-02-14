@@ -44,6 +44,29 @@
 }
 
 .avatar-container {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+}
+
+.avatar-container .avatar-img {
+  position: absolute;
+  left: 0rem;
+}
+
+.avatar-container .avatar-user-name {
+  position: absolute;
+  left: 3.25rem;
+  top: 0.25rem;
+}
+
+.avatar-container .avatar-date {
+  color: rgba(255, 255, 255, 0.425);
+  font-size: 0.75rem;
+  position: absolute;
+  left: 3.25rem;
+  top: 1.25rem;
 }
 
 .event-card-info-container {
