@@ -12,6 +12,7 @@
 }
 
 .right-col-subcontainer-follow {
+  position: relative;
   padding: 1.25rem;
   height: calc(35% - 0.75rem);
   color: black;
@@ -20,6 +21,7 @@
 }
 
 .right-col-subcontainer-near {
+  position: relative;
   padding: 1.25rem;
   height: calc(35% - 0.75rem);
   color: black;
@@ -28,6 +30,7 @@
 }
 
 .right-col-subcontainer-news {
+  position: relative;
   padding: 1.25rem;
   height: calc(30% - 0.75rem);
   color: black;
@@ -36,13 +39,20 @@
 }
 
 .show-more-button {
-  width: 100%;
+  width: calc(100% - 2.5rem);
   padding: 0.25rem;
   background-color: rgba(177, 177, 177, 0.37);
   border: none;
   border-radius: 25px;
   transition: background-color 0.5s;
   outline: none;
+}
+
+.stick-bottom {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
 }
 
 .show-more-button:hover {

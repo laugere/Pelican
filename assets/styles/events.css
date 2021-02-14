@@ -4,6 +4,7 @@
 }
 
 .event-card {
+  position: relative;
   display: block;
   margin: auto;
   transition: all 0.5s;
@@ -28,8 +29,10 @@
 }
 
 .event-card-footer {
-  position: relative;
-  top: 75%;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
 }
 
 .event-card-title-container {
