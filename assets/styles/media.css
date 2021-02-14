@@ -25,4 +25,7 @@
         bottom: 1rem;
         right: 1rem;
     }
+    #content-container {
+        padding-top: 1rem;
+    }
 }
