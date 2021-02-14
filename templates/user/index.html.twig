@@ -1,18 +1,22 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-<div id="content-container" class="col-9 gradient-container blur-container marge-box scrollable">
-    <nav class="navbar gradient-container blur-container" style="border-radius: 10px;">
-        <div class="navbar-brand">
-            <i class="fas fa-user fa-sm colored-icon"></i>
+  <div id="content-container" class="scrollable">
+    <div class="content-brand">
+      <div class="row">
+        <div class="col-9">
+          <h4 class="content-title">
             {% trans %}controllerName.user{% endtrans %}
+          </h4>
         </div>
-    </nav>
-    <div id="community-subcontainer" class="subcontainer scrollbar">
-        <div class="row">
+        <div class="col-3 content-search">
+          <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
         </div>
+      </div>
     </div>
-</div>
+    <div class="subcontainer scrollbar">
+    </div>
+  </div>
 {% endblock %}
 
 {% block javascripts %}

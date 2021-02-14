@@ -1,8 +1,7 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-<div class="row">
-  <div id="content-container" class="col-12 gradient-container blur-container marge-box scrollable">
+  <div id="content-container" class="scrollable">
     <div class="subcontainer scrollbar">
       <h1>
         {{ event.name }}
@@ -19,29 +18,52 @@
       </p>
       <br /><br />
     </div>
-    <div id="event-{{ event.id }}" class="form-group" style="margin-bottom: 0 !important;">
+    <div id="event-{{ event.id }}"
+      class="form-group"
+      style="margin-bottom: 0 !important;">
       {% if isIn %}
-      <button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-outline-danger">
-        <i class="fas fa-times"></i>
-        Ne plus participer
-      </button>
+        <button type="button"
+          onclick="onClickBtnGoToEvent('{{
+          path(
+            'event_goto',
+            {
+              eventId: event.id
+            }
+          )
+          }}', '{{ event.id }}');"
+          class="btn btn-outline-danger">
+          <i class="fas fa-times"></i>
+          Ne plus participer
+        </button>
       {% else %}
-      <button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-outline-warning">
-        <i class="fas fa-arrow-right"></i>
-        Participer
-      </button>
+        <button type="button"
+          onclick="onClickBtnGoToEvent('{{
+          path(
+            'event_goto',
+            {
+              eventId: event.id
+            }
+          )
+          }}', '{{ event.id }}');"
+          class="btn btn-outline-warning">
+          <i class="fas fa-arrow-right"></i>
+          Participer
+        </button>
       {% endif %}
       {% if event.idCreator == app.user.id %}
-      <button type="button" onclick="window.location = '/event/{{ event.id }}/modify';" class="btn btn-outline-info btn-round">
-        <i class="fas fa-pen"></i>
-      </button>
-      <button type="button" onclick="window.location = '/event/{{ event.id }}/delete';" class="btn btn-outline-danger btn-round">
-      <i class="fas fa-times"></i>
-      </button>
+        <button type="button"
+          onclick="window.location = '/event/{{ event.id }}/modify';"
+          class="btn btn-outline-info btn-round">
+          <i class="fas fa-pen"></i>
+        </button>
+        <button type="button"
+          onclick="window.location = '/event/{{ event.id }}/delete';"
+          class="btn btn-outline-danger btn-round">
+          <i class="fas fa-times"></i>
+        </button>
       {% endif %}
     </div>
   </div>
-</div>
 {% endblock %}
 
 {% block javascripts %}

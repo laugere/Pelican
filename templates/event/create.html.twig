@@ -1,37 +1,48 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div id="content-container" class="gradient-container blur-container marge-box scrollable">
-		<h1>{{ controller_name }}</h1>
-		<div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
-			{{ form_start(form) }}
-			<div class="form-group">
-				<label for="event_name">Nom de l'évènement</label>
-				{{ form_widget(form.name) }}
-			</div>
-			<div class="form-group">
-				<label for="event_description">Description de l'évènement</label>
-				{{ form_widget(form.description) }}
-			</div>
-			<div class="form-group">
-				<label for="event_location">Location de l'évènement</label>
-				{{ form_widget(form.location) }}
-			</div>
-			<div class="form-group">
-				<label for="event_date">Date de l'évènement</label>
-				{{ form_widget(form.date) }}
-			</div>
-			<div class="form-group">
-				<label for="nbParticipant">Nombre de participants</label>
-				{{ form_widget(form.nbParticipant) }}
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-outline-success">{% trans %}button.create{% endtrans %}</button>
-			</div>
-			{{ form_end(form) }}
-		</div>
-	</div>
+  <div id="content-container" class="scrollable">
+    <div class="content-brand">
+      <div class="row">
+        <div class="col-9">
+          <h4 class="content-title">
+            {{ controller_name }}
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="subcontainer scrollbar">
+      {{ form_start(form) }}
+      <div class="form-group">
+        <label for="event_name">Nom de l'évènement</label>
+        {{ form_widget(form.name) }}
+      </div>
+      <div class="form-group">
+        <label for="event_description">Description de l'évènement</label>
+        {{ form_widget(form.description) }}
+      </div>
+      <div class="form-group">
+        <label for="event_location">Location de l'évènement</label>
+        {{ form_widget(form.location) }}
+      </div>
+      <div class="form-group">
+        <label for="event_date">Date de l'évènement</label>
+        {{ form_widget(form.date) }}
+      </div>
+      <div class="form-group">
+        <label for="nbParticipant">Nombre de participants</label>
+        {{ form_widget(form.nbParticipant) }}
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-success">
+          {% trans %}button.create{% endtrans %}
+        </button>
+      </div>
+      {{ form_end(form) }}
+    </div>
+  </div>
 {% endblock %}
 
 {% block javascripts %}
+
 {% endblock %}

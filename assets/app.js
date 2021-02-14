@@ -9,6 +9,7 @@
 import './styles/app.css'
 import './styles/navbar.css'
 import './styles/userNavbar.css'
+import './styles/rightCol.css'
 import './styles/events.css'
 import './styles/community.css'
 import './styles/home.css'

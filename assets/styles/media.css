@@ -1,35 +1,29 @@
 @media (max-width: 1199.98px) {
-  body {
-    background-color: #1A1042;
-    color: white;
-    padding: 0.5vh 2vw;
-  }
-
-  .right-col {
+  #right-col {
     display: none;
-  }
-
-  .main-container {
-    padding: 1rem;
-  }
-
-  .sub-container {
-    margin-left: 0.25rem;
   }
 
   #mainNavbar {
     display: none;
   }
 
-  #mainFrame {
-    background-color: #32275f;
-    border-radius: 25px;
-    border: none;
-    height: 100%;
+  .scrollable {
+    padding-right: 0 !important;
   }
 
-  #content-container {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
+  .event-card {
+    width: 100%;
+  }
+
+  .sub-container {
+    margin-left: 0;
+  }
+  
+  .box-container {
+    padding: 1.25rem;
+  }
+
+  .event-card-footer {
+    top: 65%;
   }
 }

@@ -1,141 +1,78 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-  <div class="row">
-    <div id="content-container"
-      class="col-9 gradient-container blur-container marge-box scrollable">
-      <nav class="navbar navbar-expand-lg gradient-container blur-container"
-        style="border-radius: 10px;">
-        <div class="navbar-brand">
-          <i class="fas fa-calendar-alt fa-sm colored-icon"></i>
-          {% trans %}controllerName.event{% endtrans %}
+  <div id="content-container" class="scrollable">
+    <div class="content-brand">
+      <div class="row">
+        <div class="col-9">
+          <h4 class="content-title">
+            {% trans %}controllerName.event{% endtrans %}
+          </h4>
         </div>
-        <button style="border:none; color: white;"
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#eventPanel"
-          aria-controls="eventPanel"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="eventPanel">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <div class="filter-container">
-                <button id="filter-event-popover"
-                  type="button"
-                  class="btn btn-outline-light filter-button"
-                  data-container="body"
-                  data-toggle="popover"
-                  data-placement="bottom">
-                  <i class="fas fa-sliders-h"></i>
-                  {% trans %}button.filter{% endtrans %}
-                </button>
+        <div class="col-3 content-search">
+          <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="subcontainer scrollbar">
+      {% for event in events %}
+        <div class="event-card"
+          onclick="window.location = '/event/{{ event.id }}/view';"
+          style="background-image: url({{ asset('build/sample.jpg') }});">
+          <div class="avatar-container">
+            <div class="row no-height-row">
+              <div class="col-1">
+                <img class="avatar-img"
+                  src="{{ asset('build/wejdene.jpg') }}"
+                  width="45px"
+                  height="45px" />
               </div>
-            </li>
-            <li class="nav-item">
-              <button type="button"
-                class="btn btn-outline-info"
-                onclick="window.location = '/event/create';">
-                <i class="fas fa-plus-circle"></i>
-                {% trans %}button.create{% endtrans %}
-              </button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="subcontainer scrollbar">
-        {% for event in events %}
-          <div class="event-card" onclick="window.location = '/event/{{ event.id }}/view';">
-            <img src="{{ asset('build/wejdene.jpg') }}"
-              width="70px"
-              height="70px" />
-            <div>
-              <h4 class="card-title">
-                {{ event.name }}
-              </h4>
-              <p>
-                {{ event.location }}
-              </p>
-              <p>
-                {{ event.date|date("d/m/Y") }}
-              </p>
+              <div class="col-11">
+                <p>
+                  Martin
+                </p>
+              </div>
             </div>
           </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="col right-col right-col-mid">
-      <div class="gradient-container blur-container marge-box scrollable">
-        <h5>
-        {% trans %}event.suggestion{% endtrans %}
-        </h5>
-        <div class="subcontainer scrollbar">
+          <div class="event-card-footer">
+            <div class="col">
+              <div class="event-card-title-container">
+                <div class="event-card-title">
+                  {{ event.name }}
+                </div>
+              </div>
+            </div>
+            <div class="row no-height-row">
+              <div class="col-4">
+                <div class="event-card-info-container">
+                  <div class="event-card-info-subcontainer">
+                    <i class="event-card-info-icon fas fa-compass"></i>
+                    {{ event.location }}
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="event-card-info-container">
+                  <div class="event-card-info-subcontainer">
+                    <i class="event-card-info-icon fas fa-calendar-week"></i>
+                    {{ event.date|date('d/m/Y') }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="gradient-container blur-container bottom-row marge-box scrollable">
-        <h5>
-        {% trans %}event.around{% endtrans %}
-        </h5>
-      </div>
+      {% endfor %}
     </div>
   </div>
-  <div id="popover_content_wrapper">
-    <div>
-      <h6>
-        CATÉGORIE
-      </h6>
-      <div class="form-check">
-        <input class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">Aucune</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">Sport</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckChecked" />
-        <label class="form-check-label" for="flexCheckChecked">Culture</label>
-      </div>
-      <hr />
-      <h6>
-        CLASSER PAR
-      </h6>
-      <div class="form-check">
-        <input class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault1" />
-        <label class="form-check-label" for="flexRadioDefault1">
-          Populaire
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          checked />
-        <label class="form-check-label" for="flexRadioDefault2">Récent</label>
-      </div>
-    </div>
-  </div>
+
+  <button type="button"
+    class="btn-create btn btn-info btn-lg rounded-circle"
+    onclick="window.location = '/event/create'">
+    <i class="fas fa-plus"></i>
+  </button>
 {% endblock %}
 
 {% block javascripts %}
-  <script>
-    $('#filter-event-popover').popover({ html: true, content: function () {
-    return $('#popover_content_wrapper').html(); } });
-  </script>
+
 {% endblock %}

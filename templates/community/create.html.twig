@@ -1,8 +1,16 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div id="content-container" class="subcontainer gradient-container blur-container marge-box scrollable">
-		<h1>{{ controller_name }}</h1>
+	<div id="content-container" class="scrollable">
+		<div class="content-brand">
+		<div class="row">
+			<div class="col-9">
+				<h4 class="content-title">
+					{{ controller_name }}
+				</h4>
+			</div>
+		</div>
+		</div>
 		<div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
 			{{ form_start(form, {'attr' : {'id':'form'}}) }}
 			<div class="form-group">
