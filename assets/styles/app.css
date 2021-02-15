@@ -254,4 +254,8 @@ a:hover {
     backdrop-filter: blur(10px);
 }
 
+.no-extra-padding {
+    padding-bottom: 1rem !important;
+}
+
 @import '~bootstrap';

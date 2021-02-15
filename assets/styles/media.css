@@ -26,7 +26,7 @@
         right: 1rem;
     }
     #content-container {
-        padding-top: 0;
+        padding-top: 1rem;
     }
     .view-footer {
         bottom: 5rem;
@@ -36,5 +36,11 @@
     }
     #mobile-navbar {
         display: block;
+    }
+    .content-brand {
+        margin-bottom: 1rem;
+    }
+    .content-brand h4 {
+        margin-bottom: 0;
     }
 }
