@@ -42,6 +42,7 @@ security:
     title: Inscription
     email: Email
     emailspan: Nous ne partagerons jamais votre courriel avec quelqu'un d'autre.
+    pseudo: Pseudonyme
     city: Ville
     password: Mot de passe
     agree: Accepter les conditions

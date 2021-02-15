@@ -42,6 +42,7 @@ security:
     title: Registration
     email: Email
     emailspan: We will never share your email with anyone else.
+    pseudo: Pseudo
     city: City
     password: Password
     agree: Agree terms

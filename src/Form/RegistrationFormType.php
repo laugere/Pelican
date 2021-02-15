@@ -26,6 +26,10 @@ class RegistrationFormType extends AbstractType
                 'id' => 'inputCity',
                 'placeholder' => 'Ville'
             )])
+            ->add('pseudo', null, ['label' => false, 'attr' => array(
+                'id' => 'inpuPseudo',
+                'placeholder' => 'Pseudonyme'
+            )])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
