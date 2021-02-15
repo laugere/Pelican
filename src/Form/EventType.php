@@ -53,12 +53,12 @@ class EventType extends AbstractType
                 'label' => 'image de fond de l\'évenement',
                 'constraints' => [
                     new File([
-                        'maxSize' => '2048k',
+                        'maxSize' => '1024k',
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                        'mimeTypesMessage' => 'Please upload a valid image',
                     ])
                 ]
             ]);
