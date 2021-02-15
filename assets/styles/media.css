@@ -22,10 +22,16 @@
         padding-right: 0;
     }
     .btn-create {
-        bottom: 1rem;
+        bottom: 5rem;
         right: 1rem;
     }
     #content-container {
         padding-top: 1rem;
+    }
+    .view-footer {
+        bottom: 5rem;
+    }
+    .scrollbar {
+        padding-bottom: 10rem;
     }
 }

@@ -1,48 +1,32 @@
-<nav id="mobile-navbar" class="navbar navbar-expand-lg">
-    <button style="border:none; color: white; z-index: 999;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#userNavBarPanel" aria-controls="userNavBarPanel" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-    </button>
+<nav id="mobile-navbar" class="navbar fixed-bottom">
     <div class="user-container-mobile">
         <img class="avatar-img" src="{{ asset('build/wejdene.jpg') }}" height="100%">
-        <p class="avatar-user-name">
-            {{ app.user.username }}
-        </p>
-        <p class="avatar-info">
-            test
-        </p>
     </div>
-    <div class="collapse navbar-collapse" id="userNavBarPanel">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/user">
-                    <i class="fas fa-user fa-lg"></i> {% trans %}menu.user{% endtrans %}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-home fa-lg"></i> {% trans %}menu.home{% endtrans %}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/event">
-                    <i class="fas fa-calendar-alt fa-lg"></i> {% trans %}menu.event{% endtrans %}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/community">
-                    <i class="fas fa-user-friends fa-lg"></i> {% trans %}menu.community{% endtrans %}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/settings">
-                    <i class="fas fa-cog fa-lg"></i> {% trans %}menu.settings{% endtrans %}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link bottom-icon" href="/logout">
-                    <i class="fas fa-sign-out-alt fa-lg"></i> {% trans %}menu.logout{% endtrans %}
-                </a>
-            </li>
-        </ul>
+    <div class="row mobile-navbar-menu-container">
+        <div class="col mobile-navbar-manu-item">
+            <a class="nav-link" href="/user">
+                <i class="fas fa-user fa-lg"></i>
+            </a>
+        </div>
+        <div class="col mobile-navbar-manu-item">
+            <a class="nav-link" href="/">
+                <i class="fas fa-home fa-lg"></i>
+            </a>
+        </div>
+        <div class="col mobile-navbar-manu-item">
+            <a class="nav-link" href="/event">
+                <i class="fas fa-calendar-alt fa-lg"></i>
+            </a>
+        </div>
+        <div class="col mobile-navbar-manu-item">
+            <a class="nav-link" href="/community">
+                <i class="fas fa-user-friends fa-lg"></i>
+            </a>
+        </div>
+        <div class="col mobile-navbar-manu-item">
+            <a class="nav-link" href="/settings">
+                <i class="fas fa-cog fa-lg"></i>
+            </a>
+        </div>
     </div>
 </nav>
