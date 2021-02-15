@@ -24,11 +24,29 @@ class EventRepository extends ServiceEntityRepository
         $datetime = new \DateTime("now");
 
         return $this->createQueryBuilder('e')
+        ->select('e', 'u.')
             ->andWhere('e.date_suppression > :date')
             ->orWhere('e.date_suppression is NULL')
             ->setParameter('date', $datetime)
             ->orderBy('e.date', 'ASC')
             ->setMaxResults(20)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findCommunityGoTo($userId)
+    {
+        return $this->createQueryBuilder('g')
+            ->select('e')
+            ->innerJoin(
+                Event::class,    // Entity
+                'e',               // Alias
+                Join::WITH,        // Join type
+                'g.idEvent = e.id' // Join columns
+            )
+            ->where('g.idUser = :id')
+            ->setParameter('id', $userId)
+            ->orderBy('e.date', 'ASC')
             ->getQuery()
             ->getResult();
     }
