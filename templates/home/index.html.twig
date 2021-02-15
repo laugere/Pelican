@@ -1,78 +1,31 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-  <div id="content-container" class="scrollable">
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
     <div class="content-brand">
-      <div class="row">
-        <div class="col-9">
-          <h4 class="content-title">
-            {% trans %}controllerName.home{% endtrans %}
-          </h4>
+        <div class="row">
+            <div class="col-9">
+                <h4 class="content-title">
+                    {% trans %}controllerName.home{% endtrans %}
+                </h4>
+            </div>
+            <div class="col-3 content-search">
+                <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
+            </div>
         </div>
-        <div class="col-3 content-search">
-          <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
-        </div>
-      </div>
     </div>
     <div class="subcontainer scrollbar">
-      <h5 class="text-center">
-        {% trans %}home.nextEvent{% endtrans %}
-      </h5>
-      {% for event in events %}
-        <div class="event-card"
-          onclick="window.location = '/event/{{ event.id }}/view';"
-          style="background-image: url({{ asset('build/sample.jpg') }});">
-          <div class="avatar-container">
-            <div class="row no-height-row">
-              <div class="col-1">
-                <img class="avatar-img"
-                  src="{{ asset('build/wejdene.jpg') }}"
-                  width="45px"
-                  height="45px" />
-              </div>
-              <div class="col-11">
-                <p>
-                  Martin
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="event-card-footer">
-            <div class="col">
-              <div class="event-card-title-container">
-                <div class="event-card-title">
-                  {{ event.name }}
-                </div>
-              </div>
-            </div>
-            <div class="row no-height-row">
-              <div class="col-lg-4">
-                <div class="event-card-info-container">
-                  <div class="event-card-info-subcontainer">
-                    <i class="event-card-info-icon fas fa-compass"></i>
-                    {{ event.location }}
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="event-card-info-container">
-                  <div class="event-card-info-subcontainer">
-                    <i class="event-card-info-icon fas fa-calendar-week"></i>
-                    {{ event.date|date('d/m/Y') }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
+        <h5 class="text-center">
+            {% trans %}home.nextEvent{% endtrans %}
+        </h5>
+        {% for event in events %} {% include 'vues/EventCard.html.twig' %} {% endfor %}
     </div>
-  </div>
-{% endblock %}
-
-{% block javascripts %}
-  <script>
-    $('#filter-event-popover').popover({ html: true, content: function () {
-    return $('#popover_content_wrapper').html(); } });
-  </script>
+</div>
+{% endblock %} {% block javascripts %}
+<script>
+    $('#filter-event-popover').popover({
+        html: true,
+        content: function() {
+            return $('#popover_content_wrapper').html();
+        }
+    });
+</script>
 {% endblock %}
