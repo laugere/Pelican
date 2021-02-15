@@ -37,7 +37,7 @@ class EventType extends AbstractType
                 )
             ])
             ->add('date', DateType::class, [
-                'label' => 'Date', 
+                'label' => 'Date',
                 'widget' => 'single_text',
                 'attr' => array(
                     'placeholder' => 'Date de l\'événement'
@@ -48,20 +48,30 @@ class EventType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Nombre de participants'
                 )
-            ])
-            ->add('imageFileName', FileType::class, [
-                'label' => 'image de fond de l\'évenement',
-                'constraints' => [
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                        ],
-                        'mimeTypesMessage' => 'Please upload a valid image',
-                    ])
-                ]
             ]);
+
+        if (in_array('attr', $options)) {
+            if ($options['attr']) {
+                if (in_array('image', $options['attr'])) {
+                    if ($options['attr']['image']) {
+                        $builder->add('imageFileName', FileType::class, [
+                            'required' => false,
+                            'label' => 'image de fond de l\'évenement',
+                            'constraints' => [
+                                new File([
+                                    'maxSize' => '1024k',
+                                    'mimeTypes' => [
+                                        'image/jpeg',
+                                        'image/png',
+                                    ],
+                                    'mimeTypesMessage' => 'Please upload a valid image',
+                                ])
+                            ]
+                        ]);
+                    }
+                }
+            }
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
