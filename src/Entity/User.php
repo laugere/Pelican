@@ -36,6 +36,11 @@ class User implements UserInterface
     private $city;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $pseudo;
+
+    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -66,6 +71,18 @@ class User implements UserInterface
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Event;
 use App\Entity\GoToEvent;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query\Expr\Join;
@@ -24,12 +25,18 @@ class GoToEventRepository extends ServiceEntityRepository
     public function findCommunityGoTo($userId)
     {
         return $this->createQueryBuilder('g')
-            ->select('e')
+            ->select('e', 'u.pseudo')
             ->innerJoin(
                 Event::class,    // Entity
                 'e',               // Alias
                 Join::WITH,        // Join type
                 'g.idEvent = e.id' // Join columns
+            )
+            ->innerJoin(
+                User::class,    // Entity
+                'u',               // Alias
+                Join::WITH,        // Join type
+                'e.idCreator = u.id' // Join columns
             )
             ->where('g.idUser = :id')
             ->setParameter('id', $userId)

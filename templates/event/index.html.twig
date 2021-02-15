@@ -13,10 +13,13 @@
         </div>
     </div>
     <div class="subcontainer scrollbar no-extra-padding">
+        <h5 class="text-center">
+            {% trans %}event.allEvent{% endtrans %}
+        </h5>
         {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %}
     </div>
 </div>
 
 <button type="button" class="btn-create btn btn-info btn-lg rounded-circle" onclick="window.location = '/event/create'">
-  <i class="fas fa-plus"></i>
+    <i class="fas fa-plus"></i>
 </button> {% endblock %} {% block javascripts %} {% endblock %}

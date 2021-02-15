@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -24,6 +26,13 @@ class EventRepository extends ServiceEntityRepository
         $datetime = new \DateTime("now");
 
         return $this->createQueryBuilder('e')
+            ->select('e', 'u.pseudo')
+            ->innerJoin(
+                User::class,    // Entity
+                'u',               // Alias
+                Join::WITH,        // Join type
+                'e.idCreator = u.id' // Join columns
+            )
             ->andWhere('e.date_suppression > :date')
             ->orWhere('e.date_suppression is NULL')
             ->setParameter('date', $datetime)

@@ -31,6 +31,7 @@ home:
   followCommunity: Followed communities
 
 event:
+  allEvent: All event
   suggestion: Suggestion
   around: Around you
 
@@ -42,6 +43,7 @@ security:
     title: Registration
     email: Email
     emailspan: We will never share your email with anyone else.
+    pseudo: Pseudo
     city: City
     password: Password
     agree: Agree terms
