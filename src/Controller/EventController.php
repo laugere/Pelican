@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class EventController extends AbstractController
 {
@@ -37,7 +38,7 @@ class EventController extends AbstractController
     {
         $user = $this->getuser();
         $event = new Event();
-        $form = $this->createForm(EventType::class, $event);
+        $form = $this->createForm(EventType::class, $event, array('attr' => array('image' => true)));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $brochureFile */
@@ -82,13 +83,13 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/modify", name="event_modify")
      */
-    public function modify($eventId, Request $request, EventRepository $eventRepo, ObjectManager $objectManager): Response
+    public function modify($eventId, Request $request, EventRepository $eventRepo, ObjectManager $objectManager, FileUploader $fileUploader): Response
     {
         $event = $eventRepo->findOneById($eventId);
         $user = $this->getuser();
 
         if ($event->getIdCreator() == $user->getId()) {
-            $form = $this->createForm(EventType::class, $event);
+            $form = $this->createForm(EventType::class, $event, array('attr' => array('image' => false)));
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $event->setDateModification(new \DateTime());
