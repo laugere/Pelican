@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\FileUploader;
 use App\Entity\Event;
 use App\Entity\GoToEvent;
 use App\Form\EventType;
@@ -9,6 +10,7 @@ use App\Repository\EventRepository;
 use App\Repository\GoToEventRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,13 +32,20 @@ class EventController extends AbstractController
     /**
      * @Route("/event/create", name="event_create")
      */
-    public function create(Event $event = null, Request $request, ObjectManager $objectManager): Response
+    public function create(Event $event = null, Request $request, ObjectManager $objectManager, FileUploader $fileUploader): Response
     {
         $user = $this->getuser();
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $brochureFile */
+            $file = $form->get('imageFileName')->getData();
+            if ($file) {
+                $newFileName = $fileUploader->upload($file);
+                $event->setImageFileName($newFileName);
+            }
+
             $event->setDateCreation(new \DateTime());
             $event->setDateModification(new \DateTime());
             $event->setIdCreator($user->getId());

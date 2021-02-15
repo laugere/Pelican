@@ -62,6 +62,11 @@ class Event
      */
     private $idCreator;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $imageFileName;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -184,5 +189,17 @@ class Event
     public function setIdCreator($idCreator): void
     {
         $this->idCreator = $idCreator;
+    }
+
+    public function getImageFileName()
+    {
+        return $this->imageFileName;
+    }
+
+    public function setImageFileName($imageFileName)
+    {
+        $this->imageFileName = $imageFileName;
+
+        return $this;
     }
 }

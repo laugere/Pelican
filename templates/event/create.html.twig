@@ -1,48 +1,40 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-  <div id="content-container" class="scrollable">
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
     <div class="content-brand">
-      <div class="row">
-        <div class="col-9">
-          <h4 class="content-title">
-            {{ controller_name }}
-          </h4>
+        <div class="row">
+            <div class="col-9">
+                <h4 class="content-title">
+                    {{ controller_name }}
+                </h4>
+            </div>
         </div>
-      </div>
     </div>
     <div class="subcontainer scrollbar">
-      {{ form_start(form) }}
-      <div class="form-group">
-        <label for="event_name">Nom de l'évènement</label>
-        {{ form_widget(form.name) }}
-      </div>
-      <div class="form-group">
-        <label for="event_description">Description de l'évènement</label>
-        {{ form_widget(form.description) }}
-      </div>
-      <div class="form-group">
-        <label for="event_location">Location de l'évènement</label>
-        {{ form_widget(form.location) }}
-      </div>
-      <div class="form-group">
-        <label for="event_date">Date de l'évènement</label>
-        {{ form_widget(form.date) }}
-      </div>
-      <div class="form-group">
-        <label for="nbParticipant">Nombre de participants</label>
-        {{ form_widget(form.nbParticipant) }}
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-outline-success">
+        {{ form_start(form) }}
+        <div class="form-group">
+            <label for="event_name">Nom de l'évènement</label> {{ form_widget(form.name) }}
+        </div>
+        <div class="form-group">
+            <label for="event_description">Description de l'évènement</label> {{ form_widget(form.description) }}
+        </div>
+        <div class="form-group">
+            <label for="event_location">Location de l'évènement</label> {{ form_widget(form.location) }}
+        </div>
+        <div class="form-group">
+            <label for="event_date">Date de l'évènement</label> {{ form_widget(form.date) }}
+        </div>
+        <div class="form-group">
+            <label for="nbParticipant">Nombre de participants</label> {{ form_widget(form.nbParticipant) }}
+        </div>
+        <div class="form-group">
+            <label for="event_image">Image de l'évenement</label> {{ form_widget(form.imageFileName) }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-success">
           {% trans %}button.create{% endtrans %}
         </button>
-      </div>
-      {{ form_end(form) }}
+        </div>
+        {{ form_end(form) }}
     </div>
-  </div>
-{% endblock %}
-
-{% block javascripts %}
-
-{% endblock %}
+</div>
+{% endblock %} {% block javascripts %} {% endblock %}
