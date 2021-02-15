@@ -1,71 +1,53 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-  <div id="content-container" class="scrollable">
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
     <div class="subcontainer scrollbar">
-      <h1>
-        {{ event.name }}
-      </h1>
-      <h5>
-        Le {{ event.date|format_datetime('full', 'none', locale = 'fr') }}
-      </h5>
-      <p>
-        {{ event.nbParticipant }} Personnes
-      </p>
-      <hr />
-      <p>
-        {{ event.description }}
-      </p>
-      <br /><br />
+        <h1>
+            {{ event.name }}
+        </h1>
+        <h5>
+            Le {{ event.date|format_datetime('full', 'none', locale = 'fr') }}
+        </h5>
+        <p>
+            {{ event.nbParticipant }} Personnes
+        </p>
+        <hr />
+        <p>
+            {{ event.description }}
+        </p>
+        <br /><br />
     </div>
-    <div id="event-{{ event.id }}"
-      class="form-group view-footer"
-      style="margin-bottom: 0 !important;">
-      {% if isIn %}
-        <button type="button"
-          onclick="onClickBtnGoToEvent('{{
+    <div id="event-{{ event.id }}">
+        <div class="form-group view-footer" style="margin-bottom: 0 !important;">
+            {% if isIn %}
+            <button type="button" onclick="onClickBtnGoToEvent('{{
           path(
             'event_goto',
             {
               eventId: event.id
             }
           )
-          }}', '{{ event.id }}');"
-          class="btn btn-outline-danger">
+          }}', '{{ event.id }}');" class="btn btn-outline-danger">
           <i class="fas fa-times"></i>
           Ne plus participer
-        </button>
-      {% else %}
-        <button type="button"
-          onclick="onClickBtnGoToEvent('{{
+        </button> {% else %}
+            <button type="button" onclick="onClickBtnGoToEvent('{{
           path(
             'event_goto',
             {
               eventId: event.id
             }
           )
-          }}', '{{ event.id }}');"
-          class="btn btn-outline-warning">
+          }}', '{{ event.id }}');" class="btn btn-outline-warning">
           <i class="fas fa-arrow-right"></i>
           Participer
-        </button>
-      {% endif %}
-      {% if event.idCreator == app.user.id %}
-        <button type="button"
-          onclick="window.location = '/event/{{ event.id }}/modify';"
-          class="btn btn-outline-info btn-round">
+        </button> {% endif %} {% if event.idCreator == app.user.id %}
+            <button type="button" onclick="window.location = '/event/{{ event.id }}/modify';" class="btn btn-outline-info btn-round">
           <i class="fas fa-pen"></i>
         </button>
-        <button type="button"
-          onclick="window.location = '/event/{{ event.id }}/delete';"
-          class="btn btn-outline-danger btn-round">
+            <button type="button" onclick="window.location = '/event/{{ event.id }}/delete';" class="btn btn-outline-danger btn-round">
           <i class="fas fa-times"></i>
-        </button>
-      {% endif %}
+        </button> {% endif %}
+        </div>
     </div>
-  </div>
-{% endblock %}
-
-{% block javascripts %}
-
-{% endblock %}
+</div>
+{% endblock %} {% block javascripts %} {% endblock %}

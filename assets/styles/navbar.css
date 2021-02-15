@@ -42,6 +42,7 @@
 /* mobile navbar in develop */
 
 #mobile-navbar {
+    display: none;
     margin: 0.25rem;
     min-height: 3.5rem;
     border-radius: 1rem;

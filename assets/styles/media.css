@@ -26,12 +26,15 @@
         right: 1rem;
     }
     #content-container {
-        padding-top: 1rem;
+        padding-top: 0;
     }
     .view-footer {
         bottom: 5rem;
     }
     .scrollbar {
         padding-bottom: 10rem;
+    }
+    #mobile-navbar {
+        display: block;
     }
 }
