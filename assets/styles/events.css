@@ -3,6 +3,22 @@
     height: 100%;
 }
 
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+    @media {
+        .box-container .row {
+            height: auto;
+        }
+    }
+}
+
+@media not all and (min-resolution:.001dpcm) {
+    @media {
+        .box-container .row {
+            height: auto;
+        }
+    }
+}
+
 .event-card {
     position: relative;
     display: block;
