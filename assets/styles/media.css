@@ -25,13 +25,17 @@
         bottom: 5rem;
         right: 1rem;
     }
-    #content-container {
+    #content-container .content-brand {
         padding-top: 1rem;
+    }
+    #content-container {
+        padding-top: 0rem;
     }
     .view-footer {
         bottom: 5rem;
     }
     .scrollbar {
+        padding-top: 1.5rem;
         padding-bottom: 10rem;
     }
     #mobile-navbar {
