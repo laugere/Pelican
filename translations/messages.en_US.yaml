@@ -31,6 +31,7 @@ home:
   followCommunity: Followed communities
 
 event:
+  allEvent: All event
   suggestion: Suggestion
   around: Around you
 

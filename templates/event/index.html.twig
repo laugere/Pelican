@@ -13,6 +13,9 @@
         </div>
     </div>
     <div class="subcontainer scrollbar no-extra-padding">
+        <h5 class="text-center">
+            {% trans %}event.allEvent{% endtrans %}
+        </h5>
         {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %}
     </div>
 </div>
