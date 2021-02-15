@@ -7,11 +7,13 @@ body {
 /* Login Frame */
 
 #loginFrame {
-    background-color: #32275f5e;
+    background-color: #ffffff31;
     border-radius: 25px;
     border: none;
     padding: 1.25rem;
-    margin: 4vh 2vw;
+    margin: auto;
+    margin-top: 1.5rem;
+    width: 50%;
 }
 
 

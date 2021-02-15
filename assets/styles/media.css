@@ -47,4 +47,8 @@
     .content-brand h4 {
         margin-bottom: 0;
     }
+    #loginFrame {
+        margin: 4vh 2vw;
+        width: auto;
+    }
 }
