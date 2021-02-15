@@ -23,6 +23,7 @@ class EventController extends AbstractController
         $events = $event->findRecent();
 
         return $this->render('event/index.html.twig', [
+            'activeController' => 'Event',
             'events' => $events
         ]);
     }
@@ -48,6 +49,7 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/create.html.twig', [
+            'activeController' => 'Event',
             'controller_name' => 'Organiser un événement',
             'form' => $form->createView()
         ]);
@@ -62,6 +64,7 @@ class EventController extends AbstractController
         $user = $this->getuser();
         $isIn = $goToEventRepo->userGoToEvent($user->getId(), $eventId);
         return $this->render('event/view.html.twig', [
+            'activeController' => 'Event',
             'event' => $event,
             'isIn' => $isIn
         ]);
@@ -88,6 +91,7 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/modify.html.twig', [
+            'activeController' => 'Event',
             'controller_name' => 'Modifier un événement',
             'event' => $event,
             'form' => $form->createView()

@@ -9,27 +9,27 @@
 		<ul class="navbar-nav flex-column">
 			<li class="nav-item">
 				<a class="nav-link" href="/user">
-					<i class="fas fa-user fa-lg"></i>
+					<i class="fas fa-user fa-lg {{ activeController == "User" ? 'active' : '' }}"></i>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/">
-					<i class="fas fa-home fa-lg"></i>
+					<i class="fas fa-home fa-lg {{ activeController == "Home" ? 'active' : '' }}"></i>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/event">
-					<i class="fas fa-calendar-alt fa-lg"></i>
+					<i class="fas fa-calendar-alt fa-lg {{ activeController == "Event" ? 'active' : '' }}"></i>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/community">
-					<i class="fas fa-user-friends fa-lg"></i>
+					<i class="fas fa-user-friends fa-lg {{ activeController == "Community" ? 'active' : '' }}"></i>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/settings">
-					<i class="fas fa-cog fa-lg"></i>
+					<i class="fas fa-cog fa-lg {{ activeController == "Settings" ? 'active' : '' }}"></i>
 				</a>
 			</li>
 		</ul>

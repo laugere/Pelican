@@ -29,6 +29,7 @@ class CommunityController extends AbstractController
         $communitys = $community->findRecent();
 
         return $this->render('community/index.html.twig', [
+            'activeController' => 'Community',
             'communitys' => $communitys,
             'isInCommunitys' => $isInCommunitys
         ]);
@@ -53,6 +54,7 @@ class CommunityController extends AbstractController
         }
 
         return $this->render('community/create.html.twig', [
+            'activeController' => 'Community',
             'controller_name' => 'Créer une communauté',
             'form' => $form->createView()
         ]);

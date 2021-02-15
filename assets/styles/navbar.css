@@ -38,6 +38,10 @@
     border: none;
 }
 
+.active{
+    color: white;
+}
+
 
 /* mobile navbar in develop */
 
