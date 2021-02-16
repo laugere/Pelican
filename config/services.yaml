@@ -13,9 +13,15 @@ vich_uploader:
         event_images:
             uri_prefix:         '%app.path.event_images%'
             upload_destination: '%kernel.project_dir%/public%app.path.event_images%'
+            namer:
+                service: Vich\UploaderBundle\Naming\HashNamer
+                options: { algorithm: 'sha256', length: 50 }
         user_images:
             uri_prefix:         '%app.path.user_images%'
             upload_destination: '%kernel.project_dir%/public%app.path.user_images%'
+            namer:
+                service: Vich\UploaderBundle\Naming\HashNamer
+                options: { algorithm: 'sha256', length: 50 }
         
 
 

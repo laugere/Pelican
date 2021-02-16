@@ -46,6 +46,7 @@ security:
     pseudo: Pseudo
     city: City
     password: Password
+    image: Add avatar
     agree: Agree terms
     alreadyaccount: Already have an account ?
   login:

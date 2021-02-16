@@ -46,6 +46,7 @@ security:
     pseudo: Pseudonyme
     city: Ville
     password: Mot de passe
+    image: Ajouter un avatar
     agree: Accepter les conditions
     alreadyaccount: Vous avez déjà un compte ?
   login:
