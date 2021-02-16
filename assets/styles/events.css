@@ -106,10 +106,13 @@
 /* View event */
 
 .event-img {
+    height: 30rem;
     width: 100%;
     border-radius: 20px;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    background-size: cover;
+    background-position: center;
 }
 
 .event-view-action {

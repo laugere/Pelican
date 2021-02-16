@@ -10,7 +10,9 @@
         <p>
             {{ event.nbParticipant }} Personnes
         </p>
-        <img class="event-img" src="{{ asset('uploads/images/events/' ~ event.image) }}" />
+        <a href="{{ asset('uploads/images/events/' ~ event.image) }}" data-toggle="lightbox">
+            <div class="event-img" style="background-image: url({{ asset('uploads/images/events/' ~ event.image) }});"></div>
+        </a>
         <div id="event-{{ event.id }}">
             <div class="form-group event-view-action" style="margin-bottom: 0 !important;">
                 {% if isIn %}
