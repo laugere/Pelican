@@ -17,7 +17,7 @@
             {% trans %}home.nextEvent{% endtrans %}
         </h5>
         {% if events is empty %}
-        <h6 class="centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %} {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %} {% endif %}
+        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %} {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
 {% endblock %} {% block javascripts %}
