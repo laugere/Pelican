@@ -26,7 +26,7 @@ class EventRepository extends ServiceEntityRepository
         $datetime = new \DateTime("now");
 
         return $this->createQueryBuilder('e')
-            ->select('e', 'u.pseudo')
+            ->select('e', 'u.pseudo', 'u.image')
             ->innerJoin(
                 User::class,    // Entity
                 'u',               // Alias

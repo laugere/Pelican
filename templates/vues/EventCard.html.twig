@@ -1,6 +1,6 @@
-<div class="event-card" onclick="window.location = '/event/{{ event[0].id }}/view';" style="background-image: url({{ asset('uploads/images/products/' ~ event[0].image) }});background-size: cover;">
+<div class="event-card" onclick="window.location = '/event/{{ event[0].id }}/view';" style="background-image: url({{ asset('uploads/images/events/' ~ event[0].image) }});background-size: cover;">
     <div class="avatar-container">
-        <img class="avatar-img" src="{{ asset('build/wejdene.jpg') }}" width="45px" height="45px" />
+        <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ event.image) }}" width="45px" height="45px" />
         <p class="avatar-user-name">
             {{ event.pseudo }}
         </p>
