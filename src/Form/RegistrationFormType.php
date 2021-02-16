@@ -53,7 +53,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('imageFile', VichImageType::class, [
-                'required' => false,
+                'required' => true,
                 'allow_delete' => false,
                 'delete_label' => false,
                 'download_label' => false,
