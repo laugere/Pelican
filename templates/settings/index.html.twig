@@ -1,38 +1,30 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-  <div id="content-container" class="scrollable">
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
     <div class="content-brand">
-      <div class="row">
-        <div class="col-9">
-          <h4 class="content-title">
-            {% trans %}controllerName.settings{% endtrans %}
-          </h4>
+        <div class="row">
+            <div class="col-9">
+                <h4 class="content-title">
+                    {% trans %}controllerName.settings{% endtrans %}
+                </h4>
+            </div>
+            <div class="col-3 content-search">
+                <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
+            </div>
         </div>
-        <div class="col-3 content-search">
-          <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
-        </div>
-      </div>
     </div>
-    <div class="subcontainer scrollbar"
-      style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
-      {{ form_start(form) }}
-      <div class="form-group">
-        <label for="event_name">
+    <div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
+        {{ form_start(form) }}
+        <div class="form-group">
+            <label for="event_name">
           {% trans %}settings.language{% endtrans %}
-        </label>
-        {{ form_widget(form.language) }}
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-outline-success">
+        </label> {{ form_widget(form.language) }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">
           {% trans %}button.save{% endtrans %}
         </button>
-      </div>
-      {{ form_end(form) }}
+        </div>
+        {{ form_end(form) }}
     </div>
-  </div>
-{% endblock %}
-
-{% block javascripts %}
-
-{% endblock %}
+</div>
+{% endblock %} {% block javascripts %} {% endblock %}
