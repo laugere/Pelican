@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
+ * @Vich\Uploadable
  */
 class Event
 {
@@ -63,9 +66,16 @@ class Event
     private $idCreator;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
+     * @var string
      */
-    private $imageFileName;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     public function getId(): ?int
     {
@@ -191,15 +201,28 @@ class Event
         $this->idCreator = $idCreator;
     }
 
-    public function getImageFileName()
+    public function getImageFile()
     {
-        return $this->imageFileName;
+        return $this->imageFile;
     }
 
-    public function setImageFileName($imageFileName)
+    public function setImageFile(File $imageFile = null)
     {
-        $this->imageFileName = $imageFileName;
+        $this->imageFile = $imageFile;
 
-        return $this;
+        if ($imageFile) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
     }
 }

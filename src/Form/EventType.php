@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\File;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EventType extends AbstractType
 {
@@ -48,30 +48,16 @@ class EventType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Nombre de participants'
                 )
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => false,
+                'delete_label' => false,
+                'download_label' => false,
+                'download_uri' => false,
+                'image_uri' => false,
+                'asset_helper' => false,
             ]);
-
-        if (in_array('attr', $options)) {
-            if ($options['attr']) {
-                if (in_array('image', $options['attr'])) {
-                    if ($options['attr']['image']) {
-                        $builder->add('imageFileName', FileType::class, [
-                            'required' => false,
-                            'label' => 'image de fond de l\'évenement',
-                            'constraints' => [
-                                new File([
-                                    'maxSize' => '1024k',
-                                    'mimeTypes' => [
-                                        'image/jpeg',
-                                        'image/png',
-                                    ],
-                                    'mimeTypesMessage' => 'Please upload a valid image',
-                                ])
-                            ]
-                        ]);
-                    }
-                }
-            }
-        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

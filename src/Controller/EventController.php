@@ -33,19 +33,13 @@ class EventController extends AbstractController
     /**
      * @Route("/event/create", name="event_create")
      */
-    public function create(Event $event = null, Request $request, ObjectManager $objectManager, FileUploader $fileUploader): Response
+    public function create(Event $event = null, Request $request, ObjectManager $objectManager): Response
     {
         $user = $this->getuser();
         $event = new Event();
-        $form = $this->createForm(EventType::class, $event, array('attr' => array('image' => true)));
+        $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $brochureFile */
-            $file = $form->get('imageFileName')->getData();
-            if ($file) {
-                $newFileName = $fileUploader->upload($file);
-                $event->setImageFileName($newFileName);
-            }
 
             $event->setDateCreation(new \DateTime());
             $event->setDateModification(new \DateTime());
@@ -80,13 +74,13 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/modify", name="event_modify")
      */
-    public function modify($eventId, Request $request, EventRepository $eventRepo, ObjectManager $objectManager, FileUploader $fileUploader): Response
+    public function modify($eventId, Request $request, EventRepository $eventRepo, ObjectManager $objectManager): Response
     {
         $event = $eventRepo->findOneById($eventId);
         $user = $this->getuser();
 
         if ($event->getIdCreator() == $user->getId()) {
-            $form = $this->createForm(EventType::class, $event, array('attr' => array('image' => false)));
+            $form = $this->createForm(EventType::class, $event);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $event->setDateModification(new \DateTime());

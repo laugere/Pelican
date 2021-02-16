@@ -1,29 +1,23 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-	<div id="content-container" class="scrollable">
-		<div class="content-brand">
-		<div class="row">
-			<div class="col-9">
-				<h4 class="content-title">
-					{{ controller_name }}
-				</h4>
-			</div>
-		</div>
-		</div>
-		<div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
-			{{ form_start(form, {'attr' : {'id':'form'}}) }}
-			<div class="form-group">
-				<label for="community_name">Nom de la communauté</label>
-				{{ form_widget(form.name) }}
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-outline-success">Créer</button>
-			</div>
-			{{ form_end(form) }}
-		</div>
-	</div>
-{% endblock %}
-
-{% block javascripts %}
-{% endblock %}
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
+    <div class="content-brand">
+        <div class="row">
+            <div class="col-9">
+                <h4 class="content-title">
+                    {{ controller_name }}
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
+        {{ form_start(form, {'attr' : {'id':'form'}}) }}
+        <div class="form-group">
+            <label for="community_name">Nom de la communauté</label> {{ form_widget(form.name) }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Créer</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %} {% block javascripts %} {% endblock %}
