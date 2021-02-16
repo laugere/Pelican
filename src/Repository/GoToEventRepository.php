@@ -25,7 +25,7 @@ class GoToEventRepository extends ServiceEntityRepository
     public function findCommunityGoTo($userId)
     {
         return $this->createQueryBuilder('g')
-            ->select('e', 'u.pseudo')
+            ->select('e', 'u.pseudo', 'u.image')
             ->innerJoin(
                 Event::class,    // Entity
                 'e',               // Alias
