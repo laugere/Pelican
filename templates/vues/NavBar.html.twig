@@ -1,44 +1,42 @@
 <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark flex-column">
-	<a class="navbar-brand top-icon" href="#">
-		<img src="{{ asset('build/icon/color/512.png') }}" width="50px" height="50px" class="d-inline-block align-top" alt="Icon">
-	</a>
-	<button style="border:none" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand top-icon" href="/">
+        <img src="{{ asset('build/icon/color/512.png') }}" width="50px" height="50px" class="d-inline-block align-top" alt="Icon">
+    </a>
+    <button style="border:none" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<i class="fas fa-bars"></i>
 	</button>
-	<div id="navbarNav" class="collapse navbar-collapse" style="align-items: flex-start; margin-top: 1.5rem;">
-		<ul class="navbar-nav flex-column">
-			<li class="nav-item">
-				<a class="nav-link" href="/user">
-					<i class="fas fa-user fa-lg"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/">
-					<i class="fas fa-home fa-lg"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/event">
-					<i class="fas fa-calendar-alt fa-lg"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/community">
-					<i class="fas fa-user-friends fa-lg"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/settings">
-					<i class="fas fa-cog fa-lg"></i>
-				</a>
-			</li>
-		</ul>
-	</div>
-	<a class="navbar-brand bottom-icon" href="/logout">
-		<i class="fas fa-sign-out-alt fa-lg"></i>
-	</a>
+    <div id="navbarNav" class="collapse navbar-collapse" style="align-items: flex-start; margin-top: 1.5rem;">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/user">
+                    <i class="fas fa-user fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/event">
+                    <i class="fas fa-calendar-alt fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/community">
+                    <i class="fas fa-user-friends fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/settings">
+                    <i class="fas fa-cog fa-lg"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a class="navbar-brand bottom-icon" href="/logout">
+        <i class="fas fa-sign-out-alt fa-lg"></i>
+    </a>
 </nav>
 
-{% block javascripts %}
-
-{% endblock %}
+{% block javascripts %} {% endblock %}
