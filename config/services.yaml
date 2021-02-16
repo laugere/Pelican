@@ -8,7 +8,6 @@ parameters:
     app.path.product_images: /uploads/images/products
         
 vich_uploader:
-    # ...
     mappings:
         product_images:
             uri_prefix:         '%app.path.product_images%'
