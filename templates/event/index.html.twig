@@ -16,7 +16,8 @@
         <h5 class="text-center">
             {% trans %}event.allEvent{% endtrans %}
         </h5>
-        {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %}
+        {% if events is null %}
+        <p>{% trans %}message.nocontent{% endtrans %}</p>{% else %} {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
 

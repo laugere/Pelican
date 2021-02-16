@@ -7,6 +7,7 @@ controllerName:
 
 message:
   loading: Chargement
+  nocontent: Il n'y a rien par ici
 
 button:
   filter: Filtres

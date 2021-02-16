@@ -58,7 +58,7 @@ class RegistrationFormType extends AbstractType
                 'delete_label' => false,
                 'download_label' => false,
                 'download_uri' => false,
-                'image_uri' => false,
+                'image_uri' => true,
                 'asset_helper' => false,
                 'attr' => array(
                     'id' => 'inputImage',

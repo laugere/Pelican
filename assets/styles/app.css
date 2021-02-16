@@ -119,6 +119,24 @@
             color: white !important;
         }
         
+        .custom-file label {
+            background-color: #ffffff1f !important;
+            height: auto !important;
+            border: none !important;
+        }
+        
+        .custom-file-label::after {
+            background-color: #ffffff1f !important;
+            height: auto !important;
+            border: none !important;
+            color: white !important;
+        }
+        
+        .vich-image img {
+            width: 100% !important;
+            border-radius: 20px;
+        }
+        
         textarea {
             background-color: #ffffff1f !important;
             border-radius: 10px;
@@ -253,6 +271,11 @@
         
         .no-extra-padding {
             padding-bottom: 1rem !important;
+        }
+        
+        .centered-message {
+            margin-top: 2rem;
+            text-align: center;
         }
         
         @import '~bootstrap';
