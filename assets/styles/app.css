@@ -89,7 +89,7 @@
         
         .scrollbar {
             padding: 0.25rem;
-            padding-bottom: 5rem;
+            padding-bottom: 1rem;
         }
         
         .scrollbar::-webkit-scrollbar {
@@ -256,17 +256,6 @@
             background-color: rgb(255, 255, 255);
             border: rgb(255, 255, 255);
             color: black;
-        }
-        
-        .view-footer {
-            position: absolute;
-            bottom: 1.5rem;
-            padding: 0.75rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            border-radius: 20px;
-            background-color: #44444478;
-            backdrop-filter: blur(10px);
         }
         
         .no-extra-padding {
