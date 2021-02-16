@@ -72,7 +72,7 @@ class Event
     private $image;
 
     /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="event_images", fileNameProperty="image")
      * @var File
      */
     private $imageFile;

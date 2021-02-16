@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -27,7 +28,7 @@ class RegistrationFormType extends AbstractType
                 'placeholder' => 'Ville'
             )])
             ->add('pseudo', null, ['label' => false, 'attr' => array(
-                'id' => 'inpuPseudo',
+                'id' => 'inputPseudo',
                 'placeholder' => 'Pseudonyme'
             )])
             ->add('plainPassword', PasswordType::class, [
@@ -35,8 +36,9 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'label' => false,
                 'attr' => array(
-                'id' => 'inputPassword',
-                'placeholder' => 'Mot de passe'),
+                    'id' => 'inputPassword',
+                    'placeholder' => 'Mot de passe'
+                ),
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
@@ -49,6 +51,19 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => false,
+                'delete_label' => false,
+                'download_label' => false,
+                'download_uri' => false,
+                'image_uri' => false,
+                'asset_helper' => false,
+                'attr' => array(
+                    'id' => 'inputImage',
+                    'placeholder' => 'Avatar'
+                )
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'Accepter les conditions',
