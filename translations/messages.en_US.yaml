@@ -4,6 +4,7 @@ controllerName:
   event: Event
   home: Home
   settings: Settings
+  users: Users
 
 message:
   loading: Loading

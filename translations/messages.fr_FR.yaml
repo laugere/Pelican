@@ -4,6 +4,7 @@ controllerName:
   event: Événements
   home: Accueil
   settings: Réglages
+  users: Utilisateurs
 
 message:
   loading: Chargement
