@@ -72,7 +72,7 @@ class User implements UserInterface, \Serializable
     protected $event;
 
     /**
-     * @ORM\OneToOne(targetEntity=Settings::class, inversedBy="user")
+     * @ORM\OneToOne(targetEntity=Settings::class, cascade={"persist"})
      */
     protected $settings;
 
@@ -94,6 +94,11 @@ class User implements UserInterface, \Serializable
     public function getSettings()
     {
         return $this->settings;
+    }
+
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
     }
 
     public function getImageFile()

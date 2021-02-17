@@ -17,7 +17,7 @@ class SettingsController extends AbstractController
      */
     public function index(Request $request, ObjectManager $objectManager): Response
     {
-        $user = $this->getuser();
+        $user = $this->getUser();
         $settings = $user->getSettings();
         $form = $this->createForm(SettingsType::class, $settings);
         $form->handleRequest($request);
