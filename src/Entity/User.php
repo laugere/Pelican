@@ -61,6 +61,21 @@ class User implements UserInterface, \Serializable
      */
     private $imageFile;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Community::class, inversedBy="participants")
+     */
+    protected $communitys;
+
+    public function setCommunity($communitys)
+    {
+        $this->communitys = $communitys;
+    }
+
+    public function getCommunity()
+    {
+        return $this->communitys;
+    }
+
     public function getImageFile()
     {
         return $this->imageFile;

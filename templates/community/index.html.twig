@@ -23,27 +23,13 @@
                     </h4>
                 </div>
                 <div class="card-button">
-                    {% set communityid = { id: community.id, name: community.name } %} {% if communityid in isInCommunitys %}
-                    <button type="button" onclick="onClickBtnGoToCommunity('{{
-                  path(
-                    'community_goto',
-                    {
-                      communityId: community.id
-                    }
-                  )
-                  }}', 'community-{{ community.id }}')" class="btn btn-outline-danger btn-round js-goTo">
-                  <i class="fas fa-times"></i>
-                </button> {% else %}
-                    <button type="button" onclick="onClickBtnGoToCommunity('{{
-                  path(
-                    'community_goto',
-                    {
-                      communityId: community.id
-                    }
-                  )
-                  }}', 'community-{{ community.id }}')" class="btn btn-outline-warning btn-round">
-                  <i class="fas fa-plus"></i>
-                </button> {% endif %}
+                    {% set trouve = false %} {% for participant in community.isincommunity %} {% if app.user.id == participant.user.id %}
+                    <button type="button" onclick="onClickBtnGoToCommunity('{{path('community_goto',{communityId: community.id})}}', 'community-{{ community.id }}')" class="btn btn-outline-danger btn-round js-goTo">
+						<i class="fas fa-times"></i>
+					</button> {% set trouve = true %} {% endif %} {% endfor %} {% if trouve == false %}
+                    <button type="button" onclick="onClickBtnGoToCommunity('{{path('community_goto',{communityId: community.id})}}', 'community-{{ community.id }}')" class="btn btn-outline-warning btn-round">
+						<i class="fas fa-plus"></i>
+					</button> {% endif %}
                 </div>
             </div>
         </div>
@@ -52,5 +38,5 @@
 </div>
 
 <button type="button" class="btn-create btn btn-lg rounded-circle" onclick="window.location = '/community/create'">
-    <i class="fas fa-plus"></i>
-  </button> {% endblock %} {% block javascripts %} {% endblock %}
+	<i class="fas fa-plus"></i>
+</button> {% endblock %} {% block javascripts %} {% endblock %}

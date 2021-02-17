@@ -4,10 +4,9 @@ namespace App\Controller;
 
 use App\Service\FileUploader;
 use App\Entity\Event;
-use App\Entity\GoToEvent;
+use App\Entity\Participation;
 use App\Form\EventType;
 use App\Repository\EventRepository;
-use App\Repository\GoToEventRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -60,14 +59,13 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/view", name="event_view")
      */
-    public function view($eventId, EventRepository $eventRepo, GoToEventRepository $goToEventRepo): Response
+    public function view($eventId, EventRepository $eventRepo): Response
     {
         $event = $eventRepo->findOneById($eventId);
         $user = $this->getuser();
-        $isIn = $goToEventRepo->userGoToEvent($user->getId(), $eventId);
         return $this->render('event/view.html.twig', [
             'event' => $event,
-            'isIn' => $isIn
+            'isIn' => null
         ]);
     }
 
@@ -120,7 +118,7 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/goto", name="event_goto")
      */
-    public function goToEvent($eventId, ObjectManager $objectManager, GoToEventRepository $goToEventRepo): Response
+    public function goToEvent($eventId, ObjectManager $objectManager, EventRepository $eventRepo): Response
     {
         $user = $this->getuser();
 
@@ -128,14 +126,27 @@ class EventController extends AbstractController
             'code' => 403,
         ], 403);
 
-        if (!$goToEventRepo->userGoToEvent($user->getId(), $eventId)) {
-            $GoToEvent = new GoToEvent();
-            $GoToEvent->setIdEvent($eventId);
-            $GoToEvent->setIdUser($user->getId());
-            $objectManager->persist($GoToEvent);
+        $event = $eventRepo->findOneById($eventId);
+        $participation = null;
+        $trouve = false;
+
+        foreach ($event->getParticipations() as $participant) {
+            if ($participant->getUser() == $user) {
+                $trouve = true;
+                $participation = $participant;
+            }
+        }
+
+        if ($trouve) {
+            $objectManager->remove($participation);
             $objectManager->flush();
         } else {
-            $goToEventRepo->deleteGoToEvent($user->getId(), $eventId);
+            $participation = new Participation();
+            $participation->setDate(new \DateTime());
+            $participation->setUser($user);
+            $participation->setEvent($event);
+            $objectManager->persist($participation);
+            $objectManager->flush();
         }
 
         return $this->json(['code' => 200], 200);

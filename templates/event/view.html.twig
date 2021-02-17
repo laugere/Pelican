@@ -15,7 +15,7 @@
         </a>
         <div id="event-{{ event.id }}">
             <div class="form-group event-view-action" style="margin-bottom: 0 !important;">
-                {% if isIn %}
+                {% set trouve = false %} {% for participant in event.participations %} {% if app.user.id == participant.user.id %}
                 <button type="button" onclick="onClickBtnGoToEvent('{{
             path(
               'event_goto',
@@ -26,7 +26,7 @@
             }}', '{{ event.id }}');" class="btn btn-danger">
           <i class="fas fa-times"></i>
           Ne plus participer
-        </button> {% else %}
+        </button> {% set trouve = true %}{% endif %}{% endfor %}{% if trouve == false %}
                 <button type="button" onclick="onClickBtnGoToEvent('{{
             path(
               'event_goto',

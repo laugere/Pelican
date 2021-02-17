@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -76,6 +77,21 @@ class Event
      * @var File
      */
     private $imageFile;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="event")
+     */
+    protected $participations;
+
+    public function __construct()
+    {
+        $this->participations = new ArrayCollection();
+    }
+
+    public function getParticipations()
+    {
+        return $this->participations;
+    }
 
     public function getId(): ?int
     {

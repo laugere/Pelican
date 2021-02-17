@@ -2,16 +2,21 @@
 
 namespace App\Controller;
 
-use App\Repository\IsInRepository;
-
 use App\Entity\Community;
-use App\Entity\IsIn;
+use App\Entity\IsInCommunity;
+use App\Entity\Participation;
+
 use App\Form\CommunityType;
+
 use App\Repository\CommunityRepository;
+
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;
+
 use Doctrine\Persistence\ObjectManager;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,16 +26,12 @@ class CommunityController extends AbstractController
     /**
      * @Route("/community", name="community")
      */
-    public function index(CommunityRepository $community, IsInRepository $isIn): Response
+    public function index(CommunityRepository $communityRepo): Response
     {
-        $user = $this->getUser();
-        $isInCommunitys = $isIn->findCommunityGoTo($user->getId());
-
-        $communitys = $community->findRecent();
+        $communitys = $communityRepo->findRecent();
 
         return $this->render('community/index.html.twig', [
-            'communitys' => $communitys,
-            'isInCommunitys' => $isInCommunitys
+            'communitys' => $communitys
         ]);
     }
 
@@ -61,25 +62,37 @@ class CommunityController extends AbstractController
     /**
      * @Route("/community/{communityId}/goto", name="community_goto")
      */
-    public function goToCommunity($communityId, ObjectManager $objectManager, IsInRepository $isInRepo): Response
+    public function goToCommunity($communityId, ObjectManager $objectManager, CommunityRepository $communityRepo): Response
     {
         $user = $this->getuser();
 
-        if(!$user) return $this->json([
+        if (!$user) return $this->json([
             'code' => 403,
         ], 403);
 
-        if(!$isInRepo->userIsIn($user->getId(), $communityId)) {
-            $isIn = new IsIn();
-            $isIn->setIdCommunity($communityId);
-            $isIn->setIdUser($user->getId());
-            $objectManager->persist($isIn);
+        $community = $communityRepo->findById($communityId);
+        $participation = null;
+        $trouve = false;
+
+        foreach ($community->getIsincommunity() as $participant) {
+            if ($participant->getUser() == $user) {
+                $trouve = true;
+                $participation = $participant;
+            }
+        }
+
+        if ($trouve) {
+            $objectManager->remove($participation);
+            $objectManager->flush();
+        } else {
+            $participation = new IsInCommunity();
+            $participation->setDate(new \DateTime());
+            $participation->setUser($user);
+            $participation->setCommunity($community);
+            $objectManager->persist($participation);
             $objectManager->flush();
         }
-        else {
-            $isInRepo->deleteIsIn($user->getId(), $communityId);
-        }
-        
+
         return $this->json(['code' => 200], 200);
     }
 }
