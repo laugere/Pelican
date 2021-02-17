@@ -72,6 +72,11 @@ class User implements UserInterface, \Serializable
     protected $event;
 
     /**
+     * @ORM\OneToMany(targetEntity=Friendship::class, mappedBy="first_user")
+     */
+    protected $friendship;
+
+    /**
      * @ORM\OneToOne(targetEntity=Settings::class, cascade={"persist"})
      */
     protected $settings;
