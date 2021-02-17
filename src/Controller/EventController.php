@@ -42,7 +42,7 @@ class EventController extends AbstractController
 
             $event->setDateCreation(new \DateTime());
             $event->setDateModification(new \DateTime());
-            $event->setIdCreator($user->getId());
+            $event->setuser($user);
 
             $objectManager->persist($event);
             $objectManager->flush();
@@ -77,12 +77,12 @@ class EventController extends AbstractController
         $event = $eventRepo->findOneById($eventId);
         $user = $this->getuser();
 
-        if ($event->getIdCreator() == $user->getId()) {
+        if ($event->getUser() == $user) {
             $form = $this->createForm(EventType::class, $event);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $event->setDateModification(new \DateTime());
-                $event->setIdCreator($user->getId());
+                $event->setUser($user);
 
                 $objectManager->persist($event);
                 $objectManager->flush();
@@ -105,7 +105,7 @@ class EventController extends AbstractController
         $event = $eventRepo->findOneByid($eventId);
         $user = $this->getUser();
 
-        if ($event->getIdCreator() == $user->getId()) {
+        if ($event->getUser() == $user) {
             $event->setDateSuppression($datetime);
 
             $objectManager->persist($event);

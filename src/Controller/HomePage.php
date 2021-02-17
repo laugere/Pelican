@@ -14,7 +14,10 @@ class HomePage extends AbstractController
     public function index(): Response
     {
         $user = $this->getUser();
-        $events = $user->getEvent();
+        $events = new ArrayCollection();
+        foreach ($user->getEvent() as $participation) {
+            $events->add($participation->getEvent());
+        }
 
         return $this->render('home/index.html.twig', [
             'events' => $events

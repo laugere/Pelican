@@ -37,7 +37,7 @@
             }}', '{{ event.id }}');" class="btn btn-warning">
           <i class="fas fa-arrow-right"></i>
           Participer
-        </button> {% endif %} {% if event.idCreator == app.user.id %}
+        </button> {% endif %} {% if event.user == app.user %}
                 <button type="button" onclick="window.location = '/event/{{ event.id }}/modify';" class="btn btn-info btn-round">
           <i class="fas fa-pen"></i>
         </button>

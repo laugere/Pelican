@@ -62,9 +62,9 @@ class Event
     private $nbParticipant;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist"})
      */
-    private $idCreator;
+    private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -207,14 +207,14 @@ class Event
     }
 
 
-    public function getIdCreator()
+    public function getUser()
     {
-        return $this->idCreator;
+        return $this->user;
     }
 
-    public function setIdCreator($idCreator): void
+    public function setUser($user): void
     {
-        $this->idCreator = $idCreator;
+        $this->user = $user;
     }
 
     public function getImageFile()
