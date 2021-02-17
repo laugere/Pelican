@@ -32,7 +32,7 @@
     margin-bottom: 3rem;
 }
 
-.event-card .avatar-img {
+.avatar-img {
     object-fit: cover;
     border-radius: 100%;
 }

@@ -13,27 +13,7 @@
         </div>
     </div>
     <div class="subcontainer scrollbar">
-        {% for community in communitys %}
-        <div id="community-{{ community.id }}">
-            <div class="community-card">
-                <img src="{{ asset('build/wejdene.jpg') }}" width="70px" height="70px" />
-                <div>
-                    <h4 class="card-title">
-                        {{ community.name }}
-                    </h4>
-                </div>
-                <div class="card-button">
-                    {% set trouve = false %} {% for participant in community.isincommunity %} {% if app.user.id == participant.user.id %}
-                    <button type="button" onclick="onClickBtnGoToCommunity('{{path('community_goto',{communityId: community.id})}}', 'community-{{ community.id }}')" class="btn btn-outline-danger btn-round js-goTo">
-						<i class="fas fa-times"></i>
-					</button> {% set trouve = true %} {% endif %} {% endfor %} {% if trouve == false %}
-                    <button type="button" onclick="onClickBtnGoToCommunity('{{path('community_goto',{communityId: community.id})}}', 'community-{{ community.id }}')" class="btn btn-outline-warning btn-round">
-						<i class="fas fa-plus"></i>
-					</button> {% endif %}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+        {% for community in communitys %} {% include ('vues/CommunityCard.html.twig') %} {% endfor %}
     </div>
 </div>
 
