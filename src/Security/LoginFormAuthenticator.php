@@ -118,7 +118,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             }
 
             // Settings 
-            $settings = $this->settingsRepo->getSettings($user->getId());
+            $settings = $user->getSettings();
 
             // Language settings
             $locale = $settings->getLanguage();
