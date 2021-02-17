@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="participations",
     uniqueConstraints={
-        @ORM\UniqueConstraint(name="user_poll_unique", columns={"user_id", "event_id"})
+        @ORM\UniqueConstraint(name="user_participation_unique", columns={"user_id", "event_id"})
     }
   )
  */

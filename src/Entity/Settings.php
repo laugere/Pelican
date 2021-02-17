@@ -22,11 +22,6 @@ class Settings
      */
     private $language;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idUser;
-
     public function getId(): ?int
     {
         return $this->id;

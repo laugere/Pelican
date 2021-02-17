@@ -62,9 +62,19 @@ class User implements UserInterface, \Serializable
     private $imageFile;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Community::class, inversedBy="participants")
+     * @ORM\OneToMany(targetEntity=IsInCommunity::class, mappedBy="user")
      */
     protected $communitys;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="user")
+     */
+    protected $event;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Settings::class, inversedBy="user")
+     */
+    protected $settings;
 
     public function setCommunity($communitys)
     {
@@ -74,6 +84,16 @@ class User implements UserInterface, \Serializable
     public function getCommunity()
     {
         return $this->communitys;
+    }
+
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    public function getSettings()
+    {
+        return $this->settings;
     }
 
     public function getImageFile()

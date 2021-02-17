@@ -15,10 +15,10 @@ class SettingsController extends AbstractController
     /**
      * @Route("/settings", name="settings")
      */
-    public function index(Request $request, ObjectManager $objectManager, SettingsRepository $settingsRepo): Response
+    public function index(Request $request, ObjectManager $objectManager): Response
     {
         $user = $this->getuser();
-        $settings = $settingsRepo->getSettings($user->getId());
+        $settings = $user->getSettings();
         $form = $this->createForm(SettingsType::class, $settings);
         $form->handleRequest($request);
 
