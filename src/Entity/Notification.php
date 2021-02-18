@@ -20,7 +20,7 @@ class Notification
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $name;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -61,17 +61,17 @@ class Notification
     /**
      * Get the value of name
      */ 
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $title
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     /**

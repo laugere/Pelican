@@ -79,12 +79,16 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\OneToMany(targetEntity=Notification::class, mappedBy="user")
      */
-    protected $notification;
+    protected $notifications;
 
     /**
      * @ORM\OneToOne(targetEntity=Settings::class, cascade={"persist"})
      */
     protected $settings;
+
+    public function getNotifications() {
+        return $this->notifications;
+    }
 
     public function setCommunity($communitys)
     {

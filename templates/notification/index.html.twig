@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="subcontainer scrollbar">
-
+        {% for notification in notifications %} {% include ('vues/NotificationCard.html.twig') %} {% endfor %}
     </div>
 </div>
 {% endblock %} {% block javascripts %} {% endblock %}

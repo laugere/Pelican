@@ -17,6 +17,11 @@ class NotificationController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('notification/index.html.twig');
+        $user = $this->getUser();
+        $notifications = $user->getNotifications();
+
+        return $this->render('notification/index.html.twig', [
+            'notifications' => $notifications
+        ]);
     }
 }

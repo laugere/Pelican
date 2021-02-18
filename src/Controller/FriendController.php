@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Friendship;
+use App\Entity\Notification;
 use App\Repository\FriendshipRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,6 +54,14 @@ class FriendController extends AbstractController
                 $objectManager->remove($friendShipUser);
                 $objectManager->flush();
             } else {
+                $notification = new Notification();
+                $notification->setuser($second_user);
+                $notification->setTitle("Validation d'amitié avec ".$first_user->getPseudo());
+                $notification->setDescription("Description de validation d'amitié");
+                $notification->setLink("/friend");
+                $objectManager->persist($notification);
+                $objectManager->flush();
+
                 $friendShipUser->setValidate(true);
                 $objectManager->persist($friendShipUser);
                 $objectManager->flush();
