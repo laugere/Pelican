@@ -5,6 +5,7 @@ controllerName:
   home: Accueil
   settings: Réglages
   users: Utilisateurs
+  notification: Notification
 
 message:
   loading: Chargement

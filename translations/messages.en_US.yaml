@@ -5,6 +5,7 @@ controllerName:
   home: Home
   settings: Settings
   users: Users
+  notification: Notification
 
 message:
   loading: Loading
