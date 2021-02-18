@@ -123,14 +123,12 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             // Language settings
             $locale = $settings->getLanguage();
             $request->getSession()->set('_locale', $locale);
-            
-            $response = new RedirectResponse($targetPath);
 
-            return $response;
+            return new RedirectResponse($targetPath);
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('event'));
     }
 
     protected function getLoginUrl()
