@@ -3,14 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Friendship;
-use App\Entity\Notification;
 use App\Repository\FriendshipRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\NotificationService;
 
 class FriendController extends AbstractController
 {
@@ -32,7 +31,7 @@ class FriendController extends AbstractController
     /**
      * @Route("/friend/{userid}/add", name="friend_add")
      */
-    public function add($userid, ObjectManager $objectManager, UserRepository $userRepo, FriendshipRepository $friendshipRepo): Response
+    public function add($userid, ObjectManager $objectManager, UserRepository $userRepo, FriendshipRepository $friendshipRepo, NotificationService $notificationService): Response
     {
         $first_user = $this->getUser();
         $second_user = $userRepo->findOneById($userid);
@@ -54,26 +53,14 @@ class FriendController extends AbstractController
                 $objectManager->remove($friendShipUser);
                 $objectManager->flush();
             } else {
-                $notification = new Notification();
-                $notification->setuser($second_user);
-                $notification->setTitle("Validation d'amitié avec ".$first_user->getPseudo());
-                $notification->setDescription("Description de validation d'amitié");
-                $notification->setLink("/friend");
-                $objectManager->persist($notification);
-                $objectManager->flush();
+                $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." est confirmée", "", "/friend");
 
                 $friendShipUser->setValidate(true);
                 $objectManager->persist($friendShipUser);
                 $objectManager->flush();
             }
         } else {
-            $notification = new Notification();
-            $notification->setuser($second_user);
-            $notification->setTitle("Demande d'amitié avec ".$first_user->getPseudo());
-            $notification->setDescription("Description de demande d'amitié");
-            $notification->setLink("/friend");
-            $objectManager->persist($notification);
-            $objectManager->flush();
+            $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." reçue", "", "/friend");
 
             $friendShipUser = new Friendship();
             $friendShipUser->setFirst_user($first_user);
