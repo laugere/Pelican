@@ -43,11 +43,11 @@ class FriendController extends AbstractController
         $friendShipUser = null;
 
         foreach ($friendshipRepo->findAll() as $friendship) {
-            if ($friendship->getFirst_user() == $first_user || $friendship->getSecond_user() == $second_user || $friendship->getFirst_user() == $second_user || $friendship->getSecond_user() == $first_user) {
+            if ($friendship->getFirst_user() == $first_user) {
+                $friendShipUser = $friendship;
+            } else {
                 if ($friendship->getSecond_user() == $first_user && !$friendship->getValidate()) {
                     $friendship->setValidate(true);
-                    $friendShipUser = $friendship;
-                } else {
                     $friendShipUser = $friendship;
                 }
             }
