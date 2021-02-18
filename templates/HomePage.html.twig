@@ -72,6 +72,20 @@
                 }, 500)
             })
         }
+
+        function onClickBtnAddUser(friendAddPath, friendId) {
+            $('#loadingModal').modal('show')
+
+            $.ajax({
+                url: friendAddPath,
+                cache: false
+            }).done(function(response) {
+                $('#' + friendId).load('/friend #' + friendId)
+                setTimeout(() => {
+                    $('#loadingModal').modal('hide')
+                }, 500)
+            })
+        }
     </script>
 
     {% block javascripts %} {{ encore_entry_script_tags('app') }} {% endblock %}

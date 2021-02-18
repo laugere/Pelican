@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="subcontainer scrollbar">
-        {% for user in users %} {% include ('vues/UserCard.html.twig') %} {% endfor %}
+        {% for user in users %} {% if user != app.user %}{% include ('vues/UserCard.html.twig') %} {% endif %}{% endfor %}
     </div>
 </div>
 {% endblock %} {% block javascripts %} {% endblock %}
