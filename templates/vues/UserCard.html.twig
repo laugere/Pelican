@@ -7,19 +7,22 @@
             </p>
         </div>
         <div class="list-card-button-container">
-            {% set trouve = false %} {% for friendship in friendships %} {% if user == friendship.first_user or user == friendship.second_user %} {% if friendship.validate %}
+            {% set trouve = false %} {% for friendship in friendships %} {% if app.user == friendship.first_user and user == friendship.second_user %} {% if friendship.validate %}
             <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-danger btn-round list-card-button">
-                <i class="fas fa-times"></i>
-            </button> {% else %} {% if app.user == friendship.second_user %}
-            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
-                <i class="fas fa-user-check"></i>
-            </button>{% else %}
+                            <i class="fas fa-times"></i>
+                        </button> {% else %}
             <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-info btn-round list-card-button">
-                <i class="fas fa-user-clock"></i>
-            </button>{% endif %} {% endif %} {% set trouve = true %} {% endif %} {% endfor %} {% if trouve == false %}
+                            <i class="fas fa-user-clock"></i>
+                        </button> {% endif %} {% set trouve = true %} {% elseif user == friendship.first_user and app.user == friendship.second_user %} {% if friendship.validate %}
+            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-danger btn-round list-card-button">
+                            <i class="fas fa-times"></i>
+                        </button> {% else %}
+            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
+                            <i class="fas fa-user-check"></i>
+                        </button> {% endif %} {% set trouve = true %} {% endif %} {% endfor %} {% if trouve == false %}
             <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-warning btn-round list-card-button">
-                <i class="fas fa-plus"></i>
-            </button> {% endif %}
+                    <i class="fas fa-plus"></i>
+                </button> {% endif %}
         </div>
     </div>
 </div>
