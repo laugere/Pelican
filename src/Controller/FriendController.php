@@ -49,7 +49,7 @@ class FriendController extends AbstractController
         }
 
         if ($friendShipUser != null) {
-            if ($friendShipUser->getValidate()) {
+            if ($friendShipUser->getValidate() || $friendship->getFirst_user() == $first_user) {
                 $objectManager->remove($friendShipUser);
                 $objectManager->flush();
             } else {
