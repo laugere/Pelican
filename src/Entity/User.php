@@ -77,6 +77,11 @@ class User implements UserInterface, \Serializable
     protected $friendship;
 
     /**
+     * @ORM\OneToMany(targetEntity=Notification::class, mappedBy="user")
+     */
+    protected $notification;
+
+    /**
      * @ORM\OneToOne(targetEntity=Settings::class, cascade={"persist"})
      */
     protected $settings;
