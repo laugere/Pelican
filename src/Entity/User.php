@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -74,7 +75,12 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\OneToMany(targetEntity=Friendship::class, mappedBy="first_user")
      */
-    protected $friendship;
+    protected $friends;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Friendship::class, mappedBy="second_user")
+     */
+    protected $friendsWithMe;
 
     /**
      * @ORM\OneToMany(targetEntity=Notification::class, mappedBy="user")
@@ -271,6 +277,13 @@ class User implements UserInterface, \Serializable
      */ 
     public function getFriendship()
     {
-        return $this->friendship;
+        $friendship = new ArrayCollection();
+        foreach($this->friends as $friends) {
+            $friendship->add($friends);
+        }
+        foreach($this->friendsWithMe as $friendsWithMe) {
+            $friendship->add($friendsWithMe);
+        }
+        return $friendship;
     }
 }

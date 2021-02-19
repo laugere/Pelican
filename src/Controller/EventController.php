@@ -36,6 +36,7 @@ class EventController extends AbstractController
     public function create(Event $event = null, Request $request, ObjectManager $objectManager, NotificationService $notificationService): Response
     {
         $user = $this->getuser();
+
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
