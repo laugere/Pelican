@@ -265,4 +265,12 @@ class User implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized, array('allowed_classes' => false));
     }
+
+    /**
+     * Get the value of friendship
+     */ 
+    public function getFriendship()
+    {
+        return $this->friendship;
+    }
 }

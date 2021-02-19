@@ -1,4 +1,4 @@
-<div class="event-card" onclick="window.location = '/event/{{ event.user.id }}/view';" style="background-image: url({{ asset('uploads/images/events/' ~ event.image) }});background-size: cover;">
+<div class="event-card" onclick="window.location = '/event/{{ event.id }}/view';" style="background-image: url({{ asset('uploads/images/events/' ~ event.image) }});background-size: cover;">
     <div class="avatar-container">
         <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ event.user.image) }}" width="45px" height="45px" />
         <p class="avatar-user-name">

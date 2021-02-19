@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Service\NotificationService;
 
 class EventController extends AbstractController
 {
@@ -32,20 +33,21 @@ class EventController extends AbstractController
     /**
      * @Route("/event/create", name="event_create")
      */
-    public function create(Event $event = null, Request $request, ObjectManager $objectManager): Response
+    public function create(Event $event = null, Request $request, ObjectManager $objectManager, NotificationService $notificationService): Response
     {
         $user = $this->getuser();
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $event->setDateCreation(new \DateTime());
             $event->setDateModification(new \DateTime());
             $event->setuser($user);
 
             $objectManager->persist($event);
             $objectManager->flush();
+
+            $notificationService->sendFriendNotification($objectManager, $user, $user->getPseudo()." a créé un évenement", "description de création d'évenement", "/event");
 
             return $this->redirectToRoute('event', [], 301);
         }
@@ -62,7 +64,6 @@ class EventController extends AbstractController
     public function view($eventId, EventRepository $eventRepo): Response
     {
         $event = $eventRepo->findOneById($eventId);
-        $user = $this->getuser();
         return $this->render('event/view.html.twig', [
             'event' => $event,
             'isIn' => null
