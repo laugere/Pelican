@@ -21,12 +21,7 @@ class NotificationController extends AbstractController
     public function index(): Response
     {
         $user = $this->getUser();
-        $notifications = new ArrayCollection();
-        foreach ($user->getNotifications() as $notification) {
-            if (!$notification->getSeen()) {
-                $notifications->add($notification);
-            }
-        }
+        $notifications = $user->getNotifications();
 
         return $this->render('notification/index.html.twig', [
             'notifications' => $notifications

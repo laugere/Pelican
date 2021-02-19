@@ -92,8 +92,15 @@ class User implements UserInterface, \Serializable
      */
     protected $settings;
 
-    public function getNotifications() {
-        return $this->notifications;
+    public function getNotifications()
+    {
+        $notifications = new ArrayCollection();
+        foreach ($this->notifications as $notification) {
+            if (!$notification->getSeen()) {
+                $notifications->add($notification);
+            }
+        }
+        return $notifications;
     }
 
     public function setCommunity($communitys)
@@ -274,14 +281,14 @@ class User implements UserInterface, \Serializable
 
     /**
      * Get the value of friendship
-     */ 
+     */
     public function getFriendship()
     {
         $friendship = new ArrayCollection();
-        foreach($this->friends as $friends) {
+        foreach ($this->friends as $friends) {
             $friendship->add($friends);
         }
-        foreach($this->friendsWithMe as $friendsWithMe) {
+        foreach ($this->friendsWithMe as $friendsWithMe) {
             $friendship->add($friendsWithMe);
         }
         return $friendship;

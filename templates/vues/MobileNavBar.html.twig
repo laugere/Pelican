@@ -21,7 +21,11 @@
         </div>
         <div class="col mobile-navbar-menu-item">
             <a class="nav-link" href="/notification">
-                <i class="fas fa-bullhorn fa-lg"></i>
+                {% if app.user.getNotifications is empty %}
+                    <i class="fas fa-bullhorn fa-lg"></i>
+                {% else %}
+                    <i class="fas fa-bullhorn fa-lg text-warning"></i>
+                {% endif %}
             </a>
         </div>
         <div class="col mobile-navbar-menu-item">

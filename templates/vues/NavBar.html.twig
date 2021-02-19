@@ -24,7 +24,11 @@
             </li>
             <li class="nav_item">
                 <a class="nav-link" href="/notification">
-                    <i class="fas fa-bullhorn fa-lg"></i>
+                    {% if app.user.getNotifications is empty %}
+                        <i class="fas fa-bullhorn fa-lg"></i>
+                    {% else %}
+                        <i class="fas fa-bullhorn fa-lg text-warning"></i>
+                    {% endif %}
                 </a>
             </li>
             <li class="nav-item">
