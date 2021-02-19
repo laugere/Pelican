@@ -51,4 +51,7 @@
         margin: 4vh 2vw;
         width: auto;
     }
+    .list-card .list-card-title-container .list-card-title {
+        width: 60vw;
+    }
 }
