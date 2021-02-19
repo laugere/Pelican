@@ -48,7 +48,7 @@ class EventController extends AbstractController
             $objectManager->persist($event);
             $objectManager->flush();
 
-            $notificationService->sendFriendNotification($objectManager, $user, $user->getPseudo()." a créé un évenement", "description de création d'évenement", "/event");
+            $notificationService->sendFriendNotification($objectManager, $user, $user->getPseudo()." a créé un évenement", "description de création d'évenement", "event");
 
             return $this->redirectToRoute('event', [], 301);
         }

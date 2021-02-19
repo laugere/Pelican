@@ -33,6 +33,11 @@ class Notification
     private $description;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $seen;
+
+    /**
      * @ORM\ManyToOne(targetEntity=User::class)
      */
     protected $user;
@@ -104,5 +109,23 @@ class Notification
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * Get the value of seen
+     */ 
+    public function getSeen()
+    {
+        return $this->seen;
+    }
+
+    /**
+     * @param mixed $seen
+     */
+    public function setSeen($seen)
+    {
+        $this->seen = $seen;
+
+        return $this;
     }
 }

@@ -53,14 +53,14 @@ class FriendController extends AbstractController
                 $objectManager->remove($friendShipUser);
                 $objectManager->flush();
             } else {
-                $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." est confirmée", "", "/friend");
+                $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." est confirmée", "", "friend");
 
                 $friendShipUser->setValidate(true);
                 $objectManager->persist($friendShipUser);
                 $objectManager->flush();
             }
         } else {
-            $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." reçue", "", "/friend");
+            $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." reçue", "", "friend");
 
             $friendShipUser = new Friendship();
             $friendShipUser->setFirst_user($first_user);

@@ -19,6 +19,15 @@ class NotificationRepository extends ServiceEntityRepository
         parent::__construct($registry, Notification::class);
     }
 
+    public function findOneById($id): ?Notification
+    {
+        return $this->createQueryBuilder('n')
+            ->andWhere('n.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Notification[] Returns an array of Notification objects
     //  */

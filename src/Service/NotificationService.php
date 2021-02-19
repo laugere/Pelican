@@ -15,6 +15,7 @@ class NotificationService
         $notification->setTitle($title);
         $notification->setDescription($description);
         $notification->setLink($link);
+        $notification->setSeen(false);
         $objectManager->persist($notification);
         $objectManager->flush();
     }
@@ -33,5 +34,12 @@ class NotificationService
                 }
             }
         }
+    }
+
+    public function setNotificationSeen(ObjectManager $objectManager, Notification $notification)
+    {
+        $notification->setSeen(true);
+        $objectManager->persist($notification);
+        $objectManager->flush();
     }
 }
