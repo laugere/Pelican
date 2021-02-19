@@ -13,7 +13,8 @@
         </div>
     </div>
     <div class="subcontainer scrollbar extra-padding">
-        {% for community in communitys %} {% include ('vues/CommunityCard.html.twig') %} {% endfor %}
+        {% if communitys is empty %}
+        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for community in communitys %} {% include ('vues/CommunityCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
 

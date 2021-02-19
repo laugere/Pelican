@@ -10,7 +10,8 @@
         </div>
     </div>
     <div class="subcontainer scrollbar">
-        {% for notification in notifications %} {% include ('vues/NotificationCard.html.twig') %} {% endfor %}
+        {% if notifications is empty %}
+        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for notification in notifications %} {% include ('vues/NotificationCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
 {% endblock %} {% block javascripts %} {% endblock %}
