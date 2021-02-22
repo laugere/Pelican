@@ -21,9 +21,13 @@ class EventController extends AbstractController
     /**
      * @Route("/event", name="event")
      */
-    public function index(EventRepository $event): Response
+    public function index(EventRepository $eventRepo, Request $request): Response
     {
-        $events = $event->findRecent();
+        if($request->query->get('search') != null) {
+            $events = $eventRepo->findByLike($request->query->get('search'));
+        } else {
+            $events = $eventRepo->findRecent();
+        }
 
         return $this->render('event/index.html.twig', [
             'events' => $events

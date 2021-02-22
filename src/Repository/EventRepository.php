@@ -54,6 +54,15 @@ class EventRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findByLike($name)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
     /*
     public function findOneBySomeField($value): ?Event
     {
