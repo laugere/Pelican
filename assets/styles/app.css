@@ -35,7 +35,7 @@ body {
 
 .content-search a {
     vertical-align: middle;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: rgba(255, 255, 255, 0.384);
     transition: color 0.5s;
 }
