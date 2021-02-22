@@ -69,6 +69,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="user")
+     * @ORM\OrderBy({"date" = "ASC"})
      */
     protected $event;
 
