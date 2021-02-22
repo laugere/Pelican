@@ -103,7 +103,7 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/delete", name="event_delete")
      */
-    public function deleteEvent($eventId, EventRepository $eventRepo, ObjectManager $objectManager): Response
+    public function deleteEvent($eventId, EventRepository $eventRepo, ObjectManager $objectManager, Request $request): Response
     {
         $datetime = new \DateTime("now");
         $event = $eventRepo->findOneByid($eventId);
@@ -116,7 +116,7 @@ class EventController extends AbstractController
             $objectManager->flush();
         }
 
-        return $this->index($eventRepo);
+        return $this->index($eventRepo, $request);
     }
 
     /**
