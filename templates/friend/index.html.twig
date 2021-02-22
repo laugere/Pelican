@@ -1,17 +1,6 @@
 {% extends 'HomePage.html.twig' %} {% block body %}
 <div id="content-container" class="scrollable">
-    <div class="content-brand">
-        <div class="row">
-            <div class="col-9">
-                <h4 class="content-title">
-                    {% trans %}controllerName.users{% endtrans %}
-                </h4>
-            </div>
-            <div class="col-3 content-search">
-                <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
-            </div>
-        </div>
-    </div>
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.users'|trans, 'search' : true } %}
     <div class="subcontainer scrollbar">
         {% if users is empty %}
         <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for user in users %} {% if user != app.user %}{% include ('vues/UserCard.html.twig') %} {% endif %}{% endfor %} {% endif %}
