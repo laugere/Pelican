@@ -71,6 +71,9 @@ event:
 
 settings:
   language: Application's language
+  locale:
+    fr: Français
+    en: English
 
 security:
   register:
@@ -80,8 +83,10 @@ security:
     pseudo: Pseudo
     city: City
     password: Password
+    passwordspan: Please enter a password
     image: Add avatar
     agree: Agree terms
+    agreespan: You should agree to our terms.
     alreadyaccount: Already have an account ?
   login:
     title: Login to your account

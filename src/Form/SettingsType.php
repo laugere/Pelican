@@ -15,8 +15,8 @@ class SettingsType extends AbstractType
         $builder
             ->add('language', ChoiceType::class, [
                 'choices'  => [
-                    'Français' => 'fr_FR',
-                    'English' => 'en_US'
+                    'settings.locale.fr' => 'fr_FR',
+                    'settings.locale.en' => 'en_US'
                 ],
             ]);
     }

@@ -13,7 +13,7 @@ class CommunityType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => 'Nom', 'attr' => array(
-                'placeholder' => 'Nom de la communauté'
+                'placeholder' => 'community.create.name'
             )])
         ;
     }
@@ -21,7 +21,7 @@ class CommunityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Community::class,
+            'data_class' => Community::class
         ]);
     }
 }

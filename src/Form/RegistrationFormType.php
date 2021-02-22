@@ -21,15 +21,15 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', null, ['label' => false, 'attr' => array(
                 'id' => 'inputEmail',
-                'placeholder' => 'Email'
+                'placeholder' => 'security.register.email'
             )])
             ->add('city', null, ['label' => false, 'attr' => array(
                 'id' => 'inputCity',
-                'placeholder' => 'Ville'
+                'placeholder' => 'security.register.city'
             )])
             ->add('pseudo', null, ['label' => false, 'attr' => array(
                 'id' => 'inputPseudo',
-                'placeholder' => 'Pseudonyme'
+                'placeholder' => 'security.register.pseudo'
             )])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
@@ -37,12 +37,12 @@ class RegistrationFormType extends AbstractType
                 'label' => false,
                 'attr' => array(
                     'id' => 'inputPassword',
-                    'placeholder' => 'Mot de passe'
+                    'placeholder' => 'security.register.password'
                 ),
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'security.register.passwordspan',
                     ]),
                     new Length([
                         'min' => 6,
@@ -62,19 +62,19 @@ class RegistrationFormType extends AbstractType
                 'asset_helper' => false,
                 'attr' => array(
                     'id' => 'inputImage',
-                    'placeholder' => 'Avatar',
+                    'placeholder' => 'security.register.image',
                     'onchange' => 'loadFile(event)'
                 )
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'Accepter les conditions',
+                'label' => 'security.register.agree',
                 'attr' => array(
                     'id' => 'inputAgreeTerms'
                 ),
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'security.register.agreespan',
                     ]),
                 ],
             ]);

@@ -72,6 +72,9 @@ event:
 
 settings:
   language: Langage de l'application
+  locale:
+    fr: Français
+    en: English
 
 security:
   register:
@@ -81,8 +84,10 @@ security:
     pseudo: Pseudonyme
     city: Ville
     password: Mot de passe
+    passwordspan: Entrer un mot de passe
     image: Ajouter un avatar
     agree: Accepter les conditions
+    agreespan: Vous devez accepter nos conditions.
     alreadyaccount: Vous avez déjà un compte ?
   login:
     title: Connectez vous

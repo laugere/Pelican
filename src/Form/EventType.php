@@ -19,34 +19,29 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => 'Nom',
                 'attr' => array(
-                    'placeholder' => 'Nom de l\'événement'
+                    'placeholder' => 'event.form.name'
                 )
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description',
                 'attr' => array(
-                    'placeholder' => 'Description'
+                    'placeholder' => 'event.form.description'
                 )
             ])
             ->add('location', null, [
-                'label' => 'Localisation',
                 'attr' => array(
-                    'placeholder' => 'Localisation de l\'événement'
+                    'placeholder' => 'event.form.location'
                 )
             ])
             ->add('date', DateType::class, [
-                'label' => 'Date',
                 'widget' => 'single_text',
                 'attr' => array(
-                    'placeholder' => 'Date de l\'événement'
+                    'placeholder' => 'event.form.date'
                 )
             ])
             ->add('nbParticipant', null, [
-                'label' => 'Nombre de participants',
                 'attr' => array(
-                    'placeholder' => 'Nombre de participants'
+                    'placeholder' => 'event.form.number'
                 )
             ])
             ->add('imageFile', VichImageType::class, [
@@ -59,7 +54,7 @@ class EventType extends AbstractType
                 'asset_helper' => false,
                 'attr' => array(
                     'id' => 'inputImage',
-                    'placeholder' => 'Image de l\'évenement',
+                    'placeholder' => 'event.form.image',
                     'onchange' => 'loadFile(event)'
                 )
             ]);
