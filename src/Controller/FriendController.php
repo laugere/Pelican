@@ -10,16 +10,21 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\NotificationService;
+use Symfony\Component\HttpFoundation\Request;
 
 class FriendController extends AbstractController
 {
     /**
      * @Route("/friend", name="friend")
      */
-    public function index(FriendshipRepository $friendshipRepo): Response
+    public function index(FriendshipRepository $friendshipRepo, Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('App:User')->findAll();
+        if($request->query->get('search') != null) {
+            $users = $users = $em->getRepository('App:User')->findByLike($request->query->get('search'));
+        } else {
+            $users = $em->getRepository('App:User')->findAll();
+        }
         $friendships = $friendshipRepo->findAll();
 
         return $this->render('friend/index.html.twig', [

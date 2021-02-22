@@ -62,4 +62,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getOneOrNullResult()
         ;
     }
+
+    public function findByLike($pseudo)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.pseudo LIKE :pseudo')
+            ->setParameter('pseudo', '%'.$pseudo.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

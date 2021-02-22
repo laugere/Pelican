@@ -26,9 +26,13 @@ class CommunityController extends AbstractController
     /**
      * @Route("/community", name="community")
      */
-    public function index(CommunityRepository $communityRepo): Response
+    public function index(CommunityRepository $communityRepo, Request $request): Response
     {
-        $communitys = $communityRepo->findRecent();
+        if($request->query->get('search') != null) {
+            $communitys = $communityRepo->findByLike($request->query->get('search'));
+        } else {
+            $communitys = $communityRepo->findRecent();
+        }
 
         return $this->render('community/index.html.twig', [
             'communitys' => $communitys
