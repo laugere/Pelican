@@ -58,7 +58,6 @@ class CommunityController extends AbstractController
         }
 
         return $this->render('community/create.html.twig', [
-            'controller_name' => 'Créer une communauté',
             'form' => $form->createView()
         ]);
     }
