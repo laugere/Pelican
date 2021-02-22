@@ -6,6 +6,8 @@
                 {{ user.pseudo }}
             </p>
         </div>
+
+        {% if user != app.user %}
         <div class="list-card-button-container">
             {% set trouve = false %} {% for friendship in friendships %} {% if app.user == friendship.first_user and user == friendship.second_user %} {% if friendship.validate %}
             <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
@@ -24,5 +26,6 @@
                     <i class="fas fa-plus"></i>
                 </button> {% endif %}
         </div>
+        {% endif %}
     </div>
 </div>

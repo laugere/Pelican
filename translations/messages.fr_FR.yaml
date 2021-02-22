@@ -68,6 +68,7 @@ event:
   view:
     the: Le
     people: Personnes
+    participant: Participants
 
 
 settings:

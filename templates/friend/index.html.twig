@@ -7,7 +7,7 @@
             {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
         </h5>
         {% endif %} {% if users is empty %}
-        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for user in users %} {% if user != app.user %}{% include ('vues/UserCard.html.twig') %} {% endif %}{% endfor %} {% endif %}
+        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for user in users %} {% include ('vues/UserCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
 {% endblock %} {% block javascripts %} {% endblock %}

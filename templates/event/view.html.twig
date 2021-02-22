@@ -46,10 +46,21 @@
         </button> {% endif %}
             </div>
         </div>
+        {% if event.description|length > 255 %}
+        <div id="event-description">
+            <p class="collapse" id="event-description-collapse" aria-expanded="false">
+                {{ event.description }}
+            </p>
+            <a role="button" class="collapsed" data-toggle="collapse" href="#event-description-collapse" aria-expanded="false" aria-controls="event-description-collapse"></a>
+        </div>
+        {% else %}
         <p>
             {{ event.description }}
         </p>
-        <br /><br />
+        {% endif %}
+        <br /><br /> {% if event.participations is not empty %}
+        <h5 class="text-center">{% trans %}event.view.participant{% endtrans %}</h5>
+        {% for participation in event.participations %} {% set user = participation.getUser %} {% set friendships = user.getFriendship %} {% include ('vues/UserCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
 {% include 'vues/ModalDialogSupp.html.twig' %} {% endblock %}{% block javascripts %} {% endblock %}

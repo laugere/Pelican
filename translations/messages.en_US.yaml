@@ -15,6 +15,8 @@ message:
   deleteconf: Do you really want to delete this event?
   warning: Warning
   search: Search
+  showmore: Show more
+  showless: Show less
 
 button:
   filter: Filter
@@ -68,6 +70,7 @@ event:
   view:
     the: The
     people: People
+    participant: Participant
 
 settings:
   language: Application's language
