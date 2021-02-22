@@ -28,11 +28,12 @@
         </div>
         <div class="form-group">
             <label for="event_image">Image de l'évenement</label> {{ form_widget(form.imageFile) }}
+            <img id="image_output" />
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success">
-          {% trans %}button.create{% endtrans %}
-        </button>
+                {% trans %}button.create{% endtrans %}
+            </button>
         </div>
         {{ form_end(form) }}
     </div>

@@ -62,7 +62,8 @@ class RegistrationFormType extends AbstractType
                 'asset_helper' => false,
                 'attr' => array(
                     'id' => 'inputImage',
-                    'placeholder' => 'Avatar'
+                    'placeholder' => 'Avatar',
+                    'onchange' => 'loadFile(event)'
                 )
             ])
             ->add('agreeTerms', CheckboxType::class, [

@@ -55,11 +55,12 @@ class EventType extends AbstractType
                 'delete_label' => false,
                 'download_label' => false,
                 'download_uri' => false,
-                'image_uri' => true,
+                'image_uri' => false,
                 'asset_helper' => false,
                 'attr' => array(
                     'id' => 'inputImage',
-                    'placeholder' => 'Image de l\'évenement'
+                    'placeholder' => 'Image de l\'évenement',
+                    'onchange' => 'loadFile(event)'
                 )
             ]);
     }
