@@ -10,6 +10,7 @@ controllerName:
 message:
   loading: Loading
   nocontent: There's nothing here
+  searchresult: Search result for 
 
 button:
   filter: Filter

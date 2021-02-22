@@ -2,7 +2,11 @@
 <div id="content-container" class="scrollable">
     {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.users'|trans, 'search' : true } %}
     <div class="subcontainer scrollbar">
-        {% if users is empty %}
+        {% if not app.request.query.get("search") is empty %}
+        <h5 class="text-center">
+            {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
+        </h5>
+        {% endif %} {% if users is empty %}
         <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for user in users %} {% if user != app.user %}{% include ('vues/UserCard.html.twig') %} {% endif %}{% endfor %} {% endif %}
     </div>
 </div>
