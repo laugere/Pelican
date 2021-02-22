@@ -58,7 +58,7 @@
             {{ event.description }}
         </p>
         {% endif %}
-        <br /><br /> {% if event.participations is not empty %}
+        <br />{% if event.participations is not empty %}
         <h5 class="text-center">{% trans %}event.view.participant{% endtrans %}</h5>
         {% for participation in event.participations %} {% set user = participation.getUser %} {% set friendships = user.getFriendship %} {% include ('vues/UserCard.html.twig') %} {% endfor %} {% endif %}
     </div>
