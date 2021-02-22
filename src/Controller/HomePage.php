@@ -19,6 +19,11 @@ class HomePage extends AbstractController
         foreach ($user->getEvent() as $participation) {
             $events->add($participation->getEvent());
         }
+        $iterator = $events->getIterator();
+        $iterator->uasort(function ($a, $b) {
+            return ($a->getdate() < $b->getdate()) ? -1 : 1;
+        });
+        $events = new ArrayCollection(iterator_to_array($iterator));
 
         return $this->render('home/index.html.twig', [
             'events' => $events
