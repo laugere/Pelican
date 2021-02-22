@@ -5,10 +5,10 @@
             <div class="modal-body">
                 <form role="search" method="GET" class="form-inline">
                     <div class="form-group">
-                        <label for="search" class="sr-only">Recherche</label>
-                        <input type="text" class="form-control" id="search" placeholder="Rechercher" name="search">
+                        <label for="search" class="sr-only">{% trans %}message.search{% endtrans %}</label>
+                        <input type="text" class="form-control" id="search" placeholder="{% trans %}message.search{% endtrans %}" name="search">
                     </div>
-                    <button type="submit" class="btn btn-dark">Rechercher</button>
+                    <button type="submit" class="btn btn-dark">{% trans %}message.search{% endtrans %}</button>
                 </form>
             </div>
         </div>

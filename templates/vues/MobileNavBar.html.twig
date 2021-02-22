@@ -3,9 +3,9 @@
         <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ app.user.image) }}" height="100%" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/user"><i class="fas fa-user"></i> Utilisateur</a>
-            <a class="dropdown-item" href="/settings"><i class="fas fa-cog"></i> Réglages</a>
-            <a class="dropdown-item text-danger" href="/logout"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+            <a class="dropdown-item" href="/user"><i class="fas fa-user"></i> {% trans %}menu.user{% endtrans %}</a>
+            <a class="dropdown-item" href="/settings"><i class="fas fa-cog"></i> {% trans %}menu.settings{% endtrans %}</a>
+            <a class="dropdown-item text-danger" href="/logout"><i class="fas fa-sign-out-alt"></i> {% trans %}menu.logout{% endtrans %}</a>
         </div>
     </div>
     <div class="row mobile-navbar-menu-container">
