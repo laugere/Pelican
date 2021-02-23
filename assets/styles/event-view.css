@@ -9,17 +9,13 @@
 }
 
 #event-description a.collapsed::after {
-    content: 'Show more';
+    content: 'Voir plus';
 }
 
 #event-description a:not(.collapsed)::after {
-    content: 'Show less';
+    content: 'Voir moins';
 }
 
 #event-description a {
     text-decoration: none;
-}
-
-#event-description a:hover {
-    color: rgb(64, 64, 223);
 }

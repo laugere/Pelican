@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Expr\Cast\Bool_;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\File;
@@ -292,5 +293,19 @@ class User implements UserInterface, \Serializable
             $friendship->add($friendsWithMe);
         }
         return $friendship;
+    }
+
+    public function isFriendWith($user): Bool
+    {
+        $vRetour = false;
+        foreach ($this->getFriendship() as $friendship) {
+            if ($friendship->getSecond_user() == $user || $friendship->getFirst_user() == $user) {
+                if ($friendship->getValidate()) {
+                    $vRetour = true;
+                }
+            }
+        }
+
+        return $vRetour;
     }
 }

@@ -65,6 +65,22 @@
     top: 1.25rem;
 }
 
+.friends-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.friends-container .friend-round {
+    margin-left: -1rem;
+    display: inline-block;
+}
+
+.friends-container .friend-round .friend-round-avatar {
+    object-fit: cover;
+    border-radius: 100%;
+}
+
 .event-card-info-container {
     padding-top: 0.5rem;
     padding-right: 0.5rem;
