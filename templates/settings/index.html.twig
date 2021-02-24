@@ -4,14 +4,15 @@
     <div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
         {{ form_start(form) }}
         <div class="form-group">
-            <label for="event_name">
-          {% trans %}settings.language{% endtrans %}
-        </label> {{ form_widget(form.language) }}
+            <label for="event_name">{% trans %}settings.language{% endtrans %}</label> {{ form_widget(form.language) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.darkmode) }}
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success">
-          {% trans %}button.save{% endtrans %}
-        </button>
+        {% trans %}button.save{% endtrans %}
+      </button>
         </div>
         {{ form_end(form) }}
     </div>

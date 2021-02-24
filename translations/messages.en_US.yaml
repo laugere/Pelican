@@ -75,6 +75,7 @@ event:
     participant: Participant
 
 settings:
+  darkmode: Dark mode
   language: Application's language
   locale:
     fr: Français

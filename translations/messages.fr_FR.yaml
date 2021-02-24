@@ -74,6 +74,7 @@ event:
 
 
 settings:
+  darkmode: Mode sombre
   language: Langage de l'application
   locale:
     fr: Français
