@@ -25,12 +25,11 @@ class NotificationService
         foreach ($user->getFriendship() as $friendship) {
             if ($friendship->getValidate()) {
                 if ($friendship->getSecond_user() == $user) {
+                    var_dump($friendship->getFirst_user()->getId());
                     $this->sendNotification($objectManager, $friendship->getFirst_user(), $title, $description, $link);
-                    $objectManager->clear();
-                }
-                if ($friendship->getFirst_user() == $user) {
+                } elseif ($friendship->getFirst_user() == $user) {
+                    var_dump($friendship->getSecond_user()->getId());
                     $this->sendNotification($objectManager, $friendship->getSecond_user(), $title, $description, $link);
-                    $objectManager->clear();
                 }
             }
         }
