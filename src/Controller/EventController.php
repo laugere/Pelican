@@ -145,12 +145,17 @@ class EventController extends AbstractController
             $objectManager->remove($participation);
             $objectManager->flush();
         } else {
-            $participation = new Participation();
-            $participation->setDate(new \DateTime());
-            $participation->setUser($user);
-            $participation->setEvent($event);
-            $objectManager->persist($participation);
-            $objectManager->flush();
+            $nbAfter = $event->getNbParticipant() + 1;
+            if ($event->getNbParticipant() >= $nbAfter) {
+                $participation = new Participation();
+                $participation->setDate(new \DateTime());
+                $participation->setUser($user);
+                $participation->setEvent($event);
+                $objectManager->persist($participation);
+                $objectManager->flush();
+            } else {
+                return $this->json(['code' => 400], 200);
+            }
         }
 
         return $this->json(['code' => 200], 200);

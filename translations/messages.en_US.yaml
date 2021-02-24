@@ -13,12 +13,14 @@ message:
   searchresult: Search result for
   datelocale: en
   deleteconf: Do you really want to delete this event?
+  fullevent: The event is complete
   warning: Warning
   search: Search
   showmore: Show more
   showless: Show less
 
 button:
+  ok: Ok
   filter: Filter
   create: Create
   save: Save

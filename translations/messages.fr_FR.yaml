@@ -13,10 +13,12 @@ message:
   searchresult: Résultat de recherche pour 
   datelocale: fr
   deleteconf: Souhaitez-vous vraiment supprimer cet événement ?
+  fullevent: L'évenement est complet
   warning: Attention
   search: Rechercher
 
 button:
+  ok: ok
   filter: Filtres
   create: Créer
   save: Sauvegarder

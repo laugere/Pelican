@@ -63,4 +63,4 @@
         {% for participation in event.participations %} {% set user = participation.getUser %} {% set friendships = user.getFriendship %} {% include ('vues/UserCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
-{% include 'vues/ModalDialogSupp.html.twig' %} {% endblock %}{% block javascripts %} {% endblock %}
+{% include 'vues/ModalDialogSupp.html.twig' %} {% include 'vues/ModalDialogFullEvent.html.twig' %} {% endblock %}{% block javascripts %} {% endblock %}

@@ -66,10 +66,19 @@
                 url: eventGoToPath,
                 cache: false
             }).done(function(response) {
-                $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
-                setTimeout(() => {
-                    $('#loadingModal').modal('hide')
-                }, 500)
+                if (response.code == 200) {
+                    $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
+                    setTimeout(() => {
+                        $('#loadingModal').modal('hide')
+                    }, 500)
+                } else {
+                    setTimeout(() => {
+                        $('#loadingModal').modal('hide')
+                    }, 500)
+                    setTimeout(() => {
+                        $('#dialogModalFullEvent').modal('show')
+                    }, 500)
+                }
             })
         }
 
