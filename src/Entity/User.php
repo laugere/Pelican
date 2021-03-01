@@ -13,6 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="person")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  * @Vich\Uploadable
  */

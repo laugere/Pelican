@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="isincommunity",
     uniqueConstraints={
-        @ORM\UniqueConstraint(name="user_participation_unique", columns={"user_id", "community_id"})
+        @ORM\UniqueConstraint(name="user_isin_unique", columns={"user_id", "community_id"})
     }
   )
  */
