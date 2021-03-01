@@ -21,13 +21,13 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-    public function findRecent()
+    public function findRecentByDate()
     {
         $datetime = new \DateTime("now");
 
         return $this->createQueryBuilder('e')
             ->select('e')
-            ->andWhere('e.date_suppression > :dateEventSupp')
+            ->andWhere('e.date_suppression > :date')
             ->orWhere('e.date_suppression is NULL')
             ->setParameter('date', $datetime)
             ->orderBy('e.date', 'ASC')
@@ -59,6 +59,21 @@ class EventRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('e')
             ->andWhere('e.name LIKE :name')
             ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findRecent()
+    {
+        $datetime = new \DateTime("now");
+
+        return $this->createQueryBuilder('e')
+            ->select('e')
+            ->andWhere('e.date_suppression > :date')
+            ->orWhere('e.date_suppression is NULL')
+            ->setParameter('date', $datetime)
+            ->orderBy('e.id', 'DESC')
+            ->setMaxResults(20)
             ->getQuery()
             ->getResult();
     }
