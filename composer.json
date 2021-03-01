@@ -28,8 +28,7 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3.2",
         "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "^1.16",
-        "ext-intl": "*"
+        "vich/uploader-bundle": "^1.16"
     },
     "config": {
         "preferred-install": {
