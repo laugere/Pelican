@@ -12,10 +12,11 @@ liip_imagine:
           size: [200, 200] 
           mode: outbound 
       # Shrink the image to 350px wide, the image will keep aspect ratio and adapt the height accordingly 
-    small: quality 80 
-    filters: 
-      relative_resize: 
-        widen: 350 # Shrink/upscale the image to 800px of height, with full quality 
+    small: 
+      quality: 80 
+      filters: 
+        relative_resize: 
+          widen: 350 # Shrink/upscale the image to 800px of height, with full quality 
     big: 
       filters: 
         relative_resize: 
