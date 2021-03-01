@@ -54,7 +54,7 @@ class EventRepository extends ServiceEntityRepository
             ->andWhere('e.date_suppression > :dateEventSupp')
             ->orWhere('e.date_suppression is NULL')
             ->setParameter('date', $datetime)
-            ->orderBy('e.id', 'DESC')
+            ->orderBy('e.date', 'ASC')
             ->setMaxResults(20)
             ->getQuery()
             ->getResult();
