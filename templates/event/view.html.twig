@@ -5,7 +5,7 @@
             {{ event.name }}
         </h1>
         <h5>
-            {% trans %}event.view.the{% endtrans %} {#{{ event.date|format_datetime('full', 'none', locale = 'message.datelocale'|trans) }}#}{{ event.date|format_datetime('full', 'none') }}
+            {% trans %}event.view.the{% endtrans %} {{ event.date|format_datetime('full', 'none', locale = 'message.datelocale'|trans) }}
         </h5>
         <p>
             {{ event.nbParticipant }} {% trans %}event.view.people{% endtrans %}
