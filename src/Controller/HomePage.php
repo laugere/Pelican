@@ -14,10 +14,13 @@ class HomePage extends AbstractController
 {
     public function index(): Response
     {
+        $datetime = new \DateTime("now");
         $user = $this->getUser();
         $events = new ArrayCollection();
         foreach ($user->getEvent() as $participation) {
-            $events->add($participation->getEvent());
+            if ($datetime <= $participation->getEvent()->getDate()) {
+                $events->add($participation->getEvent());
+            }
         }
         $iterator = $events->getIterator();
         $iterator->uasort(function ($a, $b) {
