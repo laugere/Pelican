@@ -51,6 +51,7 @@ class EventType extends AbstractType
                 'download_label' => false,
                 'download_uri' => false,
                 'image_uri' => false,
+                'imagine_pattern' => 'big',
                 'asset_helper' => false,
                 'attr' => array(
                     'id' => 'inputImage',
