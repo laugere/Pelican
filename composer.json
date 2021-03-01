@@ -3,7 +3,7 @@
     "license": "proprietary",
     "require": {
         "php": ">=7.1.3",
-        "intl": "*",
+        "ext-intl": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.1",
