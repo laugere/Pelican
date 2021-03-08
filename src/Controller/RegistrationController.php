@@ -36,11 +36,13 @@ class RegistrationController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $settings->setLanguage('fr_FR');
+            $settings->setDarkMode(false);
             $user->setSettings($settings);
             $entityManager->persist($user);
             $entityManager->flush();
 
             $settings->setLanguage('fr_FR');
+            $settings->setDarkMode(false);
             $user->setSettings($settings);
             $entityManager->persist($settings);
             $entityManager->flush();

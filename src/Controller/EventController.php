@@ -146,7 +146,7 @@ class EventController extends AbstractController
             $objectManager->flush();
         } else {
             $nbAfter = $event->getNbParticipant() + 1;
-            if ($event->getNbParticipant() >= $nbAfter) {
+            if ($event->getNbParticipant() <= $nbAfter) {
                 $participation = new Participation();
                 $participation->setDate(new \DateTime());
                 $participation->setUser($user);
