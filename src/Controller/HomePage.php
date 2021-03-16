@@ -26,7 +26,8 @@ class HomePage extends AbstractController
         $events = new ArrayCollection(iterator_to_array($iterator));
 
         return $this->render('home/index.html.twig', [
-            'events' => $events
+            'events' => $events,
+            'menu' => 'home'
         ]);
     }
 }

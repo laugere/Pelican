@@ -6,6 +6,7 @@
 
 #mainNavbar .nav-item {
     text-align: center;
+    position: relative;
 }
 
 #mainNavbar .navbar-brand {
@@ -14,6 +15,7 @@
 
 #mainNavbar .nav-link {
     color: rgba(255, 255, 255, 0.384);
+    position: relative;
     margin: 0.75rem 0;
     padding: 12px !important;
     transition: color 0.5s;
@@ -23,7 +25,7 @@
     color: white !important;
 }
 
-.current-item {
+.current-item{
     color: white !important;
 }
 
@@ -49,6 +51,17 @@
     background-color: rgba(42, 32, 83, 1) !important;
     border-radius: 25px;
     border: none;
+}
+
+.dot{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+    height: 0.7rem;
+    width: 0.7rem;
+    background-color: crimson;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 

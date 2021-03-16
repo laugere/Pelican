@@ -29,7 +29,8 @@ class FriendController extends AbstractController
 
         return $this->render('friend/index.html.twig', [
             'users' => $users,
-            'friendships' => $friendships
+            'friendships' => $friendships,
+            'menu' => 'community'
         ]);
     }
 

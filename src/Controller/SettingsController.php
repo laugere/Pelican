@@ -31,6 +31,7 @@ class SettingsController extends AbstractController
         }
 
         return $this->render('settings/index.html.twig', [
+            'activeController' => 'Settings',
             'form' => $form->createView()
         ]);
     }

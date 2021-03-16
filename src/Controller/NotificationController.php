@@ -24,7 +24,8 @@ class NotificationController extends AbstractController
         $notifications = $user->getNotifications();
 
         return $this->render('notification/index.html.twig', [
-            'notifications' => $notifications
+            'notifications' => $notifications,
+            'menu' => 'notification'
         ]);
     }
 

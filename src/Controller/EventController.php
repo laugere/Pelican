@@ -30,7 +30,8 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/index.html.twig', [
-            'events' => $events
+            'events' => $events,
+            'menu' => 'event'
         ]);
     }
 
@@ -58,7 +59,8 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/create.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'menu' => 'event'
         ]);
     }
 
@@ -70,7 +72,8 @@ class EventController extends AbstractController
         $event = $eventRepo->findOneById($eventId);
         return $this->render('event/view.html.twig', [
             'event' => $event,
-            'isIn' => null
+            'isIn' => null,
+            'menu' => 'event'
         ]);
     }
 
@@ -96,7 +99,8 @@ class EventController extends AbstractController
 
         return $this->render('event/modify.html.twig', [
             'event' => $event,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'menu' => 'event'
         ]);
     }
 
