@@ -10,7 +10,10 @@
         Pelican
     </title>
 
-    {% block stylesheets %} {{ encore_entry_link_tags('app') }} {% endblock %}
+    {% block stylesheets %} 
+        {{ encore_entry_link_tags('app') }} 
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    {% endblock %}
 </head>
 
 <body>

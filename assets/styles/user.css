@@ -16,12 +16,22 @@
     margin: auto;
 }
 
-.user-info-counter .col-lg h4 {
+.user-info-counter .col-lg h5 {
     text-align: center;
     opacity: 60%;
 }
 
-.user-info-counter .col-lg h5 {
+.user-info-counter .col-lg h6 {
     text-align: center;
     font-weight: bold;
+}
+
+.user-info-counter .col-lg {
+    padding: 1.25rem;
+    background-color: #ffffff17;
+    border-radius: 20px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }

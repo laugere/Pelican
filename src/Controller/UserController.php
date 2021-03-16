@@ -21,4 +21,8 @@ class UserController extends AbstractController
             "menu" => 'user'
         ]);
     }
+
+    /**
+     * @Route("/user/", name="user")
+     */
 }

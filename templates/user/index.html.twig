@@ -9,16 +9,16 @@
             <h3 class="text-center">{{ user.pseudo }}</h3>
             <div class="user-info-counter row no-height-row">
                 <div class="col-lg">
-                    <h4>{% trans %}user.counter.friends{% endtrans %}</h4>
-                    <h5>{{  user.friendship | filter(v => v.validate == true) | length }}</h5>
+                    <h5>{% trans %}user.counter.friends{% endtrans %}</h4>
+                    <h6>{{  user.friendship | filter(v => v.validate == true) | length }}</h5>
                 </div>
                 <div class="col-lg">
-                    <h4>{% trans %}user.counter.events{% endtrans %}</h4>
-                    <h5>{{  user.event | length   }}</h5>
+                    <h5>{% trans %}user.counter.events{% endtrans %}</h4>
+                    <h6>{{  user.event | length   }}</h5>
                 </div>
                 <div class="col-lg">
-                    <h4>{% trans %}user.counter.community{% endtrans %}</h4>
-                    <h5>{{  user.getCommunity | length   }}</h5>
+                    <h5>{% trans %}user.counter.community{% endtrans %}</h4>
+                    <h6>{{  user.getCommunity | length   }}</h5>
                 </div>
             </div>
         </div>
