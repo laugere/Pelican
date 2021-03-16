@@ -6,6 +6,7 @@
     <div class="subcontainer scrollbar">
         <div class="user-info-container">
             <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ app.user.image) }}">
+            <h3 class="text-center">{{ user.pseudo }}</h3>
             <div class="user-info-counter row no-height-row">
                 <div class="col-lg">
                     <h4>{% trans %}user.counter.friends{% endtrans %}</h4>

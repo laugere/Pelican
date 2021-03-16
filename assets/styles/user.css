@@ -3,6 +3,7 @@
     height: 10rem;
     display: block;
     margin: auto;
+    margin-bottom: 1.5rem;
 }
 
 .user-info-container .user-info-counter {
