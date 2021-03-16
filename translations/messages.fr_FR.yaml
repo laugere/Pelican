@@ -101,3 +101,9 @@ security:
     password: Mot de passe
     rememberme: Se souvenir de moi
     donotaccount: Vous n'avez pas de compte ?
+
+user:
+  counter: 
+    friends: Amis
+    events: Événements créé
+    community: Communautés suivies

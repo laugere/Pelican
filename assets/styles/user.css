@@ -1,0 +1,22 @@
+.user-info-container .avatar-img {
+    width: 10rem;
+    height: 10rem;
+    display: block;
+    margin: auto;
+}
+
+.user-info-container .user-info-counter {
+    padding-top: 2.5rem;
+    width: 80%;
+    margin: auto;
+}
+
+.user-info-counter .col-lg h4 {
+    text-align: center;
+    opacity: 60%;
+}
+
+.user-info-counter .col-lg h5 {
+    text-align: center;
+    font-weight: bold;
+}
