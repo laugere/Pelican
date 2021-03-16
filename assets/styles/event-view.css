@@ -1,0 +1,21 @@
+#event-description #event-description-collapse.collapse:not(.show) {
+    display: block;
+    height: 3rem;
+    overflow: hidden;
+}
+
+#event-description #event-description-collapse.collapsing {
+    height: 3rem;
+}
+
+#event-description a.collapsed::after {
+    content: 'Voir plus';
+}
+
+#event-description a:not(.collapsed)::after {
+    content: 'Voir moins';
+}
+
+#event-description a {
+    text-decoration: none;
+}

@@ -1,33 +1,41 @@
 <nav id="mobile-navbar" class="navbar fixed-bottom">
-    <div class="user-container-mobile">
-        <a href="/user">
-            <img class="avatar-img" src="{{ asset('build/wejdene.jpg') }}" height="100%">
-        </a>
+    <div class="user-container-mobile dropup">
+        <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ app.user.image) }}" height="100%" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/user"><i class="fas fa-user"></i> {% trans %}menu.user{% endtrans %}</a>
+            <a class="dropdown-item" href="/settings"><i class="fas fa-cog"></i> {% trans %}menu.settings{% endtrans %}</a>
+            <a class="dropdown-item text-danger" href="/logout"><i class="fas fa-sign-out-alt"></i> {% trans %}menu.logout{% endtrans %}</a>
+        </div>
     </div>
     <div class="row mobile-navbar-menu-container">
-        <div class="col mobile-navbar-manu-item">
-            <a class="nav-link" href="/user">
-                <i class="fas fa-user fa-lg"></i>
-            </a>
-        </div>
-        <div class="col mobile-navbar-manu-item">
+        <div class="col mobile-navbar-menu-item">
             <a class="nav-link" href="/">
                 <i class="fas fa-home fa-lg"></i>
             </a>
         </div>
-        <div class="col mobile-navbar-manu-item">
+        <div class="col mobile-navbar-menu-item">
+            <a class="nav-link" href="/friend">
+                <i class="fas fa-user-friends fa-lg"></i>
+            </a>
+        </div>
+        <div class="col mobile-navbar-menu-item">
+            <a class="nav-link" href="/notification">
+                {% if app.user.getNotifications is empty %}
+                    <i class="fas fa-bullhorn fa-lg"></i>
+                {% else %}
+                    <i class="fas fa-bullhorn fa-lg text-warning"></i>
+                {% endif %}
+            </a>
+        </div>
+        <div class="col mobile-navbar-menu-item">
             <a class="nav-link" href="/event">
                 <i class="fas fa-calendar-alt fa-lg"></i>
             </a>
         </div>
-        <div class="col mobile-navbar-manu-item">
+        <div class="col mobile-navbar-menu-item">
             <a class="nav-link" href="/community">
-                <i class="fas fa-user-friends fa-lg"></i>
-            </a>
-        </div>
-        <div class="col mobile-navbar-manu-item">
-            <a class="nav-link" href="/settings">
-                <i class="fas fa-cog fa-lg"></i>
+                <i class="fas fa-campground fa-lg"></i>
             </a>
         </div>
     </div>

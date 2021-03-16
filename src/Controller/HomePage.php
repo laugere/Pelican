@@ -2,23 +2,30 @@
 
 namespace App\Controller;
 
+use App\Entity\Participation;
+use App\Repository\EventRepository;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\GoToEventRepository;
-use App\Repository\IsInRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 class HomePage extends AbstractController
 {
-    public function index(IsInRepository $isInRepo, GoToEventRepository $goToEventRepo): Response
+    public function index(): Response
     {
         $user = $this->getUser();
-        $communitys = $isInRepo->findCommunityGoTo($user->getId());
-        $events = $goToEventRepo->findCommunityGoTo($user->getId());
+        $events = new ArrayCollection();
+        foreach ($user->getEvent() as $participation) {
+            $events->add($participation->getEvent());
+        }
+        $iterator = $events->getIterator();
+        $iterator->uasort(function ($a, $b) {
+            return ($a->getdate() < $b->getdate()) ? -1 : 1;
+        });
+        $events = new ArrayCollection(iterator_to_array($iterator));
 
         return $this->render('home/index.html.twig', [
-            'activeController' => 'Home',
-            'communitys' => $communitys,
             'events' => $events
         ]);
     }

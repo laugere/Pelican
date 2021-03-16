@@ -1,24 +1,7 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-  <div id="content-container" class="scrollable">
-    <div class="content-brand">
-      <div class="row">
-        <div class="col-9">
-          <h4 class="content-title">
-            {% trans %}controllerName.user{% endtrans %}
-          </h4>
-        </div>
-        <div class="col-3 content-search">
-          <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
-        </div>
-      </div>
-    </div>
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.user'|trans } %}
     <div class="subcontainer scrollbar">
     </div>
-  </div>
-{% endblock %}
-
-{% block javascripts %}
-
-{% endblock %}
+</div>
+{% endblock %} {% block javascripts %} {% endblock %}

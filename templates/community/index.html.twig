@@ -1,77 +1,16 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-  <div id="content-container" class="scrollable">
-    <div class="content-brand">
-      <div class="row">
-        <div class="col-9">
-          <h4 class="content-title">
-            {% trans %}controllerName.community{% endtrans %}
-          </h4>
-        </div>
-        <div class="col-3 content-search">
-          <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
-        </div>
-      </div>
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.community'|trans, 'search' : true } %}
+    <div class="subcontainer scrollbar extra-padding">
+        {% if not app.request.query.get("search") is empty %}
+        <h5 class="text-center">
+            {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
+        </h5>
+        {% endif %} {% if communitys is empty %}
+        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for community in communitys %} {% include ('vues/CommunityCard.html.twig') %} {% endfor %} {% endif %}
     </div>
-    <div class="subcontainer scrollbar">
-      {% for community in communitys %}
-        <div id="community-{{ community.id }}">
-          <div class="community-card">
-            <img src="{{ asset('build/wejdene.jpg') }}"
-              width="70px"
-              height="70px" />
-            <div>
-              <h4 class="card-title">
-                {{ community.name }}
-              </h4>
-            </div>
-            <div class="card-button">
-              {% set communityid = {
-                id: community.id,
-                name: community.name
-              } %}
-              {% if communityid in isInCommunitys %}
-                <button type="button"
-                  onclick="onClickBtnGoToCommunity('{{
-                  path(
-                    'community_goto',
-                    {
-                      communityId: community.id
-                    }
-                  )
-                  }}', 'community-{{ community.id }}')"
-                  class="btn btn-outline-danger btn-round js-goTo">
-                  <i class="fas fa-times"></i>
-                </button>
-              {% else %}
-                <button type="button"
-                  onclick="onClickBtnGoToCommunity('{{
-                  path(
-                    'community_goto',
-                    {
-                      communityId: community.id
-                    }
-                  )
-                  }}', 'community-{{ community.id }}')"
-                  class="btn btn-outline-warning btn-round">
-                  <i class="fas fa-plus"></i>
-                </button>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
+</div>
 
-  <button type="button"
-    class="btn-create btn btn-info btn-lg rounded-circle"
-    onclick="window.location = '/community/create'">
-    <i class="fas fa-plus"></i>
-  </button>
-{% endblock %}
-
-{% block javascripts %}
-
-{% endblock %}
+<button type="button" class="btn-create btn btn-lg rounded-circle" onclick="window.location = '/community/create'">
+	<i class="fas fa-plus"></i>
+</button> {% endblock %} {% block javascripts %} {% endblock %}

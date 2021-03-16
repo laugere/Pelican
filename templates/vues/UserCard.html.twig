@@ -1,0 +1,31 @@
+<div id="friend-{{ user.id }}">
+    <div class="list-card">
+        <div class="list-card-image-container">
+            <img class="list-card-image-container-img" src="{{ asset('uploads/images/users/' ~ user.image) }}" width="45px" height="45px" />
+            <p class="list-card-image-container-img-name">
+                {{ user.pseudo }}
+            </p>
+        </div>
+
+        {% if user != app.user %}
+        <div class="list-card-button-container">
+            {% set trouve = false %} {% for friendship in friendships %} {% if app.user == friendship.first_user and user == friendship.second_user %} {% if friendship.validate %}
+            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
+                <i class="fas fa-user-check"></i>
+                        </button> {% else %}
+            <button type="button" class="disabled btn btn-outline-info btn-round list-card-button" disabled>
+                            <i class="fas fa-user-clock"></i>
+                        </button> {% endif %} {% set trouve = true %} {% elseif user == friendship.first_user and app.user == friendship.second_user %} {% if friendship.validate %}
+            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
+                <i class="fas fa-user-check"></i>
+                        </button> {% else %}
+            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-info btn-round list-card-button">
+                <i class="fas fa-user-clock"></i>
+                        </button> {% endif %} {% set trouve = true %} {% endif %} {% endfor %} {% if trouve == false %}
+            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-warning btn-round list-card-button">
+                    <i class="fas fa-plus"></i>
+                </button> {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>

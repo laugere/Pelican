@@ -46,10 +46,14 @@
             <label for="inputPassword">{% trans %}security.register.password{% endtrans %}</label> {{ form_widget(registrationForm.plainPassword) }}
         </div>
         <div class="form-group">
+            <label for="image">{% trans %}security.register.image{% endtrans %}</label> {{ form_widget(registrationForm.imageFile) }}
+            <img id="image_output" />
+        </div>
+        <div class="form-group">
             {{ form_widget(registrationForm.agreeTerms) }}
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-outline-success">
+            <button type="submit" class="btn btn-success">
           {% trans %}button.signup{% endtrans %}
         </button>
         </div>

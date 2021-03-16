@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\File;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EventType extends AbstractType
 {
@@ -19,59 +19,45 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => 'Nom',
                 'attr' => array(
-                    'placeholder' => 'Nom de l\'événement'
+                    'placeholder' => 'event.form.name'
                 )
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description',
                 'attr' => array(
-                    'placeholder' => 'Description'
+                    'placeholder' => 'event.form.description'
                 )
             ])
             ->add('location', null, [
-                'label' => 'Localisation',
                 'attr' => array(
-                    'placeholder' => 'Localisation de l\'événement'
+                    'placeholder' => 'event.form.location'
                 )
             ])
             ->add('date', DateType::class, [
-                'label' => 'Date',
                 'widget' => 'single_text',
                 'attr' => array(
-                    'placeholder' => 'Date de l\'événement'
+                    'placeholder' => 'event.form.date'
                 )
             ])
             ->add('nbParticipant', null, [
-                'label' => 'Nombre de participants',
                 'attr' => array(
-                    'placeholder' => 'Nombre de participants'
+                    'placeholder' => 'event.form.number'
+                )
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => true,
+                'allow_delete' => false,
+                'delete_label' => false,
+                'download_label' => false,
+                'download_uri' => false,
+                'image_uri' => false,
+                'asset_helper' => false,
+                'attr' => array(
+                    'id' => 'inputImage',
+                    'placeholder' => 'event.form.image',
+                    'onchange' => 'loadFile(event)'
                 )
             ]);
-
-        if (in_array('attr', $options)) {
-            if ($options['attr']) {
-                if (in_array('image', $options['attr'])) {
-                    if ($options['attr']['image']) {
-                        $builder->add('imageFileName', FileType::class, [
-                            'required' => false,
-                            'label' => 'image de fond de l\'évenement',
-                            'constraints' => [
-                                new File([
-                                    'maxSize' => '1024k',
-                                    'mimeTypes' => [
-                                        'image/jpeg',
-                                        'image/png',
-                                    ],
-                                    'mimeTypesMessage' => 'Please upload a valid image',
-                                ])
-                            ]
-                        ]);
-                    }
-                }
-            }
-        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

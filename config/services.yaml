@@ -5,12 +5,26 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.locales: [en_US, fr_FR]
-    event_directory: '%kernel.project_dir%/public/uploads/'
-
-twig:
-    globals:
-        event_directory: '%event_directory%'
+    app.path.event_images: /uploads/images/events
+    app.path.user_images: /uploads/images/users
         
+vich_uploader:
+    mappings:
+        event_images:
+            uri_prefix:         '%app.path.event_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.event_images%'
+            namer:
+                service: Vich\UploaderBundle\Naming\HashNamer
+                options: { algorithm: 'sha256', length: 50 }
+        user_images:
+            uri_prefix:         '%app.path.user_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.user_images%'
+            namer:
+                service: Vich\UploaderBundle\Naming\HashNamer
+                options: { algorithm: 'sha256', length: 50 }
+        
+
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -35,8 +49,5 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\Service\FileUploader:
-        arguments:
-            $targetDirectory: '%event_directory%'
 
     Doctrine\Persistence\ObjectManager: "@doctrine.orm.default_entity_manager"

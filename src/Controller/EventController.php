@@ -4,10 +4,9 @@ namespace App\Controller;
 
 use App\Service\FileUploader;
 use App\Entity\Event;
-use App\Entity\GoToEvent;
+use App\Entity\Participation;
 use App\Form\EventType;
 use App\Repository\EventRepository;
-use App\Repository\GoToEventRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -15,18 +14,22 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Service\NotificationService;
 
 class EventController extends AbstractController
 {
     /**
      * @Route("/event", name="event")
      */
-    public function index(EventRepository $event): Response
+    public function index(EventRepository $eventRepo, Request $request): Response
     {
-        $events = $event->findRecent();
+        if($request->query->get('search') != null) {
+            $events = $eventRepo->findByLike($request->query->get('search'));
+        } else {
+            $events = $eventRepo->findRecent();
+        }
 
         return $this->render('event/index.html.twig', [
-            'activeController' => 'Event',
             'events' => $events
         ]);
     }
@@ -34,33 +37,27 @@ class EventController extends AbstractController
     /**
      * @Route("/event/create", name="event_create")
      */
-    public function create(Event $event = null, Request $request, ObjectManager $objectManager, FileUploader $fileUploader): Response
+    public function create(Event $event = null, Request $request, ObjectManager $objectManager, NotificationService $notificationService): Response
     {
         $user = $this->getuser();
+
         $event = new Event();
-        $form = $this->createForm(EventType::class, $event, array('attr' => array('image' => true)));
+        $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $brochureFile */
-            $file = $form->get('imageFileName')->getData();
-            if ($file) {
-                $newFileName = $fileUploader->upload($file);
-                $event->setImageFileName($newFileName);
-            }
-
             $event->setDateCreation(new \DateTime());
             $event->setDateModification(new \DateTime());
-            $event->setIdCreator($user->getId());
+            $event->setuser($user);
 
             $objectManager->persist($event);
             $objectManager->flush();
+
+            $notificationService->sendFriendNotification($objectManager, $user, $user->getPseudo()." a créé un évenement", "description de création d'évenement", "event");
 
             return $this->redirectToRoute('event', [], 301);
         }
 
         return $this->render('event/create.html.twig', [
-            'activeController' => 'Event',
-            'controller_name' => 'Organiser un événement',
             'form' => $form->createView()
         ]);
     }
@@ -68,32 +65,29 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/view", name="event_view")
      */
-    public function view($eventId, EventRepository $eventRepo, GoToEventRepository $goToEventRepo): Response
+    public function view($eventId, EventRepository $eventRepo): Response
     {
         $event = $eventRepo->findOneById($eventId);
-        $user = $this->getuser();
-        $isIn = $goToEventRepo->userGoToEvent($user->getId(), $eventId);
         return $this->render('event/view.html.twig', [
-            'activeController' => 'Event',
             'event' => $event,
-            'isIn' => $isIn
+            'isIn' => null
         ]);
     }
 
     /**
      * @Route("/event/{eventId}/modify", name="event_modify")
      */
-    public function modify($eventId, Request $request, EventRepository $eventRepo, ObjectManager $objectManager, FileUploader $fileUploader): Response
+    public function modify($eventId, Request $request, EventRepository $eventRepo, ObjectManager $objectManager): Response
     {
         $event = $eventRepo->findOneById($eventId);
         $user = $this->getuser();
 
-        if ($event->getIdCreator() == $user->getId()) {
-            $form = $this->createForm(EventType::class, $event, array('attr' => array('image' => false)));
+        if ($event->getUser() == $user) {
+            $form = $this->createForm(EventType::class, $event);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $event->setDateModification(new \DateTime());
-                $event->setIdCreator($user->getId());
+                $event->setUser($user);
 
                 $objectManager->persist($event);
                 $objectManager->flush();
@@ -101,8 +95,6 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/modify.html.twig', [
-            'activeController' => 'Event',
-            'controller_name' => 'Modifier un événement',
             'event' => $event,
             'form' => $form->createView()
         ]);
@@ -111,26 +103,26 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/delete", name="event_delete")
      */
-    public function deleteEvent($eventId, EventRepository $eventRepo, ObjectManager $objectManager): Response
+    public function deleteEvent($eventId, EventRepository $eventRepo, ObjectManager $objectManager, Request $request): Response
     {
         $datetime = new \DateTime("now");
         $event = $eventRepo->findOneByid($eventId);
         $user = $this->getUser();
 
-        if ($event->getIdCreator() == $user->getId()) {
+        if ($event->getUser() == $user) {
             $event->setDateSuppression($datetime);
 
             $objectManager->persist($event);
             $objectManager->flush();
         }
 
-        return $this->index($eventRepo);
+        return $this->index($eventRepo, $request);
     }
 
     /**
      * @Route("/event/{eventId}/goto", name="event_goto")
      */
-    public function goToEvent($eventId, ObjectManager $objectManager, GoToEventRepository $goToEventRepo): Response
+    public function goToEvent($eventId, ObjectManager $objectManager, EventRepository $eventRepo): Response
     {
         $user = $this->getuser();
 
@@ -138,14 +130,32 @@ class EventController extends AbstractController
             'code' => 403,
         ], 403);
 
-        if (!$goToEventRepo->userGoToEvent($user->getId(), $eventId)) {
-            $GoToEvent = new GoToEvent();
-            $GoToEvent->setIdEvent($eventId);
-            $GoToEvent->setIdUser($user->getId());
-            $objectManager->persist($GoToEvent);
+        $event = $eventRepo->findOneById($eventId);
+        $participation = null;
+        $trouve = false;
+
+        foreach ($event->getParticipations() as $participant) {
+            if ($participant->getUser() == $user) {
+                $trouve = true;
+                $participation = $participant;
+            }
+        }
+
+        if ($trouve) {
+            $objectManager->remove($participation);
             $objectManager->flush();
         } else {
-            $goToEventRepo->deleteGoToEvent($user->getId(), $eventId);
+            $nbAfter = $event->getNbParticipant() + 1;
+            if ($event->getNbParticipant() <= $nbAfter) {
+                $participation = new Participation();
+                $participation->setDate(new \DateTime());
+                $participation->setUser($user);
+                $participation->setEvent($event);
+                $objectManager->persist($participation);
+                $objectManager->flush();
+            } else {
+                return $this->json(['code' => 400], 200);
+            }
         }
 
         return $this->json(['code' => 200], 200);

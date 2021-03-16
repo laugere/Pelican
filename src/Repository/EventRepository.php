@@ -26,13 +26,7 @@ class EventRepository extends ServiceEntityRepository
         $datetime = new \DateTime("now");
 
         return $this->createQueryBuilder('e')
-            ->select('e', 'u.pseudo')
-            ->innerJoin(
-                User::class,    // Entity
-                'u',               // Alias
-                Join::WITH,        // Join type
-                'e.idCreator = u.id' // Join columns
-            )
+            ->select('e')
             ->andWhere('e.date_suppression > :date')
             ->orWhere('e.date_suppression is NULL')
             ->setParameter('date', $datetime)
@@ -58,6 +52,15 @@ class EventRepository extends ServiceEntityRepository
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function findByLike($name)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult();
     }
 
     /*

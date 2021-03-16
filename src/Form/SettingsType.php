@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Settings;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,9 +16,14 @@ class SettingsType extends AbstractType
         $builder
             ->add('language', ChoiceType::class, [
                 'choices'  => [
-                    'Français' => 'fr_FR',
-                    'English' => 'en_US'
+                    'settings.locale.fr' => 'fr_FR',
+                    'settings.locale.en' => 'en_US'
                 ],
+            ])
+            ->add('darkmode', CheckboxType::class, [
+                'required' => false,
+                'label' => 'settings.darkmode',
+                'label_attr' => ['class' => 'switch-custom']
             ]);
     }
 

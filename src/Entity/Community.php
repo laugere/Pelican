@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommunityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +37,21 @@ class Community
      * @ORM\Column(type="string", length=100)
      */
     private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=IsInCommunity::class, mappedBy="community")
+     */
+    protected $isincommunity;
+
+    public function __construct()
+    {
+        $this->isincommunity = new ArrayCollection();
+    }
+
+    public function getIsincommunity()
+    {
+        return $this->isincommunity;
+    }
 
     public function getId(): ?int
     {

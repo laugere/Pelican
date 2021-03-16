@@ -1,44 +1,52 @@
 <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark flex-column">
-	<a class="navbar-brand top-icon" href="#">
-		<img src="{{ asset('build/icon/color/512.png') }}" width="50px" height="50px" class="d-inline-block align-top" alt="Icon">
-	</a>
-	<button style="border:none" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		<i class="fas fa-bars"></i>
-	</button>
-	<div id="navbarNav" class="collapse navbar-collapse" style="align-items: flex-start; margin-top: 1.5rem;">
-		<ul class="navbar-nav flex-column">
-			<li class="nav-item">
-				<a class="nav-link" href="/user">
-					<i class="fas fa-user fa-lg {{ activeController == "User" ? 'active' : '' }}"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/">
-					<i class="fas fa-home fa-lg {{ activeController == "Home" ? 'active' : '' }}"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/event">
-					<i class="fas fa-calendar-alt fa-lg {{ activeController == "Event" ? 'active' : '' }}"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/community">
-					<i class="fas fa-user-friends fa-lg {{ activeController == "Community" ? 'active' : '' }}"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/settings">
-					<i class="fas fa-cog fa-lg {{ activeController == "Settings" ? 'active' : '' }}"></i>
-				</a>
-			</li>
-		</ul>
-	</div>
-	<a class="navbar-brand bottom-icon" href="/logout">
-		<i class="fas fa-sign-out-alt fa-lg"></i>
-	</a>
+    <a class="navbar-brand top-icon" href="/">
+        <img src="{{ asset('build/icon/color/512.png') }}" width="50px" height="50px" class="d-inline-block align-top" alt="Icon">
+    </a>
+    <button style="border:none" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div id="navbarNav" class="collapse navbar-collapse" style="align-items: flex-start; margin-top: 1.5rem;">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/friend">
+                    <i class="fas fa-user-friends fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav_item">
+                <a class="nav-link" href="/notification">
+                    {% if app.user.getNotifications is empty %}
+                        <i class="fas fa-bullhorn fa-lg"></i>
+                    {% else %}
+                        <i class="fas fa-bullhorn fa-lg text-warning"></i>
+                    {% endif %}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/event">
+                    <i class="fas fa-calendar-alt fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/community">
+                    <i class="fas fa-campground fa-lg"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-brand bottom-icon dropup">
+        <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ app.user.image) }}" height="100%" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/user"><i class="fas fa-user"></i> {% trans %}menu.user{% endtrans %}</a>
+            <a class="dropdown-item" href="/settings"><i class="fas fa-cog"></i> {% trans %}menu.settings{% endtrans %}</a>
+            <a class="dropdown-item text-danger" href="/logout"><i class="fas fa-sign-out-alt"></i> {% trans %}menu.logout{% endtrans %}</a>
+        </div>
+    </div>
 </nav>
 
-{% block javascripts %}
-
-{% endblock %}
+{% block javascripts %} {% endblock %}

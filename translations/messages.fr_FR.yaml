@@ -1,19 +1,39 @@
 controllerName:
-  user: Informations Utilisateur
+  user: Informations
   community: Communautés
   event: Événements
   home: Accueil
   settings: Réglages
+  users: Utilisateurs
+  notification: Notification
 
 message:
   loading: Chargement
+  nocontent: Il n'y a rien par ici
+  searchresult: Résultat de recherche pour 
+  datelocale: fr
+  deleteconf: Souhaitez-vous vraiment supprimer cet événement ?
+  fullevent: L'évenement est complet
+  warning: Attention
+  search: Rechercher
 
 button:
+  ok: ok
   filter: Filtres
   create: Créer
   save: Sauvegarder
   connect: Se connecter
   signup: S'inscrire
+  stopparticipate: Ne plus participer
+  participate: Participer
+  delete: Supprimer
+  cancel: Annuler
+
+rightcol:
+  whofollow: Qui suivre
+  around: Autour de soi
+  news: Nouveautés
+  showmore: Voir plus
 
 form:
   search: Rechercher
@@ -26,17 +46,39 @@ menu:
   settings: Réglages
   logout: Déconnexion
 
+community:
+  create:
+    title: Créer une communauté
+    name: Nom de la communauté
+
 home:
   nextEvent: Prochains évenements
   followCommunity: Communautés suivies
 
 event:
-  allEvent: Tous les évenements
-  suggestion: Suggestions
-  around: Autour de vous
+  form:
+    name: Nom de l'évenement
+    description: Description de l'évenement
+    location: Localisation de l'évenement
+    date: Date de l'évenement
+    number: Nombre de participants
+    image: Image de l'évenement
+  create:
+    title: Organiser un évenement
+  index:
+    allEvent: Tous les évenements
+  view:
+    the: Le
+    people: Personnes
+    participant: Participants
+
 
 settings:
+  darkmode: Mode sombre
   language: Langage de l'application
+  locale:
+    fr: Français
+    en: English
 
 security:
   register:
@@ -46,7 +88,10 @@ security:
     pseudo: Pseudonyme
     city: Ville
     password: Mot de passe
+    passwordspan: Entrer un mot de passe
+    image: Ajouter un avatar
     agree: Accepter les conditions
+    agreespan: Vous devez accepter nos conditions.
     alreadyaccount: Vous avez déjà un compte ?
   login:
     title: Connectez vous

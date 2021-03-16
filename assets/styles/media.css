@@ -22,7 +22,7 @@
         padding-right: 0;
     }
     .btn-create {
-        bottom: 5rem;
+        bottom: 4.5rem;
         right: 1rem;
     }
     #content-container .content-brand {
@@ -36,7 +36,7 @@
     }
     .scrollbar {
         padding-top: 1.5rem;
-        padding-bottom: 7rem;
+        padding-bottom: 5rem;
     }
     #mobile-navbar {
         display: block;
@@ -50,5 +50,8 @@
     #loginFrame {
         margin: 4vh 2vw;
         width: auto;
+    }
+    .list-card .list-card-title-container .list-card-title {
+        width: 60vw;
     }
 }

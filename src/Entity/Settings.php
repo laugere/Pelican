@@ -23,9 +23,9 @@ class Settings
     private $language;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean", length=1)
      */
-    private $idUser;
+    private $darkMode;
 
     public function getId(): ?int
     {
@@ -40,6 +40,18 @@ class Settings
     public function setLanguage(string $language): self
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    public function getDarkMode(): ?bool
+    {
+        return $this->darkMode;
+    }
+
+    public function setDarkMode(bool $darkMode): self
+    {
+        $this->darkMode = $darkMode;
 
         return $this;
     }

@@ -31,13 +31,20 @@
         </div>
     </div>
 
-    {% include 'vues/ModalLoading.html.twig' %}
+    {% include 'vues/ModalLoading.html.twig' %} {% include 'vues/ModalSearch.html.twig' %}
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" />
 
     <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+
         function onClickBtnGoToCommunity(communityGoToPath, communityId) {
             $('#loadingModal').modal('show')
 
@@ -59,12 +66,44 @@
                 url: eventGoToPath,
                 cache: false
             }).done(function(response) {
-                $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
+                if (response.code == 200) {
+                    $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
+                    setTimeout(() => {
+                        $('#loadingModal').modal('hide')
+                    }, 500)
+                } else {
+                    setTimeout(() => {
+                        $('#loadingModal').modal('hide')
+                    }, 500)
+                    setTimeout(() => {
+                        $('#dialogModalFullEvent').modal('show')
+                    }, 500)
+                }
+            })
+        }
+
+        function onClickBtnAddUser(friendAddPath, friendId) {
+            $('#loadingModal').modal('show')
+
+            $.ajax({
+                url: friendAddPath,
+                cache: false
+            }).done(function(response) {
+                $('#' + friendId).load('/friend #' + friendId)
                 setTimeout(() => {
                     $('#loadingModal').modal('hide')
                 }, 500)
             })
         }
+
+        var loadFile = function(event) {
+            var output = document.getElementById('image_output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.style.display = 'block';
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
     </script>
 
     {% block javascripts %} {{ encore_entry_script_tags('app') }} {% endblock %}

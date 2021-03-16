@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,27 +21,28 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', null, ['label' => false, 'attr' => array(
                 'id' => 'inputEmail',
-                'placeholder' => 'Email'
+                'placeholder' => 'security.register.email'
             )])
             ->add('city', null, ['label' => false, 'attr' => array(
                 'id' => 'inputCity',
-                'placeholder' => 'Ville'
+                'placeholder' => 'security.register.city'
             )])
             ->add('pseudo', null, ['label' => false, 'attr' => array(
-                'id' => 'inpuPseudo',
-                'placeholder' => 'Pseudonyme'
+                'id' => 'inputPseudo',
+                'placeholder' => 'security.register.pseudo'
             )])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'label' => false,
                 'attr' => array(
-                'id' => 'inputPassword',
-                'placeholder' => 'Mot de passe'),
+                    'id' => 'inputPassword',
+                    'placeholder' => 'security.register.password'
+                ),
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'security.register.passwordspan',
                     ]),
                     new Length([
                         'min' => 6,
@@ -50,15 +52,29 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => true,
+                'allow_delete' => false,
+                'delete_label' => false,
+                'download_label' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => false,
+                'attr' => array(
+                    'id' => 'inputImage',
+                    'placeholder' => 'security.register.image',
+                    'onchange' => 'loadFile(event)'
+                )
+            ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'Accepter les conditions',
+                'label' => 'security.register.agree',
                 'attr' => array(
                     'id' => 'inputAgreeTerms'
                 ),
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'security.register.agreespan',
                     ]),
                 ],
             ]);

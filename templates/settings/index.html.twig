@@ -1,38 +1,20 @@
-{% extends 'HomePage.html.twig' %}
-
-{% block body %}
-  <div id="content-container" class="scrollable">
-    <div class="content-brand">
-      <div class="row">
-        <div class="col-9">
-          <h4 class="content-title">
-            {% trans %}controllerName.settings{% endtrans %}
-          </h4>
+{% extends 'HomePage.html.twig' %} {% block body %}
+<div id="content-container" class="scrollable">
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.settings'|trans } %}
+    <div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
+        {{ form_start(form) }}
+        <div class="form-group">
+            <label for="event_name">{% trans %}settings.language{% endtrans %}</label> {{ form_widget(form.language) }}
         </div>
-        <div class="col-3 content-search">
-          <a href="#"><i class="fas fa-search fa-sm colored-icon"></i></a>
+        <div class="form-group">
+            {{ form_widget(form.darkmode) }}
         </div>
-      </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">
+        {% trans %}button.save{% endtrans %}
+      </button>
+        </div>
+        {{ form_end(form) }}
     </div>
-    <div class="subcontainer scrollbar"
-      style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
-      {{ form_start(form) }}
-      <div class="form-group">
-        <label for="event_name">
-          {% trans %}settings.language{% endtrans %}
-        </label>
-        {{ form_widget(form.language) }}
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-outline-success">
-          {% trans %}button.save{% endtrans %}
-        </button>
-      </div>
-      {{ form_end(form) }}
-    </div>
-  </div>
-{% endblock %}
-
-{% block javascripts %}
-
-{% endblock %}
+</div>
+{% endblock %} {% block javascripts %} {% endblock %}

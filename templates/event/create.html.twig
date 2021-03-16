@@ -1,38 +1,31 @@
 {% extends 'HomePage.html.twig' %} {% block body %}
 <div id="content-container" class="scrollable">
-    <div class="content-brand">
-        <div class="row">
-            <div class="col-9">
-                <h4 class="content-title">
-                    {{ controller_name }}
-                </h4>
-            </div>
-        </div>
-    </div>
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'event.create.title'|trans } %}
     <div class="subcontainer scrollbar">
         {{ form_start(form) }}
         <div class="form-group">
-            <label for="event_name">Nom de l'évènement</label> {{ form_widget(form.name) }}
+            <label for="event_name">{% trans %}event.form.name{% endtrans %}</label> {{ form_widget(form.name) }}
         </div>
         <div class="form-group">
-            <label for="event_description">Description de l'évènement</label> {{ form_widget(form.description) }}
+            <label for="event_description">{% trans %}event.form.description{% endtrans %}</label> {{ form_widget(form.description) }}
         </div>
         <div class="form-group">
-            <label for="event_location">Location de l'évènement</label> {{ form_widget(form.location) }}
+            <label for="event_location">{% trans %}event.form.location{% endtrans %}</label> {{ form_widget(form.location) }}
         </div>
         <div class="form-group">
-            <label for="event_date">Date de l'évènement</label> {{ form_widget(form.date) }}
+            <label for="event_date">{% trans %}event.form.date{% endtrans %}</label> {{ form_widget(form.date) }}
         </div>
         <div class="form-group">
-            <label for="nbParticipant">Nombre de participants</label> {{ form_widget(form.nbParticipant) }}
+            <label for="nbParticipant">{% trans %}event.form.number{% endtrans %}</label> {{ form_widget(form.nbParticipant) }}
         </div>
         <div class="form-group">
-            <label for="event_image">Image de l'évenement</label> {{ form_widget(form.imageFileName) }}
+            <label for="event_image">{% trans %}event.form.image{% endtrans %}</label> {{ form_widget(form.imageFile) }}
+            <img id="image_output" />
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-outline-success">
-          {% trans %}button.create{% endtrans %}
-        </button>
+            <button type="submit" class="btn btn-success">
+                {% trans %}button.create{% endtrans %}
+            </button>
         </div>
         {{ form_end(form) }}
     </div>

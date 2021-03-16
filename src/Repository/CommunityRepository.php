@@ -54,6 +54,15 @@ class CommunityRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    public function findByLike($name)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Community[] Returns an array of Community objects
     //  */
