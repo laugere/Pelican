@@ -6,6 +6,7 @@
 
 #mainNavbar .nav-item {
     text-align: center;
+    position: relative;
 }
 
 #mainNavbar .navbar-brand {
@@ -14,12 +15,17 @@
 
 #mainNavbar .nav-link {
     color: rgba(255, 255, 255, 0.384);
+    position: relative;
     margin: 0.75rem 0;
     padding: 12px !important;
     transition: color 0.5s;
 }
 
 #mainNavbar .nav-link:hover {
+    color: white !important;
+}
+
+.current-item{
     color: white !important;
 }
 
@@ -49,6 +55,17 @@
 
 .active{
     color: white;
+}
+
+.dot{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+    height: 0.7rem;
+    width: 0.7rem;
+    background-color: crimson;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 

@@ -35,7 +35,8 @@ class CommunityController extends AbstractController
         }
 
         return $this->render('community/index.html.twig', [
-            'communitys' => $communitys
+            'communitys' => $communitys,
+            'menu' => 'community'
         ]);
     }
 
@@ -58,7 +59,8 @@ class CommunityController extends AbstractController
         }
 
         return $this->render('community/create.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'menu' => 'community'
         ]);
     }
 

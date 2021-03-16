@@ -9,7 +9,11 @@
         <ul class="navbar-nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="/">
-                    <i class="fas fa-home fa-lg"></i>
+                    {% if menu == "home" %}
+                        <i class="fas fa-home fa-lg current-item"></i>
+                    {% else %}
+                        <i class="fas fa-home fa-lg"></i>
+                    {% endif %}
                 </a>
             </li>
             <li class="nav-item">
@@ -17,18 +21,25 @@
                     <i class="fas fa-user-friends fa-lg"></i>
                 </a>
             </li>
-            <li class="nav_item">
+            <li class="nav-item">
                 <a class="nav-link" href="/notification">
-                    {% if app.user.getNotifications is empty %}
-                        <i class="fas fa-bullhorn fa-lg"></i>
+                    {% if menu == "notification" %}
+                        <i class="fas fa-bullhorn fa-lg current-item"></i>
                     {% else %}
-                        <i class="fas fa-bullhorn fa-lg text-warning"></i>
+                        <i class="fas fa-bullhorn fa-lg"></i>
+                    {% endif %}
+                    {% if app.user.getNotifications is not empty %}
+                        <span class="dot"></span>
                     {% endif %}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/event">
-                    <i class="fas fa-calendar-alt fa-lg"></i>
+                    {% if menu == "event" %}
+                        <i class="fas fa-calendar-alt fa-lg current-item"></i>
+                    {% else %}
+                        <i class="fas fa-calendar-alt fa-lg"></i>
+                    {% endif %}
                 </a>
             </li>
             <li class="nav-item">
