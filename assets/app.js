@@ -11,6 +11,7 @@ import './styles/navbar.css'
 import './styles/userNavbar.css'
 import './styles/rightCol.css'
 import './styles/events.css'
+import './styles/user.css'
 
 import './styles/modal-search.css'
 

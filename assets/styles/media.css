@@ -54,4 +54,13 @@
     .list-card .list-card-title-container .list-card-title {
         width: 60vw;
     }
+    .user-info-counter .col-lg h4 {
+        text-align: left;
+    }
+    .user-info-counter .col-lg h5 {
+        text-align: left;
+    }
+    .user-info-container .user-info-counter {
+        width: 100%;
+    }
 }

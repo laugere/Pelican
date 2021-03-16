@@ -23,6 +23,10 @@
     color: white !important;
 }
 
+.current-item {
+    color: white !important;
+}
+
 #mainNavbar .top-icon {
     margin-top: 15px;
 }

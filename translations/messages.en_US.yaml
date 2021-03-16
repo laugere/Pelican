@@ -102,3 +102,9 @@ security:
     password: Password
     rememberme: Remember me
     donotaccount: Don't have an account?
+
+user:
+  counter: 
+    friends: Friends
+    events: Created events
+    community: Followed community

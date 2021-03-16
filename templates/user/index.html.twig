@@ -1,7 +1,29 @@
-{% extends 'HomePage.html.twig' %} {% block body %}
+{% extends 'HomePage.html.twig' %} 
+
+{% block body %}
 <div id="content-container" class="scrollable">
     {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.user'|trans } %}
     <div class="subcontainer scrollbar">
+        <div class="user-info-container">
+            <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ app.user.image) }}">
+            <div class="user-info-counter row no-height-row">
+                <div class="col-lg">
+                    <h4>{% trans %}user.counter.friends{% endtrans %}</h4>
+                    <h5>{{  user.friendship | length   }}</h5>
+                </div>
+                <div class="col-lg">
+                    <h4>{% trans %}user.counter.events{% endtrans %}</h4>
+                    <h5>{{  user.event | length   }}</h5>
+                </div>
+                <div class="col-lg">
+                    <h4>{% trans %}user.counter.community{% endtrans %}</h4>
+                    <h5>{{  user.getCommunity | length   }}</h5>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-{% endblock %} {% block javascripts %} {% endblock %}
+{% endblock %} 
+
+{% block javascripts %} 
+{% endblock %}
