@@ -4,6 +4,14 @@ body {
     font-family: 'Roboto', sans-serif !important;
 }
 
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
 
 /* Login Frame */
 

@@ -105,5 +105,5 @@ security:
 user:
   counter: 
     friends: Amis
-    events: Événements créé
+    events: Événements suivis
     community: Communautés suivies
