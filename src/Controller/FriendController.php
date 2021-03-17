@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\NotificationService;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class FriendController extends AbstractController
 {
@@ -20,12 +21,41 @@ class FriendController extends AbstractController
     public function index(FriendshipRepository $friendshipRepo, Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
-        if($request->query->get('search') != null) {
+        if ($request->query->get('search') != null) {
             $users = $users = $em->getRepository('App:User')->findByLike($request->query->get('search'));
         } else {
             $users = $em->getRepository('App:User')->findAll();
         }
         $friendships = $friendshipRepo->findAll();
+
+        return $this->render('friend/index.html.twig', [
+            'users' => $users,
+            'friendships' => $friendships,
+            'menu' => 'community'
+        ]);
+    }
+
+    /**
+     * @Route("/friend/{userId}/view", name="friend_view")
+     */
+    public function friendsView($userId, Request $request, UserRepository $userRepo): Response
+    {
+        $users = new ArrayCollection();
+        $user = $userRepo->findOneById($userId);
+        $friendships = $user->getFriendship();
+        $em = $this->getDoctrine()->getManager();
+
+        if ($request->query->get('search') != null) {
+            $users = $users = $em->getRepository('App:User')->findByLike($request->query->get('search'));
+        } else {
+            foreach ($friendships as $friendship) {
+                if($friendship->getFirst_user() != $user) {
+                    $users->add($friendship->getFirst_user());
+                } else {
+                    $users->add($friendship->getSecond_user());
+                }
+            }
+        }
 
         return $this->render('friend/index.html.twig', [
             'users' => $users,
@@ -59,14 +89,14 @@ class FriendController extends AbstractController
                 $objectManager->remove($friendShipUser);
                 $objectManager->flush();
             } else {
-                $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." est confirmée", "", "friend");
+                $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec " . $first_user->getPseudo() . " est confirmée", "", "friend");
 
                 $friendShipUser->setValidate(true);
                 $objectManager->persist($friendShipUser);
                 $objectManager->flush();
             }
         } else {
-            $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec ".$first_user->getPseudo()." reçue", "", "friend");
+            $notificationService->sendNotification($objectManager, $second_user, "Demande d'amitié avec " . $first_user->getPseudo() . " reçue", "", "friend");
 
             $friendShipUser = new Friendship();
             $friendShipUser->setFirst_user($first_user);

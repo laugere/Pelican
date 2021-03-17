@@ -34,7 +34,11 @@
         <div class="col-lg-4">
             <div class="event-card-info-container">
                 <div class="event-card-info-subcontainer">
-                    <i class="event-card-info-icon fas fa-calendar-week"></i> {{ event.date|date('d/m/Y') }}
+                    {% if event.date > date() %}
+                        <i class="event-card-info-icon fas fa-calendar-week"></i> {{ event.date|date('d/m/Y') }}
+                    {% else %}
+                        <i class="event-card-info-icon fas fa-calendar-week text-danger"></i> {{ event.date|date('d/m/Y') }}
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 body {
-    background-color: #000000;
+    background-color: #121212;
     color: white;
     font-family: 'Roboto', sans-serif !important;
 }
@@ -132,6 +132,21 @@ img {
 
 
 /* Common */
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
 
 input {
     background-color: #ffffff1f !important;

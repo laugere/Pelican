@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,14 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/", name="user")
+     * @Route("/user/{userId}/view", name="user_view")
      */
+    public function viewUser($userId, UserRepository $userRepo) {
+        $user = $userRepo->findOneById($userId);
+
+        return $this->render('user/index.html.twig', [
+            "user" => $user,
+            "menu" => 'user'
+        ]);
+    }
 }

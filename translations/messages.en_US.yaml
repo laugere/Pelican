@@ -4,7 +4,7 @@ controllerName:
   event: Event
   home: Home
   settings: Settings
-  users: Users
+  users: Friends
   notification: Notification
 
 message:
@@ -27,6 +27,7 @@ button:
   connect: Login
   signup: Sign up
   stopparticipate: No longer participate
+  hasparticipate: Has participate
   participate: Participate
   delete: Delete
   cancel: Cancel

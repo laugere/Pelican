@@ -27,6 +27,7 @@
 }
 
 .user-info-counter .col-lg {
+    cursor: pointer;
     padding: 1.25rem;
     background-color: #ffffff17;
     border-radius: 20px;
@@ -34,4 +35,9 @@
     margin-right: 0.5rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    transition: all 0.5s;
+}
+
+.user-info-counter .col-lg:hover {
+    background-color: #ffffff23;
 }

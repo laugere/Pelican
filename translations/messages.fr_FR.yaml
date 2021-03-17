@@ -4,7 +4,7 @@ controllerName:
   event: Événements
   home: Accueil
   settings: Réglages
-  users: Utilisateurs
+  users: Amis
   notification: Notification
 
 message:
@@ -25,6 +25,7 @@ button:
   connect: Se connecter
   signup: S'inscrire
   stopparticipate: Ne plus participer
+  hasparticipate: A participé
   participate: Participer
   delete: Supprimer
   cancel: Annuler
