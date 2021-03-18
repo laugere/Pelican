@@ -49,10 +49,12 @@ class FriendController extends AbstractController
             $users = $users = $em->getRepository('App:User')->findByLike($request->query->get('search'));
         } else {
             foreach ($friendships as $friendship) {
-                if($friendship->getFirst_user() != $user) {
-                    $users->add($friendship->getFirst_user());
-                } else {
-                    $users->add($friendship->getSecond_user());
+                if ($friendship->getValidate()) {
+                    if($friendship->getFirst_user() != $user) {
+                        $users->add($friendship->getFirst_user());
+                    } else {
+                        $users->add($friendship->getSecond_user());
+                    }
                 }
             }
         }
