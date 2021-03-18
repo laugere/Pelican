@@ -99,3 +99,36 @@
     left: 1.25rem;
     top: 25%;
 }
+
+.event-card-thin {
+    position: relative;
+    display: block;
+    margin: auto;
+    transition: all 0.5s;
+    background-color: #ffffff25;
+    background-position: center;
+    border-radius: 25px;
+    padding: 1rem;
+    height: 8rem;
+    margin-bottom: 1rem;
+}
+
+.event-card-thin:hover {
+    cursor: pointer;
+}
+
+.event-card-thin .event-card-footer {
+    top: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    left: 9rem;
+}
+
+.event-card-thin .event-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}

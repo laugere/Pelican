@@ -1,12 +1,13 @@
 controllerName:
-  user: Informations
+  userpage: Informations
   community: Community
   event: Event
   home: Home
   settings: Settings
-  users: Friends
+  friends: Friends
   notification: Notification
   search: Search
+  users: Users
 
 message:
   loading: Loading

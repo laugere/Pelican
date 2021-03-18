@@ -1,28 +1,59 @@
-{% extends 'HomePage.html.twig' %} 
+{% extends 'HomePage.html.twig' %}
 
 {% block body %}
-<div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.search'|trans, 'search' : true } %}
-    <div class="subcontainer scrollbar">
-        {% if not app.request.query.get("search") is empty %}
-            <h5 class="text-center">
-                {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
-            </h5>
-            {% for event in events | slice(0, 3) %}
-                {% include ('vues/EventCard.html.twig') %} 
-            {% endfor %}
+	<div id="content-container" class="scrollable">
+		{% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.search'|trans, 'search' : true } %}
+		<div class="subcontainer scrollbar">
+			{% if not app.request.query.get("search") is empty %}
+				<h5 class="text-center">
+					{% trans %}message.searchresult{% endtrans %}
+					"{{ app.request.query.get("search") }}"
+				</h5>
 
-            {% for user in users | slice(0, 3) %}
-                {% include ('vues/UserCard.html.twig') %} 
-            {% endfor %}
+				{% if events is not empty %}
+					<div class="search-container">
+						<h4 class="font-weight-bold">
+							{% trans %}controllerName.event{% endtrans %}
+						</h4>
+						{% for event in events | slice(0, 3) %}
+							{% include ('vues/EventCardThin.html.twig') %}
+						{% endfor %}
+						<button onclick="window.location = '/event'" class="show-more-button">
+							{% trans %}rightcol.showmore{% endtrans %}
+						</button>
+					</div>
+				{% endif %}
 
-            {% for community in communitys | slice(0, 3) %}
-                {% include ('vues/CommunityCard.html.twig') %} 
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-{% endblock %} 
+				{% if users is not empty %}
+					<div class="search-container">
+						<h4 class="font-weight-bold">
+							{% trans %}controllerName.users{% endtrans %}
+						</h4>
+						{% for user in users | slice(0, 3) %}
+							{% include ('vues/UserCard.html.twig') %}
+						{% endfor %}
+						<button onclick="window.location = '/friend'" class="show-more-button">
+							{% trans %}rightcol.showmore{% endtrans %}
+						</button>
+					</div>
+				{% endif %}
 
-{% block javascripts %} 
+				{% if communitys is not empty %}
+					<div class="search-container">
+						<h4 class="font-weight-bold">
+							{% trans %}controllerName.community{% endtrans %}
+						</h4>
+						{% for community in communitys | slice(0, 3) %}
+							{% include ('vues/CommunityCard.html.twig') %}
+						{% endfor %}
+						<button onclick="window.location = '/community'" class="show-more-button">
+							{% trans %}rightcol.showmore{% endtrans %}
+						</button>
+					</div>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
 {% endblock %}
+
+{% block javascripts %}{% endblock %}

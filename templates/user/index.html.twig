@@ -2,7 +2,7 @@
 
 {% block body %}
 <div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.user'|trans } %}
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.userpage'|trans } %}
     <div class="subcontainer scrollbar">
         <div class="user-info-container">
             <a href="{{ asset('uploads/images/users/' ~ user.image) }}" data-toggle="lightbox">

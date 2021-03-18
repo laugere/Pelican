@@ -1,0 +1,14 @@
+#content-container .show-more-button {
+    width: 100%;
+    color: white;
+}
+
+.search-container {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.search-container h4 {
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+}

@@ -1,6 +1,6 @@
 {% extends 'HomePage.html.twig' %} {% block body %}
 <div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.users'|trans, 'search' : true } %}
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.friends'|trans, 'search' : true } %}
     <div class="subcontainer scrollbar">
         {% if not app.request.query.get("search") is empty %}
         <h5 class="text-center">
