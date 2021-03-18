@@ -6,6 +6,7 @@ controllerName:
   settings: Settings
   users: Friends
   notification: Notification
+  search: Search
 
 message:
   loading: Loading

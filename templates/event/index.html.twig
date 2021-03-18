@@ -3,15 +3,21 @@
     {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.event'|trans, 'search' : true } %}
     <div class="subcontainer scrollbar">
         {% if not app.request.query.get("search") is empty %}
-        <h5 class="text-center">
-            {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
-        </h5>
+            <h5 class="text-center">
+                {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
+            </h5>
         {% else %}
-        <h5 class="text-center">
-            {% trans %}event.index.allEvent{% endtrans %}
-        </h5>
-        {% endif %} {% if events is empty %}
-        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %} {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %} {% endif %}
+            <h5 class="text-center">
+                {% trans %}event.index.allEvent{% endtrans %}
+            </h5>
+            {% endif %} 
+            {% if events is empty %}
+                <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>
+            {% else %} 
+            {% for event in events %} 
+                {% include ('vues/EventCard.html.twig') %} 
+            {% endfor %} 
+        {% endif %}
     </div>
 </div>
 

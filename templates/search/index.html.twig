@@ -1,0 +1,28 @@
+{% extends 'HomePage.html.twig' %} 
+
+{% block body %}
+<div id="content-container" class="scrollable">
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.search'|trans, 'search' : true } %}
+    <div class="subcontainer scrollbar">
+        {% if not app.request.query.get("search") is empty %}
+            <h5 class="text-center">
+                {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
+            </h5>
+            {% for event in events | slice(0, 3) %}
+                {% include ('vues/EventCard.html.twig') %} 
+            {% endfor %}
+
+            {% for user in users | slice(0, 3) %}
+                {% include ('vues/UserCard.html.twig') %} 
+            {% endfor %}
+
+            {% for community in communitys | slice(0, 3) %}
+                {% include ('vues/CommunityCard.html.twig') %} 
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 
+
+{% block javascripts %} 
+{% endblock %}

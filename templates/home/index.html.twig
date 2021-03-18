@@ -1,6 +1,6 @@
 {% extends 'HomePage.html.twig' %} {% block body %}
 <div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.home'|trans } %}
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.home'|trans, 'search' : true } %}
     <div class="subcontainer scrollbar no-extra-padding">
         <h5 class="text-center">
             {% trans %}home.nextEvent{% endtrans %}

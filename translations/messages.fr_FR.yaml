@@ -6,6 +6,7 @@ controllerName:
   settings: Réglages
   users: Amis
   notification: Notification
+  search: Recherche
 
 message:
   loading: Chargement

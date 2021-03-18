@@ -62,6 +62,10 @@
         text-align: right;
         display: inline;
     }
+    .user-info-counter .col-lg {
+        margin-left: 0rem;
+        margin-right: 0rem;
+    }
     .user-info-container .user-info-counter {
         width: 100%;
     }

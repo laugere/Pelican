@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form role="search" method="GET" class="form-inline">
+                <form action="{{ path("search") }}" role="search" method="GET" class="form-inline">
                     <div class="form-group">
                         <label for="search" class="sr-only">{% trans %}message.search{% endtrans %}</label>
                         <input type="text" class="form-control" id="search" placeholder="{% trans %}message.search{% endtrans %}" name="search">

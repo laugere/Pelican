@@ -8,7 +8,8 @@
             <a href="{{ asset('uploads/images/users/' ~ user.image) }}" data-toggle="lightbox">
                 <div class="avatar-img" style="background-image: url({{ asset('uploads/images/users/' ~ user.image) }});"></div>
             </a>
-            <h3 class="text-center">{{ user.pseudo }}</h3>
+            <h4 class="text-center display-4">{{ user.pseudo }}</h4>
+            <p class="text-center">{{ user.city }}</p>
             <div class="user-info-counter row no-height-row">
                 <div class="col-lg noselect" onclick="window.location = '/friend/{{ user.id }}/view';">
                     <h5>{% trans %}user.counter.friends{% endtrans %}</h4>
