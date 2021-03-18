@@ -28,6 +28,7 @@ button:
   signup: Sign up
   stopparticipate: No longer participate
   hasparticipate: Has participate
+  expired: Expired
   participate: Participate
   delete: Delete
   cancel: Cancel

@@ -31,10 +31,16 @@
                 {% endfor %}
                 
                 {% if trouve == false %}
-                  <button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-warning">
-                    <i class="fas fa-arrow-right"></i>
-                    {% trans %}button.participate{% endtrans %}
-                  </button> 
+                  {% if event.date > date() %}
+                    <button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-warning">
+                      <i class="fas fa-arrow-right"></i>
+                      {% trans %}button.participate{% endtrans %}
+                    </button> 
+                  {% else %}
+                    <button type="button" class="btn btn-dark disabled" disabled>
+                      {% trans %}button.expired{% endtrans %}
+                    </button> 
+                  {% endif %}
                 {% endif %} 
                 
                 {% if event.user == app.user %}
