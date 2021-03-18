@@ -8,6 +8,8 @@
     display: block;
     margin: auto;
     margin-bottom: 1.5rem;
+    background-position: center;
+    background-size: cover;
 }
 
 .user-info-container .user-info-counter {

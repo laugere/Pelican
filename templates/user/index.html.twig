@@ -5,7 +5,9 @@
     {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.user'|trans } %}
     <div class="subcontainer scrollbar">
         <div class="user-info-container">
-            <img class="avatar-img" src="{{ asset('uploads/images/users/' ~ user.image) }}">
+            <a href="{{ asset('uploads/images/users/' ~ user.image) }}" data-toggle="lightbox">
+                <div class="avatar-img" style="background-image: url({{ asset('uploads/images/users/' ~ user.image) }});"></div>
+            </a>
             <h3 class="text-center">{{ user.pseudo }}</h3>
             <div class="user-info-counter row no-height-row">
                 <div class="col-lg noselect" onclick="window.location = '/friend/{{ user.id }}/view';">
