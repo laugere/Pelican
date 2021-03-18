@@ -18,7 +18,7 @@
 						{% for event in events | slice(0, 3) %}
 							{% include ('vues/EventCardThin.html.twig') %}
 						{% endfor %}
-						<button onclick="window.location = '/event'" class="show-more-button">
+						<button onclick="window.location = '/event?search={{ app.request.query.get("search") }}'" class="show-more-button">
 							{% trans %}rightcol.showmore{% endtrans %}
 						</button>
 					</div>
@@ -32,7 +32,7 @@
 						{% for user in users | slice(0, 3) %}
 							{% include ('vues/UserCard.html.twig') %}
 						{% endfor %}
-						<button onclick="window.location = '/friend'" class="show-more-button">
+						<button onclick="window.location = '/friend?search={{ app.request.query.get("search") }}'" class="show-more-button">
 							{% trans %}rightcol.showmore{% endtrans %}
 						</button>
 					</div>
@@ -46,7 +46,7 @@
 						{% for community in communitys | slice(0, 3) %}
 							{% include ('vues/CommunityCard.html.twig') %}
 						{% endfor %}
-						<button onclick="window.location = '/community'" class="show-more-button">
+						<button onclick="window.location = '/community?search={{ app.request.query.get("search") }}'" class="show-more-button">
 							{% trans %}rightcol.showmore{% endtrans %}
 						</button>
 					</div>

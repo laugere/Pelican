@@ -18,6 +18,7 @@ message:
   fullevent: L'évenement est complet
   warning: Attention
   search: Rechercher
+  create: Créer
 
 button:
   ok: ok

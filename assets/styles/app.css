@@ -363,4 +363,12 @@ a:hover {
     width: 100%;
 }
 
+#dialogModalPublish .btn {
+    margin: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0rem;
+    padding: 1rem;
+    border-radius: 4rem;
+}
+
 @import '~bootstrap';

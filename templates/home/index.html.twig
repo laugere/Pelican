@@ -1,21 +1,35 @@
-{% extends 'HomePage.html.twig' %} {% block body %}
-<div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.home'|trans, 'search' : true } %}
-    <div class="subcontainer scrollbar no-extra-padding">
-        <h5 class="text-center">
-            {% trans %}home.nextEvent{% endtrans %}
-        </h5>
-        {% if events is empty %}
-        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %} {% for event in events %} {% include ('vues/EventCard.html.twig') %} {% endfor %} {% endif %}
-    </div>
-</div>
-{% endblock %} {% block javascripts %}
-<script>
-    $('#filter-event-popover').popover({
-        html: true,
-        content: function() {
-            return $('#popover_content_wrapper').html();
-        }
-    });
-</script>
+{% extends 'HomePage.html.twig' %}
+{% block body %}
+	<div id="content-container" class="scrollable">
+		{% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.home'|trans, 'search' : true } %}
+		<div class="subcontainer scrollbar no-extra-padding">
+			<h5 class="text-center">
+				{% trans %}home.nextEvent{% endtrans %}
+			</h5>
+			{% if events is empty %}
+				<h6 class="text-muted centered-message">
+					<i class="fas fa-hotdog"></i>
+					{% trans %}message.nocontent{% endtrans %}</h6>
+			{% else %}
+				{% for event in events %}
+					{% include ('vues/EventCard.html.twig') %}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	<button type="button" class="btn-create btn btn-lg rounded-circle"  data-toggle="modal" data-target="#dialogModalPublish">
+		<i class="fas fa-plus"></i>
+	</button>
+
+	{% include 'vues/ModalDialogPublish.html.twig' %} 
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$('#filter-event-popover').popover({
+			html: true,
+			content: function () {
+				return $('#popover_content_wrapper').html();
+			}
+		});
+	</script>
 {% endblock %}

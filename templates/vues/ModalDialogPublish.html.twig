@@ -1,0 +1,21 @@
+<!-- Modal Dialog -->
+<div class="modal fade" id="dialogModalPublish" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">{% trans %}message.create{% endtrans %}</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<button type="button" class="btn btn-light" onclick="window.location = '/community/create'">
+				<i class="fas fa-campground"></i>
+				{% trans %}community.create.title{% endtrans %}
+			</button>
+			<button type="button" class="btn btn-light" onclick="window.location = '/event/create'">
+				<i class="fas fa-calendar-alt"></i>
+				{% trans %}event.create.title{% endtrans %}
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,26 +1,28 @@
-{% extends 'HomePage.html.twig' %} {% block body %}
-<div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.event'|trans, 'search' : true } %}
-    <div class="subcontainer scrollbar">
-        {% if not app.request.query.get("search") is empty %}
-            <h5 class="text-center">
-                {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
-            </h5>
-        {% else %}
-            <h5 class="text-center">
-                {% trans %}event.index.allEvent{% endtrans %}
-            </h5>
-            {% endif %} 
-            {% if events is empty %}
-                <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>
-            {% else %} 
-            {% for event in events %} 
-                {% include ('vues/EventCard.html.twig') %} 
-            {% endfor %} 
-        {% endif %}
-    </div>
-</div>
-
-<button type="button" class="btn-create btn btn-lg rounded-circle" onclick="window.location = '/event/create'">
-    <i class="fas fa-plus"></i>
-</button> {% endblock %} {% block javascripts %} {% endblock %}
+{% extends 'HomePage.html.twig' %}
+{% block body %}
+	<div id="content-container" class="scrollable">
+		{% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.event'|trans, 'search' : true } %}
+		<div class="subcontainer scrollbar">
+			{% if not app.request.query.get("search") is empty %}
+				<h5 class="text-center">
+					{% trans %}message.searchresult{% endtrans %}
+					"{{ app.request.query.get("search") }}"
+				</h5>
+			{% else %}
+				<h5 class="text-center">
+					{% trans %}event.index.allEvent{% endtrans %}
+				</h5>
+			{% endif %}
+			{% if events is empty %}
+				<h6 class="text-muted centered-message">
+					<i class="fas fa-hotdog"></i>
+					{% trans %}message.nocontent{% endtrans %}</h6>
+			{% else %}
+				{% for event in events %}
+					{% include ('vues/EventCard.html.twig') %}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}{% endblock %}

@@ -18,6 +18,7 @@ message:
   fullevent: The event is complete
   warning: Warning
   search: Search
+  create: Create
   showmore: Show more
   showless: Show less
 
