@@ -9,7 +9,8 @@ use App\Entity\Participation;
 use App\Form\CommunityType;
 
 use App\Repository\CommunityRepository;
-
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;
 
@@ -28,7 +29,7 @@ class CommunityController extends AbstractController
      */
     public function index(CommunityRepository $communityRepo, Request $request): Response
     {
-        if($request->query->get('search') != null) {
+        if ($request->query->get('search') != null) {
             $communitys = $communityRepo->findByLike($request->query->get('search'));
         } else {
             $communitys = $communityRepo->findRecent();
@@ -99,5 +100,23 @@ class CommunityController extends AbstractController
         }
 
         return $this->json(['code' => 200], 200);
+    }
+
+    /**
+     * @Route("/community/{userId}/view", name="community_view")
+     */
+    public function communitysView($userId, UserRepository $userRepo): Response
+    {
+        $user = $userRepo->findOneById($userId);
+        $communitys = new ArrayCollection();
+        $communitysGoTo = $user->getCommunity();
+        foreach ($communitysGoTo as $community) {
+            $communitys->add($community->getCommunity());
+        }
+
+        return $this->render('community/index.html.twig', [
+            'communitys' => $communitys,
+            'menu' => 'community'
+        ]);
     }
 }

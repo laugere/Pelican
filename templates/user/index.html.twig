@@ -19,7 +19,7 @@
                     <h5>{% trans %}user.counter.events{% endtrans %}</h4>
                     <h6>{{  user.event | length   }}</h5>
                 </div>
-                <div class="col-lg noselect">
+                <div class="col-lg noselect" onclick="window.location = '/community/{{ user.id }}/view';">
                     <h5>{% trans %}user.counter.community{% endtrans %}</h4>
                     <h6>{{  user.getCommunity | length   }}</h5>
                 </div>
