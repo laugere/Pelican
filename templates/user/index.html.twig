@@ -29,7 +29,7 @@
         {% if user.event is empty %}
             <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>
         {% else %} 
-            {% for participation in user.event %}
+            {% for participation in user.event | sort((b, a) => a.getDate <=> b.getDate) %}
                 {% set event = participation.getEvent %}
                 {% include ('vues/EventCard.html.twig') %} 
             {% endfor %} 
