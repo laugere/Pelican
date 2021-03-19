@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Service\NotificationService;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bundle\MakerBundle\EventRegistry;
 
 class EventController extends AbstractController
 {
@@ -23,7 +25,7 @@ class EventController extends AbstractController
      */
     public function index(EventRepository $eventRepo, Request $request): Response
     {
-        if($request->query->get('search') != null) {
+        if ($request->query->get('search') != null) {
             $events = $eventRepo->findByLike($request->query->get('search'));
         } else {
             $events = $eventRepo->findRecent();
@@ -53,7 +55,7 @@ class EventController extends AbstractController
             $objectManager->persist($event);
             $objectManager->flush();
 
-            $notificationService->sendFriendNotification($objectManager, $user, $user->getPseudo()." a créé un évenement", "description de création d'évenement", "event");
+            $notificationService->sendFriendNotification($objectManager, $user, $user->getPseudo() . " a créé un évenement", "description de création d'évenement", "event");
 
             return $this->redirectToRoute('event', [], 301);
         }
@@ -72,8 +74,29 @@ class EventController extends AbstractController
         $event = $eventRepo->findOneById($eventId);
         return $this->render('event/view.html.twig', [
             'event' => $event,
-            'isIn' => null,
             'menu' => 'event'
+        ]);
+    }
+
+    /**
+     * @Route("/event/{eventId}/user/view", name="event_user_view")
+     */
+    public function userView($eventId, EventRepository $eventRepo): Response
+    {
+        $event = $eventRepo->findOneById($eventId);
+        $participations = $event->getParticipations();
+        $user = $this->getUser();
+        $users = new ArrayCollection();
+        $friendships = $user->getFriendship();
+
+        foreach($participations as $participation) {
+            $users->add($participation->getUser());
+        }
+
+        return $this->render('friend/index.html.twig', [
+            'users' => $users,
+            'friendships' => $friendships,
+            'menu' => 'community'
         ]);
     }
 

@@ -16,26 +16,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 class FriendController extends AbstractController
 {
     /**
-     * @Route("/friend", name="friend")
-     */
-    public function index(FriendshipRepository $friendshipRepo, Request $request): Response
-    {
-        $em = $this->getDoctrine()->getManager();
-        if ($request->query->get('search') != null) {
-            $users = $users = $em->getRepository('App:User')->findByLike($request->query->get('search'));
-        } else {
-            $users = $em->getRepository('App:User')->findAll();
-        }
-        $friendships = $friendshipRepo->findAll();
-
-        return $this->render('friend/index.html.twig', [
-            'users' => $users,
-            'friendships' => $friendships,
-            'menu' => 'community'
-        ]);
-    }
-
-    /**
      * @Route("/friend/{userId}/view", name="friend_view")
      */
     public function friendsView($userId, Request $request, UserRepository $userRepo): Response
@@ -45,16 +25,12 @@ class FriendController extends AbstractController
         $friendships = $user->getFriendship();
         $em = $this->getDoctrine()->getManager();
 
-        if ($request->query->get('search') != null) {
-            $users = $users = $em->getRepository('App:User')->findByLike($request->query->get('search'));
-        } else {
-            foreach ($friendships as $friendship) {
-                if ($friendship->getValidate()) {
-                    if($friendship->getFirst_user() != $user) {
-                        $users->add($friendship->getFirst_user());
-                    } else {
-                        $users->add($friendship->getSecond_user());
-                    }
+        foreach ($friendships as $friendship) {
+            if ($friendship->getValidate()) {
+                if ($friendship->getFirst_user() != $user) {
+                    $users->add($friendship->getFirst_user());
+                } else {
+                    $users->add($friendship->getSecond_user());
                 }
             }
         }

@@ -18,9 +18,11 @@
 						{% for event in events | slice(0, 3) %}
 							{% include ('vues/EventCardThin.html.twig') %}
 						{% endfor %}
-						<button onclick="window.location = '/event?search={{ app.request.query.get("search") }}'" class="show-more-button">
-							{% trans %}rightcol.showmore{% endtrans %}
-						</button>
+						{% if events | length > 3 %}
+							<button onclick="window.location = '/event?search={{ app.request.query.get(" search") }}'" class="show-more-button">
+								{% trans %}rightcol.showmore{% endtrans %}
+							</button>
+						{% endif %}
 					</div>
 				{% endif %}
 
@@ -32,9 +34,11 @@
 						{% for user in users | slice(0, 3) %}
 							{% include ('vues/UserCard.html.twig') %}
 						{% endfor %}
-						<button onclick="window.location = '/friend?search={{ app.request.query.get("search") }}'" class="show-more-button">
-							{% trans %}rightcol.showmore{% endtrans %}
-						</button>
+						{% if users | length > 3 %}
+							<button onclick="window.location = '/friend?search={{ app.request.query.get(" search") }}'" class="show-more-button">
+								{% trans %}rightcol.showmore{% endtrans %}
+							</button>
+						{% endif %}
 					</div>
 				{% endif %}
 
@@ -46,9 +50,11 @@
 						{% for community in communitys | slice(0, 3) %}
 							{% include ('vues/CommunityCard.html.twig') %}
 						{% endfor %}
-						<button onclick="window.location = '/community?search={{ app.request.query.get("search") }}'" class="show-more-button">
-							{% trans %}rightcol.showmore{% endtrans %}
-						</button>
+						{% if communitys | length > 3 %}
+							<button onclick="window.location = '/community?search={{ app.request.query.get(" search") }}'" class="show-more-button">
+								{% trans %}rightcol.showmore{% endtrans %}
+							</button>
+						{% endif %}
 					</div>
 				{% endif %}
 			{% endif %}
