@@ -17,13 +17,17 @@ img {
 /* Login Frame */
 
 #loginFrame {
+    display: block;
     background-color: #ffffff31;
     border-radius: 25px;
     border: none;
     padding: 1.25rem;
     margin: auto;
-    margin-top: 1.5rem;
     width: 50%;
+}
+
+.login-container {
+    align-self: center;
 }
 
 

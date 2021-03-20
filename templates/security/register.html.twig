@@ -1,84 +1,92 @@
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <link rel="icon" type="image/png" href="{{ asset('build/icon/color/32.png') }}" />
+		<link rel="icon" type="image/png" href="{{ asset('build/icon/color/32.png') }}"/>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <title>
-        Pelican
-    </title>
+		<title>
+			Pelican
+		</title>
 
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
-</head>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+	</head>
 
-<body>
-    <div id="loginFrame">
-        {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">
-            {{ flashError }}
-        </div>
-        {% endfor %}
+	<body>
+		<div class="login-container d-flex h-100">
+			<div id="loginFrame">
+				{% for flashError in app.flashes('verify_email_error') %}
+					<div class="alert alert-danger" role="alert">
+						{{ flashError }}
+					</div>
+				{% endfor %}
 
-        <h1>
-            {% trans %}security.register.title{% endtrans %}
-        </h1>
+				<h1 class="text-center">
+					{% trans %}security.register.title{% endtrans %}
+				</h1>
+				<div class="text-center">
+					<small class="form-text text-muted">{% trans %}security.register.alreadyaccount{% endtrans %}
+						<a href="/login">{% trans %}button.connect{% endtrans %}</a>
+					</small>
+				</div>
 
-        {{ form_start(registrationForm) }}
-        <div class="form-group">
-            <label for="inputEmail">{% trans %}security.register.email{% endtrans %}</label> {{ form_widget(registrationForm.email) }}
-            <small id="emailHelp" class="form-text text-muted">
-          {% trans %}security.register.emailspan{% endtrans %}
-        </small>
-        </div>
-        <div class="form-group">
-            <label for="inputEmail">{% trans %}security.register.pseudo{% endtrans %}</label> {{ form_widget(registrationForm.pseudo) }}
-        </div>
-        <div class="form-group">
-            <label for="inputEmail">{% trans %}security.register.city{% endtrans %}</label> {{ form_widget(registrationForm.city) }}
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">{% trans %}security.register.password{% endtrans %}</label> {{ form_widget(registrationForm.plainPassword) }}
-        </div>
-        <div class="form-group">
-            <label for="image">{% trans %}security.register.image{% endtrans %}</label> {{ form_widget(registrationForm.imageFile) }}
-            <img id="image_output" />
-        </div>
-        <div class="form-group">
-            {{ form_widget(registrationForm.agreeTerms) }}
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">
-          {% trans %}button.signup{% endtrans %}
-        </button>
-        </div>
-        <div class="form-group">
-            <small class="form-text text-muted">{% trans %}security.register.alreadyaccount{% endtrans %}</small>
-            <a class="badge badge-warning" href="/login">{% trans %}button.connect{% endtrans %}</a>
-        </div>
-        {{ form_end(registrationForm) }}
-    </div>
+				{{ form_start(registrationForm) }}
+				<div class="form-group">
+					<label for="inputEmail">{% trans %}security.register.email{% endtrans %}</label>
+					{{ form_widget(registrationForm.email) }}
+					<small id="emailHelp" class="form-text text-muted">
+						{% trans %}security.register.emailspan{% endtrans %}
+					</small>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail">{% trans %}security.register.pseudo{% endtrans %}</label>
+					{{ form_widget(registrationForm.pseudo) }}
+				</div>
+				<div class="form-group">
+					<label for="inputEmail">{% trans %}security.register.city{% endtrans %}</label>
+					{{ form_widget(registrationForm.city) }}
+				</div>
+				<div class="form-group">
+					<label for="inputPassword">{% trans %}security.register.password{% endtrans %}</label>
+					{{ form_widget(registrationForm.plainPassword) }}
+				</div>
+				<div class="form-group">
+					<label for="image">{% trans %}security.register.image{% endtrans %}</label>
+					{{ form_widget(registrationForm.imageFile) }}
+					<img id="image_output"/>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block">
+						{% trans %}button.signup{% endtrans %}
+					</button>
+				</div>
+				<div class="form-group">
+					{{ form_widget(registrationForm.agreeTerms) }}
+				</div>
+				{{ form_end(registrationForm) }}
+			</div>
+		</div>
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-        <script>
-            var loadFile = function(event) {
-                var output = document.getElementById('image_output');
-                output.src = URL.createObjectURL(event.target.files[0]);
-                output.style.display = 'block';
-                output.onload = function() {
-                    URL.revokeObjectURL(output.src) // free memory
-                }
-            };
-        </script>
-    {% endblock %}
-</body>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+			<script>
+				var loadFile = function (event) {
+var output = document.getElementById('image_output');
+output.src = URL.createObjectURL(event.target.files[0]);
+output.style.display = 'block';
+output.onload = function () {
+URL.revokeObjectURL(output.src) // free memory
+}
+};
+			</script>
+		{% endblock %}
+	</body>
 
-</html>
+</html></body></html>

@@ -19,7 +19,7 @@
 							{% include ('vues/EventCardThin.html.twig') %}
 						{% endfor %}
 						{% if events | length > 3 %}
-							<button onclick="window.location = '/event?search={{ app.request.query.get(" search") }}'" class="show-more-button">
+							<button onclick="window.location = '/event?search={{ app.request.query.get("search") }}'" class="show-more-button">
 								{% trans %}rightcol.showmore{% endtrans %}
 							</button>
 						{% endif %}
@@ -35,7 +35,7 @@
 							{% include ('vues/UserCard.html.twig') %}
 						{% endfor %}
 						{% if users | length > 3 %}
-							<button onclick="window.location = '/friend?search={{ app.request.query.get(" search") }}'" class="show-more-button">
+							<button onclick="window.location = '/friend?search={{ app.request.query.get("search") }}'" class="show-more-button">
 								{% trans %}rightcol.showmore{% endtrans %}
 							</button>
 						{% endif %}
@@ -51,7 +51,7 @@
 							{% include ('vues/CommunityCard.html.twig') %}
 						{% endfor %}
 						{% if communitys | length > 3 %}
-							<button onclick="window.location = '/community?search={{ app.request.query.get(" search") }}'" class="show-more-button">
+							<button onclick="window.location = '/community?search={{ app.request.query.get("search") }}'" class="show-more-button">
 								{% trans %}rightcol.showmore{% endtrans %}
 							</button>
 						{% endif %}

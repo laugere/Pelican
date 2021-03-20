@@ -48,8 +48,7 @@
         margin-bottom: 0;
     }
     #loginFrame {
-        margin: 4vh 2vw;
-        width: auto;
+        width: 100%;
     }
     .list-card .list-card-title-container .list-card-title {
         width: 60vw;
