@@ -2,21 +2,19 @@
 
 namespace App\Controller;
 
-use App\Service\FileUploader;
 use App\Entity\Event;
 use App\Entity\Participation;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Service\NotificationService;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Bundle\MakerBundle\EventRegistry;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Asset\Packages;
 
 class EventController extends AbstractController
 {
@@ -89,7 +87,7 @@ class EventController extends AbstractController
         $users = new ArrayCollection();
         $friendships = $user->getFriendship();
 
-        foreach($participations as $participation) {
+        foreach ($participations as $participation) {
             $users->add($participation->getUser());
         }
 
@@ -119,6 +117,12 @@ class EventController extends AbstractController
                 $objectManager->flush();
             }
         }
+
+        $imageFile = new File('./uploads/images/events/' . $event->getImage());
+
+        $form->get('imageFile')->setData($imageFile);
+
+        var_dump($form->get('imageFile')->getData());
 
         return $this->render('event/modify.html.twig', [
             'event' => $event,

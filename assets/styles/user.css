@@ -43,3 +43,14 @@
 .user-info-counter .col-lg:hover {
     background-color: #ffffff23;
 }
+
+.user-info-avatar-container {
+    position: relative;
+}
+
+.user-info-avatar-container .btn-modif-user {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(100%);
+}

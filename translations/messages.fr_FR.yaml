@@ -112,3 +112,5 @@ user:
     friends: Amis
     events: Événements suivis
     community: Communautés suivies
+  modify:
+    title: Modifier l'utilisateur

@@ -1,0 +1,8 @@
+{% extends 'HomePage.html.twig' %}
+{% block body %}
+	<div id="content-container" class="scrollable">
+		{% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'user.modify.title'|trans } %}
+		<div class="subcontainer scrollbar"></div>
+	</div>
+{% endblock %}
+{% block javascripts %}{% endblock %}

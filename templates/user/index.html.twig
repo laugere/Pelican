@@ -5,9 +5,16 @@
 		{% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.userpage'|trans } %}
 		<div class="subcontainer scrollbar">
 			<div class="user-info-container">
-				<a href="{{ asset('uploads/images/users/' ~ user.image) }}" data-toggle="lightbox">
-					<div class="avatar-img" style="background-image: url({{ asset('uploads/images/users/' ~ user.image) }});"></div>
-				</a>
+				<div class="user-info-avatar-container">
+					<a href="{{ asset('uploads/images/users/' ~ user.image) }}" data-toggle="lightbox">
+						<div class="avatar-img" style="background-image: url({{ asset('uploads/images/users/' ~ user.image) }});"></div>
+					</a>
+					{% if user == app.user %}
+						<button class="btn btn-light btn-round btn-modif-user" onclick="window.location = '/user/modify'">
+							<i class="fas fa-pen"></i>
+						</button>
+					{% endif %}
+				</div>
 				<h4 class="text-center display-4">{{ user.pseudo }}</h4>
 				<p class="text-center">{{ user.city }}</p>
 				<div class="user-info-counter row no-height-row">

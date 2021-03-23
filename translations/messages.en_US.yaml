@@ -113,3 +113,5 @@ user:
     friends: Friends
     events: Followed events
     community: Followed community
+  modify:
+    title: Modify User
