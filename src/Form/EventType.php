@@ -45,7 +45,7 @@ class EventType extends AbstractType
                 )
             ])
             ->add('imageFile', VichImageType::class, [
-                'required' => true,
+                'required' => false,
                 'allow_delete' => false,
                 'delete_label' => false,
                 'download_label' => false,

@@ -115,20 +115,19 @@ class EventController extends AbstractController
 
                 $objectManager->persist($event);
                 $objectManager->flush();
+            } else {
+                $imageFile = new File('./uploads/images/events/' . $event->getImage());
+                $form->get('imageFile')->setData($imageFile);
             }
+
+            return $this->render('event/modify.html.twig', [
+                'event' => $event,
+                'form' => $form->createView(),
+                'menu' => 'event'
+            ]);
+        } else {
+            return $this->index($eventRepo, $request);
         }
-
-        $imageFile = new File('./uploads/images/events/' . $event->getImage());
-
-        $form->get('imageFile')->setData($imageFile);
-
-        var_dump($form->get('imageFile')->getData());
-
-        return $this->render('event/modify.html.twig', [
-            'event' => $event,
-            'form' => $form->createView(),
-            'menu' => 'event'
-        ]);
     }
 
     /**

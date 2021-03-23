@@ -42,7 +42,7 @@
 						<i class="fas fa-hotdog"></i>
 						{% trans %}message.nocontent{% endtrans %}</h6>
 				{% else %}
-					{% for participation in user.event | sort((b, a) => a.getDate <=> b.getDate) %}
+					{% for participation in user.event | sort((b, a) => a.getDate <=> b.getDate) | slice(0, 3) %}
 						{% set event = participation.getEvent %}
 						{% include ('vues/EventCardThin.html.twig') %}
 					{% endfor %}
