@@ -183,9 +183,8 @@ input {
 }
 
 #image_output {
-    display: none;
     margin-top: 1rem;
-    height: 20rem;
+    max-height: 20rem;
     border-radius: 20px;
 }
 

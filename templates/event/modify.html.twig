@@ -27,8 +27,7 @@
 			<div class="form-group">
 				<label for="event_image">{% trans %}event.form.image{% endtrans %}</label>
 				{{ form_widget(form.imageFile) }}
-				{{ form.vars.value.imageFile }}
-				<img id="image_output"/>
+				<img id="image_output" src="{{ asset('uploads/images/events/' ~ image) }}" />
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">

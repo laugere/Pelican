@@ -117,12 +117,13 @@ class EventController extends AbstractController
                 $objectManager->flush();
             } else {
                 $imageFile = new File('./uploads/images/events/' . $event->getImage());
-                $form->get('imageFile')->setData($imageFile);
+                $form->setData(array("imageFile"=>$imageFile));
             }
 
             return $this->render('event/modify.html.twig', [
                 'event' => $event,
                 'form' => $form->createView(),
+                'image' => $event->getImage(),
                 'menu' => 'event'
             ]);
         } else {
