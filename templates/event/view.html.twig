@@ -97,7 +97,7 @@
 						{% include ('vues/CommentCard.html.twig') %}
 					{% endfor %}
 					{% if event.comments | length > 3 %}
-						<button onclick="window.location = '#';" class="show-more-button">
+						<button class="show-more-button" data-toggle="modal" data-target="#showAllCommentModal">
 							{% trans %}rightcol.showmore{% endtrans %}
 						</button>
 					{% endif %}
@@ -113,6 +113,8 @@
 
 	{% include 'vues/ModalDialogSupp.html.twig' %}
 	{% include 'vues/ModalDialogFullEvent.html.twig' %}
+	{% set comments = event.comments %}
+	{% include 'vues/ModalCommentShowAll.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
