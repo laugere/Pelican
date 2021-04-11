@@ -106,6 +106,19 @@
                 URL.revokeObjectURL(output.src) // free memory
             }
         };
+
+        function setTheme(theme) {
+            localStorage.setItem('theme', theme);
+            if (theme === true) {
+                document.documentElement.className = 'theme-light';
+            } else {
+                document.documentElement.className = 'theme-dark';
+            }
+        }
+
+        (function () {
+            setTheme({{ app.session.get('_theme') ? 'false' : 'true' }});
+        })();
     </script>
 
     {% block javascripts %} {{ encore_entry_script_tags('app') }} {% endblock %}

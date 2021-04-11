@@ -10,10 +10,12 @@ class LocaleSubscriber implements EventSubscriberInterface
 {
     // Langue par défaut
     private $defaultLocale;
+    private $defaultTheme;
 
-    public function __construct($defaultLocale = 'fr_FR')
+    public function __construct($defaultLocale = 'fr_FR', $defaultTheme = 'light')
     {
         $this->defaultLocale = $defaultLocale;
+        $this->defaultTheme = $defaultTheme;
     }
 
     public function onKernelRequest(RequestEvent $event)
@@ -21,9 +23,12 @@ class LocaleSubscriber implements EventSubscriberInterface
         $request = $event->getRequest();
 
         $locale = $request->getSession()->get('_locale');
+        $theme = $request->getSession()->get('_theme');
         
         if ($locale != null) {
             $request->setLocale($locale);
+        } else {
+            $request->setLocale($this->defaultLocale);
         }
     }
 

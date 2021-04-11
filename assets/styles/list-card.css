@@ -1,7 +1,7 @@
 .list-card {
     cursor: pointer;
     position: relative;
-    background-color: #ffffff17;
+    background-color: var(--back-color-opacity-low);
     border-radius: 20px;
     padding: 0.75rem;
     display: flex;
@@ -13,7 +13,7 @@
 }
 
 .list-card:hover {
-    background-color: #ffffff23;
+    background-color: var(--back-color-opacity-low-hover);
 }
 
 .list-card .list-card-image-container {

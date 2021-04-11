@@ -35,7 +35,7 @@
     border-radius: 50px;
     padding: 1rem;
     padding-left: 1.5rem;
-    background-color: #0000005b;
+    background-color: var(--back-color-opacity-low);
     backdrop-filter: blur(5px);
 }
 
@@ -90,7 +90,7 @@
     border-radius: 50px;
     padding: 0.25rem;
     text-align: center;
-    background-color: #00000088;
+    background-color: var(--back-color-opacity-low);
     backdrop-filter: blur(10px);
 }
 

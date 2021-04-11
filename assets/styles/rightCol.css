@@ -10,7 +10,7 @@
     padding-bottom: 0.375rem;
     color: black;
     border-radius: 25px;
-    background-color: white;
+    background-color: var(--reverse-back-color);
 }
 
 .right-col-subcontainer {
@@ -24,7 +24,7 @@
     height: calc(35% - 0.75rem);
     color: black;
     border-radius: 25px;
-    background-color: rgba(177, 177, 177, 0.37);
+    background-color: var(--back-color-opacity);
 }
 
 .right-col-subcontainer-near {
@@ -33,7 +33,7 @@
     height: calc(35% - 0.75rem);
     color: black;
     border-radius: 25px;
-    background-color: rgba(177, 177, 177, 0.37);
+    background-color: var(--back-color-opacity);
 }
 
 .right-col-subcontainer-news {
@@ -42,13 +42,13 @@
     height: calc(30% - 0.75rem);
     color: black;
     border-radius: 25px;
-    background-color: rgba(177, 177, 177, 0.37);
+    background-color: var(--back-color-opacity);
 }
 
 .show-more-button {
     width: calc(100% - 2.5rem);
     padding: 0.5rem;
-    background-color: rgba(177, 177, 177, 0.37);
+    background-color: var(--back-color-opacity);
     border: none;
     border-radius: 25px;
     transition: background-color 0.5s;
@@ -63,5 +63,5 @@
 }
 
 .show-more-button:hover {
-    background-color: rgba(200, 200, 200, 0.37);
+    background-color: var(--back-color-opacity);
 }

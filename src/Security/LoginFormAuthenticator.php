@@ -124,6 +124,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             $locale = $settings->getLanguage();
             $request->getSession()->set('_locale', $locale);
 
+            $theme = $settings->getDarkMode();
+            $request->getSession()->set('_theme', $theme);
+
             return new RedirectResponse($targetPath);
         }
 

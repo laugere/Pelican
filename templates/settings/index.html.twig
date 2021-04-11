@@ -1,20 +1,24 @@
-{% extends 'HomePage.html.twig' %} {% block body %}
-<div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.settings'|trans } %}
-    <div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
-        {{ form_start(form) }}
-        <div class="form-group">
-            <label for="event_name">{% trans %}settings.language{% endtrans %}</label> {{ form_widget(form.language) }}
-        </div>
-        <div class="form-group">
-            {{ form_widget(form.darkmode) }}
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-light">
-        {% trans %}button.save{% endtrans %}
-      </button>
-        </div>
-        {{ form_end(form) }}
-    </div>
-</div>
-{% endblock %} {% block javascripts %} {% endblock %}
+{% extends 'HomePage.html.twig' %}
+{% block body %}
+	<div id="content-container" class="scrollable">
+		{% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.settings'|trans } %}
+		<div class="subcontainer scrollbar" style="margin-top: 1.25rem;padding-bottom: 1.25rem;">
+			{{ form_start(form) }}
+			<div class="form-group">
+				<label for="event_name">{% trans %}settings.language{% endtrans %}</label>
+				{{ form_widget(form.language) }}
+			</div>
+			<div class="form-group">
+                <label for="event_name">{% trans %}settings.darkmode{% endtrans %}</label>
+				{{ form_widget(form.darkmode) }}
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-light">
+					{% trans %}button.save{% endtrans %}
+				</button>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}{% endblock %}
