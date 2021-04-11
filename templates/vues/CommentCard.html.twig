@@ -1,0 +1,28 @@
+{% if comment is defined %}
+	<div id="comment-{{ comment.id }}">
+		<div class="list-card list-card-small noselect">
+			<div class="list-card-image-container">
+				<img class="list-card-image-container-img" src="{{ asset('uploads/images/users/' ~ comment.user.image) }}" width="45px" height="45px"/>
+				<p class="list-card-image-container-img-name">
+					{{ comment.user.pseudo }} - {{ comment.date | format_datetime('short', 'short', locale = 'message.datelocale'|trans) }}
+				</p>
+				<p class="list-card-image-container-img-description">
+					{{ comment.text }}
+				</p>
+			</div>
+		</div>
+	</div>
+{% else %}
+	<div id="comment-new">
+		<div class="list-card list-card-small noselect">
+			<div class="list-card-image-container">
+				<img class="list-card-image-container-img" src="{{ asset('uploads/images/users/' ~ app.user.image) }}" width="45px" height="45px" onclick="window.location = '/user/{{ app.user.id }}/view';"/>
+			</div>
+			{{ form_start(commentForm) }}
+			<div class="form-group">
+				{{ form_widget(commentForm.text) }}
+			</div>
+			{{ form_end(commentForm) }}
+		</div>
+	</div>
+{% endif %}

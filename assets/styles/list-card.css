@@ -70,3 +70,47 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
+/* SMALL LIST-CARD */
+
+.list-card-small {
+    cursor: auto;
+    background: none;
+    height: 3.5rem;
+    padding: 0.3rem;
+}
+
+.list-card-small .list-card-image-container {
+    left: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+}
+
+.list-card-small .list-card-image-container .list-card-image-container-img {
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.list-card-small form {
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    right: 1rem;
+    left: 3.5rem;
+}
+
+.list-card-small .list-card-image-container .list-card-image-container-img-name {
+    opacity: 0.6;
+    font-size: small;
+    position: absolute;
+    top: 0rem;
+    left: 3rem;
+}
+
+.list-card-small .list-card-image-container .list-card-image-container-img-description {
+    position: absolute;
+    top: 1.25rem;
+    left: 3.5rem;
+}

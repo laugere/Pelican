@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Event;
 use App\Entity\Participation;
+use App\Form\CommentType;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\Persistence\ObjectManager;
@@ -67,12 +69,29 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{eventId}/view", name="event_view")
      */
-    public function view($eventId, EventRepository $eventRepo): Response
+    public function view($eventId, EventRepository $eventRepo, Request $request, ObjectManager $objectManager, NotificationService $notificationService): Response
     {
         $event = $eventRepo->findOneById($eventId);
+        $user = $this->getuser();
+        $comment = new Comment();
+
+        $commentForm = $this->createForm(CommentType::class, $comment);
+        $commentForm->handleRequest($request);
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            $comment->setDate(new \DateTime());
+            $comment->setuser($user);
+            $comment->setEvent($event);
+
+            $objectManager->persist($comment);
+            $objectManager->flush();
+
+            //return $this->json(['code' => 200], 200);
+        }
+
         return $this->render('event/view.html.twig', [
             'event' => $event,
-            'menu' => 'event'
+            'menu' => 'event',
+            'commentForm' => $commentForm->createView()
         ]);
     }
 

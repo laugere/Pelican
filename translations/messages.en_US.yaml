@@ -78,6 +78,7 @@ event:
     the: The
     people: People
     participant: Participant
+    comment: Comments
 
 settings:
   darkmode: Dark mode
@@ -107,6 +108,9 @@ security:
     password: Password
     rememberme: Remember me
     donotaccount: Don't have an account?
+
+comment:
+  create: Add a comment
 
 user:
   counter: 

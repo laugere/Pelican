@@ -76,7 +76,10 @@ event:
     the: Le
     people: Personnes
     participant: Participants
+    comment: Commentaires
 
+comment:
+  create: Ajouter un commentaire
 
 settings:
   darkmode: Mode sombre
