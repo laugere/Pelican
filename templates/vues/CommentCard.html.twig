@@ -1,26 +1,28 @@
 {% if comment is defined %}
-	<div id="comment-{{ comment.id }}">
-		<div class="list-card list-card-small noselect">
-			<div class="list-card-image-container">
-				<img class="list-card-image-container-img" src="{{ asset('uploads/images/users/' ~ comment.user.image) }}" width="45px" height="45px"/>
-				<p class="list-card-image-container-img-name">
-					{{ comment.user.pseudo }}
-					-
-					{{ comment.date | format_datetime('short', 'short', locale = 'message.datelocale'|trans) }}
-				</p>
-				<p class="list-card-image-container-img-description">
-					{{ comment.text|length > 50 ? comment.text|slice(0, 50) ~ '...' : comment.text }}
-				</p>
-			</div>
-			{% if comment.user == app.user %}
-				<div class="list-card-button-container">
-					<button type="button" class="btn btn-light btn-round list-card-small-button">
-						<i class="fas fa-times"></i>
-					</button>
+	{% if comment.dateSuppression is null %}
+		<div id="comment-{{ comment.id }}">
+			<div class="list-card list-card-small noselect">
+				<div class="list-card-image-container">
+					<img class="list-card-image-container-img" src="{{ asset('uploads/images/users/' ~ comment.user.image) }}" width="45px" height="45px"/>
+					<p class="list-card-image-container-img-name">
+						{{ comment.user.pseudo }}
+						-
+						{{ comment.date | format_datetime('short', 'short', locale = 'message.datelocale'|trans) }}
+					</p>
+					<p class="list-card-image-container-img-description">
+						{{ comment.text|length > 50 ? comment.text|slice(0, 50) ~ '...' : comment.text }}
+					</p>
 				</div>
-			{% endif %}
+				{% if comment.user == app.user %}
+					<div class="list-card-button-container">
+						<button type="button" class="btn btn-light btn-round list-card-small-button" onclick="onClickBtnRemoveComment('/event/{{ event.id }}/comment/{{ comment.id }}/remove', '/event/{{ event.id }}/view')">
+							<i class="fas fa-times"></i>
+						</button>
+					</div>
+				{% endif %}
+			</div>
 		</div>
-	</div>
+	{% endif %}
 {% else %}
 	<div id="comment-new">
 		<div class="list-card list-card-small noselect">

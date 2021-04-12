@@ -98,6 +98,20 @@
             })
         }
 
+        function onClickBtnRemoveComment(commentRemovePath, eventPath) {
+            $('#loadingModal').modal('show')
+
+            $.ajax({
+                url: commentRemovePath,
+                cache: false
+            }).done(function(response) {
+                $('#comment-container').load(eventPath + ' #comment-container')
+                setTimeout(() => {
+                    $('#loadingModal').modal('hide')
+                }, 500)
+            })
+        }
+
         var loadFile = function(event) {
             var output = document.getElementById('image_output');
             output.src = URL.createObjectURL(event.target.files[0]);

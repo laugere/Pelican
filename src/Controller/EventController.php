@@ -7,6 +7,7 @@ use App\Entity\Event;
 use App\Entity\Participation;
 use App\Form\CommentType;
 use App\Form\EventType;
+use App\Repository\CommentRepository;
 use App\Repository\EventRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -79,6 +80,8 @@ class EventController extends AbstractController
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             $comment->setDate(new \DateTime());
+            $comment->setDateCreation(new \DateTime());
+            $comment->setDateModification(new \DateTime());
             $comment->setuser($user);
             $comment->setEvent($event);
 
@@ -93,6 +96,29 @@ class EventController extends AbstractController
             'menu' => 'event',
             'commentForm' => $commentForm->createView()
         ]);
+    }
+
+    /**
+     * @Route("/event/{eventId}/comment/{commentId}/remove", name="event_comment_remove")
+     */
+    public function commentRemove($eventId, $commentId, EventRepository $eventRepo, Request $request, ObjectManager $objectManager, CommentRepository $commentRepo): Response
+    {
+        $datetime = new \DateTime("now");
+        $comment = $commentRepo->findOneById($commentId);
+        $user = $this->getUser();
+
+        if (!$user or $comment->getUser() != $user) {
+            return $this->json([
+                'code' => 403,
+            ], 403);
+        } else {
+            $comment->setDateSuppression($datetime);
+
+            $objectManager->persist($comment);
+            $objectManager->flush();
+
+            return $this->json(['code' => 200], 200);
+        }
     }
 
     /**
@@ -136,7 +162,7 @@ class EventController extends AbstractController
                 $objectManager->flush();
             } else {
                 $imageFile = new File('./uploads/images/events/' . $event->getImage());
-                $form->setData(array("imageFile"=>$imageFile));
+                $form->setData(array("imageFile" => $imageFile));
             }
 
             return $this->render('event/modify.html.twig', [
