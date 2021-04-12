@@ -87,6 +87,7 @@ class Event
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="event")
      * @ORM\OrderBy({"date" = "DESC"})
+     * @ORM\
      */
     private $comments;
 
