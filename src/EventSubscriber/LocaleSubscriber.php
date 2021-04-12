@@ -2,6 +2,7 @@
 
 namespace App\EventSubscriber;
 
+use App\Entity\Settings;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -12,7 +13,7 @@ class LocaleSubscriber implements EventSubscriberInterface
     private $defaultLocale;
     private $defaultTheme;
 
-    public function __construct($defaultLocale = 'fr_FR', $defaultTheme = 'light')
+    public function __construct($defaultLocale = 'fr_FR', $defaultTheme = true)
     {
         $this->defaultLocale = $defaultLocale;
         $this->defaultTheme = $defaultTheme;
@@ -23,12 +24,21 @@ class LocaleSubscriber implements EventSubscriberInterface
         $request = $event->getRequest();
 
         $locale = $request->getSession()->get('_locale');
-        $theme = $request->getSession()->get('_theme');
-        
+
+        if ($locale == null) {
+            $request->getSession()->set('_locale', $this->defaultLocale);
+        }
+
         if ($locale != null) {
             $request->setLocale($locale);
         } else {
             $request->setLocale($this->defaultLocale);
+        }
+
+        $theme = $request->getSession()->get('_theme');
+
+        if ($theme == null) {
+            $request->getSession()->set('_theme', $this->defaultTheme);
         }
     }
 
