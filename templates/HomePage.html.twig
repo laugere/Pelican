@@ -109,7 +109,7 @@
 
         function setTheme(theme) {
             localStorage.setItem('theme', theme);
-            if (theme === true) {
+            if (theme === false) {
                 document.documentElement.className = 'theme-light';
             } else {
                 document.documentElement.className = 'theme-dark';
@@ -117,7 +117,7 @@
         }
 
         (function () {
-            setTheme({{ app.session.get('_theme') ? 'false' : 'true' }});
+            setTheme({{ app.session.get('_theme') ? 'true' : 'false' }});
         })();
     </script>
 

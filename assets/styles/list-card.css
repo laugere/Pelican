@@ -114,3 +114,18 @@
     top: 1.25rem;
     left: 3.5rem;
 }
+
+.list-card-small .list-card-button-container {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    bottom: 0.75rem;
+}
+
+.list-card-small .list-card-button-container .list-card-small-button {
+    position: absolute;
+    right: 0rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0rem;
+}
