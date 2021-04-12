@@ -16,7 +16,8 @@
 			{% if events is empty %}
 				<h6 class="text-muted centered-message">
 					<i class="fas fa-hotdog"></i>
-					{% trans %}message.nocontent{% endtrans %}</h6>
+					{% trans %}message.nocontent{% endtrans %}
+				</h6>
 			{% else %}
 				{% for event in events %}
 					{% include ('vues/EventCard.html.twig') %}

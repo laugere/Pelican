@@ -94,14 +94,19 @@
 					</h4>
 					{% include ('vues/CommentCard.html.twig') %}
 					{% if event.comments is not empty %}
-						{% for comment in event.comments | slice(0, 3) %}
+						{% for comment in event.comments | filter((c) => c.dateSuppression is null) | slice(0, 3) %}
 							{% include ('vues/CommentCard.html.twig') %}
 						{% endfor %}
-						{% if event.comments | length > 3 %}
+						{% if event.comments | filter((c) => c.dateSuppression is null) | length > 3 %}
 							<button class="show-more-button" data-toggle="modal" data-target="#showAllCommentModal">
 								{% trans %}rightcol.showmore{% endtrans %}
 							</button>
 						{% endif %}
+					{% else %}
+						<h6 class="text-muted centered-message">
+							<i class="fas fa-hotdog"></i>
+							{% trans %}message.nocontent{% endtrans %}
+						</h6>
 					{% endif %}
 				</div>
 			</div>
