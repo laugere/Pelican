@@ -99,9 +99,9 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{eventId}/comment/{commentId}/remove", name="event_comment_remove")
+     * @Route("/event/comment/{commentId}/remove", name="event_comment_remove")
      */
-    public function commentRemove($eventId, $commentId, EventRepository $eventRepo, Request $request, ObjectManager $objectManager, CommentRepository $commentRepo): Response
+    public function commentRemove($commentId, EventRepository $eventRepo, Request $request, ObjectManager $objectManager, CommentRepository $commentRepo): Response
     {
         $datetime = new \DateTime("now");
         $comment = $commentRepo->findOneById($commentId);
