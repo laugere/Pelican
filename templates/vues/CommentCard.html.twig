@@ -2,7 +2,7 @@
 	<div id="comment-{{ comment.id }}">
 		<div class="list-card list-card-small noselect">
 			<div class="list-card-image-container">
-				<img class="list-card-image-container-img" src="{{ asset('uploads/images/users/' ~ comment.user.image) }}" width="45px" height="45px"/>
+				<img class="list-card-image-container-img" src="{{ asset('uploads/images/users/' ~ comment.user.image) }}" width="45px" height="45px" onclick="window.location = '/user/{{ comment.user.id }}/view';"/>
 				<p class="list-card-image-container-img-name">
 					{{ comment.user.pseudo }}
 					-
