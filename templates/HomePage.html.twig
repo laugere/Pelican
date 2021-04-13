@@ -131,7 +131,7 @@
         }
 
         (function () {
-            setTheme({{ app.session.get('_theme') ? 'true' : 'false' }});
+            setTheme({{ app.request.session.get('_theme') ? 'true' : 'false' }});
         })();
     </script>
 

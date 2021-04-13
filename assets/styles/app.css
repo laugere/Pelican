@@ -9,6 +9,7 @@
     --back-color-opacity-hover: rgba(255, 255, 255, 0.90);
     --reverse-back-color: #121212;
     --font-color: #121212;
+    --color-4dp: #AAAAAA;
 }
 
 .theme-dark {
@@ -21,6 +22,7 @@
     --back-color-opacity-hover: rgba(177, 177, 177, 0.50);
     --reverse-back-color: #ffffff;
     --font-color: #ffffff;
+    --color-4dp: #272727;
 }
 
 body {
@@ -303,8 +305,7 @@ a:hover {
 .modal-content {
     border: none;
     border-radius: 20px;
-    background-color: #ffffff31;
-    backdrop-filter: blur(10px);
+    background-color: var(--color-4dp);
 }
 
 .modal-content img {

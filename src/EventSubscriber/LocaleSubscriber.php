@@ -4,6 +4,7 @@ namespace App\EventSubscriber;
 
 use App\Entity\Settings;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -33,12 +34,6 @@ class LocaleSubscriber implements EventSubscriberInterface
             $request->setLocale($locale);
         } else {
             $request->setLocale($this->defaultLocale);
-        }
-
-        $theme = $request->getSession()->get('_theme');
-
-        if ($theme == null) {
-            $request->getSession()->set('_theme', $this->defaultTheme);
         }
     }
 

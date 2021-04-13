@@ -15,7 +15,7 @@
 			{% if comment.user == app.user %}
 				<div class="list-card-button-container">
 					<button type="button" class="btn btn-light btn-round list-card-small-button" onclick="onClickBtnRemoveComment('/event/comment/{{ comment.id }}/remove', '/event/{{ event.id }}/view')">
-						<i class="fas fa-times"></i>
+						<i class="fas fa-ellipsis-v"></i>
 					</button>
 				</div>
 			{% endif %}
