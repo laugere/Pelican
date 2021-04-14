@@ -111,6 +111,9 @@ security:
 
 comment:
   create: Add a comment
+  menu:
+    modify: Modify
+    delete: Delete
 
 user:
   counter: 

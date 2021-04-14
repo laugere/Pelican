@@ -14,9 +14,17 @@
 			</div>
 			{% if comment.user == app.user %}
 				<div class="list-card-button-container">
-					<button type="button" class="btn btn-light btn-round list-card-small-button" onclick="onClickBtnRemoveComment('/event/comment/{{ comment.id }}/remove', '/event/{{ event.id }}/view')">
+					<button id="comment-{{ comment.id }}-option" type="button" class="btn btn-light btn-round list-card-small-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-ellipsis-v"></i>
 					</button>
+					<div class="dropdown-menu" aria-labelledby="comment-{{ comment.id }}-option">
+						<a class="dropdown-item">
+							{% trans %}comment.menu.modify{% endtrans %}
+						</a>
+						<a class="dropdown-item text-danger" onclick="onClickBtnRemoveComment('/event/comment/{{ comment.id }}/remove', '/event/{{ event.id }}/view')">
+							{% trans %}comment.menu.delete{% endtrans %}
+						</a>
+					</div>
 				</div>
 			{% endif %}
 		</div>

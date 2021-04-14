@@ -107,8 +107,7 @@
 .dropdown-menu {
     margin-bottom: 0.75rem !important;
     border: none;
-    border-radius: 20px;
-    background-color: #3d3d3d;
+    background-color: var(--color-6dp);
     color: rgb(196, 196, 196);
 }
 

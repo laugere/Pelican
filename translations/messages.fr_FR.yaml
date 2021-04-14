@@ -80,6 +80,9 @@ event:
 
 comment:
   create: Ajouter un commentaire
+  menu:
+    modify: Modifier
+    delete: Supprimer
 
 settings:
   darkmode: Mode sombre
