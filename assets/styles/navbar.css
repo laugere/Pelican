@@ -108,14 +108,14 @@
     margin-bottom: 0.75rem !important;
     border: none;
     background-color: var(--color-6dp);
-    color: rgb(196, 196, 196);
+    color: var(--font-color-light);
 }
 
 .dropdown-menu .dropdown-item {
-    color: rgb(196, 196, 196);
+    color: var(--font-color-light);
 }
 
 .dropdown-menu .dropdown-item:hover {
     background-color: transparent;
-    color: white;
+    color: var(--font-color);
 }

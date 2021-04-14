@@ -9,7 +9,11 @@
     --back-color-opacity-hover: rgba(255, 255, 255, 0.90);
     --reverse-back-color: #121212;
     --font-color: #121212;
+    --font-color-light: #222222;
+    --font-color-reverse: #ffffff;
+    --font-color-reverse-light: #727272;
     --color-4dp: #AAAAAA;
+    --color-6dp: #999999;
 }
 
 .theme-dark {
@@ -22,6 +26,9 @@
     --back-color-opacity-hover: rgba(177, 177, 177, 0.50);
     --reverse-back-color: #ffffff;
     --font-color: #ffffff;
+    --font-color-light: #727272;
+    --font-color-reverse: #ffffff;
+    --font-color-reverse-light: #727272;
     --color-4dp: #272727;
     --color-6dp: #323232;
 }

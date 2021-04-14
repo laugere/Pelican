@@ -5,7 +5,7 @@
     display: block;
     margin: auto;
     transition: all 0.5s;
-    background-color: #ffffff25;
+    background-color: var(--back-color);
     background-position: center;
     border-radius: 25px;
     padding: 1rem;
@@ -52,13 +52,14 @@
 }
 
 .avatar-container .avatar-user-name {
+    color: var(--font-color-reverse);
     position: absolute;
     left: 3.25rem;
     top: 0.25rem;
 }
 
 .avatar-container .avatar-date {
-    color: rgba(255, 255, 255, 0.425);
+    color: var(--font-color-reverse-light);
     font-size: 0.75rem;
     position: absolute;
     left: 3.25rem;
@@ -105,7 +106,7 @@
     display: block;
     margin: auto;
     transition: all 0.5s;
-    background-color: #ffffff25;
+    background-color: var(--back-color);
     background-position: center;
     border-radius: 25px;
     padding: 1rem;

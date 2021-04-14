@@ -35,6 +35,12 @@ class LocaleSubscriber implements EventSubscriberInterface
         } else {
             $request->setLocale($this->defaultLocale);
         }
+
+        $theme = $request->getSession()->get('_theme');
+
+        if ($theme == null) {
+            $request->getSession()->set('_theme', $this->defaultTheme);
+        }
     }
 
     public static function getSubscribedEvents()

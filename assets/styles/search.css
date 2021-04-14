@@ -1,6 +1,6 @@
 #content-container .show-more-button {
     width: 100%;
-    color: white;
+    color: var(--font-color);
 }
 
 .search-container {
