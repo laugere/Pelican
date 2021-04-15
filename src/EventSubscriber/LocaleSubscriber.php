@@ -22,7 +22,7 @@ class LocaleSubscriber implements EventSubscriberInterface
 
     public function onKernelRequest(RequestEvent $event)
     {
-        /*$request = $event->getRequest();
+        $request = $event->getRequest();
 
         $locale = $request->getSession()->get('_locale');
 
@@ -35,12 +35,6 @@ class LocaleSubscriber implements EventSubscriberInterface
         } else {
             $request->setLocale($this->defaultLocale);
         }
-
-        $theme = $request->getSession()->get('_theme');
-
-        if ($theme == null) {
-            $request->getSession()->set('_theme', $this->defaultTheme);
-        }*/
     }
 
     public static function getSubscribedEvents()
