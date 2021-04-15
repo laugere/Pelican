@@ -4,6 +4,35 @@
 		{% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.home'|trans, 'search' : true } %}
 		<div class="subcontainer scrollbar no-extra-padding">
 			<h5 class="text-center">
+				{% trans %}home.friendship{% endtrans %}
+			</h5>
+			<div id="stories-wrapper">
+				<div id="stories-container">
+					{% if app.user.getFriendship() is empty %}
+						<h6 class="text-muted centered-message" style="margin-top: 1rem; margin-bottom: 2rem;">
+							<i class="fas fa-hotdog"></i>
+							{% trans %}message.nocontent{% endtrans %}
+						</h6>
+					{% else %}
+						{% for friend in app.user.getFriendship() %}
+							{% if friend.getFirst_user() == app.user %}
+								<div class="story">
+									<div class="profile" onclick="window.location = '/user/{{ friend.getSecond_user().id }}/view';">
+										<img class="avatar-img" src="{{ asset('uploads/images/users/' ~ friend.getSecond_user().image) }}"/>
+									</div>
+								</div>
+							{% else %}
+								<div class="story">
+									<div class="profile" onclick="window.location = '/user/{{ friend.getFirst_user().id }}/view';">
+										<img class="avatar-img" src="{{ asset('uploads/images/users/' ~ friend.getFirst_user().image) }}" width="45px" height="45px"/>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+			<h5 class="text-center">
 				{% trans %}home.nextEvent{% endtrans %}
 			</h5>
 			{% if events is empty %}
@@ -17,19 +46,9 @@
 			{% endif %}
 		</div>
 	</div>
-	<button type="button" class="btn-create btn btn-lg rounded-circle"  data-toggle="modal" data-target="#dialogModalPublish">
+	<button type="button" class="btn-create btn btn-lg rounded-circle" data-toggle="modal" data-target="#dialogModalPublish">
 		<i class="fas fa-feather"></i>
 	</button>
 
-	{% include 'vues/ModalDialogPublish.html.twig' %} 
-{% endblock %}
-{% block javascripts %}
-	<script>
-		$('#filter-event-popover').popover({
-			html: true,
-			content: function () {
-				return $('#popover_content_wrapper').html();
-			}
-		});
-	</script>
+	{% include 'vues/ModalDialogPublish.html.twig' %}
 {% endblock %}

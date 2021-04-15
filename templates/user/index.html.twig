@@ -45,6 +45,11 @@
 					{% for participation in user.event | sort((b, a) => a.getDate <=> b.getDate) | slice(0, 3) %}
 						{% set event = participation.getEvent %}
 						{% include ('vues/EventCardThin.html.twig') %}
+						{% if event.comments is not empty %}
+							{% for comment in event.comments | filter((c) => c.dateSuppression is null and c.user == user) | slice(0, 3) %}
+								{% include ('vues/CommentCard.html.twig') %}
+							{% endfor %}
+						{% endif %}
 					{% endfor %}
 					{% if user.event | length > 3 %}
 						<button onclick="window.location = '/event'" class="show-more-button">

@@ -1,0 +1,28 @@
+#stories-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 20px 0;
+    overflow-y: hidden;
+}
+
+.story {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 0.5rem;
+}
+
+.story .profile {
+    margin: 0.5rem;
+    border-radius: 50%;
+}
+
+.story .profile img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}

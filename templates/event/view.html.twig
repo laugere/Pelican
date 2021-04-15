@@ -98,7 +98,7 @@
 							{% include ('vues/CommentCard.html.twig') %}
 						{% endfor %}
 						{% if event.comments | filter((c) => c.dateSuppression is null) | length > 3 %}
-							<button class="show-more-button" onclick="updateAndShowModal()">
+							<button class="show-more-button" id="show-more-button">
 								{% trans %}rightcol.showmore{% endtrans %}
 							</button>
 						{% endif %}
@@ -116,25 +116,32 @@
 	{% include 'vues/ModalDialogSupp.html.twig' %}
 	{% include 'vues/ModalDialogFullEvent.html.twig' %}
 	{% set comments = event.comments %}
-	{% include 'vues/ModalCommentShowAll.html.twig' %}
+	<div class="modal-comment-all">
+		{% include 'vues/ModalCommentShowAll.html.twig' %}
+	</div>
 {% endblock %}
 
 {% block javascripts %}
 
 <script>
-	function updateAndShowModal(){
-		$('#loadingModal').modal('show')
+	$('#show-more-button').on('click', function(e){
+		updateAndShowComs();
+		e.stopImmediatePropagation();
+		return false;
+	});
 
+	function updateAndShowComs(){
 		$.ajax({
 			url: '/event/1/view',
-			cache: false
+			type: 'POST',
+			cache: false,
 		}).done(function(response) {
-			$('showAllCommentModal').load('/event/1/view#showAllCommentModal')
-			setTimeout(() => {
-				$('#loadingModal').modal('hide');
-				$('#showAllCommentModal').modal('show');
-			}, 500)
-		})
+
+			var modal = $(response).find('.modal-comment-all');	
+
+			$('#showAllCommentModal').html(modal.innerHTML);
+			$('#showAllCommentModal').modal('show');
+		});
 	}
 </script>
 

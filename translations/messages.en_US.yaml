@@ -59,6 +59,7 @@ community:
     name: Community name
 
 home:
+  friendship: Friendship
   nextEvent: Next event
   followCommunity: Followed communities
 

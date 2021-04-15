@@ -57,6 +57,7 @@ community:
     name: Nom de la communauté
 
 home:
+  friendship: Amitiés
   nextEvent: Prochains évenements
   followCommunity: Communautés suivies
 

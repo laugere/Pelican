@@ -75,13 +75,14 @@ class EventController extends AbstractController
         $event = $eventRepo->findOneById($eventId);
         $user = $this->getuser();
         $comment = new Comment();
+        $date = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
 
         $commentForm = $this->createForm(CommentType::class, $comment);
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-            $comment->setDate(new \DateTime());
-            $comment->setDateCreation(new \DateTime());
-            $comment->setDateModification(new \DateTime());
+            $comment->setDate($date);
+            $comment->setDateCreation($date);
+            $comment->setDateModification($date);
             $comment->setuser($user);
             $comment->setEvent($event);
 
@@ -103,7 +104,7 @@ class EventController extends AbstractController
      */
     public function commentRemove($commentId, EventRepository $eventRepo, Request $request, ObjectManager $objectManager, CommentRepository $commentRepo): Response
     {
-        $datetime = new \DateTime("now");
+        $datetime = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $comment = $commentRepo->findOneById($commentId);
         $user = $this->getUser();
 
