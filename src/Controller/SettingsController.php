@@ -29,6 +29,8 @@ class SettingsController extends AbstractController
             $request->getSession()->set('_locale', $settings->getLanguage());
             $request->getSession()->set('_theme', $settings->getDarkMode());
 
+            var_dump($request->getSession()->get('_theme'));
+
             return $this->redirectToRoute('settings', [], 301);
         }
 

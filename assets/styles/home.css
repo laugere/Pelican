@@ -1,16 +1,30 @@
+#stories-wrapper {
+    display: grid;
+}
+
 #stories-container {
     display: flex;
     align-items: center;
     justify-content: left;
-    padding: 20px 0;
     overflow-y: hidden;
+    margin-bottom: 3rem;
+}
+
+#stories-container::-webkit-scrollbar {
+    display: none;
+}
+
+#stories-container {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .story {
     border: 0;
     background-color: transparent;
     cursor: pointer;
-    margin: 0 0.5rem;
 }
 
 .story .profile {
