@@ -106,14 +106,14 @@ class AppFixtures extends Fixture
         }
 
         $comments = array();
-        for ($i = 0; $i < 60; $i++) {
+        for ($i = 0; $i < 500; $i++) {
             $comments[$i] = new Comment();
             $comments[$i]->setDateCreation($faker->dateTime);
             $comments[$i]->setDateModification($faker->dateTime);
             $comments[$i]->setUser($users[rand(0, 19)]);
             $comments[$i]->setDate($faker->dateTimeBetween('now', '+1 years'));
             $comments[$i]->setText($faker->sentence);
-            $comments[$i]->setEvent($events[rand(0, 9)]);
+            $comments[$i]->setEvent($events[rand(0, 29)]);
 
             $manager->persist($comments[$i]);
         }

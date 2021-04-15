@@ -49,5 +49,6 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/event, roles: ROLE_USER }
+        - { path: ^/user, roles: ROLE_USER }
         - { path: ^/community, roles: ROLE_USER }
         - { path: ^/$, roles: ROLE_USER }
