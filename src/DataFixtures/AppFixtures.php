@@ -57,13 +57,24 @@ class AppFixtures extends Fixture
 
         $users = array();
         for ($i = 0; $i < 20; $i++) {
-            $users[$i] = new User();
-            $users[$i]->setEmail($faker->email);
-            $users[$i]->setCity($faker->city);
-            $users[$i]->setPseudo($faker->name);
-            $users[$i]->setPassword($faker->password);
-            $users[$i]->setImage($fakeImages[rand(0, count($fakeImages) - 1)]);
-            $users[$i]->setSettings($settings[$i]);
+            if ($i == 0) {
+                $users[$i] = new User();
+                $users[$i]->setEmail("admin@admin");
+                $users[$i]->setRoles(array("ROLE_ADMIN"));
+                $users[$i]->setCity("AdminLand");
+                $users[$i]->setPseudo("Adminer");
+                $users[$i]->setPassword('$argon2id$v=19$m=65536,t=4,p=1$ZXguRTJETlZBSFFJUi9nNQ$M7oH5G2QzUY3UvcnV/K692ysCcH9cd5zjtXaHcA8JUg');
+                $users[$i]->setImage($fakeImages[rand(0, count($fakeImages) - 1)]);
+                $users[$i]->setSettings($settings[$i]);
+            } else {
+                $users[$i] = new User();
+                $users[$i]->setEmail($faker->email);
+                $users[$i]->setCity($faker->city);
+                $users[$i]->setPseudo($faker->name);
+                $users[$i]->setPassword($faker->password);
+                $users[$i]->setImage($fakeImages[rand(0, count($fakeImages) - 1)]);
+                $users[$i]->setSettings($settings[$i]);
+            }
 
             $manager->persist($users[$i]);
         }
