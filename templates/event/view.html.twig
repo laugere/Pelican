@@ -126,10 +126,10 @@
 		$('#loadingModal').modal('show')
 
 		$.ajax({
-			url: '/event/1/getComments',
+			url: '/event/1/view',
 			cache: false
 		}).done(function(response) {
-			$('body').load('/event/1/view#body')
+			$('showAllCommentModal').load('/event/1/view#showAllCommentModal')
 			setTimeout(() => {
 				$('#loadingModal').modal('hide');
 				$('#showAllCommentModal').modal('show');
