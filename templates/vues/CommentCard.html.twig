@@ -21,7 +21,7 @@
 						<a class="dropdown-item">
 							{% trans %}comment.menu.modify{% endtrans %}
 						</a>
-						<a class="dropdown-item text-danger" onclick="onClickBtnRemoveComment('/event/comment/{{ comment.id }}/remove', '/event/{{ event.id }}/view')">
+						<a class="dropdown-item text-danger" onclick="onClickExecuteQuery('/event/comment/{{ comment.id }}/remove', '/event/{{ event.id }}/view', 'comment-container')">
 							{% trans %}comment.menu.delete{% endtrans %}
 						</a>
 					</div>

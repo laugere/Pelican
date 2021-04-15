@@ -13,7 +13,7 @@
             {% for friendship in friendships %} 
                 {% if app.user == friendship.first_user and user == friendship.second_user %} 
                     {% if friendship.validate %}
-                        <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
+                        <button type="button" onclick="onClickExecuteQuery('{{path('friend_add',{userid: user.id})}}', '{{path('friend_view',{userId: app.user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
                             <i class="fas fa-user-check"></i>
                         </button> 
                     {% else %}
@@ -26,11 +26,11 @@
 
                     {% elseif user == friendship.first_user and app.user == friendship.second_user %} 
                         {% if friendship.validate %}
-                            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
+                            <button type="button" onclick="onClickExecuteQuery('{{path('friend_add',{userid: user.id})}}', '{{path('friend_view',{userId: app.user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-success btn-round list-card-button">
                                 <i class="fas fa-user-check"></i>
                             </button> 
                         {% else %}
-                            <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-info btn-round list-card-button">
+                            <button type="button" onclick="onClickExecuteQuery('{{path('friend_add',{userid: user.id})}}', '{{path('friend_view',{userId: app.user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-info btn-round list-card-button">
                                 <i class="fas fa-user-clock"></i>
                             </button> 
                         {% endif %} 
@@ -40,7 +40,7 @@
             {% endfor %} 
                 
                 {% if trouve == false %}
-                    <button type="button" onclick="onClickBtnAddUser('{{path('friend_add',{userid: user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-warning btn-round list-card-button">
+                    <button type="button" onclick="onClickExecuteQuery('{{path('friend_add',{userid: user.id})}}', '{{path('friend_view',{userId: app.user.id})}}', 'friend-{{ user.id }}')" class="btn btn-outline-warning btn-round list-card-button">
                         <i class="fas fa-plus"></i>
                     </button> 
                 {% endif %}

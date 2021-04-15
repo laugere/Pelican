@@ -18,7 +18,7 @@ class FriendController extends AbstractController
     /**
      * @Route("/friend/{userId}/view", name="friend_view")
      */
-    public function friendsView($userId, Request $request, UserRepository $userRepo): Response
+    public function friendsView($userId, UserRepository $userRepo): Response
     {
         $users = new ArrayCollection();
         $user = $userRepo->findOneById($userId);

@@ -47,20 +47,6 @@
             $(this).ekkoLightbox();
         });
 
-        function onClickBtnGoToCommunity(communityGoToPath, communityId) {
-            $('#loadingModal').modal('show')
-
-            $.ajax({
-                url: communityGoToPath,
-                cache: false
-            }).done(function(response) {
-                $('#' + communityId).load('/community #' + communityId)
-                setTimeout(() => {
-                    $('#loadingModal').modal('hide')
-                }, 500)
-            })
-        }
-
         function onClickBtnGoToEvent(eventGoToPath, eventId) {
             $('#loadingModal').modal('show')
 
@@ -98,14 +84,14 @@
             })
         }
 
-        function onClickBtnRemoveComment(commentRemovePath, eventPath) {
+        function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
             $('#loadingModal').modal('show')
 
             $.ajax({
-                url: commentRemovePath,
+                url: queryPath,
                 cache: false
             }).done(function(response) {
-                $('#comment-container').load(eventPath + ' #comment-container')
+                $('#' + refreshElement).load(pagePath + ' #' + refreshElement)
                 setTimeout(() => {
                     $('#loadingModal').modal('hide')
                 }, 500)
