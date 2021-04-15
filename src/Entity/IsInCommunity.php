@@ -83,4 +83,12 @@ class IsInCommunity
     {
         return $this->community;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

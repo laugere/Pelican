@@ -104,4 +104,12 @@ class Friendship
     {
         return $this->validate;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

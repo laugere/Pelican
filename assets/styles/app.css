@@ -58,6 +58,7 @@ img {
     padding: 1.25rem;
     margin: auto;
     width: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .login-container {
@@ -191,7 +192,7 @@ input {
     background-color: #ffffff1f !important;
     border-radius: 10px;
     border: none !important;
-    color: white !important;
+    color: var(--font-color) !important;
 }
 
 .custom-file-input {

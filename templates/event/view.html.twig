@@ -98,7 +98,7 @@
 							{% include ('vues/CommentCard.html.twig') %}
 						{% endfor %}
 						{% if event.comments | filter((c) => c.dateSuppression is null) | length > 3 %}
-							<button class="show-more-button" data-toggle="modal" data-target="#showAllCommentModal">
+							<button class="show-more-button" onclick="updateAndShowModal()">
 								{% trans %}rightcol.showmore{% endtrans %}
 							</button>
 						{% endif %}
@@ -119,4 +119,23 @@
 	{% include 'vues/ModalCommentShowAll.html.twig' %}
 {% endblock %}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+
+<script>
+	function updateAndShowModal(){
+		$('#loadingModal').modal('show')
+
+		$.ajax({
+			url: '/event/1/getComments',
+			cache: false
+		}).done(function(response) {
+			$('body').load('/event/1/view#body')
+			setTimeout(() => {
+				$('#loadingModal').modal('hide');
+				$('#showAllCommentModal').modal('show');
+			}, 500)
+		})
+	}
+</script>
+
+{% endblock %}

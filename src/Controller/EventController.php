@@ -236,4 +236,17 @@ class EventController extends AbstractController
 
         return $this->json(['code' => 200], 200);
     }
+
+    /**
+     * @Route("/event/{eventId}/getComments", name="event_getComments")
+     */
+    public function getEventComs($eventId, EventRepository $eventRepo, Request $request): Response
+    {
+        $event = $eventRepo->findOneById($eventId);
+
+        $coms = $event->getComments();
+
+        return $this->json(['code' => 200, 'comments' => $coms], 200);
+    }
+
 }

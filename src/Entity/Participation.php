@@ -83,4 +83,12 @@ class Participation
     {
         return $this->event;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
