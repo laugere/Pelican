@@ -75,6 +75,7 @@
 /* SMALL LIST-CARD */
 
 .list-card-small {
+    box-shadow: none;
     cursor: auto;
     background: none;
     height: 3.5rem;

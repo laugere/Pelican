@@ -48,7 +48,7 @@
 .show-more-button {
     width: calc(100% - 2.5rem);
     padding: 0.5rem;
-    background-color: var(--back-color-opacity-low);
+    background-color: #97979748;
     border: none;
     border-radius: 25px;
     transition: background-color 0.5s;
@@ -63,5 +63,5 @@
 }
 
 .show-more-button:hover {
-    background-color: var(--back-color-opacity-low-hover);
+    background-color: #9797971e;
 }

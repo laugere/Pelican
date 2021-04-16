@@ -85,12 +85,12 @@ img {
 .content-search a {
     vertical-align: middle;
     font-size: 1.75rem;
-    color: rgba(255, 255, 255, 0.384);
+    color: var(--font-color-reverse-light);
     transition: color 0.5s;
 }
 
 .content-search a:hover {
-    color: white;
+    color: var(--font-color);
 }
 
 .content-brand {
