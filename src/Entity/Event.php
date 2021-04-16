@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Participation;
 use App\Repository\EventRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -99,6 +100,11 @@ class Event
     public function getParticipations()
     {
         return $this->participations;
+    }
+
+    public function addParticipation(Participation $participation)
+    {
+        $this->participations->add($participation);
     }
 
     public function getId(): ?int

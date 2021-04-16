@@ -189,7 +189,7 @@ img {
 }
 
 input {
-    background-color: #ffffff1f !important;
+    background-color: var(--back-color-opacity-low) !important;
     border-radius: 10px;
     border: none !important;
     color: var(--font-color) !important;
@@ -231,10 +231,10 @@ textarea {
 }
 
 select {
-    background-color: #ffffff1f !important;
+    background-color: var(--back-color-opacity-low) !important;
     border-radius: 10px;
     border: none !important;
-    color: white !important;
+    color: var(--font-color) !important;
 }
 
 select option {
