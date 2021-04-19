@@ -27,7 +27,7 @@ class EventController extends AbstractController
     public function index(EventRepository $eventRepo, Request $request): Response
     {
         if ($request->query->get('search') != null) {
-            $events = $eventRepo->findByLike($request->query->get('search'));
+            $events = $eventRepo->findByLike($request->query->get('search'), $request->query->get('eventStartDate'), $request->query->get('eventEndDate'));
         } else {
             $events = $eventRepo->findRecent();
         }
