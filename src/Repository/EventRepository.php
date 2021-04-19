@@ -54,12 +54,30 @@ class EventRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    public function findByLike($name)
+    public function findByLike($name, $startDate, $endDate)
     {
-        return $this->createQueryBuilder('e')
+        $qb = $this->createQueryBuilder('e')
             ->andWhere('e.name LIKE :name')
-            ->setParameter('name', '%'.$name.'%')
-            ->getQuery()
+            ->setParameter('name', '%' . $name . '%');
+
+
+        if (!empty($startDate)) {
+            $startDate = new \DateTime($startDate);
+
+            $qb->andWhere('e.date >= :startDate')
+                ->setParameter('startDate', $startDate);
+        }
+
+        if (!empty($endDate)) {
+            $endDate = new \DateTime($endDate);
+
+            $qb->andWhere('e.endDate <= :endDate')
+                ->setParameter('endDate', $endDate);
+        }
+
+        $qb->orderBy('e.date', 'ASC');
+
+        return $qb->getQuery()
             ->getResult();
     }
 

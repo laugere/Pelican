@@ -89,6 +89,7 @@ class AppFixtures extends Fixture
             $events[$i]->setDescription($faker->sentence);
             $events[$i]->setLocation($faker->city);
             $events[$i]->setdate($faker->dateTimeBetween('now', '+1 years'));
+            $events[$i]->setEndDate($faker->dateTimeBetween($events[$i]->getdate(), $events[$i]->getdate()->format('Y-m-d H:i:s').'+5 hours'));
             $events[$i]->setNbParticipant($faker->randomNumber(1));
             $events[$i]->setImage($fakeImages[rand(0, count($fakeImages) - 1)]);
 
@@ -146,7 +147,6 @@ class AppFixtures extends Fixture
         $participations = array();
         for ($i = 0; $i < count($users); $i++) {
             for ($j = 0; $j < count($events); $j++) {
-                echo count($events[$j]->getParticipations());
                 if (count($events[$j]->getParticipations()) + 1 <= $events[$j]->getNbParticipant()) {
                     $participations[$i + $j] = new Participation();
                     $participations[$i + $j]->setDate($faker->dateTime);

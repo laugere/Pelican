@@ -1,16 +1,71 @@
 <!-- Modal Search -->
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false">
-    <div class="modal-dialog modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form action="{{ path("search") }}" role="search" method="GET" class="form-inline">
-                    <div class="form-group">
-                        <label for="search" class="sr-only">{% trans %}message.search{% endtrans %}</label>
-                        <input type="text" class="form-control" id="search" placeholder="{% trans %}message.search{% endtrans %}" name="search">
-                    </div>
-                    <button type="submit" class="btn btn-dark">{% trans %}message.search{% endtrans %}</button>
-                </form>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<label class="sr_only">
+					{% trans %}search.form.title{% endtrans %}
+				</label>
+				<form action="{{ path("search") }}" role="search" method="GET">
+					<div class="form-group">
+						<label for="search" class="sr-only">{% trans %}message.search{% endtrans %}</label>
+						<input type="text" class="form-control" id="search" placeholder="{% trans %}message.search{% endtrans %}" name="search">
+					</div>
+					<div class="form-group row ml-0 mr-0">
+						<div class="col">
+							<div class="form-group px-1">
+								<label for="eventStartDate">
+									{% trans %}search.form.startDate{% endtrans %}
+								</label>
+								<input type="datetime-local" class="form-control" id="eventStartDate" name="eventStartDate">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group px-1">
+								<label for="eventEndDate">
+									{% trans %}search.form.endDate{% endtrans %}
+								</label>
+								<input type="datetime-local" class="form-control" id="eventEndDate" name="eventEndDate">
+							</div>
+						</div>
+					</div>
+					<div class="form-group row ml-0">
+						<div class="col">
+							<label class="sr_only">
+								{% trans %}search.form.searchType{% endtrans %}
+							</label>
+							<div class="form-check pl-0">
+								<div class="custom-control custom-switch">
+									<input class="custom-control-input" type="checkbox" value="true" id="eventType" name="eventType" checked>
+									<label class="custom-control-label" for="eventType">
+										{% trans %}search.type.events{% endtrans %}
+									</label>
+								</div>
+							</div>
+							<div class="form-check pl-0">
+								<div class="custom-control custom-switch">
+									<input class="custom-control-input" type="checkbox" value="true" id="userType" name="userType" checked>
+									<label class="custom-control-label" for="userType">
+										{% trans %}search.type.users{% endtrans %}
+									</label>
+								</div>
+							</div>
+							<div class="form-check pl-0">
+								<div class="custom-control custom-switch">
+									<input class="custom-control-input" type="checkbox" value="true" id="communityType" name="communityType" checked>
+									<label class="custom-control-label" for="communityType">
+										{% trans %}search.type.communities{% endtrans %}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col"></div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-dark">{% trans %}message.search{% endtrans %}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,27 +1,27 @@
 #searchModal .modal-content {
-    position: relative;
-    height: calc(1.5em + 0.75rem + 2px + 32px);
+    /*sposition: relative;
+    height: calc(1.5em + 0.75rem + 2px + 32px);*/
 }
 
 #searchModal form {
-    position: relative;
+    /*position: relative;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: 0;*/
 }
 
 #searchModal form .form-group {
-    position: absolute;
+    /*position: absolute;
     top: 0rem;
     left: 0;
-    right: 7rem;
+    right: 7rem;*/
 }
 
 #searchModal form button {
-    position: absolute;
+    /*position: absolute;
     top: 0rem;
-    right: 0;
+    right: 0;*/
 }
 
 #searchModal form .form-group input {

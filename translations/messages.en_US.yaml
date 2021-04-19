@@ -69,6 +69,7 @@ event:
     description: Event description
     location: Event location
     date: Event date
+    endDate: Event end date
     number: Number of participants
     image: Event image
   create:
@@ -123,3 +124,14 @@ user:
     community: Followed community
   modify:
     title: Modify User
+
+search:
+  form:
+    title: Search
+    searchType: Search type
+    startDate: Starting date
+    endDate: End date
+  type:
+    events: Events
+    users: Users
+    communities: Communities

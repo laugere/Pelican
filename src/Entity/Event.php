@@ -59,6 +59,11 @@ class Event
     private $date;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $endDate;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $nbParticipant;
@@ -156,6 +161,18 @@ class Event
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(\DateTimeInterface $endDate): self
+    {
+        $this->endDate = $endDate;
 
         return $this;
     }

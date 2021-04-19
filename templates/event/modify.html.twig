@@ -21,13 +21,17 @@
 				{{ form_widget(form.date) }}
 			</div>
 			<div class="form-group">
+				<label for="event_date">{% trans %}event.form.endDate{% endtrans %}</label>
+				{{ form_widget(form.endDate) }}
+			</div>
+			<div class="form-group">
 				<label for="nbParticipant">{% trans %}event.form.number{% endtrans %}</label>
 				{{ form_widget(form.nbParticipant) }}
 			</div>
 			<div class="form-group">
 				<label for="event_image">{% trans %}event.form.image{% endtrans %}</label>
 				{{ form_widget(form.imageFile) }}
-				<img id="image_output" src="{{ asset('uploads/images/events/' ~ image) }}" />
+				<img id="image_output" src="{{ asset('uploads/images/events/' ~ image) }}"/>
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">

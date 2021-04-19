@@ -67,6 +67,7 @@ event:
     description: Description de l'évenement
     location: Localisation de l'évenement
     date: Date de l'évenement
+    endDate: Date de fin de l'évenement
     number: Nombre de participants
     image: Image de l'évenement
   create:
@@ -121,3 +122,14 @@ user:
     community: Communautés suivies
   modify:
     title: Modifier l'utilisateur
+
+search:
+  form:
+    title: Recherche
+    searchType: Type de recherche
+    startDate: Date de début
+    endDate: Date de fin
+  type:
+    event: Événements
+    user: Utilisateurs
+    communities: Communautés

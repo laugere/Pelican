@@ -40,10 +40,34 @@ class HomePage extends AbstractController
      */
     public function search(UserRepository $userRepo, EventRepository $eventRepo, CommunityRepository $communityRepo, FriendshipRepository $friendshipRepo, Request $request): Response
     {
-        $users = $userRepo->findByLike($request->query->get('search'));
-        $events = $eventRepo->findByLike($request->query->get('search'));
-        $communitys = $communityRepo->findByLike($request->query->get('search'));
-        $friendships = $friendshipRepo->findAll();
+        $eventStartDate = $request->query->get('eventStartDate');
+        $eventEndDate = $request->query->get('eventEndDate');
+
+        $userType = $request->query->get('userType');
+        $eventType = $request->query->get('eventType');
+        $communityType = $request->query->get('communityType');
+
+        $search = $request->query->get('search');
+
+        if ($userType) {
+            $users = $userRepo->findByLike($search);
+            $friendships = $friendshipRepo->findAll();
+        } else {
+            $users = null;
+            $friendships = null;
+        }
+
+        if ($eventType) {
+            $events = $eventRepo->findByLike($search, $eventStartDate, $eventEndDate);
+        } else {
+            $events = null;
+        }
+
+        if ($communityType) {
+            $communitys = $communityRepo->findByLike($search);
+        } else {
+            $communitys = null;
+        }
 
         return $this->render('search/index.html.twig', [
             'users' => $users,
