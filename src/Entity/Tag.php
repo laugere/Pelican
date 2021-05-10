@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag
 {
     /**
+     * @var int
+     * 
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -20,7 +22,9 @@ class Tag
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     * 
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
@@ -76,5 +80,10 @@ class Tag
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

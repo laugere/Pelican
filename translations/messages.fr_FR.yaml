@@ -69,6 +69,7 @@ event:
     date: Date de l'évenement
     endDate: Date de fin de l'évenement
     number: Nombre de participants
+    tag: Tags (tapez ',' pour ajouter le tag)
     image: Image de l'évenement
   create:
     title: Organiser un évenement

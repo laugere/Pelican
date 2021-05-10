@@ -55,7 +55,11 @@ class EventType extends AbstractType
                     'placeholder' => 'event.form.number'
                 )
             ])
-            ->add('tags', TagsType::class)
+            ->add('tags', TagsType::class, [
+                'attr' => array(
+                    'class' => 'tagin'
+                )
+            ])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false,

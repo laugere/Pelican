@@ -71,6 +71,7 @@ event:
     date: Event date
     endDate: Event end date
     number: Number of participants
+    tag: Tags (type ',' to add the tag)
     image: Event image
   create:
     title: Organize an event

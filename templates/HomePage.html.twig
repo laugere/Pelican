@@ -10,8 +10,102 @@
         Pelican
     </title>
 
-    {% block stylesheets %} 
-        {{ encore_entry_link_tags('app') }}
+    {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+        @import '../node_modules/bootstrap/scss/functions';
+        @import '../node_modules/bootstrap/scss/variables';
+        @import '../node_modules/bootstrap/scss/mixins';
+
+        .tagin {
+            display: none;
+        }
+
+        .tagin-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            height: auto;
+            padding: calc(#{$input-padding-y} - 2px) calc(#{$input-padding-x} - 2px);
+            position: relative;
+            overflow: hidden;
+            cursor: text;
+
+            &.focus {
+                color: $input-focus-color;
+                background-color: $input-focus-bg;
+                border-color: $input-focus-border-color;
+                outline: 0;
+
+                @if $enable-shadows {
+                    box-shadow: $input-box-shadow, $input-focus-box-shadow;
+                }
+
+                @else {
+                    box-shadow: $input-focus-box-shadow;
+                }
+            }
+
+            .tagin.is-valid+&,
+            .was-validated .tagin:valid+& {
+                border-color: $form-feedback-valid-color;
+            }
+
+            .tagin.is-invalid+&,
+            .was-validated .tagin:invalid+& {
+                border-color: $form-feedback-invalid-color;
+            }
+        }
+
+        .tagin-tag {
+            @include border-radius($input-border-radius, 0);
+            border: 0;
+            padding: 0 4px;
+            display: inline-flex;
+            align-items: center;
+            height: 24px;
+            margin: 2px;
+            font-weight: 300;
+            background-color: var(--back-color-opacity-low);
+            transition: transform .1s;
+        }
+
+        .tagin-tag-remove {
+            margin-left: 2px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0' width='18px' height='18px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3E%3C/svg%3E");
+
+            &:hover {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='18px' height='18px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3E%3C/svg%3E");
+            }
+        }
+
+        .tagin-input {
+            margin-left: 2px;
+            border-color: transparent;
+            outline: 0;
+            border-width: 1px 0;
+            padding: 0 2px 0 0;
+            height: 28px;
+            color: var(--font-color);
+            background-color: transparent !important;
+
+            &:not(.tagin-input-hidden) {
+                width: 4px;
+                min-width: 4px;
+            }
+        }
+
+        .tagin-input-hidden {
+            position: absolute;
+            top: 0;
+            left: -9999px;
+            overflow: hidden;
+            visibility: hidden;
+            white-space: nowrap;
+        }
+    </style>
     {% endblock %}
 </head>
 
@@ -35,64 +129,26 @@
 
     {% include 'vues/ModalLoading.html.twig' %} {% include 'vues/ModalSearch.html.twig' %}
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" />
+
+    {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"
+        integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css"
+        integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ=="
+        crossorigin="anonymous" />
 
     <script>
-        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-
-        function onClickBtnGoToEvent(eventGoToPath, eventId) {
-            $('#loadingModal').modal('show')
-
-            $.ajax({
-                url: eventGoToPath,
-                cache: false
-            }).done(function(response) {
-                if (response.code == 200) {
-                    $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
-                    setTimeout(() => {
-                        $('#loadingModal').modal('hide')
-                    }, 500)
-                } else {
-                    setTimeout(() => {
-                        $('#loadingModal').modal('hide')
-                    }, 500)
-                    setTimeout(() => {
-                        $('#dialogModalFullEvent').modal('show')
-                    }, 500)
-                }
-            })
-        }
-
-        function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
-            $('#loadingModal').modal('show')
-
-            $.ajax({
-                url: queryPath,
-                cache: false
-            }).done(function(response) {
-                $('#' + refreshElement).load(pagePath + ' #' + refreshElement)
-                setTimeout(() => {
-                    $('#loadingModal').modal('hide')
-                }, 500)
-            })
-        }
-
-        var loadFile = function(event) {
-            var output = document.getElementById('image_output');
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.style.display = 'block';
-            output.onload = function() {
-                URL.revokeObjectURL(output.src) // free memory
-            }
-        };
-
         function setTheme(theme) {
             localStorage.setItem('theme', theme);
             if (theme === false) {
@@ -104,8 +160,9 @@
 
         (function () {
             setTheme({{ app.request.session.get('_theme') ? 'true' : 'false' }});
-        })();
+        }) ();
     </script>
+    {% endblock %}
 </body>
 
 </html>
