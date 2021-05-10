@@ -3,7 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Event;
+use App\Entity\Tag;
 use Doctrine\DBAL\Types\TextType;
+use App\Form\DataTransformer\TagsTransformer;
+use App\Form\Type\TagsType;
+use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -12,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Doctrine\ORM\EntityManagerInterface;
 
 class EventType extends AbstractType
 {
@@ -50,6 +55,7 @@ class EventType extends AbstractType
                     'placeholder' => 'event.form.number'
                 )
             ])
+            ->add('tags', TagsType::class)
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false,
@@ -69,7 +75,9 @@ class EventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Event::class,
+            'data_class' => Event::class
         ]);
+
+        $resolver->setDefault('required', false);
     }
 }

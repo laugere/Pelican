@@ -11,6 +11,7 @@ use App\Entity\Friendship;
 use App\Entity\IsInCommunity;
 use App\Entity\Participation;
 use App\Entity\Settings;
+use App\Entity\Tag;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Exception;
@@ -92,6 +93,11 @@ class AppFixtures extends Fixture
             $events[$i]->setEndDate($faker->dateTimeBetween($events[$i]->getdate(), $events[$i]->getdate()->format('Y-m-d H:i:s').'+5 hours'));
             $events[$i]->setNbParticipant($faker->randomNumber(1));
             $events[$i]->setImage($fakeImages[rand(0, count($fakeImages) - 1)]);
+            for ($j = 0; $j < 10; $j++) {
+                $tag = new Tag();
+                $tag->setName($faker->word);
+                $events[$i]->addTag($tag);
+            } 
 
             $manager->persist($events[$i]);
         }

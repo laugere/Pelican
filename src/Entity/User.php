@@ -75,6 +75,11 @@ class User implements UserInterface, \Serializable
     protected $event;
 
     /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="user", cascade={"persist"})
+     */
+    protected $eventsCreated;
+
+    /**
      * @ORM\OneToMany(targetEntity=Friendship::class, mappedBy="first_user")
      */
     protected $friends;
@@ -248,6 +253,11 @@ class User implements UserInterface, \Serializable
         $this->password = $password;
 
         return $this;
+    }
+
+    public function getEventsCreated()
+    {
+        return $this->eventsCreated;
     }
 
     /**

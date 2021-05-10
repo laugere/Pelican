@@ -120,7 +120,7 @@ comment:
 user:
   counter: 
     friends: Friends
-    events: Followed events
+    events: Created events
     community: Followed community
   modify:
     title: Modify User

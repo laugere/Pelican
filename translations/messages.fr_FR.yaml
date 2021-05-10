@@ -118,7 +118,7 @@ security:
 user:
   counter: 
     friends: Amis
-    events: Événements suivis
+    events: Événements créés
     community: Communautés suivies
   modify:
     title: Modifier l'utilisateur

@@ -45,4 +45,18 @@ class UserController extends AbstractController
             "menu" => 'user',
         ]);
     }
+
+    /**
+     * @Route("/user/{userId}/event/view", name="user_event_view")
+     */
+    public function eventView($userId, UserRepository $userRepo)
+    {
+        $user = $userRepo->findOneById($userId);
+        $events = $user->getEventsCreated();
+
+        return $this->render('event/index.html.twig', [
+            'events' => $events,
+            'menu' => 'event'
+        ]);
+    }
 }

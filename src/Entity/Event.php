@@ -69,7 +69,7 @@ class Event
     private $nbParticipant;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=User::class)
      */
     private $user;
 
@@ -96,10 +96,17 @@ class Event
      */
     private $comments;
 
+    /**
+     * @var array
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="events", cascade={"persist"})
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getParticipations()
@@ -301,5 +308,39 @@ class Event
         }
 
         return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \App\Entity\Tag $tag
+     *
+     * @return mixed
+     */
+    public function addTag(Tag $tag): self
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \App\Entity\Tag $tag
+     */
+    public function removeTag(Tag $tag)
+    {
+        $this->tags->removeElement($tag);
     }
 }

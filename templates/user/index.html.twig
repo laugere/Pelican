@@ -22,9 +22,9 @@
 						<h5>{% trans %}user.counter.friends{% endtrans %}</h4>
 						<h6>{{  user.friendship | filter(v => v.validate == true) | length }}</h5>
 					</div>
-					<div class="col-lg noselect">
+					<div class="col-lg noselect" onclick="window.location = '/user/{{ user.id }}/event/view';">
 						<h5>{% trans %}user.counter.events{% endtrans %}</h4>
-						<h6>{{  user.event | length   }}</h5>
+						<h6>{{  user.eventsCreated | length   }}</h5>
 					</div>
 					<div class="col-lg noselect" onclick="window.location = '/community/{{ user.id }}/view';">
 						<h5>{% trans %}user.counter.community{% endtrans %}</h4>
