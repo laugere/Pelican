@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Form\RegistrationFormType;
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ObjectManager;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\HttpFoundation\File\File;
 
 class UserController extends AbstractController
 {
@@ -40,8 +44,49 @@ class UserController extends AbstractController
     /**
      * @Route("/user/modify", name="user_modify")
      */
-    public function modifyUser(RegistrationFormType $registrationForm): Response {
+    public function modifyUser(Request $request, ObjectManager $objectManager): Response
+    {
+        $user = $this->getUser();
+        $form = $this->createFormBuilder($user)
+            ->add('email', null, ['label' => false, 'attr' => array(
+                'id' => 'inputEmail',
+                'placeholder' => 'security.register.email'
+            )])
+            ->add('city', null, ['label' => false, 'attr' => array(
+                'id' => 'inputCity',
+                'placeholder' => 'security.register.city'
+            )])
+            ->add('pseudo', null, ['label' => false, 'attr' => array(
+                'id' => 'inputPseudo',
+                'placeholder' => 'security.register.pseudo'
+            )])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => false,
+                'delete_label' => false,
+                'download_label' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => false,
+                'attr' => array(
+                    'id' => 'inputImage',
+                    'placeholder' => 'security.register.image',
+                    'onchange' => 'loadFile(event)'
+                )
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $objectManager->persist($user);
+            $objectManager->flush();
+        } else {
+            $imageFile = new File('./uploads/images/events/' . $user->getImage());
+            $form->setData(array("imageFile" => $imageFile));
+        }
+
         return $this->render('user/modify.html.twig', [
+            "form" => $form->createView(),
             "menu" => 'user',
         ]);
     }

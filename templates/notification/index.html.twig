@@ -6,4 +6,4 @@
         <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>{% else %}{% for notification in notifications %} {% include ('vues/NotificationCard.html.twig') %} {% endfor %} {% endif %}
     </div>
 </div>
-{% endblock %} {% block javascripts %} {% endblock %}
+{% endblock %} {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
