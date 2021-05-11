@@ -12,7 +12,7 @@ controllerName:
 message:
   loading: Chargement
   nocontent: Il n'y a rien par ici
-  searchresult: Résultat de recherche pour 
+  searchresult: Résultat de recherche
   datelocale: fr
   deleteconf: Souhaitez-vous vraiment supprimer cet événement ?
   fullevent: L'évenement est complet
@@ -76,6 +76,7 @@ event:
   index:
     allEvent: Tous les évenements
   view:
+    tag: Tags
     the: Le
     people: Personnes
     participant: Participants
@@ -130,6 +131,7 @@ search:
     searchType: Type de recherche
     startDate: Date de début
     endDate: Date de fin
+    tag: Tags
   type:
     event: Événements
     user: Utilisateurs

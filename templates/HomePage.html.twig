@@ -59,12 +59,12 @@
         .tagin-tag {
             @include border-radius($input-border-radius, 0);
             border: 0;
-            padding: 0 4px;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
             display: inline-flex;
             align-items: center;
-            height: 24px;
-            margin: 2px;
-            font-weight: 300;
+            height: 2rem;
+            margin: 0.25rem;
             background-color: var(--back-color-opacity-low);
             transition: transform .1s;
         }
@@ -85,9 +85,8 @@
             margin-left: 2px;
             border-color: transparent;
             outline: 0;
-            border-width: 1px 0;
             padding: 0 2px 0 0;
-            height: 28px;
+            height: 2.5rem;
             color: var(--font-color);
             background-color: transparent !important;
 
@@ -132,6 +131,8 @@
 
     {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -149,6 +150,11 @@
         crossorigin="anonymous" />
 
     <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+
         function setTheme(theme) {
             localStorage.setItem('theme', theme);
             if (theme === false) {
@@ -162,7 +168,6 @@
             setTheme({{ app.request.session.get('_theme') ? 'true' : 'false' }});
         }) ();
     </script>
-    {% endblock %}
 </body>
 
 </html>

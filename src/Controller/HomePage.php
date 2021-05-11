@@ -13,6 +13,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\MakerBundle\EventRegistry;
 use Symfony\Component\Routing\Annotation\Route;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpKernel\Log\Logger;
 
 class HomePage extends AbstractController
 {
@@ -38,7 +40,7 @@ class HomePage extends AbstractController
     /**
      * @Route("/search", name="search")
      */
-    public function search(UserRepository $userRepo, EventRepository $eventRepo, CommunityRepository $communityRepo, FriendshipRepository $friendshipRepo, Request $request): Response
+    public function search(UserRepository $userRepo, EventRepository $eventRepo, CommunityRepository $communityRepo, FriendshipRepository $friendshipRepo, Request $request, LoggerInterface $logger): Response
     {
         $eventStartDate = $request->query->get('eventStartDate');
         $eventEndDate = $request->query->get('eventEndDate');
@@ -48,25 +50,55 @@ class HomePage extends AbstractController
         $communityType = $request->query->get('communityType');
 
         $search = $request->query->get('search');
+        $tags = $request->query->get('eventTags');
 
         if ($userType) {
-            $users = $userRepo->findByLike($search);
-            $friendships = $friendshipRepo->findAll();
+            if (empty($search)) {
+                $users = $userRepo->findAll();
+                $friendships = $friendshipRepo->findAll();
+            } else {
+                $users = $userRepo->findByLike($search);
+                $friendships = $friendshipRepo->findAll();
+            }
         } else {
             $users = null;
             $friendships = null;
         }
 
         if ($eventType) {
-            $events = $eventRepo->findByLike($search, $eventStartDate, $eventEndDate);
+            if (empty($search)) {
+                $events = new ArrayCollection($eventRepo->findRecent());
+            } else {
+                $events = new ArrayCollection($eventRepo->findByLike($search, $eventStartDate, $eventEndDate));
+            }
         } else {
             $events = null;
         }
 
         if ($communityType) {
-            $communitys = $communityRepo->findByLike($search);
+            if (empty($search)) {
+                $communitys = new ArrayCollection($communityRepo->findRecent());
+            } else {
+                $communitys = new ArrayCollection($communityRepo->findByLike($search));
+            }
         } else {
             $communitys = null;
+        }
+
+        if (!empty($tags)) {
+            $tagsSearch = explode("%2", $request->query->get('eventTags'));
+            $trouve = false;
+            foreach ($events as $event) {
+                $trouve = false;
+                foreach ($event->getTags() as $tag) {
+                    if (in_array($tag->getName(), $tagsSearch)) {
+                        $trouve = true;
+                    }
+                }
+                if(!$trouve) {
+                    $events->removeElement($event);
+                }
+            }
         }
 
         return $this->render('search/index.html.twig', [

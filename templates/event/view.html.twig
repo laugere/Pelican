@@ -1,143 +1,169 @@
 {% extends 'HomePage.html.twig' %}
 
 {% block body %}
-	<div id="content-container" class="scrollable">
-		<div class="subcontainer scrollbar">
-			<h1>{{ event.name }}</h1>
-			<h5>{% trans %}event.view.the{% endtrans %}
-				{{ event.date|format_datetime('full', 'none', locale = 'message.datelocale'|trans) }}</h5>
-			<p>{{ event.nbParticipant }}
-				{% trans %}event.view.people{% endtrans %}</p>
-			<a href="{{ asset('uploads/images/events/' ~ event.image) }}" data-toggle="lightbox">
-				<div class="event-img" style="background-image: url({{ asset('uploads/images/events/' ~ event.image) }});"></div>
-			</a>
-			<div id="event-{{ event.id }}">
-				<div class="form-group event-view-action" style="margin-bottom: 0 !important;">
-					{% set trouve = false %}
-
-					{% for participant in event.participations %}
-						{% if app.user.id == participant.user.id %}
-							{% if event.date > date() %}
-								<button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id}) }}', '{{ event.id }}');" class="btn btn-danger round-corner">
-									<i class="fas fa-times"></i>
-									{% trans %}button.stopparticipate{% endtrans %}
-								</button>
-							{% else %}
-								<button type="button" class="btn btn-dark disabled round-corner" disabled>
-									{% trans %}button.hasparticipate{% endtrans %}
-								</button>
-							{% endif %}
-
-							{% set trouve = true %}
-						{% endif %}
-					{% endfor %}
-
-					{% if trouve == false %}
-						{% if event.date > date() %}
-							<button type="button" onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');" class="btn btn-warning round-corner">
-								<i class="fas fa-arrow-right"></i>
-								{% trans %}button.participate{% endtrans %}
-							</button>
-						{% else %}
-							<button type="button" class="btn btn-dark disabled round-corner" disabled>
-								{% trans %}button.expired{% endtrans %}
-							</button>
-						{% endif %}
-					{% endif %}
-
-					{% if event.user == app.user %}
-						{% if event.date > date() %}
-							<button type="button" onclick="window.location = '/event/{{ event.id }}/modify';" class="btn btn-info btn-round">
-								<i class="fas fa-pen"></i>
-							</button>
-						{% endif %}
-						<button type="button" class="btn btn-danger btn-round" data-toggle="modal" data-target="#dialogModalSupp">
-							<i class="fas fa-times"></i>
-						</button>
-					{% endif %}
-				</div>
+<div id="content-container" class="scrollable">
+	<div class="subcontainer scrollbar">
+		<h1>{{ event.name }}</h1>
+		<h5>
+			{% trans %}event.view.the{% endtrans %}
+			{{ event.date|format_datetime('full', 'none', locale = 'message.datelocale'|trans) }}
+		</h5>
+		<h6>
+			{{ event.location }}
+		</h6>
+		<br />
+		<p>
+			{{ event.nbParticipant }}
+			{% trans %}event.view.people{% endtrans %}
+		</p>
+		<a href="{{ asset('uploads/images/events/' ~ event.image) }}" data-toggle="lightbox">
+			<div class="event-img" style="background-image: url({{ asset('uploads/images/events/' ~ event.image) }});">
 			</div>
+		</a>
+		<div id="event-{{ event.id }}">
+			<div class="form-group event-view-action" style="margin-bottom: 0 !important;">
+				{% set trouve = false %}
 
-			{% if event.description|length > 255 %}
-				<div id="event-description">
-					<p class="collapse" id="event-description-collapse" aria-expanded="false">{{ event.description }}</p>
-					<a role="button" class="collapsed" data-toggle="collapse" href="#event-description-collapse" aria-expanded="false" aria-controls="event-description-collapse"></a>
-				</div>
-			{% else %}
-				<p>{{ event.description }}</p>
+				{% for participant in event.participations %}
+				{% if app.user.id == participant.user.id %}
+				{% if event.date > date() %}
+				<button type="button"
+					onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id}) }}', '{{ event.id }}');"
+					class="btn btn-danger round-corner">
+					<i class="fas fa-times"></i>
+					{% trans %}button.stopparticipate{% endtrans %}
+				</button>
+				{% else %}
+				<button type="button" class="btn btn-dark disabled round-corner" disabled>
+					{% trans %}button.hasparticipate{% endtrans %}
+				</button>
+				{% endif %}
+
+				{% set trouve = true %}
+				{% endif %}
+				{% endfor %}
+
+				{% if trouve == false %}
+				{% if event.date > date() %}
+				<button type="button"
+					onclick="onClickBtnGoToEvent('{{path('event_goto',{eventId: event.id})}}', '{{ event.id }}');"
+					class="btn btn-warning round-corner">
+					<i class="fas fa-arrow-right"></i>
+					{% trans %}button.participate{% endtrans %}
+				</button>
+				{% else %}
+				<button type="button" class="btn btn-dark disabled round-corner" disabled>
+					{% trans %}button.expired{% endtrans %}
+				</button>
+				{% endif %}
+				{% endif %}
+
+				{% if event.user == app.user %}
+				{% if event.date > date() %}
+				<button type="button" onclick="window.location = '/event/{{ event.id }}/modify';"
+					class="btn btn-info btn-round">
+					<i class="fas fa-pen"></i>
+				</button>
+				{% endif %}
+				<button type="button" class="btn btn-danger btn-round" data-toggle="modal"
+					data-target="#dialogModalSupp">
+					<i class="fas fa-times"></i>
+				</button>
+				{% endif %}
+			</div>
+		</div>
+
+		{% if event.description|length > 255 %}
+		<div id="event-description">
+			<p class="collapse" id="event-description-collapse" aria-expanded="false">{{ event.description }}</p>
+			<a role="button" class="collapsed" data-toggle="collapse" href="#event-description-collapse"
+				aria-expanded="false" aria-controls="event-description-collapse"></a>
+		</div>
+		{% else %}
+		<p>{{ event.description }}</p>
+		{% endif %}
+
+		{% if event.tags is not empty %}
+		<div class="search-container">
+			<h4 class="font-weight-bold">
+				{% trans %}event.view.tag{% endtrans %}
+			</h4>
+			{% for tag in event.tags %}
+			<div class="tagin-tag">{{ tag.name }}</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+		{% if event.participations is not empty %}
+		<div class="search-container">
+			<h4 class="font-weight-bold">
+				{% trans %}event.view.participant{% endtrans %}
+			</h4>
+			{% for participation in event.participations | slice(0, 3) %}
+			{% set user = participation.getUser %}
+			{% set friendships = user.getFriendship %}
+			{% include ('vues/UserCard.html.twig') %}
+			{% endfor %}
+			{% if event.participations | length > 3 %}
+			<button onclick="window.location = '/event/{{ event.id }}/user/view';" class="show-more-button">
+				{% trans %}rightcol.showmore{% endtrans %}
+			</button>
 			{% endif %}
+		</div>
+		{% endif %}
 
-			<br/>
-
-			{% if event.participations is not empty %}
-				<div class="search-container">
-					<h4 class="font-weight-bold">
-						{% trans %}event.view.participant{% endtrans %}
-					</h4>
-					{% for participation in event.participations | slice(0, 3) %}
-						{% set user = participation.getUser %}
-						{% set friendships = user.getFriendship %}
-						{% include ('vues/UserCard.html.twig') %}
-					{% endfor %}
-					{% if event.participations | length > 3 %}
-						<button onclick="window.location = '/event/{{ event.id }}/user/view';" class="show-more-button">
-							{% trans %}rightcol.showmore{% endtrans %}
-						</button>
-					{% endif %}
-				</div>
-			{% endif %}
-
-			<div id="comment-container">
-				<div class="search-container">
-					<h4 class="font-weight-bold">
-						{% trans %}event.view.comment{% endtrans %}
-					</h4>
-					{% include ('vues/CommentCard.html.twig') %}
-					{% if event.comments is not empty %}
-						{% for comment in event.comments | filter((c) => c.dateSuppression is null) | slice(0, 3) %}
-							{% include ('vues/CommentCard.html.twig') %}
-						{% endfor %}
-						{% if event.comments | filter((c) => c.dateSuppression is null) | length > 3 %}
-							<button class="show-more-button" id="show-more-button">
-								{% trans %}rightcol.showmore{% endtrans %}
-							</button>
-						{% endif %}
-					{% else %}
-						<h6 class="text-muted centered-message">
-							<i class="fas fa-hotdog"></i>
-							{% trans %}message.nocontent{% endtrans %}
-						</h6>
-					{% endif %}
-				</div>
+		<div id="comment-container">
+			<div class="search-container">
+				<h4 class="font-weight-bold">
+					{% trans %}event.view.comment{% endtrans %}
+				</h4>
+				{% include ('vues/CommentCard.html.twig') %}
+				{% if event.comments is not empty %}
+				{% for comment in event.comments | filter((c) => c.dateSuppression is null) | slice(0, 3) %}
+				{% include ('vues/CommentCard.html.twig') %}
+				{% endfor %}
+				{% if event.comments | filter((c) => c.dateSuppression is null) | length > 3 %}
+				<button class="show-more-button" id="show-more-button">
+					{% trans %}rightcol.showmore{% endtrans %}
+				</button>
+				{% endif %}
+				{% else %}
+				<h6 class="text-muted centered-message">
+					<i class="fas fa-hotdog"></i>
+					{% trans %}message.nocontent{% endtrans %}
+				</h6>
+				{% endif %}
 			</div>
 		</div>
 	</div>
+</div>
 
-	{% include 'vues/ModalDialogSupp.html.twig' %}
-	{% include 'vues/ModalDialogFullEvent.html.twig' %}
-	{% set comments = event.comments %}
-	<div class="modal-comment-all">
-		{% include 'vues/ModalCommentShowAll.html.twig' %}
-	</div>
+{% include 'vues/ModalDialogSupp.html.twig' %}
+{% include 'vues/ModalDialogFullEvent.html.twig' %}
+{% set comments = event.comments %}
+<div class="modal-comment-all">
+	{% include 'vues/ModalCommentShowAll.html.twig' %}
+</div>
 {% endblock %}
 
 {% block javascripts %}
+{{ encore_entry_script_tags('app') }}
 
 <script>
-	$('#show-more-button').on('click', function(e){
+	$('#show-more-button').on('click', function (e) {
 		updateAndShowComs();
 		e.stopImmediatePropagation();
 		return false;
 	});
 
-	function updateAndShowComs(){
+	function updateAndShowComs() {
 		$.ajax({
 			url: '/event/1/view',
 			type: 'POST',
 			cache: false,
-		}).done(function(response) {
+		}).done(function (response) {
 
-			var modal = $(response).find('.modal-comment-all');	
+			var modal = $(response).find('.modal-comment-all');
 
 			$('#showAllCommentModal').html(modal.innerHTML);
 			$('#showAllCommentModal').modal('show');

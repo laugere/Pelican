@@ -18,6 +18,7 @@ use App\Service\NotificationService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Asset\Packages;
+use Psr\Log\LoggerInterface;
 
 class EventController extends AbstractController
 {
@@ -26,10 +27,32 @@ class EventController extends AbstractController
      */
     public function index(EventRepository $eventRepo, Request $request): Response
     {
+        $events = new ArrayCollection($eventRepo->findRecent());
+
+        $eventStartDate = $request->query->get('eventStartDate');
+        $eventEndDate = $request->query->get('eventEndDate');
+
+        $search = $request->query->get('search');
+        $tags = $request->query->get('eventTags');
+
         if ($request->query->get('search') != null) {
-            $events = $eventRepo->findByLike($request->query->get('search'), $request->query->get('eventStartDate'), $request->query->get('eventEndDate'));
-        } else {
-            $events = $eventRepo->findRecent();
+            $events = $eventRepo->findByLike($search, $eventStartDate, $eventEndDate);
+        }
+
+        if (!empty($tags)) {
+            $tagsSearch = explode("%2", $request->query->get('eventTags'));
+            $trouve = false;
+            foreach ($events as $event) {
+                $trouve = false;
+                foreach ($event->getTags() as $tag) {
+                    if (in_array($tag->getName(), $tagsSearch)) {
+                        $trouve = true;
+                    }
+                }
+                if(!$trouve) {
+                    $events->removeElement($event);
+                }
+            }
         }
 
         return $this->render('event/index.html.twig', [
@@ -249,5 +272,4 @@ class EventController extends AbstractController
 
         return $this->json(['code' => 200, 'comments' => $coms], 200);
     }
-
 }

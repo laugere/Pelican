@@ -12,7 +12,7 @@ controllerName:
 message:
   loading: Loading
   nocontent: There's nothing here
-  searchresult: Search result for
+  searchresult: Search result
   datelocale: en
   deleteconf: Do you really want to delete this event?
   fullevent: The event is complete
@@ -78,6 +78,7 @@ event:
   index:
     allEvent: All event
   view:
+    tag: Tags
     the: The
     people: People
     participant: Participant
@@ -132,6 +133,7 @@ search:
     searchType: Search type
     startDate: Starting date
     endDate: End date
+    tag: Tags
   type:
     events: Events
     users: Users
