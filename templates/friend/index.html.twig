@@ -1,20 +1,40 @@
 {% extends 'HomePage.html.twig' %} {% block body %}
 <div id="content-container" class="scrollable">
-    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.users'|trans, 'search' : true } %}
+    {% include 'vues/ContentHeader.html.twig' with {'controller_name' : 'controllerName.users'|trans, 'search' : true }
+    %}
     <div class="subcontainer scrollbar">
         {% if not app.request.query.get("search") is empty %}
         <h5 class="text-center">
             {% trans %}message.searchresult{% endtrans %}
         </h5>
-        {% endif %} 
-        
+        {% endif %}
+
         {% if users is empty %}
-            <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}</h6>
+        <h6 class="text-muted centered-message"><i class="fas fa-hotdog"></i> {% trans %}message.nocontent{% endtrans %}
+        </h6>
         {% else %}
-            {% for user in users %} 
-                {% include ('vues/UserCard.html.twig') %} 
-            {% endfor %} 
+        {% for user in users %}
+        {% include ('vues/UserCard.html.twig') %}
+        {% endfor %}
         {% endif %}
     </div>
 </div>
-{% endblock %} {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+{% endblock %}
+{% block javascripts %}{{ encore_entry_script_tags('app') }}
+
+<script>
+    function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
+        $('#loadingModal').modal('show')
+
+        $.ajax({
+            url: queryPath,
+            cache: false
+        }).done(function (response) {
+            $('#' + refreshElement).load(pagePath + ' #' + refreshElement)
+            setTimeout(() => {
+                $('#loadingModal').modal('hide')
+            }, 500)
+        })
+    }
+</script>
+{% endblock %}

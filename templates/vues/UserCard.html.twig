@@ -20,8 +20,8 @@
 								<i class="fas fa-user-check"></i>
 							</button>
 						{% else %}
-							<button type="button" onclick="onClickExecuteQuery('{{path('friend_add',{userid: user.id})}}', '{{app.request.uri}}', 'friend-{{ user.id }}')" class="btn btn-danger btn-round list-card-button">
-								<i class="fas fa-times"></i>
+							<button type="button" onclick="onClickExecuteQuery('{{path('friend_add',{userid: user.id})}}', '{{app.request.uri}}', 'friend-{{ user.id }}')" class="btn btn-success btn-round list-card-button">
+								<i class="fas fa-check"></i>
 							</button>
 							<button type="button" class="disabled btn btn-light btn-round list-card-button" disabled>
 								<i class="fas fa-user-clock"></i>

@@ -144,20 +144,6 @@ function tagin(el, option = {}) {
     el.addEventListener('change', () => updateTag())
 }
 
-function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
-    $('#loadingModal').modal('show')
-
-    $.ajax({
-        url: queryPath,
-        cache: false
-    }).done(function (response) {
-        $('#' + refreshElement).load(pagePath + ' #' + refreshElement)
-        setTimeout(() => {
-            $('#loadingModal').modal('hide')
-        }, 500)
-    })
-}
-
 var loadFile = function (event) {
     var output = document.getElementById('image_output');
     output.src = URL.createObjectURL(event.target.files[0]);

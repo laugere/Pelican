@@ -156,6 +156,20 @@
 		return false;
 	});
 
+	function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
+		$('#loadingModal').modal('show')
+
+		$.ajax({
+			url: queryPath,
+			cache: false
+		}).done(function (response) {
+			$('#' + refreshElement).load(pagePath + ' #' + refreshElement)
+			setTimeout(() => {
+				$('#loadingModal').modal('hide')
+			}, 500)
+		})
+	}
+
 	function updateAndShowComs() {
 		$.ajax({
 			url: '/event/1/view',
