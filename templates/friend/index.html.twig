@@ -4,7 +4,7 @@
     <div class="subcontainer scrollbar">
         {% if not app.request.query.get("search") is empty %}
         <h5 class="text-center">
-            {% trans %}message.searchresult{% endtrans %} "{{ app.request.query.get("search") }}"
+            {% trans %}message.searchresult{% endtrans %}
         </h5>
         {% endif %} 
         

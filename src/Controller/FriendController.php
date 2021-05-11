@@ -16,6 +16,32 @@ use Doctrine\Common\Collections\ArrayCollection;
 class FriendController extends AbstractController
 {
     /**
+     * @Route("/friend", name="friend")
+     */
+    public function index(UserRepository $userRepo, Request $request): Response
+    {
+        $users = new ArrayCollection($userRepo->findByLike($request->query->get('search')));
+        $user = $this->getUser();
+        $friendships = $user->getFriendship();
+
+        foreach ($friendships as $friendship) {
+            if ($friendship->getValidate()) {
+                if ($friendship->getFirst_user() != $user) {
+                    $users->add($friendship->getFirst_user());
+                } else {
+                    $users->add($friendship->getSecond_user());
+                }
+            }
+        }
+
+        return $this->render('friend/index.html.twig', [
+            'users' => $users,
+            'friendships' => $friendships,
+            'menu' => 'community'
+        ]);
+    }
+
+    /**
      * @Route("/friend/{userId}/view", name="friend_view")
      */
     public function friendsView($userId, UserRepository $userRepo): Response

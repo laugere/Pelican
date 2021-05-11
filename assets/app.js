@@ -144,34 +144,6 @@ function tagin(el, option = {}) {
     el.addEventListener('change', () => updateTag())
 }
 
-$(document).on('click', '[data-toggle="lightbox"]', function (event) {
-    event.preventDefault();
-    $(this).ekkoLightbox();
-});
-
-function onClickBtnGoToEvent(eventGoToPath, eventId) {
-    $('#loadingModal').modal('show')
-
-    $.ajax({
-        url: eventGoToPath,
-        cache: false
-    }).done(function (response) {
-        if (response.code == 200) {
-            $('#event-' + eventId).load('/event/' + eventId + '/view #event-' + eventId)
-            setTimeout(() => {
-                $('#loadingModal').modal('hide')
-            }, 500)
-        } else {
-            setTimeout(() => {
-                $('#loadingModal').modal('hide')
-            }, 500)
-            setTimeout(() => {
-                $('#dialogModalFullEvent').modal('show')
-            }, 500)
-        }
-    })
-}
-
 function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
     $('#loadingModal').modal('show')
 
