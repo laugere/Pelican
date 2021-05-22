@@ -39,6 +39,7 @@ class EventRepository extends ServiceEntityRepository
     public function findPopular()
     {
         return $this->createQueryBuilder('e')
+            ->where('e.date_suppression is NULL')
             ->orderBy('e.nb_participant', 'DESC')
             ->setMaxResults(20)
             ->getQuery()
@@ -48,6 +49,7 @@ class EventRepository extends ServiceEntityRepository
     public function findOneById($id): ?Event
     {
         return $this->createQueryBuilder('e')
+            ->where('e.date_suppression is NULL')
             ->andWhere('e.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
@@ -57,6 +59,7 @@ class EventRepository extends ServiceEntityRepository
     public function findByLike($name, $startDate, $endDate)
     {
         $qb = $this->createQueryBuilder('e')
+            ->where('e.date_suppression is NULL')
             ->andWhere('e.name LIKE :name')
             ->setParameter('name', '%' . $name . '%');
 

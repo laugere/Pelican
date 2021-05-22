@@ -257,7 +257,13 @@ class User implements UserInterface, \Serializable
 
     public function getEventsCreated()
     {
-        return $this->eventsCreated;
+        $eventsCreated = new ArrayCollection();
+        foreach ($this->eventsCreated as $eventCreated) {
+            if ($eventCreated->getDateSuppression() == null) {
+                $eventsCreated->add($eventCreated);
+            }
+        }
+        return $eventsCreated;
     }
 
     /**

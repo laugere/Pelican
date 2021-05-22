@@ -81,7 +81,7 @@ class AppFixtures extends Fixture
         }
 
         $events = array();
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $events[$i] = new Event();
             $events[$i]->setUser($users[rand(0, 19)]);
             $events[$i]->setDateCreation($faker->dateTime);
