@@ -73,6 +73,8 @@ This command allows you to install all the dependencies of the project concernin
 
 ## Setup 🔨
 
+First of all, you have to configure the .env file so that it corresponds to your database. To do this you need to follow this link <a href="https://symfony.com/doc/current/configuration.html#configuring-environment-variables-in-env-files">documentation .env</a>.
+
 Once the server is set up, the database that will host Pelican must be created. To do so, you only need one symfony command.
 
 ```
@@ -119,7 +121,7 @@ Login
 > admin@admin
 
 Password
-> Admin
+> admin
 
 Once done, you can reach the /admin route to access the administration panel.
 
