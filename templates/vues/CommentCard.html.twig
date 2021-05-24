@@ -18,7 +18,7 @@
 						<i class="fas fa-ellipsis-v"></i>
 					</button>
 					<div class="dropdown-menu" aria-labelledby="comment-{{ comment.id }}-option">
-						<a class="dropdown-item text-danger" onclick="updateComs({{comment.id}})">
+						<a class="dropdown-item text-danger delete-button" onclick="updateComs({{comment.id}})">
 							{% trans %}comment.menu.delete{% endtrans %}
 						</a>
 					</div>
@@ -45,7 +45,6 @@
 
 <script>
 	function updateComs(comId){
-		$('#showAllCommentModal').modal('hide');
 		$.ajax({
 			url: '/event/comment/' + comId + '/remove',
 			type: 'POST',

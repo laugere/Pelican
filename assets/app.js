@@ -144,6 +144,12 @@ function tagin(el, option = {}) {
     el.addEventListener('change', () => updateTag())
 }
 
+$('#show-more-button').on('click', function (e) {
+    updateAndShowComs();
+    e.stopImmediatePropagation();
+    return false;
+});
+
 var loadFile = function (event) {
     var output = document.getElementById('image_output');
     output.src = URL.createObjectURL(event.target.files[0]);

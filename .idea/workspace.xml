@@ -23,16 +23,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/Pelican.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pelican.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/rightCol.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/rightCol.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommunityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommunityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomePage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/vues/NavBar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vues/NavBar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/vues/RightCol.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vues/RightCol.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/view.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/view.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/vues/CommentCard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vues/CommentCard.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +131,19 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
     </include_path>
   </component>
   <component name="ProjectId" id="1nLFhb977OZu96pTer4rb9FRrpC" />
@@ -175,6 +182,7 @@
       <workItem from="1612886029513" duration="576000" />
       <workItem from="1613057775111" duration="18000" />
       <workItem from="1613386445049" duration="5788000" />
+      <workItem from="1621882064731" duration="3414000" />
     </task>
     <task id="LOCAL-00001" summary="event page design">
       <created>1611320205058</created>

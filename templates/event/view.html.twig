@@ -150,11 +150,6 @@
 {{ encore_entry_script_tags('app') }}
 
 <script>
-	$('#show-more-button').on('click', function (e) {
-		updateAndShowComs();
-		e.stopImmediatePropagation();
-		return false;
-	});
 
 	function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
 		$('#loadingModal').modal('show')
