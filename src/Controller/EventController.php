@@ -272,4 +272,18 @@ class EventController extends AbstractController
 
         return $this->json(['code' => 200, 'comments' => $coms], 200);
     }
+
+    /**
+     * @Route("/event/{eventId}/duplicate", name="event_duplicate")
+     */
+    public function duplicateEvent($eventId, EventRepository $eventRepo, ObjectManager $objectManager, Request $request): Response
+    {
+        $event = $eventRepo->findOneById($eventId);
+
+        $event_new = clone $event;
+        $objectManager->persist($event_new);
+        $objectManager->flush();
+
+        return $this->index($eventRepo, $request);
+    }
 }

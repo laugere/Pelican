@@ -66,4 +66,20 @@
 
 {% block javascripts %}
 {{ encore_entry_script_tags('app') }}
+
+<script>
+    function onClickExecuteQuery(queryPath, pagePath, refreshElement) {
+        $('#loadingModal').modal('show')
+
+        $.ajax({
+            url: queryPath,
+            cache: false
+        }).done(function (response) {
+            $('#' + refreshElement).load(pagePath + ' #' + refreshElement)
+            setTimeout(() => {
+                $('#loadingModal').modal('hide')
+            }, 500)
+        })
+    }
+</script>
 {% endblock %}
